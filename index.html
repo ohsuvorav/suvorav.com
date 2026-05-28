@@ -10,45 +10,50 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    /* shadcn design tokens — dark */
     :root {
-      --bg: #0F0F0F;
-      --surface: #161616;
-      --border: rgba(255,255,255,0.07);
-      --text: #FFFFFF;
-      --muted: #777777;
-      --accent: #5E6AD2;
+      --background:    hsl(0 0% 3.9%);
+      --foreground:    hsl(0 0% 98%);
+      --muted:         hsl(0 0% 14.9%);
+      --muted-fg:      hsl(0 0% 63.9%);
+      --border:        hsl(0 0% 14.9%);
+      --input:         hsl(0 0% 14.9%);
+      --primary:       hsl(0 0% 98%);
+      --primary-fg:    hsl(0 0% 9%);
+      --accent:        hsl(0 0% 14.9%);
+      --accent-fg:     hsl(0 0% 98%);
+      --radius:        0.5rem;
+      --accent-color:  #5E6AD2;
     }
 
+    /* shadcn design tokens — light */
     [data-theme="light"] {
-      --bg: #FAFAFA;
-      --surface: #F3F3F3;
-      --border: rgba(0,0,0,0.08);
-      --text: #0F0F0F;
-      --muted: #888888;
-      --accent: #5E6AD2;
+      --background:    hsl(0 0% 100%);
+      --foreground:    hsl(0 0% 3.9%);
+      --muted:         hsl(0 0% 96.1%);
+      --muted-fg:      hsl(0 0% 45.1%);
+      --border:        hsl(0 0% 89.8%);
+      --input:         hsl(0 0% 89.8%);
+      --primary:       hsl(0 0% 9%);
+      --primary-fg:    hsl(0 0% 98%);
+      --accent:        hsl(0 0% 96.1%);
+      --accent-fg:     hsl(0 0% 9%);
     }
-
-    [data-theme="light"] .hero-bio { color: #555555; }
-    [data-theme="light"] .case-desc { color: #555555; }
 
     body {
-      background: var(--bg);
-      color: var(--text);
+      background: var(--background);
+      color: var(--foreground);
       font-family: 'Inter', -apple-system, sans-serif;
       -webkit-font-smoothing: antialiased;
       line-height: 1.6;
     }
 
     /* ── Layout ── */
-    .container {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
 
     /* ── Nav ── */
     nav {
-      padding: 28px 0;
+      padding: 20px 0;
       border-bottom: 1px solid var(--border);
     }
 
@@ -61,25 +66,33 @@
     .nav-name {
       font-size: 14px;
       font-weight: 500;
-      color: var(--text);
+      color: var(--foreground);
       text-decoration: none;
     }
 
     .nav-links {
       display: flex;
-      gap: 28px;
+      gap: 4px;
       list-style: none;
       align-items: center;
     }
 
+    /* shadcn ghost button */
     .nav-links a {
       font-size: 13px;
-      color: var(--muted);
+      font-weight: 500;
+      color: var(--muted-fg);
       text-decoration: none;
-      transition: color 0.15s;
+      padding: 6px 12px;
+      border-radius: calc(var(--radius) - 2px);
+      transition: background 0.15s, color 0.15s;
+      display: inline-block;
     }
 
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover {
+      background: var(--accent);
+      color: var(--accent-fg);
+    }
 
     /* ── Hero ── */
     .hero {
@@ -90,9 +103,9 @@
     .hero-role {
       font-size: 12px;
       font-weight: 600;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--accent-color);
       margin-bottom: 20px;
     }
 
@@ -107,38 +120,47 @@
     .hero-bio {
       font-size: 16px;
       line-height: 1.7;
-      color: #999999;
+      color: var(--muted-fg);
       max-width: 560px;
     }
 
     .hero-bio a {
-      color: var(--text);
+      color: var(--foreground);
       text-decoration: underline;
       text-underline-offset: 3px;
+      text-decoration-color: var(--border);
     }
 
     .hero-links {
-      margin-top: 36px;
+      margin-top: 32px;
       display: flex;
-      gap: 16px;
+      gap: 8px;
     }
 
-    .hero-links a {
+    /* shadcn Button — outline */
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
       font-size: 13px;
-      color: var(--muted);
+      font-weight: 500;
+      font-family: inherit;
+      color: var(--foreground);
       text-decoration: none;
+      background: transparent;
       border: 1px solid var(--border);
       padding: 8px 16px;
-      border-radius: 6px;
-      transition: color 0.15s, border-color 0.15s;
+      border-radius: calc(var(--radius) - 2px);
+      transition: background 0.15s, color 0.15s;
+      cursor: pointer;
+      white-space: nowrap;
     }
 
-    .hero-links a:hover {
-      color: var(--text);
-      border-color: rgba(255,255,255,0.2);
+    .btn-outline:hover {
+      background: var(--accent);
+      color: var(--accent-fg);
     }
 
-    /* ── Case Studies ── */
+    /* ── Sections ── */
     .section {
       padding: 64px 0;
       border-bottom: 1px solid var(--border);
@@ -147,112 +169,107 @@
     .section-label {
       font-size: 11px;
       font-weight: 600;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--muted-fg);
       margin-bottom: 40px;
     }
 
-    .case-list {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
+    /* ── Case Studies ── */
+    .case-list { display: flex; flex-direction: column; }
 
     .case-item {
       display: grid;
       grid-template-columns: 1fr auto;
       align-items: start;
       gap: 24px;
-      padding: 24px 0;
+      padding: 20px 12px;
+      margin: 0 -12px;
       border-top: 1px solid var(--border);
       text-decoration: none;
       color: inherit;
-      transition: opacity 0.15s;
+      border-radius: var(--radius);
+      transition: background 0.15s;
     }
 
-    .case-item:hover { opacity: 0.7; }
+    .case-item:first-child { border-top: 1px solid var(--border); }
+    .case-item:hover { background: var(--accent); }
 
     .case-company {
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 6px;
+      color: var(--muted-fg);
+      margin-bottom: 5px;
     }
 
     .case-title {
-      font-size: 17px;
+      font-size: 15px;
       font-weight: 500;
       letter-spacing: -0.01em;
+      line-height: 1.4;
       margin-bottom: 8px;
     }
 
     .case-desc {
-      font-size: 14px;
-      color: #666666;
+      font-size: 13px;
+      color: var(--muted-fg);
       line-height: 1.6;
     }
 
     .case-tags {
       display: flex;
       gap: 6px;
-      margin-top: 14px;
+      margin-top: 12px;
       flex-wrap: wrap;
     }
 
+    /* shadcn Badge — secondary */
     .tag {
+      display: inline-flex;
+      align-items: center;
       font-size: 11px;
-      color: var(--muted);
+      font-weight: 500;
+      color: var(--muted-fg);
+      background: var(--muted);
       border: 1px solid var(--border);
-      padding: 3px 10px;
-      border-radius: 20px;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      white-space: nowrap;
     }
 
-    .case-meta {
-      text-align: right;
-      flex-shrink: 0;
-    }
+    .case-meta { text-align: right; flex-shrink: 0; }
 
     .case-year {
-      font-size: 13px;
-      color: var(--muted);
+      font-size: 12px;
+      color: var(--muted-fg);
+      white-space: nowrap;
     }
 
     /* ── Work History ── */
-    .work-list {
-      display: flex;
-      flex-direction: column;
-    }
+    .work-list { display: flex; flex-direction: column; }
 
     .work-item {
       display: grid;
       grid-template-columns: 1fr auto;
-      padding: 20px 0;
+      align-items: center;
+      padding: 16px 0;
       border-top: 1px solid var(--border);
     }
 
     .work-company {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 500;
-      margin-bottom: 3px;
+      margin-bottom: 2px;
     }
 
-    .work-role {
-      font-size: 13px;
-      color: var(--muted);
-    }
+    .work-role { font-size: 13px; color: var(--muted-fg); }
 
-    .work-period {
-      font-size: 13px;
-      color: var(--muted);
-    }
+    .work-period { font-size: 12px; color: var(--muted-fg); }
 
     /* ── Footer ── */
-    footer {
-      padding: 48px 0;
-    }
+    footer { padding: 48px 0; }
 
     footer .container {
       display: flex;
@@ -260,29 +277,29 @@
       align-items: center;
     }
 
-    .footer-name {
-      font-size: 13px;
-      color: var(--muted);
-    }
+    .footer-name { font-size: 13px; color: var(--muted-fg); }
 
-    .footer-links {
-      display: flex;
-      gap: 20px;
-    }
+    .footer-links { display: flex; gap: 4px; }
 
     .footer-links a {
       font-size: 13px;
-      color: var(--muted);
+      color: var(--muted-fg);
       text-decoration: none;
+      padding: 4px 8px;
+      border-radius: calc(var(--radius) - 2px);
+      transition: background 0.15s, color 0.15s;
     }
 
-    .footer-links a:hover { color: var(--text); }
+    .footer-links a:hover {
+      background: var(--accent);
+      color: var(--accent-fg);
+    }
 
     /* ── Theme switcher (shadcn ToggleGroup style) ── */
     .theme-switcher {
       display: inline-flex;
       align-items: center;
-      background: var(--surface);
+      background: var(--muted);
       border: 1px solid var(--border);
       border-radius: 999px;
       padding: 3px;
@@ -295,9 +312,9 @@
       width: 26px;
       height: 26px;
       border-radius: 50%;
-      background: var(--bg);
+      background: var(--background);
       border: 1px solid var(--border);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
       transition: transform 0.2s cubic-bezier(0.4,0,0.2,1);
       pointer-events: none;
       left: 3px;
@@ -311,7 +328,7 @@
       width: 26px;
       height: 26px;
       border-radius: 50%;
-      color: var(--muted);
+      color: var(--muted-fg);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -321,13 +338,14 @@
     }
 
     .theme-btn svg { width: 13px; height: 13px; display: block; }
-    .theme-btn:hover { color: var(--text); }
-    .theme-btn.active { color: var(--text); }
+    .theme-btn:hover { color: var(--foreground); }
+    .theme-btn.active { color: var(--foreground); }
 
     @media (max-width: 600px) {
       .hero h1 { font-size: 30px; }
-      .case-item { grid-template-columns: 1fr; }
+      .case-item { grid-template-columns: 1fr; padding: 20px 0; margin: 0; }
       .case-meta { display: none; }
+      .nav-links a { padding: 6px 8px; }
     }
   </style>
 </head>
@@ -369,8 +387,8 @@
           Started as an Android developer, crossed to PM because I couldn't stand building the wrong things. Now I focus on activation loops, retention systems, and AI-native ops that scale teams without adding headcount. 6 years in B2B SaaS — from 0-to-1 launches to <a href="#">$10M+ product lines</a>.
         </p>
         <div class="hero-links">
-          <a href="https://linkedin.com/in/ohsuvorav">LinkedIn →</a>
-          <a href="mailto:olegsuvorav@gmail.com">Email</a>
+          <a href="https://linkedin.com/in/ohsuvorav" class="btn-outline">LinkedIn →</a>
+          <a href="mailto:olegsuvorav@gmail.com" class="btn-outline">Email</a>
         </div>
       </div>
     </section>
