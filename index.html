@@ -63,11 +63,18 @@
       align-items: center;
     }
 
+    .nav-brand { text-decoration: none; display: flex; flex-direction: column; gap: 2px; }
+
     .nav-name {
       font-size: 14px;
       font-weight: 500;
       color: var(--foreground);
-      text-decoration: none;
+    }
+
+    .nav-sub {
+      font-size: 12px;
+      color: var(--muted-fg);
+      font-weight: 400;
     }
 
     .nav-links {
@@ -353,7 +360,10 @@
 
   <nav>
     <div class="container">
-      <a href="/" class="nav-name">Oleg Suvorov</a>
+      <a href="/" class="nav-brand">
+        <span class="nav-name">Oleg Suvorov</span>
+        <span class="nav-sub">Building products that grow</span>
+      </a>
       <ul class="nav-links">
         <li><a href="#work">Work</a></li>
         <li><a href="#cases">Case Studies</a></li>
