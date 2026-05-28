@@ -298,54 +298,113 @@
       margin-bottom: 40px;
     }
 
-    /* ── Case Studies ── */
-    .case-list { display: flex; flex-direction: column; }
-
-    .case-item {
+    /* ── Case Studies — Intercom layout ── */
+    .cases-intercom {
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 5fr 7fr;
+      gap: 48px;
       align-items: start;
-      gap: 24px;
-      padding: 20px 12px;
-      margin: 0 -12px;
-      border-top: 1px solid var(--border);
-      text-decoration: none;
-      color: inherit;
-      border-radius: var(--radius);
-      transition: background 0.15s;
     }
 
-    .case-item:first-child { border-top: 1px solid var(--border); }
-    .case-item:hover { background: var(--accent); }
+    .cases-preview {
+      position: sticky;
+      top: 32px;
+    }
 
-    .case-company {
-      font-size: 11px;
+    .case-preview-card {
+      background: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 4px);
+      padding: 28px;
+      display: none;
+    }
+
+    .case-preview-card.active { display: block; }
+
+    .case-preview-company {
+      font-size: 10px;
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--muted-fg);
-      margin-bottom: 5px;
+      margin-bottom: 20px;
     }
 
-    .case-title {
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      line-height: 1.4;
+    .case-preview-stat {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--foreground);
       margin-bottom: 8px;
     }
 
-    .case-desc {
+    .case-preview-sub {
       font-size: 13px;
       color: var(--muted-fg);
-      line-height: 1.6;
+      line-height: 1.5;
+      margin-bottom: 20px;
     }
 
-    .case-tags {
+    .case-preview-tags {
       display: flex;
       gap: 6px;
-      margin-top: 12px;
       flex-wrap: wrap;
+    }
+
+    /* Right list */
+    .cases-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .case-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .case-row:last-child { border-bottom: 1px solid var(--border); }
+
+    .case-row-title {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--muted-fg);
+      transition: color 0.2s;
+    }
+
+    .case-row.active .case-row-title,
+    .case-row:hover .case-row-title {
+      color: var(--foreground);
+    }
+
+    .case-row-arrow {
+      font-size: 18px;
+      color: var(--muted-fg);
+      opacity: 0;
+      transition: opacity 0.2s;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .case-row.active .case-row-arrow,
+    .case-row:hover .case-row-arrow {
+      opacity: 1;
+      color: var(--foreground);
+    }
+
+    @media (max-width: 640px) {
+      .cases-intercom { grid-template-columns: 1fr; }
+      .cases-preview { position: static; }
+      .case-row-title { font-size: 22px; }
     }
 
     /* shadcn Badge — secondary */
@@ -539,55 +598,61 @@
     <section class="section" id="cases">
       <div class="container">
         <div class="section-label">Case studies</div>
-        <div class="case-list">
+        <div class="cases-intercom">
 
-          <a href="#" class="case-item">
-            <div>
-              <div class="case-company">Threecolts</div>
-              <div class="case-title">Tripling retention for a B2B helpdesk competing against Zendesk</div>
-              <div class="case-desc">Shifted strategy from generalist to specialized e-commerce helpdesk. Redesigned the full product UI/UX solo in Figma, cut enterprise onboarding from 2 months to 1 week, and grew ARR from $500K to $1M in year one.</div>
-              <div class="case-tags">
+          <!-- Left: preview panel -->
+          <div class="cases-preview">
+
+            <div class="case-preview-card active" data-preview="0">
+              <div class="case-preview-company">Threecolts · 2023–2025</div>
+              <div class="case-preview-stat">$500K → $1M ARR</div>
+              <div class="case-preview-sub">Onboarding cut from 2 months to 1 week. Repositioned helpdesk from generalist to specialized e-commerce — competing and winning against Zendesk.</div>
+              <div class="case-preview-tags">
                 <span class="tag">Retention</span>
                 <span class="tag">Activation</span>
                 <span class="tag">0→1</span>
               </div>
             </div>
-            <div class="case-meta">
-              <div class="case-year">2023–2025</div>
-            </div>
-          </a>
 
-          <a href="#" class="case-item">
-            <div>
-              <div class="case-company">Threecolts</div>
-              <div class="case-title">Building Customer 360 to fix a 65% signup-to-payment drop-off</div>
-              <div class="case-desc">Built a data layer combining financial, product, and marketplace signals that became the foundation for all data-driven decisions company-wide — from activation experiments to GTM strategy.</div>
-              <div class="case-tags">
+            <div class="case-preview-card" data-preview="1">
+              <div class="case-preview-company">Threecolts · 2025</div>
+              <div class="case-preview-stat">65% drop-off fixed</div>
+              <div class="case-preview-sub">Built Customer 360 combining financial, product, and marketplace signals. Became the foundation for all GTM decisions company-wide.</div>
+              <div class="case-preview-tags">
                 <span class="tag">Growth</span>
                 <span class="tag">Data</span>
                 <span class="tag">GTM</span>
               </div>
             </div>
-            <div class="case-meta">
-              <div class="case-year">2025</div>
-            </div>
-          </a>
 
-          <a href="#" class="case-item">
-            <div>
-              <div class="case-company">Threecolts</div>
-              <div class="case-title">2.5× delivery velocity without adding headcount</div>
-              <div class="case-desc">Built AI-native ops from scratch: custom Linear agent that auto-generates reproduction steps and root cause analysis, a capacity planner with re-prioritization impact modeling, and weekly AI knowledge rituals — freeing ~15 engineering hours per week.</div>
-              <div class="case-tags">
+            <div class="case-preview-card" data-preview="2">
+              <div class="case-preview-company">Threecolts · 2025</div>
+              <div class="case-preview-stat">2.5× velocity</div>
+              <div class="case-preview-sub">~15 engineering hours freed per week. Custom Linear agent, capacity planner, and weekly AI rituals — no headcount added.</div>
+              <div class="case-preview-tags">
                 <span class="tag">AI</span>
                 <span class="tag">Linear</span>
                 <span class="tag">Automation</span>
               </div>
             </div>
-            <div class="case-meta">
-              <div class="case-year">2025</div>
+
+          </div>
+
+          <!-- Right: title list -->
+          <div class="cases-list">
+            <div class="case-row active" data-case="0">
+              <span class="case-row-title">Helpdesk retention</span>
+              <span class="case-row-arrow">↗</span>
             </div>
-          </a>
+            <div class="case-row" data-case="1">
+              <span class="case-row-title">Customer 360</span>
+              <span class="case-row-arrow">↗</span>
+            </div>
+            <div class="case-row" data-case="2">
+              <span class="case-row-title">AI ops</span>
+              <span class="case-row-arrow">↗</span>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -684,6 +749,20 @@
 
     sys.addEventListener('change', () => {
       if ((localStorage.getItem('themeMode') || 'system') === 'system') applyTheme('system');
+    });
+
+    // Case studies intercom interaction
+    const caseRows = document.querySelectorAll('.case-row');
+    const casePreviews = document.querySelectorAll('.case-preview-card');
+
+    caseRows.forEach(row => {
+      row.addEventListener('click', () => {
+        const idx = row.dataset.case;
+        caseRows.forEach(r => r.classList.remove('active'));
+        casePreviews.forEach(p => p.classList.remove('active'));
+        row.classList.add('active');
+        document.querySelector(`.case-preview-card[data-preview="${idx}"]`).classList.add('active');
+      });
     });
   </script>
 </body>
