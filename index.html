@@ -150,12 +150,38 @@
       margin-top: 32px;
       display: flex;
       gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
     }
+
+    /* shadcn Button — primary (solid) */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      color: var(--primary-fg);
+      text-decoration: none;
+      background: var(--primary);
+      border: 1px solid transparent;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      transition: opacity 0.15s;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover { opacity: 0.88; }
+
+    .btn-primary svg, .btn-outline svg { width: 14px; height: 14px; flex-shrink: 0; }
 
     /* shadcn Button — outline */
     .btn-outline {
       display: inline-flex;
       align-items: center;
+      gap: 7px;
       font-size: 13px;
       font-weight: 500;
       font-family: inherit;
@@ -173,6 +199,35 @@
     .btn-outline:hover {
       background: var(--accent);
       color: var(--accent-fg);
+    }
+
+    /* Soon button */
+    .btn-soon {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      color: var(--muted-fg);
+      text-decoration: none;
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 8px 18px;
+      border-radius: 9999px;
+      cursor: default;
+      white-space: nowrap;
+      opacity: 0.5;
+    }
+
+    .soon-badge {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      background: var(--muted);
+      color: var(--muted-fg);
+      padding: 1px 6px;
+      border-radius: 9999px;
     }
 
     /* ── Sections ── */
@@ -404,8 +459,17 @@
           Former Android dev turned PM. I build growth engines for B2B SaaS — activation, retention, AI-native ops that compound. Best at Series A–C, 0-to-1 through $10M ARR.
         </p>
         <div class="hero-links">
-          <a href="https://linkedin.com/in/ohsuvorav" class="btn-outline">LinkedIn →</a>
-          <a href="mailto:olegsuvorav@gmail.com" class="btn-outline">Email</a>
+          <a href="mailto:olegsuvorav@gmail.com" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            Email me
+          </a>
+          <a href="https://linkedin.com/in/ohsuvorav" class="btn-outline" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <span class="btn-soon">
+            Case Studies <span class="soon-badge">Soon</span>
+          </span>
         </div>
         <p class="hero-best-at">Best at: Series A–C startups · B2B SaaS · first 10 hire</p>
       </div>
