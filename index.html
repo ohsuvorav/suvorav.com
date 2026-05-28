@@ -19,6 +19,18 @@
       --accent: #5E6AD2;
     }
 
+    [data-theme="light"] {
+      --bg: #FAFAFA;
+      --surface: #F3F3F3;
+      --border: rgba(0,0,0,0.08);
+      --text: #0F0F0F;
+      --muted: #888888;
+      --accent: #5E6AD2;
+    }
+
+    [data-theme="light"] .hero-bio { color: #555555; }
+    [data-theme="light"] .case-desc { color: #555555; }
+
     body {
       background: var(--bg);
       color: var(--text);
@@ -57,6 +69,7 @@
       display: flex;
       gap: 28px;
       list-style: none;
+      align-items: center;
     }
 
     .nav-links a {
@@ -265,6 +278,52 @@
 
     .footer-links a:hover { color: var(--text); }
 
+    /* ── Theme switcher (shadcn ToggleGroup style) ── */
+    .theme-switcher {
+      display: inline-flex;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 3px;
+      gap: 2px;
+      position: relative;
+    }
+
+    .theme-indicator {
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      transition: transform 0.2s cubic-bezier(0.4,0,0.2,1);
+      pointer-events: none;
+      left: 3px;
+    }
+
+    .theme-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.15s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .theme-btn svg { width: 13px; height: 13px; display: block; }
+    .theme-btn:hover { color: var(--text); }
+    .theme-btn.active { color: var(--text); }
+
     @media (max-width: 600px) {
       .hero h1 { font-size: 30px; }
       .case-item { grid-template-columns: 1fr; }
@@ -281,6 +340,20 @@
         <li><a href="#work">Work</a></li>
         <li><a href="#cases">Case Studies</a></li>
         <li><a href="mailto:olegsuvorav@gmail.com">Contact</a></li>
+        <li>
+          <div class="theme-switcher">
+            <span class="theme-indicator" id="themeIndicator"></span>
+            <button class="theme-btn" data-mode="system" aria-label="System theme">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </button>
+            <button class="theme-btn" data-mode="light" aria-label="Light theme">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </button>
+            <button class="theme-btn" data-mode="dark" aria-label="Dark theme">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </button>
+          </div>
+        </li>
       </ul>
     </div>
   </nav>
@@ -291,9 +364,9 @@
     <section class="hero">
       <div class="container">
         <div class="hero-role">Product Manager</div>
-        <h1><!-- HEADLINE GOES HERE --></h1>
+        <h1>I ship products.<br>Then I make them grow.</h1>
         <p class="hero-bio">
-          <!-- BIO GOES HERE -->
+          Started as an Android developer, crossed to PM because I couldn't stand building the wrong things. Now I focus on activation loops, retention systems, and AI-native ops that scale teams without adding headcount. 6 years in B2B SaaS — from 0-to-1 launches to <a href="#">$10M+ product lines</a>.
         </p>
         <div class="hero-links">
           <a href="https://linkedin.com/in/ohsuvorav">LinkedIn →</a>
@@ -308,51 +381,51 @@
         <div class="section-label">Case Studies</div>
         <div class="case-list">
 
-          <!-- CASE STUDY 1 -->
           <a href="#" class="case-item">
             <div>
-              <div class="case-company"><!-- COMPANY --></div>
-              <div class="case-title"><!-- TITLE --></div>
-              <div class="case-desc"><!-- SHORT DESC --></div>
+              <div class="case-company">Threecolts</div>
+              <div class="case-title">Tripling retention for a B2B helpdesk competing against Zendesk</div>
+              <div class="case-desc">Shifted strategy from generalist to specialized e-commerce helpdesk. Redesigned the full product UI/UX solo in Figma, cut enterprise onboarding from 2 months to 1 week, and grew ARR from $500K to $1M in year one.</div>
               <div class="case-tags">
-                <span class="tag">Activation</span>
                 <span class="tag">Retention</span>
+                <span class="tag">Activation</span>
+                <span class="tag">0→1</span>
               </div>
             </div>
             <div class="case-meta">
-              <div class="case-year"><!-- YEAR --></div>
+              <div class="case-year">2023–2025</div>
             </div>
           </a>
 
-          <!-- CASE STUDY 2 -->
           <a href="#" class="case-item">
             <div>
-              <div class="case-company"><!-- COMPANY --></div>
-              <div class="case-title"><!-- TITLE --></div>
-              <div class="case-desc"><!-- SHORT DESC --></div>
+              <div class="case-company">Threecolts</div>
+              <div class="case-title">Building Customer 360 to fix a 65% signup-to-payment drop-off</div>
+              <div class="case-desc">Built a data layer combining financial, product, and marketplace signals that became the foundation for all data-driven decisions company-wide — from activation experiments to GTM strategy.</div>
               <div class="case-tags">
                 <span class="tag">Growth</span>
-                <span class="tag">PLG</span>
+                <span class="tag">Data</span>
+                <span class="tag">GTM</span>
               </div>
             </div>
             <div class="case-meta">
-              <div class="case-year"><!-- YEAR --></div>
+              <div class="case-year">2025</div>
             </div>
           </a>
 
-          <!-- CASE STUDY 3 -->
           <a href="#" class="case-item">
             <div>
-              <div class="case-company"><!-- COMPANY --></div>
-              <div class="case-title"><!-- TITLE --></div>
-              <div class="case-desc"><!-- SHORT DESC --></div>
+              <div class="case-company">Threecolts</div>
+              <div class="case-title">2.5× delivery velocity without adding headcount</div>
+              <div class="case-desc">Built AI-native ops from scratch: custom Linear agent that auto-generates reproduction steps and root cause analysis, a capacity planner with re-prioritization impact modeling, and weekly AI knowledge rituals — freeing ~15 engineering hours per week.</div>
               <div class="case-tags">
+                <span class="tag">AI</span>
                 <span class="tag">Linear</span>
                 <span class="tag">Automation</span>
               </div>
             </div>
             <div class="case-meta">
-              <div class="case-year"><!-- YEAR --></div>
+              <div class="case-year">2025</div>
             </div>
           </a>
 
@@ -365,7 +438,48 @@
       <div class="container">
         <div class="section-label">Work</div>
         <div class="work-list">
-          <!-- WORK ITEMS GO HERE -->
+          <div class="work-item">
+            <div>
+              <div class="work-company">Threecolts</div>
+              <div class="work-role">Product Manager, Platform & Growth</div>
+            </div>
+            <div class="work-period">2025 – Present</div>
+          </div>
+          <div class="work-item">
+            <div>
+              <div class="work-company">Threecolts</div>
+              <div class="work-role">Group Product Manager, Helpdesk & B2B2C</div>
+            </div>
+            <div class="work-period">2023 – 2025</div>
+          </div>
+          <div class="work-item">
+            <div>
+              <div class="work-company">HICX</div>
+              <div class="work-role">Technical Product Manager</div>
+            </div>
+            <div class="work-period">2022 – 2023</div>
+          </div>
+          <div class="work-item">
+            <div>
+              <div class="work-company">Coinchange</div>
+              <div class="work-role">Product Operator</div>
+            </div>
+            <div class="work-period">2021 – 2023</div>
+          </div>
+          <div class="work-item">
+            <div>
+              <div class="work-company">OnlinEventSpace</div>
+              <div class="work-role">Founding Product Manager</div>
+            </div>
+            <div class="work-period">2021 – 2022</div>
+          </div>
+          <div class="work-item">
+            <div>
+              <div class="work-company">iTechArt</div>
+              <div class="work-role">Android Developer</div>
+            </div>
+            <div class="work-period">2020 – 2021</div>
+          </div>
         </div>
       </div>
     </section>
@@ -382,5 +496,35 @@
     </div>
   </footer>
 
+  <script>
+    const root = document.documentElement;
+    const sys = window.matchMedia('(prefers-color-scheme: light)');
+    const btns = document.querySelectorAll('.theme-btn');
+
+    const indicator = document.getElementById('themeIndicator');
+
+    const applyTheme = (mode) => {
+      const resolved = mode === 'system' ? (sys.matches ? 'light' : 'dark') : mode;
+      root.setAttribute('data-theme', resolved);
+      btns.forEach((b, i) => {
+        const active = b.dataset.mode === mode;
+        b.classList.toggle('active', active);
+        if (active) indicator.style.transform = `translateX(${i * 28}px)`; // 26px btn + 2px gap
+      });
+    };
+
+    const saved = localStorage.getItem('themeMode') || 'system';
+    applyTheme(saved);
+
+    btns.forEach(btn => btn.addEventListener('click', () => {
+      const mode = btn.dataset.mode;
+      localStorage.setItem('themeMode', mode);
+      applyTheme(mode);
+    }));
+
+    sys.addEventListener('change', () => {
+      if ((localStorage.getItem('themeMode') || 'system') === 'system') applyTheme('system');
+    });
+  </script>
 </body>
 </html>
