@@ -528,10 +528,22 @@
     }
 
     /* Non-live rows (div) — no hover, no arrow, muted */
-    div.case-row { cursor: default; opacity: 0.45; }
-    div.case-row:hover .case-row-title { color: var(--muted-fg); }
-    div.case-row .case-row-arrow { display: none; }
-    div.case-row .case-row-soon { display: inline-flex; }
+    div.case-row {
+      cursor: default;
+      opacity: 0.45;
+    }
+
+    div.case-row:hover .case-row-title {
+      color: var(--muted-fg);
+    }
+
+    div.case-row .case-row-arrow {
+      display: none;
+    }
+
+    div.case-row .case-row-soon {
+      display: inline-flex;
+    }
 
     .case-row-soon {
       display: none;
@@ -741,7 +753,9 @@
       color: var(--foreground);
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     @media (max-width: 600px) {
       .hero h1 {
@@ -830,7 +844,7 @@
           compound. Best at Series A–C, 0-to-1 through $10M ARR.
         </p>
         <div class="hero-links">
-          
+
           <a href="https://linkedin.com/in/ohsuvorav" class="btn-primary" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
@@ -1001,6 +1015,15 @@
 
           <!-- Right: title list -->
           <div class="cases-list">
+            <a class="case-row active" href="/cases/product-redesign.html" data-case="1" data-role="ic manager"
+              data-skills="data,growth,gtm">
+              <span class="case-row-title">Redesigned whole product</span>
+              <span class="case-row-arrow">↗</span>
+            </a>
+            <a class="case-row" href="/cases/ai-agent.html" data-case="2" data-role="ic manager" data-skills="ai">
+              <span class="case-row-title">AI-agent saved 2–3 hours per day per engineer</span>
+              <span class="case-row-arrow">↗</span>
+            </a>
             <div class="case-row" data-case="0" data-role="ic" data-skills="retention,0-1">
               <span class="case-row-title">Tripled retention</span>
               <span class="case-row-arrow">↗</span>
@@ -1017,10 +1040,7 @@
               <span class="case-row-title">Killed 2 verticals</span>
               <span class="case-row-arrow">↗</span>
             </div>
-            <a class="case-row active" href="/cases/product-redesign.html" data-case="1" data-role="ic manager" data-skills="data,growth,gtm">
-              <span class="case-row-title">Redesigned whole product</span>
-              <span class="case-row-arrow">↗</span>
-            </a>
+
             <div class="case-row" data-case="1" data-role="ic manager" data-skills="data,growth,gtm">
               <span class="case-row-title">360° customer overview</span>
               <span class="case-row-arrow">↗</span>
@@ -1033,10 +1053,6 @@
               <span class="case-row-title">AI-first ops inreased bandwidth 2.5 times</span>
               <span class="case-row-arrow">↗</span>
             </div>
-            <a class="case-row" href="/cases/ai-agent.html" data-case="2" data-role="ic manager" data-skills="ai">
-              <span class="case-row-title">AI-agent saved 2–3 hours per day per engineer</span>
-              <span class="case-row-arrow">↗</span>
-            </a>
             <div class="case-row" data-case="2" data-role="ic manager" data-skills="ai">
               <span class="case-row-title">Launched product from scratch to first payments</span>
               <span class="case-row-arrow">↗</span>
