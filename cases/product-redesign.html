@@ -301,8 +301,7 @@
   <aside class="toc" aria-label="Page sections">
     <a href="#context" class="toc-item active">Context</a>
     <a href="#problem" class="toc-item">Problem</a>
-    <a href="#email" class="toc-item">Email + contact form</a>
-    <a href="#activity" class="toc-item">Activity log</a>
+    <a href="#approach" class="toc-item">What I did</a>
     <a href="#impact" class="toc-item">Impact</a>
   </aside>
 
@@ -319,13 +318,13 @@
         </a>
 
         <div class="case-company-chip">Threecolts · 2023–2025</div>
-        <h1 class="case-title">Redesigned helpdesk to<br>win against Zendesk</h1>
-        <p class="case-summary">Repositioned a generalist support tool as a specialized e-commerce helpdesk — and grew from $500K to $1M ARR in the process.</p>
+        <h1 class="case-title">Email setup that<br>explains itself</h1>
+        <p class="case-summary">Customers couldn't configure email on their own — and I was the one getting the questions. I made it self-serve. Setup tickets dropped to zero.</p>
 
         <div class="case-tags">
-          <span class="tag">Product redesign</span>
-          <span class="tag">Positioning</span>
-          <span class="tag">0→1</span>
+          <span class="tag">Activation</span>
+          <span class="tag">Self-serve</span>
+          <span class="tag">UX design</span>
           <span class="tag">IC</span>
         </div>
       </div>
@@ -336,63 +335,58 @@
 
         <div class="metrics-bar">
           <div class="metric">
-            <div class="metric-value">$500K→$1M</div>
-            <div class="metric-label">ARR growth</div>
+            <div class="metric-value">0</div>
+            <div class="metric-label">Setup support tickets after launch</div>
           </div>
           <div class="metric">
             <div class="metric-value">8 wks → 1</div>
             <div class="metric-label">Onboarding time cut</div>
           </div>
           <div class="metric">
-            <div class="metric-value">0</div>
-            <div class="metric-label">Setup support tickets after launch</div>
+            <div class="metric-value">100%</div>
+            <div class="metric-label">Self-serve setup</div>
           </div>
         </div>
 
         <div class="case-section" id="context">
           <div class="section-label">Context</div>
-          <h2>A helpdesk that needed to earn its place in a crowded market</h2>
-          <p>[Describe what the helpdesk was when you joined — generalist, competing in a crowded field, who the customers were, team size. One paragraph.]</p>
-          <p>After fixing the ops layer — <a href="/cases/ai-agent.html" style="color: var(--foreground); text-underline-offset: 3px;">the AI agent work</a> that freed ~15 engineering hours per week — I turned to where customers were still getting stuck before they even started. The setup moment was the next biggest blocker to time-to-value.</p>
+          <h2>After fixing ops, the next blocker was getting started</h2>
+          <p>I'd just finished the <a href="/cases/ai-agent.html" style="color: var(--foreground); text-underline-offset: 3px; text-decoration: underline; text-decoration-color: var(--border);">AI ops work</a> — automating the engineering workflow and freeing up ~15 hours per week. With velocity unlocked, I looked at where customers were still stuck. The answer was obvious: before they could use the helpdesk at all, they had to set it up. And setup was broken.</p>
         </div>
 
         <div class="case-section" id="problem">
           <div class="section-label">Problem</div>
-          <h2>Setup wasn't self-serve — and I was the support ticket</h2>
-          <p>Email and contact form configuration required hand-holding. I was the one getting the questions. There was no guidance in the product itself, no tooltips, no clear path — customers had to figure out mail routing, SMTP credentials, and forwarding rules on their own, then ask for help when they got stuck.</p>
-          <p>Before redesigning anything, I needed to understand the technical constraints. Could we do one-click OAuth? Could we let customers connect multiple SMTPs? The answer was no — tech debt made it impossible to connect two SMTPs simultaneously.</p>
+          <h2>I was the support ticket</h2>
+          <p>Email and contact form configuration wasn't self-serve. Customers had to figure out SMTP credentials, mail routing, and forwarding rules on their own — and when they got stuck, they asked me. I was constantly fielding the same setup questions.</p>
+
+          <div class="visual-block">[Screenshot — what the setup flow looked like before]</div>
+
+          <p>Before touching the UI, I dug into the technical constraints. Could we do one-click OAuth so customers connect email in a single step? Could we support multiple SMTP connections? The answer to both was no — tech debt made it impossible to connect two SMTPs simultaneously, and OAuth wasn't viable either.</p>
 
           <div class="callout">
-            That constraint became the key UX decision: one SMTP, multiple forwarding rules. Zendesk does the same thing. Not ideal technically, but it gave us a market reference point — if the category leader does it this way, it's defensible.
+            That constraint shaped the entire UX decision: one SMTP, with multiple forwarding rules. Zendesk does exactly the same thing. Not ideal technically — but when the category leader does it this way, you can point to that and move on.
           </div>
         </div>
 
-        <div class="case-section" id="email">
-          <div class="section-label">Email + contact form</div>
-          <h2>Prototype first, PRD second</h2>
-          <p>Once I understood how email providers work under the hood, I started prototyping in Figma — low-fidelity first. The goal wasn't polish, it was validation: does this flow make sense to support people who deal with these setup questions every day? I showed it to the support team before investing any more time. It clicked.</p>
-          <p>Then I wrote a detailed PRD with a data flow diagram and handed it to the designer. She got stuck — the diagram was technically accurate but not buildable from a UI perspective. So I went back to Figma, prototyped the interaction myself, and used that as the brief instead. She took my low-fi version and turned it into a high-fidelity design. The engineer reviewed it and it made sense to him immediately.</p>
+        <div class="case-section" id="approach">
+          <div class="section-label">What I did</div>
+          <h2>Prototype first. PRD second.</h2>
+          <p>Once I understood how email providers work under the hood, I opened Figma and started low-fidelity. Not to polish — to think. The goal was: does this flow make sense to someone who has to answer setup questions for a living? I showed it to the support team before investing more time. It clicked immediately.</p>
 
-          <div class="visual-block">[Before/after — email setup UI]</div>
+          <div class="visual-block">[First raw Figma prototype — email setup flow]</div>
 
-          <p>The last layer was language. Because I'd been on a lot of support calls, I knew exactly where people got confused — the same questions kept coming up. I used that to write the tooltips. Not generic help text, but the actual words customers used when they asked for help. That's what made it feel self-explanatory rather than just documented.</p>
-        </div>
+          <p>Then I wrote a full PRD with a data flow diagram and handed it to the designer. She got stuck. The diagram was technically accurate, but not enough to build from. So I went back to Figma, prototyped the interaction myself at slightly higher fidelity, and used that as the brief instead. She took my version, polished it into high-fidelity, and the engineer understood it on the first read.</p>
 
-        <div class="case-section" id="activity">
-          <div class="section-label">Activity log</div>
-          <h2>[Activity log story — before/after]</h2>
-          <p>[Describe what the main inbox/activity page looked like before and what was broken about it. What couldn't agents do that they needed to do?]</p>
+          <div class="visual-block">[Before / after — low-fi prototype → final UI]</div>
 
-          <div class="visual-block">[Before/after — activity log / inbox main page]</div>
-
-          <p>[What did you redesign and why? What was the key decision that changed the experience?]</p>
+          <p>The last piece was copy. I'd been on enough support calls to know exactly where people got confused — the same questions, word for word, every time. I used that to write the tooltips. Not generic help text. The actual language customers used when they didn't understand something. That's what made the setup feel self-explanatory instead of just documented.</p>
         </div>
 
         <div class="case-section" id="impact">
           <div class="section-label">Impact</div>
-          <h2>Setup questions dropped to zero. ARR doubled.</h2>
-          <p>After launching the self-serve setup flows, I stopped receiving questions about email and contact form configuration entirely. The feature was invisible in the best way — customers set it up on their own and moved on.</p>
-          <p>Across the full redesign, onboarding time dropped from 8 weeks to 1. The product went from $500K to $1M ARR. [Add what specifically drove growth — new logos, reduced churn, upsell, or a mix.]</p>
+          <h2>The questions stopped coming.</h2>
+          <p>After launch, I stopped receiving setup questions entirely. Customers configured email and contact forms on their own and moved on. The feature was invisible in the best way.</p>
+          <p>As part of the broader redesign, onboarding time dropped from 8 weeks to 1. [Add what specifically drove growth — new logos, reduced churn, upsell, or a mix.]</p>
         </div>
 
       </div>
