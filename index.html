@@ -550,14 +550,20 @@
       font-size: 10px;
       font-weight: 600;
       letter-spacing: 0.04em;
-      color: var(--muted-fg);
-      background: var(--muted);
-      border: 1px solid var(--border);
+      color: hsl(38 70% 58%);
+      background: hsl(38 55% 45% / 0.14);
+      border: 1px solid hsl(38 55% 45% / 0.28);
       padding: 2px 8px;
       border-radius: 9999px;
       white-space: nowrap;
       flex-shrink: 0;
       margin-top: 6px;
+    }
+
+    [data-theme="light"] .case-row-soon {
+      color: hsl(35 60% 38%);
+      background: hsl(45 90% 90%);
+      border-color: hsl(38 65% 72%);
     }
 
     .case-row:last-child {
