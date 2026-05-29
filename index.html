@@ -527,6 +527,27 @@
       color: inherit;
     }
 
+    /* Non-live rows (div) — no hover, no arrow, muted */
+    div.case-row { cursor: default; opacity: 0.45; }
+    div.case-row:hover .case-row-title { color: var(--muted-fg); }
+    div.case-row .case-row-arrow { display: none; }
+    div.case-row .case-row-soon { display: inline-flex; }
+
+    .case-row-soon {
+      display: none;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--muted-fg);
+      background: var(--muted);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 9999px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
     .case-row:last-child {
       border-bottom: 1px solid var(--border);
     }
@@ -807,24 +828,17 @@
           compound. Best at Series A–C, 0-to-1 through $10M ARR.
         </p>
         <div class="hero-links">
-          Message me
+          
           <a href="https://linkedin.com/in/ohsuvorav" class="btn-primary" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
               <rect x="2" y="9" width="4" height="12" />
               <circle cx="4" cy="4" r="2" />
             </svg>
+            Message me
           </a>
-          <a href="mailto:olegsuvorav@gmail.com" class="btn-outline">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <rect x="2" y="4" width="20" height="16" rx="2" />
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-            </svg>
-          </a>
-          <span class="hero-divider"></span>
-          <span class="btn-soon">
-            Case studies <span class="soon-badge">Soon</span>
+          <span class="btn-outline">
+            See case studies
           </span>
 
         </div>
@@ -985,15 +999,15 @@
 
           <!-- Right: title list -->
           <div class="cases-list">
-            <div class="case-row active" data-case="0" data-role="ic" data-skills="retention,0-1">
+            <div class="case-row" data-case="0" data-role="ic" data-skills="retention,0-1">
               <span class="case-row-title">Tripled retention</span>
               <span class="case-row-arrow">↗</span>
             </div>
-            <div class="case-row active" data-case="0" data-role="ic" data-skills="retention,0-1">
+            <div class="case-row" data-case="0" data-role="ic" data-skills="retention,0-1">
               <span class="case-row-title">Streamlined onboarding 2 months -> 1 week</span>
               <span class="case-row-arrow">↗</span>
             </div>
-            <div class="case-row active" data-case="0" data-role="ic" data-skills="retention,0-1">
+            <div class="case-row" data-case="0" data-role="ic" data-skills="retention,0-1">
               <span class="case-row-title">Streamlined activation (email, contact form)</span>
               <span class="case-row-arrow">↗</span>
             </div>
@@ -1001,7 +1015,7 @@
               <span class="case-row-title">Killed 2 verticals</span>
               <span class="case-row-arrow">↗</span>
             </div>
-            <a class="case-row" href="/cases/product-redesign.html" data-case="1" data-role="ic manager" data-skills="data,growth,gtm">
+            <a class="case-row active" href="/cases/product-redesign.html" data-case="1" data-role="ic manager" data-skills="data,growth,gtm">
               <span class="case-row-title">Redesigned whole product</span>
               <span class="case-row-arrow">↗</span>
             </a>
@@ -1188,7 +1202,17 @@
       if (preview) preview.classList.add('active');
     };
 
-    caseRows.forEach(row => row.addEventListener('click', () => selectCase(row)));
+    caseRows.forEach(row => {
+      if (row.tagName === 'DIV') {
+        // Inject Soon badge, block interaction
+        const badge = document.createElement('span');
+        badge.className = 'case-row-soon';
+        badge.textContent = 'Soon';
+        row.appendChild(badge);
+      } else {
+        row.addEventListener('click', () => selectCase(row));
+      }
+    });
 
     // Filter logic
     let activeRole = 'all';
