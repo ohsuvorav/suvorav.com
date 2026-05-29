@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,36 +9,40 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     /* shadcn design tokens — dark */
     :root {
-      --background:    hsl(0 0% 3.9%);
-      --foreground:    hsl(0 0% 98%);
-      --muted:         hsl(0 0% 14.9%);
-      --muted-fg:      hsl(0 0% 63.9%);
-      --border:        hsl(0 0% 14.9%);
-      --input:         hsl(0 0% 14.9%);
-      --primary:       hsl(0 0% 98%);
-      --primary-fg:    hsl(0 0% 9%);
-      --accent:        hsl(0 0% 14.9%);
-      --accent-fg:     hsl(0 0% 98%);
-      --radius:        0.5rem;
-      --accent-color:  #5E6AD2;
+      --background: hsl(0 0% 3.9%);
+      --foreground: hsl(0 0% 98%);
+      --muted: hsl(0 0% 14.9%);
+      --muted-fg: hsl(0 0% 63.9%);
+      --border: hsl(0 0% 14.9%);
+      --input: hsl(0 0% 14.9%);
+      --primary: hsl(0 0% 98%);
+      --primary-fg: hsl(0 0% 9%);
+      --accent: hsl(0 0% 14.9%);
+      --accent-fg: hsl(0 0% 98%);
+      --radius: 0.5rem;
+      --accent-color: #5E6AD2;
     }
 
     /* shadcn design tokens — light */
     [data-theme="light"] {
-      --background:    hsl(0 0% 100%);
-      --foreground:    hsl(0 0% 3.9%);
-      --muted:         hsl(0 0% 96.1%);
-      --muted-fg:      hsl(0 0% 45.1%);
-      --border:        hsl(0 0% 89.8%);
-      --input:         hsl(0 0% 89.8%);
-      --primary:       hsl(0 0% 9%);
-      --primary-fg:    hsl(0 0% 98%);
-      --accent:        hsl(0 0% 96.1%);
-      --accent-fg:     hsl(0 0% 9%);
+      --background: hsl(0 0% 100%);
+      --foreground: hsl(0 0% 3.9%);
+      --muted: hsl(0 0% 96.1%);
+      --muted-fg: hsl(0 0% 45.1%);
+      --border: hsl(0 0% 89.8%);
+      --input: hsl(0 0% 89.8%);
+      --primary: hsl(0 0% 9%);
+      --primary-fg: hsl(0 0% 98%);
+      --accent: hsl(0 0% 96.1%);
+      --accent-fg: hsl(0 0% 9%);
     }
 
     body {
@@ -49,7 +54,11 @@
     }
 
     /* ── Layout ── */
-    .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
     /* ── Nav ── */
     nav {
@@ -63,9 +72,18 @@
       align-items: center;
     }
 
-    .nav-brand { text-decoration: none; display: flex; flex-direction: column; gap: 2px; }
+    .nav-brand {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
 
-    .nav-name-row { display: flex; align-items: center; gap: 6px; }
+    .nav-name-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
     .status-dot {
       position: relative;
@@ -88,8 +106,17 @@
     }
 
     @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 0.25; }
-      50% { transform: scale(1.6); opacity: 0; }
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 0.25;
+      }
+
+      50% {
+        transform: scale(1.6);
+        opacity: 0;
+      }
     }
 
     .status-tooltip {
@@ -109,7 +136,9 @@
       transition: opacity 0.15s;
     }
 
-    .status-dot:hover .status-tooltip { opacity: 1; }
+    .status-dot:hover .status-tooltip {
+      opacity: 1;
+    }
 
     .nav-name {
       font-size: 14px;
@@ -219,9 +248,16 @@
       white-space: nowrap;
     }
 
-    .btn-primary:hover { opacity: 0.88; }
+    .btn-primary:hover {
+      opacity: 0.88;
+    }
 
-    .btn-primary svg, .btn-outline svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .btn-primary svg,
+    .btn-outline svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
 
     /* shadcn Button — outline */
     .btn-outline {
@@ -298,6 +334,125 @@
       margin-bottom: 40px;
     }
 
+    /* ── Case Studies — Filter bar ── */
+    .cases-filters {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .filter-bar-label {
+      font-size: 13px;
+      color: var(--muted-fg);
+      font-weight: 500;
+    }
+
+    /* Dropdown trigger button */
+    .filter-group {
+      position: relative;
+    }
+
+    .filter-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      color: var(--muted-fg);
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      border-radius: calc(var(--radius) - 2px);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+
+    .filter-trigger:hover {
+      background: var(--accent);
+      color: var(--accent-fg);
+    }
+
+    .filter-trigger.has-value {
+      color: var(--foreground);
+      border-color: var(--foreground);
+    }
+
+    .filter-trigger-chevron {
+      width: 12px;
+      height: 12px;
+      transition: transform 0.15s;
+    }
+
+    .filter-group.open .filter-trigger-chevron {
+      transform: rotate(180deg);
+    }
+
+    /* Dropdown panel */
+    .filter-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      z-index: 100;
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 4px;
+      min-width: 140px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .filter-group.open .filter-dropdown {
+      display: block;
+    }
+
+    .filter-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      font-size: 13px;
+      font-family: inherit;
+      color: var(--foreground);
+      background: transparent;
+      border: none;
+      padding: 7px 10px;
+      border-radius: calc(var(--radius) - 2px);
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.1s;
+    }
+
+    .filter-option:hover {
+      background: var(--accent);
+    }
+
+    .filter-option.active {
+      color: var(--foreground);
+      font-weight: 500;
+    }
+
+    .filter-option-check {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+      opacity: 0;
+    }
+
+    .filter-option.active .filter-option-check {
+      opacity: 1;
+    }
+
+    .case-count {
+      font-size: 12px;
+      color: var(--muted-fg);
+      margin-bottom: 4px;
+    }
+
     /* ── Case Studies — Intercom layout ── */
     .cases-intercom {
       display: grid;
@@ -319,7 +474,9 @@
       display: none;
     }
 
-    .case-preview-card.active { display: block; }
+    .case-preview-card.active {
+      display: block;
+    }
 
     .case-preview-company {
       font-size: 10px;
@@ -370,7 +527,9 @@
       color: inherit;
     }
 
-    .case-row:last-child { border-bottom: 1px solid var(--border); }
+    .case-row:last-child {
+      border-bottom: 1px solid var(--border);
+    }
 
     .case-row-title {
       font-size: 28px;
@@ -402,9 +561,17 @@
     }
 
     @media (max-width: 640px) {
-      .cases-intercom { grid-template-columns: 1fr; }
-      .cases-preview { position: static; }
-      .case-row-title { font-size: 22px; }
+      .cases-intercom {
+        grid-template-columns: 1fr;
+      }
+
+      .cases-preview {
+        position: static;
+      }
+
+      .case-row-title {
+        font-size: 22px;
+      }
     }
 
     /* shadcn Badge — secondary */
@@ -421,7 +588,10 @@
       white-space: nowrap;
     }
 
-    .case-meta { text-align: right; flex-shrink: 0; }
+    .case-meta {
+      text-align: right;
+      flex-shrink: 0;
+    }
 
     .case-year {
       font-size: 12px;
@@ -430,7 +600,10 @@
     }
 
     /* ── Work History ── */
-    .work-list { display: flex; flex-direction: column; }
+    .work-list {
+      display: flex;
+      flex-direction: column;
+    }
 
     .work-item {
       display: grid;
@@ -446,12 +619,20 @@
       margin-bottom: 2px;
     }
 
-    .work-role { font-size: 13px; color: var(--muted-fg); }
+    .work-role {
+      font-size: 13px;
+      color: var(--muted-fg);
+    }
 
-    .work-period { font-size: 12px; color: var(--muted-fg); }
+    .work-period {
+      font-size: 12px;
+      color: var(--muted-fg);
+    }
 
     /* ── Footer ── */
-    footer { padding: 48px 0; }
+    footer {
+      padding: 48px 0;
+    }
 
     footer .container {
       display: flex;
@@ -459,9 +640,15 @@
       align-items: center;
     }
 
-    .footer-name { font-size: 13px; color: var(--muted-fg); }
+    .footer-name {
+      font-size: 13px;
+      color: var(--muted-fg);
+    }
 
-    .footer-links { display: flex; gap: 4px; }
+    .footer-links {
+      display: flex;
+      gap: 4px;
+    }
 
     .footer-links a {
       font-size: 13px;
@@ -496,8 +683,8 @@
       border-radius: 50%;
       background: var(--background);
       border: 1px solid var(--border);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
-      transition: transform 0.2s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       pointer-events: none;
       left: 3px;
     }
@@ -519,18 +706,42 @@
       z-index: 1;
     }
 
-    .theme-btn svg { width: 13px; height: 13px; display: block; }
-    .theme-btn:hover { color: var(--foreground); }
-    .theme-btn.active { color: var(--foreground); }
+    .theme-btn svg {
+      width: 13px;
+      height: 13px;
+      display: block;
+    }
+
+    .theme-btn:hover {
+      color: var(--foreground);
+    }
+
+    .theme-btn.active {
+      color: var(--foreground);
+    }
 
     @media (max-width: 600px) {
-      .hero h1 { font-size: 30px; }
-      .case-item { grid-template-columns: 1fr; padding: 20px 0; margin: 0; }
-      .case-meta { display: none; }
-      .nav-links a { padding: 6px 8px; }
+      .hero h1 {
+        font-size: 30px;
+      }
+
+      .case-item {
+        grid-template-columns: 1fr;
+        padding: 20px 0;
+        margin: 0;
+      }
+
+      .case-meta {
+        display: none;
+      }
+
+      .nav-links a {
+        padding: 6px 8px;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <nav>
@@ -552,13 +763,32 @@
           <div class="theme-switcher">
             <span class="theme-indicator" id="themeIndicator"></span>
             <button class="theme-btn" data-mode="system" aria-label="System theme">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+              </svg>
             </button>
             <button class="theme-btn" data-mode="light" aria-label="Light theme">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </svg>
             </button>
             <button class="theme-btn" data-mode="dark" aria-label="Dark theme">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
             </button>
           </div>
         </li>
@@ -573,23 +803,32 @@
       <div class="container">
         <h1>I ship products.<br>Then I make them grow.</h1>
         <p class="hero-bio">
-          Former Android dev turned PM. I build growth engines for B2B SaaS — activation, retention, AI-native ops that compound. Best at Series A–C, 0-to-1 through $10M ARR.
+          Former Android dev turned PM. I build growth engines for B2B SaaS — activation, retention, AI-native ops that
+          compound. Best at Series A–C, 0-to-1 through $10M ARR.
         </p>
         <div class="hero-links">
           Message me
           <a href="https://linkedin.com/in/ohsuvorav" class="btn-primary" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
           </a>
           <a href="mailto:olegsuvorav@gmail.com" class="btn-outline">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
           </a>
           <span class="hero-divider"></span>
           <span class="btn-soon">
             Case studies <span class="soon-badge">Soon</span>
           </span>
-          
+
         </div>
-        
+
         <p class="hero-best-at">Best at: Series A–C startups · B2B SaaS · first 10 hire</p>
       </div>
     </section>
@@ -598,6 +837,109 @@
     <section class="section" id="cases">
       <div class="container">
         <div class="section-label">Case studies</div>
+
+        <!-- Filter bar -->
+        <div class="cases-filters">
+          <span class="filter-bar-label">Filter</span>
+
+          <!-- Role dropdown -->
+          <div class="filter-group" id="roleGroup">
+            <button class="filter-trigger" id="roleTrigger">
+              Role: All
+              <svg class="filter-trigger-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="filter-dropdown">
+              <button class="filter-option active" data-filter="role" data-value="all">
+                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                All
+              </button>
+              <button class="filter-option" data-filter="role" data-value="ic">
+                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Individual contributor
+              </button>
+              <button class="filter-option" data-filter="role" data-value="manager">
+                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Manager
+              </button>
+            </div>
+          </div>
+
+          <!-- Skill dropdown -->
+          <div class="filter-group" id="skillGroup">
+            <button class="filter-trigger" id="skillTrigger">
+              Skill: All
+              <svg class="filter-trigger-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="filter-dropdown">
+              <button class="filter-option active" data-filter="skill" data-value="all">
+                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                All
+              </button>
+              <button class="filter-option" data-filter="skill" data-value="data">
+                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Data
+              </button>
+              <button class="filter-option" data-filter="skill" data-value="retention">
+                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Retention
+              </button>
+              <button class="filter-option" data-filter="skill" data-value="growth">
+                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Growth
+              </button>
+              <button class="filter-option" data-filter="skill" data-value="ai">
+                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                AI
+              </button>
+              <button class="filter-option" data-filter="skill" data-value="0-1">
+                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                0→1
+              </button>
+              <button class="filter-option" data-filter="skill" data-value="gtm">
+                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                GTM
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="case-count" id="caseCount">3 cases</div>
+
         <div class="cases-intercom">
 
           <!-- Left: preview panel -->
@@ -606,7 +948,8 @@
             <div class="case-preview-card active" data-preview="0">
               <div class="case-preview-company">Threecolts · 2023–2025</div>
               <div class="case-preview-stat">$500K → $1M ARR</div>
-              <div class="case-preview-sub">Onboarding cut from 2 months to 1 week. Repositioned helpdesk from generalist to specialized e-commerce — competing and winning against Zendesk.</div>
+              <div class="case-preview-sub">Onboarding cut from 2 months to 1 week. Repositioned helpdesk from
+                generalist to specialized e-commerce — competing and winning against Zendesk.</div>
               <div class="case-preview-tags">
                 <span class="tag">Retention</span>
                 <span class="tag">Activation</span>
@@ -617,7 +960,8 @@
             <div class="case-preview-card" data-preview="1">
               <div class="case-preview-company">Threecolts · 2025</div>
               <div class="case-preview-stat">65% drop-off fixed</div>
-              <div class="case-preview-sub">Built Customer 360 combining financial, product, and marketplace signals. Became the foundation for all GTM decisions company-wide.</div>
+              <div class="case-preview-sub">Built Customer 360 combining financial, product, and marketplace signals.
+                Became the foundation for all GTM decisions company-wide.</div>
               <div class="case-preview-tags">
                 <span class="tag">Growth</span>
                 <span class="tag">Data</span>
@@ -628,7 +972,8 @@
             <div class="case-preview-card" data-preview="2">
               <div class="case-preview-company">Threecolts · 2025</div>
               <div class="case-preview-stat">2.5× velocity</div>
-              <div class="case-preview-sub">~15 engineering hours freed per week. Custom Linear agent, capacity planner, and weekly AI rituals — no headcount added.</div>
+              <div class="case-preview-sub">~15 engineering hours freed per week. Custom Linear agent, capacity planner,
+                and weekly AI rituals — no headcount added.</div>
               <div class="case-preview-tags">
                 <span class="tag">AI</span>
                 <span class="tag">Linear</span>
@@ -640,16 +985,96 @@
 
           <!-- Right: title list -->
           <div class="cases-list">
-            <div class="case-row active" data-case="0">
-              <span class="case-row-title">Helpdesk retention</span>
+            <div class="case-row active" data-case="0" data-role="ic" data-skills="retention,0-1">
+              <span class="case-row-title">Tripled retention</span>
               <span class="case-row-arrow">↗</span>
             </div>
-            <div class="case-row" data-case="1">
-              <span class="case-row-title">Customer 360</span>
+            <div class="case-row active" data-case="0" data-role="ic" data-skills="retention,0-1">
+              <span class="case-row-title">Streamlined onboarding 2 months -> 1 week</span>
               <span class="case-row-arrow">↗</span>
             </div>
-            <div class="case-row" data-case="2">
-              <span class="case-row-title">AI ops</span>
+            <div class="case-row active" data-case="0" data-role="ic" data-skills="retention,0-1">
+              <span class="case-row-title">Streamlined activation (email, contact form)</span>
+              <span class="case-row-arrow">↗</span>
+            </div>
+            <div class="case-row" data-case="1" data-role="ic manager" data-skills="data,growth,gtm">
+              <span class="case-row-title">Killed 2 verticals</span>
+              <span class="case-row-arrow">↗</span>
+            </div>
+            <div class="case-row" data-case="1" data-role="ic manager" data-skills="data,growth,gtm">
+              <span class="case-row-title">Redesigned whole product</span>
+              <span class="case-row-arrow">↗</span>
+            </div>
+            <div class="case-row" data-case="1" data-role="ic manager" data-skills="data,growth,gtm">
+              <span class="case-row-title">360° customer overview</span>
+              <span class="case-row-arrow">↗</span>
+            </div>
+            <div class="case-row" data-case="1" data-role="ic manager" data-skills="data,growth,gtm">
+              <span class="case-row-title">65% funnel drop-off</span>
+              <span class="case-row-arrow">↗</span>
+            </div>
+            <div class="case-row" data-case="2" data-role="ic manager" data-skills="ai">
+              <span class="case-row-title">AI-first ops inreased bandwidth 2.5 times</span>
+              <span class="case-row-arrow">↗</span>
+            </div>
+            <div class="case-row" data-case="2" data-role="ic manager" data-skills="ai">
+              <span class="case-row-title">AI-agent saved 2-3 hours per day per engineer</span>
+              <span class="case-row-arrow">↗</span>
+            </div>
+            <div class="case-row" data-case="2" data-role="ic manager" data-skills="ai">
+              <span class="case-row-title">Launched product from scratch to first payments</span>
+              <span class="case-row-arrow">↗</span>
+            </div>
+            <div class="case-row" data-case="2" data-role="ic manager" data-skills="ai">
+              <span class="case-row-title">1-st place at AI Hackathon</span>
+              <span class="case-row-arrow">↗</span>
+            </div>
+            <div class="case-row" data-case="2" data-role="ic manager" data-skills="ai">
+              <span class="case-row-title">C-level misalignment resolved</span>
+              <span class="case-row-arrow">↗</span>
+            </div>
+            <div class="case-row" data-case="2" data-role="ic manager" data-skills="ai">
+              <span class="case-row-title">People Management (Yulia)</span>
+              <span class="case-row-arrow">↗</span>
+            </div>
+            <div class="case-row" data-case="2" data-role="ic manager" data-skills="ai">
+              <span class="case-row-title">Mentorship (Ismail)</span>
+              <span class="case-row-arrow">↗</span>
+            </div>
+            <div class="case-row" data-case="2" data-role="ic manager" data-skills="ai">
+              <span class="case-row-title">Informal leadership (Account Master Record)</span>
+              <span class="case-row-arrow">↗</span>
+            </div>
+            <div class="case-row" data-case="2" data-role="ic manager" data-skills="ai">
+              <span class="case-row-title">Retained $68k MRR at risk of churn </span>
+              <span class="case-row-arrow">↗</span>
+            </div>
+            <div class="case-row" data-case="2" data-role="ic manager" data-skills="ai">
+              <span class="case-row-title">upsold $20k net new ARR</span>
+              <span class="case-row-arrow">↗</span>
+            </div>
+            <div class="case-row" data-case="2" data-role="ic manager" data-skills="ai">
+              <span class="case-row-title">Grew team from 5 to 15 members</span>
+              <span class="case-row-arrow">↗</span>
+            </div>
+            <div class="case-row" data-case="2" data-role="ic manager" data-skills="ai">
+              <span class="case-row-title">Pivot from B2C to B2B</span>
+              <span class="case-row-arrow">↗</span>
+            </div>
+            <div class="case-row" data-case="2" data-role="ic manager" data-skills="ai">
+              <span class="case-row-title">Scraped websites for outreach</span>
+              <span class="case-row-arrow">↗</span>
+            </div>
+            <div class="case-row" data-case="2" data-role="ic manager" data-skills="ai">
+              <span class="case-row-title">Website optimization for PMM</span>
+              <span class="case-row-arrow">↗</span>
+            </div>
+            <div class="case-row" data-case="2" data-role="ic manager" data-skills="ai">
+              <span class="case-row-title">Sales pipeline and CRM Administration</span>
+              <span class="case-row-arrow">↗</span>
+            </div>
+            <div class="case-row" data-case="2" data-role="ic manager" data-skills="ai">
+              <span class="case-row-title">Marketing with no budget</span>
               <span class="case-row-arrow">↗</span>
             </div>
           </div>
@@ -755,15 +1180,88 @@
     const caseRows = document.querySelectorAll('.case-row');
     const casePreviews = document.querySelectorAll('.case-preview-card');
 
-    caseRows.forEach(row => {
-      row.addEventListener('click', () => {
-        const idx = row.dataset.case;
-        caseRows.forEach(r => r.classList.remove('active'));
-        casePreviews.forEach(p => p.classList.remove('active'));
-        row.classList.add('active');
-        document.querySelector(`.case-preview-card[data-preview="${idx}"]`).classList.add('active');
+    const selectCase = (row) => {
+      caseRows.forEach(r => r.classList.remove('active'));
+      casePreviews.forEach(p => p.classList.remove('active'));
+      row.classList.add('active');
+      const preview = document.querySelector(`.case-preview-card[data-preview="${row.dataset.case}"]`);
+      if (preview) preview.classList.add('active');
+    };
+
+    caseRows.forEach(row => row.addEventListener('click', () => selectCase(row)));
+
+    // Filter logic
+    let activeRole = 'all';
+    let activeSkill = 'all';
+
+    const filterCases = () => {
+      let visible = 0;
+
+      caseRows.forEach(row => {
+        const roles = row.dataset.role || '';
+        const skills = row.dataset.skills || '';
+
+        const matchesRole = activeRole === 'all' || roles.includes(activeRole);
+        const matchesSkill = activeSkill === 'all' || skills.includes(activeSkill);
+        const show = matchesRole && matchesSkill;
+
+        row.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+
+      document.getElementById('caseCount').textContent = `${visible} case${visible !== 1 ? 's' : ''}`;
+
+      // Auto-select first visible if current active is hidden
+      const currentActive = document.querySelector('.case-row.active');
+      if (!currentActive || currentActive.style.display === 'none') {
+        const firstVisible = Array.from(caseRows).find(r => r.style.display !== 'none');
+        if (firstVisible) selectCase(firstVisible);
+        else casePreviews.forEach(p => p.classList.remove('active'));
+      }
+    };
+
+    // Dropdown open/close
+    const toggleGroup = (group, otherGroup) => {
+      const isOpen = group.classList.contains('open');
+      otherGroup.classList.remove('open');
+      group.classList.toggle('open', !isOpen);
+    };
+
+    document.getElementById('roleTrigger').addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleGroup(document.getElementById('roleGroup'), document.getElementById('skillGroup'));
+    });
+
+    document.getElementById('skillTrigger').addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleGroup(document.getElementById('skillGroup'), document.getElementById('roleGroup'));
+    });
+
+    document.addEventListener('click', () => {
+      document.getElementById('roleGroup').classList.remove('open');
+      document.getElementById('skillGroup').classList.remove('open');
+    });
+
+    // Filter option selection
+    document.querySelectorAll('.filter-option').forEach(opt => {
+      opt.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const group = opt.dataset.filter;
+        document.querySelectorAll(`.filter-option[data-filter="${group}"]`).forEach(o => o.classList.remove('active'));
+        opt.classList.add('active');
+
+        const trigger = group === 'role' ? document.getElementById('roleTrigger') : document.getElementById('skillTrigger');
+        const label = group === 'role' ? 'Role' : 'Skill';
+        const value = opt.textContent.trim();
+        trigger.childNodes[0].textContent = `${label}: ${value}`;
+        document.getElementById(group === 'role' ? 'roleGroup' : 'skillGroup').classList.remove('open');
+
+        if (group === 'role') activeRole = opt.dataset.value;
+        if (group === 'skill') activeSkill = opt.dataset.value;
+        filterCases();
       });
     });
   </script>
 </body>
+
 </html>
