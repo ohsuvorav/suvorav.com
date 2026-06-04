@@ -4,12 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="How I repositioned a generalist helpdesk to win against Zendesk in e-commerce — Oleg Suvorov">
+  <meta name="description"
+    content="How I repositioned a generalist helpdesk to win against Zendesk in e-commerce — Oleg Suvorov">
   <title>Redesigned helpdesk · Oleg Suvorov</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     :root {
       --background: hsl(0 0% 3.9%);
@@ -45,164 +50,387 @@
       line-height: 1.6;
     }
 
-    .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
     nav {
       padding: 20px 0;
       border-bottom: 1px solid var(--border);
     }
 
-    nav .container { display: flex; justify-content: space-between; align-items: center; }
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-    .nav-brand { text-decoration: none; display: flex; flex-direction: column; gap: 2px; }
-    .nav-name-row { display: flex; align-items: center; gap: 6px; }
+    .nav-brand {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .nav-name-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
     .status-dot {
-      position: relative; width: 8px; height: 8px; border-radius: 50%;
-      background: #22c55e; flex-shrink: 0; cursor: default;
+      position: relative;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      flex-shrink: 0;
+      cursor: default;
     }
+
     .status-dot::after {
-      content: ''; position: absolute; inset: -2px; border-radius: 50%;
-      background: #22c55e; opacity: 0.25; animation: pulse 2s ease-in-out infinite;
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 50%;
+      background: #22c55e;
+      opacity: 0.25;
+      animation: pulse 2s ease-in-out infinite;
     }
+
     @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 0.25; }
-      50% { transform: scale(1.6); opacity: 0; }
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 0.25;
+      }
+
+      50% {
+        transform: scale(1.6);
+        opacity: 0;
+      }
     }
+
     .status-tooltip {
-      position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
-      background: var(--foreground); color: var(--background);
-      font-size: 11px; font-weight: 500; white-space: nowrap;
-      padding: 4px 8px; border-radius: 6px; pointer-events: none;
-      opacity: 0; transition: opacity 0.15s;
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--foreground);
+      color: var(--background);
+      font-size: 11px;
+      font-weight: 500;
+      white-space: nowrap;
+      padding: 4px 8px;
+      border-radius: 6px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s;
     }
-    .status-dot:hover .status-tooltip { opacity: 1; }
 
-    .nav-name { font-size: 14px; font-weight: 500; color: var(--foreground); }
-    .nav-sub { font-size: 12px; color: var(--muted-fg); font-weight: 400; }
+    .status-dot:hover .status-tooltip {
+      opacity: 1;
+    }
 
-    .nav-links { display: flex; gap: 4px; list-style: none; align-items: center; }
+    .nav-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--foreground);
+    }
+
+    .nav-sub {
+      font-size: 12px;
+      color: var(--muted-fg);
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      list-style: none;
+      align-items: center;
+    }
+
     .nav-links a {
-      font-size: 13px; font-weight: 500; color: var(--muted-fg); text-decoration: none;
-      padding: 6px 12px; border-radius: calc(var(--radius) - 2px);
-      transition: background 0.15s, color 0.15s; display: inline-block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted-fg);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: calc(var(--radius) - 2px);
+      transition: background 0.15s, color 0.15s;
+      display: inline-block;
     }
-    .nav-links a:hover { background: var(--accent); color: var(--accent-fg); }
+
+    .nav-links a:hover {
+      background: var(--accent);
+      color: var(--accent-fg);
+    }
 
     .theme-switcher {
-      display: inline-flex; align-items: center; background: var(--muted);
-      border: 1px solid var(--border); border-radius: 999px; padding: 3px; gap: 2px; position: relative;
+      display: inline-flex;
+      align-items: center;
+      background: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 3px;
+      gap: 2px;
+      position: relative;
     }
+
     .theme-indicator {
-      position: absolute; width: 26px; height: 26px; border-radius: 50%;
-      background: var(--background); border: 1px solid var(--border);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
-      transition: transform 0.2s cubic-bezier(0.4,0,0.2,1); pointer-events: none; left: 3px;
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--background);
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+      left: 3px;
     }
+
     .theme-btn {
-      background: none; border: none; cursor: pointer; padding: 0;
-      width: 26px; height: 26px; border-radius: 50%; color: var(--muted-fg);
-      display: flex; align-items: center; justify-content: center;
-      transition: color 0.15s; position: relative; z-index: 1;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      color: var(--muted-fg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.15s;
+      position: relative;
+      z-index: 1;
     }
-    .theme-btn svg { width: 13px; height: 13px; display: block; }
-    .theme-btn:hover, .theme-btn.active { color: var(--foreground); }
+
+    .theme-btn svg {
+      width: 13px;
+      height: 13px;
+      display: block;
+    }
+
+    .theme-btn:hover,
+    .theme-btn.active {
+      color: var(--foreground);
+    }
 
     /* ── Case header ── */
-    .case-header { padding: 56px 0 48px; }
+    .case-header {
+      padding: 56px 0 8px;
+    }
 
     .back-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 13px; font-weight: 500; color: var(--muted-fg);
-      text-decoration: none; margin-bottom: 32px; transition: color 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted-fg);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: color 0.15s;
     }
-    .back-link:hover { color: var(--foreground); }
-    .back-link svg { width: 14px; height: 14px; }
+
+    .back-link:hover {
+      color: var(--foreground);
+    }
+
+    .back-link svg {
+      width: 14px;
+      height: 14px;
+    }
 
     .case-company-chip {
-      font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--accent-color); margin-bottom: 16px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-color);
+      margin-bottom: 16px;
     }
 
     .case-title {
-      font-size: 42px; font-weight: 600; letter-spacing: -0.03em;
-      line-height: 1.05; margin-bottom: 20px;
+      font-size: 42px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 20px;
     }
 
     .case-summary {
-      font-size: 18px; line-height: 1.65; color: var(--muted-fg);
-      max-width: 600px; margin-bottom: 28px;
+      font-size: 18px;
+      line-height: 1.65;
+      color: var(--muted-fg);
+      max-width: 600px;
     }
 
-    .case-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .case-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
 
     .tag {
-      display: inline-flex; align-items: center; font-size: 11px; font-weight: 500;
-      color: var(--muted-fg); background: var(--muted); border: 1px solid var(--border);
-      padding: 2px 8px; border-radius: 9999px; white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--muted-fg);
+      background: var(--muted);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 9999px;
+      white-space: nowrap;
     }
 
     /* ── Metrics bar ── */
     .metrics-bar {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1px; background: var(--border); border: 1px solid var(--border);
-      border-radius: calc(var(--radius) + 4px); overflow: hidden; margin: 48px 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 4px);
+      overflow: hidden;
+      margin: 48px 0;
     }
 
-    .metric { background: var(--muted); padding: 24px 28px; }
-    .metric-value {
-      font-size: 32px; font-weight: 600; letter-spacing: -0.03em;
-      line-height: 1.1; margin-bottom: 6px;
+    .metric {
+      background: var(--muted);
+      padding: 24px 28px;
     }
-    .metric-label { font-size: 12px; color: var(--muted-fg); line-height: 1.4; }
+
+    .metric-value {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .metric-label {
+      font-size: 12px;
+      color: var(--muted-fg);
+      line-height: 1.4;
+    }
 
     /* ── Case body ── */
-    .case-body { padding: 0 0 80px; }
+    .case-body {
+      padding: 0 0 80px;
+    }
 
-    .case-section { padding: 48px 0; }
+    .case-section {
+      padding: 16px 0;
+    }
 
     .section-label {
-      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--muted-fg); margin-bottom: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted-fg);
+      margin-bottom: 20px;
     }
 
     .case-section h2 {
-      font-size: 22px; font-weight: 600; letter-spacing: -0.02em;
-      line-height: 1.3; margin-bottom: 16px;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      margin-bottom: 16px;
     }
 
     .case-section p {
-      font-size: 16px; line-height: 1.75; color: var(--muted-fg); margin-bottom: 16px;
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--muted-fg);
+      margin-bottom: 16px;
     }
-    .case-section p:last-child { margin-bottom: 0; }
-    .case-section p strong { color: var(--foreground); font-weight: 500; }
+
+    .case-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .case-section p strong {
+      color: var(--foreground);
+      font-weight: 500;
+    }
 
     .callout {
-      background: var(--muted); border-left: 3px solid var(--accent-color);
+      background: var(--muted);
+      border-left: 3px solid var(--accent-color);
       border-radius: 0 var(--radius) var(--radius) 0;
-      padding: 16px 20px; margin: 24px 0;
-      font-size: 15px; line-height: 1.65; color: var(--foreground);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--foreground);
     }
 
     .visual-block {
-      background: var(--muted); border: 1px solid var(--border);
-      border-radius: calc(var(--radius) + 4px); aspect-ratio: 16 / 9;
-      display: flex; align-items: center; justify-content: center;
-      margin: 28px 0; font-size: 13px; color: var(--muted-fg);
+      background: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 4px);
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 28px 0;
+      font-size: 13px;
+      color: var(--muted-fg);
       overflow: hidden;
     }
-    .visual-block img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; display: block; }
 
-    footer { padding: 48px 0; border-top: 1px solid var(--border); }
-    footer .container { display: flex; justify-content: space-between; align-items: center; }
-    .footer-name { font-size: 13px; color: var(--muted-fg); }
-    .footer-links { display: flex; gap: 4px; }
+    .visual-block img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+      display: block;
+    }
+
+    footer {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-name {
+      font-size: 13px;
+      color: var(--muted-fg);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 4px;
+    }
+
     .footer-links a {
-      font-size: 13px; color: var(--muted-fg); text-decoration: none;
-      padding: 4px 8px; border-radius: calc(var(--radius) - 2px);
+      font-size: 13px;
+      color: var(--muted-fg);
+      text-decoration: none;
+      padding: 4px 8px;
+      border-radius: calc(var(--radius) - 2px);
       transition: background 0.15s, color 0.15s;
     }
-    .footer-links a:hover { background: var(--accent); color: var(--accent-fg); }
+
+    .footer-links a:hover {
+      background: var(--accent);
+      color: var(--accent-fg);
+    }
 
     /* ── TOC sidebar ── */
     .toc {
@@ -228,21 +456,37 @@
       line-height: 1.3;
     }
 
-    .toc-item:hover { color: var(--foreground); }
+    .toc-item:hover {
+      color: var(--foreground);
+    }
 
     .toc-item.active {
       color: var(--foreground);
       border-left-color: var(--foreground);
     }
 
-    @media (max-width: 1200px) { .toc { display: none; } }
+    @media (max-width: 1200px) {
+      .toc {
+        display: none;
+      }
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     @media (max-width: 640px) {
-      .case-title { font-size: 30px; }
-      .metrics-bar { grid-template-columns: 1fr; }
-      .metric { padding: 20px; }
+      .case-title {
+        font-size: 30px;
+      }
+
+      .metrics-bar {
+        grid-template-columns: 1fr;
+      }
+
+      .metric {
+        padding: 20px;
+      }
     }
   </style>
 </head>
@@ -264,36 +508,6 @@
         <li><a href="/#work">Work</a></li>
         <li><a href="/#cases">Case studies</a></li>
         <li><a href="mailto:olegsuvorav@gmail.com">Contact</a></li>
-        <li>
-          <div class="theme-switcher">
-            <span class="theme-indicator" id="themeIndicator"></span>
-            <button class="theme-btn" data-mode="system" aria-label="System theme">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="3" width="20" height="14" rx="2" />
-                <line x1="8" y1="21" x2="16" y2="21" />
-                <line x1="12" y1="17" x2="12" y2="21" />
-              </svg>
-            </button>
-            <button class="theme-btn" data-mode="light" aria-label="Light theme">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="5" />
-                <line x1="12" y1="1" x2="12" y2="3" />
-                <line x1="12" y1="21" x2="12" y2="23" />
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                <line x1="1" y1="12" x2="3" y2="12" />
-                <line x1="21" y1="12" x2="23" y2="12" />
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-              </svg>
-            </button>
-            <button class="theme-btn" data-mode="dark" aria-label="Dark theme">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-              </svg>
-            </button>
-          </div>
-        </li>
       </ul>
     </div>
   </nav>
@@ -310,7 +524,8 @@
     <div class="case-header">
       <div class="container">
         <a href="/#cases" class="back-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
             <line x1="19" y1="12" x2="5" y2="12" />
             <polyline points="12 19 5 12 12 5" />
           </svg>
@@ -318,75 +533,68 @@
         </a>
 
         <div class="case-company-chip">Threecolts · 2023–2025</div>
-        <h1 class="case-title">Email setup that<br>explains itself</h1>
-        <p class="case-summary">Customers couldn't configure email on their own — and I was the one getting the questions. I made it self-serve. Setup tickets dropped to zero.</p>
+        <h1 class="case-title">Self-serve email setup</h1>
+        <p class="case-summary">Customers couldn't configure email on their own — and I was the one getting the
+          questions. I made it self-serve. Setup tickets dropped to zero.</p>
 
-        <div class="case-tags">
-          <span class="tag">Activation</span>
-          <span class="tag">Self-serve</span>
-          <span class="tag">UX design</span>
-          <span class="tag">IC</span>
-        </div>
       </div>
     </div>
 
     <div class="case-body">
       <div class="container">
 
-        <div class="metrics-bar">
-          <div class="metric">
-            <div class="metric-value">0</div>
-            <div class="metric-label">Setup support tickets after launch</div>
-          </div>
-          <div class="metric">
-            <div class="metric-value">8 wks → 1</div>
-            <div class="metric-label">Onboarding time cut</div>
-          </div>
-          <div class="metric">
-            <div class="metric-value">100%</div>
-            <div class="metric-label">Self-serve setup</div>
-          </div>
-        </div>
-
         <div class="case-section" id="context">
           <div class="section-label">Context</div>
-          <h2>After fixing ops, the next blocker was getting started</h2>
-          <p>I'd just finished the <a href="/cases/ai-agent.html" style="color: var(--foreground); text-underline-offset: 3px; text-decoration: underline; text-decoration-color: var(--border);">AI ops work</a> — automating the engineering workflow and freeing up ~15 hours per week. With velocity unlocked, I looked at where customers were still stuck. The answer was obvious: before they could use the helpdesk at all, they had to set it up. And setup was broken.</p>
+          <p><b>Fixing ops streamlined setup onboarding from 2 months to 1 week.</b> But still it was a lot. Key action
+            of the helpdesk is to send the message. To make it happen you need to connect your channels, e.g. email.</p>
         </div>
 
         <div class="case-section" id="problem">
           <div class="section-label">Problem</div>
-          <h2>I was the support ticket</h2>
-          <p>Email and contact form configuration wasn't self-serve. Customers had to figure out SMTP credentials, mail routing, and forwarding rules on their own — and when they got stuck, they asked me. I was constantly fielding the same setup questions.</p>
-
+          <h2></h2>
+          <p><b>I received questions daily how to set up emails.</b> Despite the step-by-step article I created, both
+            customers and internal folks were confused how it works all the time. I decided to rebuild this legacy
+            feature. </p>
           <div class="visual-block">[Screenshot — what the setup flow looked like before]</div>
-
-          <p>Before touching the UI, I dug into the technical constraints. Could we do one-click OAuth so customers connect email in a single step? Could we support multiple SMTP connections? The answer to both was no — tech debt made it impossible to connect two SMTPs simultaneously, and OAuth wasn't viable either.</p>
-
-          <div class="callout">
-            That constraint shaped the entire UX decision: one SMTP, with multiple forwarding rules. Zendesk does exactly the same thing. Not ideal technically — but when the category leader does it this way, you can point to that and move on.
-          </div>
+          <p>This screenshot doesn't tell you: what will be used for email sending, how it's gonna be previwed by
+            customers, how to ensure it's connected correctly, so it doesn't end up in spam</p>
         </div>
 
         <div class="case-section" id="approach">
           <div class="section-label">What I did</div>
           <h2>Prototype first. PRD second.</h2>
-          <p>Once I understood how email providers work under the hood, I opened Figma and started low-fidelity. Not to polish — to think. The goal was: does this flow make sense to someone who has to answer setup questions for a living? I showed it to the support team before investing more time. It clicked immediately.</p>
+          <p>Before touching the UI, I dug into the technical constraints. Could we do one-click OAuth so customers
+            connect email in a single step? Could we support multiple SMTP connections? The answer to both was no — tech
+            debt made it impossible to connect two SMTPs simultaneously, and OAuth wasn't viable either.</p>
+          <div class="callout">
+            It was nice to have rather than vital. Khm-khm Zendesk did the same, which is not good, but viable excuse
+            for customers 🙃.
+          </div>
+          <p>Designer failed to show progress with a prototype. So I opened Figma and started low-fidelity clickable
+            prototype. I showed it to the support team before investing more time. It clicked immediately.</p>
 
           <div class="visual-block">[First raw Figma prototype — email setup flow]</div>
 
-          <p>Then I wrote a full PRD with a data flow diagram and handed it to the designer. She got stuck. The diagram was technically accurate, but not enough to build from. So I went back to Figma, prototyped the interaction myself at slightly higher fidelity, and used that as the brief instead. She took my version, polished it into high-fidelity, and the engineer understood it on the first read.</p>
+          <p>Then I handed it over to the designer for polishing. so the engineer could understand it on the first read.
+          </p>
 
           <div class="visual-block">[Before / after — low-fi prototype → final UI]</div>
 
-          <p>The last piece was copy. I'd been on enough support calls to know exactly where people got confused — the same questions, word for word, every time. I used that to write the tooltips. Not generic help text. The actual language customers used when they didn't understand something. That's what made the setup feel self-explanatory instead of just documented.</p>
+          <p>The last piece was copy. I'd been on enough support calls to know exactly where people got confused — the
+            same questions, word for word, every time. I used that to write the tooltips. Not generic help text. The
+            actual language customers used when they didn't understand something. That's what made the setup feel
+            self-explanatory instead of just documented.</p>
+
+          <div class="visual-block">[Before / after — low-fi prototype → final UI]</div>
         </div>
 
         <div class="case-section" id="impact">
           <div class="section-label">Impact</div>
           <h2>The questions stopped coming.</h2>
-          <p>After launch, I stopped receiving setup questions entirely. Customers configured email and contact forms on their own and moved on. The feature was invisible in the best way.</p>
-          <p>As part of the broader redesign, onboarding time dropped from 8 weeks to 1. [Add what specifically drove growth — new logos, reduced churn, upsell, or a mix.]</p>
+          <p>After launch, I stopped receiving setup questions entirely. Customers configured email and contact forms on
+            their own and moved on. The feature was invisible in the best way.</p>
+          <p>As part of the broader redesign, onboarding time dropped from 8 weeks to 1. [Add what specifically drove
+            growth — new logos, reduced churn, upsell, or a mix.]</p>
         </div>
 
       </div>
@@ -400,6 +608,37 @@
       <div class="footer-links">
         <a href="https://linkedin.com/in/ohsuvorav">LinkedIn</a>
         <a href="mailto:olegsuvorav@gmail.com">Email</a>
+        <div class="theme-switcher">
+          <span class="theme-indicator" id="themeIndicator"></span>
+          <button class="theme-btn" data-mode="system" aria-label="System theme">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <line x1="8" y1="21" x2="16" y2="21" />
+              <line x1="12" y1="17" x2="12" y2="21" />
+            </svg>
+          </button>
+          <button class="theme-btn" data-mode="light" aria-label="Light theme">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+          </button>
+          <button class="theme-btn" data-mode="dark" aria-label="Dark theme">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </footer>
@@ -451,4 +690,5 @@
   </script>
 
 </body>
+
 </html>
