@@ -312,7 +312,7 @@
 
         <div class="case-company-chip">Threecolts · 2025</div>
         <h1 class="case-title">AI agent that freed<br>2–3 hours per engineer daily</h1>
-        <p class="case-summary">Built a custom Linear agent and capacity planner that freed ~15 engineering hours per week — with no headcount added.</p>
+        <p class="case-summary">Built a compound ops system — team brain in Git, Linear automation, capacity planner, and AI agent — that 2.5×'d velocity without adding headcount.</p>
 
         <div class="case-tags">
           <span class="tag">AI</span>
@@ -343,39 +343,39 @@
 
         <div class="case-section" id="context">
           <div class="section-label">Context</div>
-          <h2>[What the engineering team looked like]</h2>
-          <p>[How many engineers? What was the team structure? What were they building? What was the pacing — sprints, kanban, something else?]</p>
-          <p>[What was your role relative to engineering — were you the PM on their team, or managing across teams?]</p>
+          <h2>The team was good. Its knowledge wasn't portable.</h2>
+          <p>The platform team had real delivery accountability — but everything that made it work lived in people's heads. Decisions, edge cases, operational patterns: in Slack threads, in memory, nowhere shareable. When an engineer was out, things stalled. When a new one joined, ramp was measured in months.</p>
+          <p>My mandate: make the team faster without adding headcount. The answer wasn't more engineers — it was making the team's knowledge a first-class citizen.</p>
         </div>
 
         <div class="case-section" id="problem">
           <div class="section-label">Problem</div>
-          <h2>[Where time was disappearing]</h2>
-          <p>[What was eating hours? Status updates, ticket triage, sprint planning, context switching? <strong>Name the specific friction points with numbers if you have them.</strong>]</p>
-          <p>[What was the downstream effect — delayed releases, engineer frustration, product quality?]</p>
-
+          <h2>Four separate problems. One root cause.</h2>
+          <p>Knowledge siloed — context sharing was manual and lossy; AI agents couldn't reference what only existed in someone's memory. No automation — Linear has no native triggers (unlike Jira), so every routing and triage decision was human. Invisible tradeoffs — deprioritizing a ticket hid what else would slip as a consequence. Expensive debugging — every incoming bug required 2–3 hrs of context reconstruction before the actual work could start.</p>
           <div class="callout">
-            [The insight that unlocked the solution: what did you realize about the team's workflow that nobody had named yet?]
+            These weren't four separate problems. They shared a root cause: the team's operating context was stuck in people's heads.
           </div>
         </div>
 
         <div class="case-section" id="approach">
           <div class="section-label">What I built</div>
-          <h2>Custom Linear agent, capacity planner, and weekly AI rituals</h2>
-          <p>[Describe the Linear agent: what did it automate? Ticket creation, status updates, sprint assignments, something else? What inputs did it take and what did it do with them?]</p>
-          <p>[Describe the capacity planner: how did it work? What did engineers stop doing manually?]</p>
+          <h2>Not four solutions. One compound system.</h2>
+          <p><strong>Team brain in Git</strong> — Every workflow, decision, and operating practice committed as <code>.md</code> files. A custom Claude skill auto-updated them after each session: if something changed, the docs reflected it by the next morning. New engineers onboard by reading the files. AI agents reference them without asking anyone.</p>
+          <p><strong>Linear Triggers</strong> — Jira has native triggers. Linear doesn't. Built webhook-based automations: auto-route on filing, auto-ping on stale tickets, surface blocked dependencies automatically. Triage stopped requiring meetings.</p>
+          <p><strong>Capacity planner</strong> — When something got deprioritized, the downstream impact on everything else in flight became visible before the decision was made. Tradeoffs were no longer blind.</p>
 
-          <div class="visual-block">[Screenshot of the Linear agent / capacity planner in action]</div>
+          <div class="visual-block">[Capacity planner screenshot]</div>
 
-          <p>[The weekly AI rituals: what did the team do differently each week? What meetings became shorter or disappeared? What got automated that used to be manual?]</p>
+          <p><strong>Claude wrapper</strong> — Incoming Linear bugs auto-generate reproduction steps, environment context, and a root cause analysis template — pre-filled from the ticket data and similar past issues. An engineer opens a bug and 80% of the investigation is already scaffolded.</p>
         </div>
 
         <div class="case-section" id="outcome">
           <div class="section-label">Impact</div>
-          <h2>2.5× velocity. 15 hours freed per week.</h2>
-          <p>[How did you measure velocity? Story points, cycle time, deployment frequency? What was the before and after?]</p>
-          <p>[What did engineers say? Did it change how they felt about their work, not just how much they shipped?]</p>
-          <p>[What came next — did other teams adopt it? Did it influence how the company thinks about AI tooling?]</p>
+          <h2>2.5× velocity. Self-improving. Zero new hires.</h2>
+          <p><strong>2.5× bandwidth</strong> — not from moving faster, but from fixing the bottleneck. Mentored the EM on structured delegation: architect sets outcome, engineer owns execution. Eliminated the single-point-of-failure dynamic where everything routed through one person.</p>
+          <p><strong>Predictable delivery</strong> — centralized Linear intake + automatic routing + visible capacity = clear ownership for the first time.</p>
+          <p><strong>Compound system</strong> — the team brain gets smarter every session. Each run updates the docs, which improves the next run. It's not a tool, it's a ratchet.</p>
+          <p><strong>2–3 hrs freed per engineer per day</strong> — from the AI agent handling investigation scaffolding that used to be done manually.</p>
         </div>
 
       </div>
