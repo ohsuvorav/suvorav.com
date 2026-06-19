@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="How I repositioned a generalist helpdesk to win against Zendesk in e-commerce — Oleg Suvorov">
-  <title>Redesigned helpdesk · Oleg Suvorov</title>
+    content="How I redesigned the whole product UI/UX solo — 40% feature adoption increase, 8× faster onboarding — Oleg Suvorov">
+  <title>Redesigned the whole product · Oleg Suvorov</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -287,39 +287,8 @@
       background: var(--muted);
       border: 1px solid var(--border);
       padding: 2px 8px;
-      border-radius: 9999px;
+      border-radius: 4px;
       white-space: nowrap;
-    }
-
-    /* ── Metrics bar ── */
-    .metrics-bar {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: calc(var(--radius) + 4px);
-      overflow: hidden;
-      margin: 48px 0;
-    }
-
-    .metric {
-      background: var(--muted);
-      padding: 24px 28px;
-    }
-
-    .metric-value {
-      font-size: 32px;
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 6px;
-    }
-
-    .metric-label {
-      font-size: 12px;
-      color: var(--muted-fg);
-      line-height: 1.4;
     }
 
     /* ── Case body ── */
@@ -379,7 +348,6 @@
       background: var(--muted);
       border: 1px solid var(--border);
       border-radius: calc(var(--radius) + 4px);
-      aspect-ratio: 16 / 9;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -391,10 +359,133 @@
 
     .visual-block img {
       width: 100%;
+      height: auto;
+      display: block;
+      border-radius: inherit;
+    }
+
+    /* ── Before/after static comparison ── */
+    .compare-static {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 28px 0;
+    }
+
+    .compare-static-col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .compare-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted-fg);
+    }
+
+    .compare-static-col img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: calc(var(--radius) + 2px);
+      border: 1px solid var(--border);
+    }
+
+    /* ── Before/after drag slider ── */
+    .compare-slider {
+      position: relative;
+      user-select: none;
+      cursor: col-resize;
+      border-radius: calc(var(--radius) + 4px);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin: 28px 0;
+    }
+
+    .compare-after {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .compare-before {
+      position: absolute;
+      inset: 0;
+      clip-path: inset(0 50% 0 0);
+      overflow: hidden;
+    }
+
+    .compare-before img {
+      display: block;
+      width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: inherit;
-      display: block;
+      object-position: top left;
+    }
+
+    .compare-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: white;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .compare-divider::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .compare-divider::before {
+      content: '← →';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 10px;
+      font-weight: 700;
+      color: #333;
+      z-index: 1;
+      letter-spacing: -1px;
+    }
+
+    .slider-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+    }
+
+    .slider-labels span {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted-fg);
+    }
+
+    /* ── Move label ── */
+    .move-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-color);
+      margin-bottom: 10px;
+      margin-top: 32px;
     }
 
     footer {
@@ -480,12 +571,8 @@
         font-size: 30px;
       }
 
-      .metrics-bar {
+      .compare-static {
         grid-template-columns: 1fr;
-      }
-
-      .metric {
-        padding: 20px;
       }
     }
   </style>
@@ -533,9 +620,8 @@
         </a>
 
         <div class="case-company-chip">Threecolts · 2023–2025</div>
-        <h1 class="case-title">Self-serve email setup</h1>
-        <p class="case-summary">Customers couldn't configure email on their own — and I was the one getting the
-          questions. I made it self-serve. Setup tickets dropped to zero.</p>
+        <h1 class="case-title">Redesigned the whole product. Solo.</h1>
+        <p class="case-summary">Competitors needed dozens of PMs and designers and two years to match it. I did it alone, from first principles — 40% feature adoption increase, 8× faster onboarding, and customers writing unprompted emails in caps lock about how much they loved it.</p>
 
       </div>
     </div>
@@ -545,56 +631,67 @@
 
         <div class="case-section" id="context">
           <div class="section-label">Context</div>
-          <p><b>Fixing ops streamlined setup onboarding from 2 months to 1 week.</b> But still it was a lot. Key action
-            of the helpdesk is to send the message. To make it happen you need to connect your channels, e.g. email.</p>
+          <h2>One product, two brands. One worked. One didn't.</h2>
+          <p>I was the Group PM for Threecolts' helpdesk — the same product running under two separate brands. Brand A had 3-year retention. Brand B had 3.5 months. Same features, same codebase. The gap wasn't the product — it was activation.</p>
+          <p>The value was real. People just weren't reaching it.</p>
         </div>
 
         <div class="case-section" id="problem">
           <div class="section-label">Problem</div>
-          <h2></h2>
-          <p><b>I received questions daily how to set up emails.</b> Despite the step-by-step article I created, both
-            customers and internal folks were confused how it works all the time. I decided to rebuild this legacy
-            feature. </p>
-          <div class="visual-block">[Screenshot — what the setup flow looked like before]</div>
-          <p>This screenshot doesn't tell you: what will be used for email sending, how it's gonna be previwed by
-            customers, how to ensure it's connected correctly, so it doesn't end up in spam</p>
+          <h2>Every rung on the activation ladder had friction.</h2>
+          <p>Activation is a ladder: sign up → set up → aha moment → habit → retention. We had friction at every step. The harder problem: the system did massive work invisibly. It processed tickets, routed messages, tracked history, ran automations — but even 3-year customers had no idea. They were using 20% of what was there.</p>
+          <div class="callout">
+            We had designers. The output wasn't moving the needle — concepts were too abstract, prototypes came too late. So I opened Figma myself.
+          </div>
         </div>
 
         <div class="case-section" id="approach">
           <div class="section-label">What I did</div>
-          <h2>Prototype first. PRD second.</h2>
-          <p>Before touching the UI, I dug into the technical constraints. Could we do one-click OAuth so customers
-            connect email in a single step? Could we support multiple SMTP connections? The answer to both was no — tech
-            debt made it impossible to connect two SMTPs simultaneously, and OAuth wasn't viable either.</p>
-          <div class="callout">
-            It was nice to have rather than vital. Khm-khm Zendesk did the same, which is not good, but viable excuse
-            for customers 🙃.
+          <h2>Three moves up the ladder.</h2>
+
+          <div class="move-label">Move 1 — Make the invisible visible</div>
+          <p>The biggest activation blocker wasn't missing features. It was that no one knew what the product was already doing. I built an activity log that surfaced every action the system took per object: assignments, status changes, email threads, rule triggers — all visible in one place.</p>
+          <p>Customers' reaction when they saw it: <strong>"Wait, it does all that?"</strong> That awareness triggered the next question: "What else can it do?" Feature exploration jumped. Adoption followed.</p>
+
+          <div class="compare-static">
+            <div class="compare-static-col">
+              <div class="compare-label">Before</div>
+              <img src="/assets/object-before.png" alt="Object view before activity log" loading="lazy">
+            </div>
+            <div class="compare-static-col">
+              <div class="compare-label">After</div>
+              <img src="/assets/object-after.png" alt="Object view with activity log visible" loading="lazy">
+            </div>
           </div>
-          <p>Designer failed to show progress with a prototype. So I opened Figma and started low-fidelity clickable
-            prototype. I showed it to the support team before investing more time. It clicked immediately.</p>
 
-          <div class="visual-block">[First raw Figma prototype — email setup flow]</div>
+          <div class="move-label">Move 2 — Cut the steps</div>
+          <p>Redesigned the core inbox and workflow flows end-to-end. The before: a dense list with no visual hierarchy, everything requiring an open to understand. The after: clear grouping, faster triage, context visible without clicking into every ticket.</p>
+          <p>Drag to compare:</p>
 
-          <p>Then I handed it over to the designer for polishing. so the engineer could understand it on the first read.
-          </p>
+          <div class="compare-slider" id="inboxSlider">
+            <img class="compare-after" src="/assets/inbox-after-collapsed.png" alt="Inbox after redesign" loading="lazy">
+            <div class="compare-before">
+              <img src="/assets/inbox-before.png" alt="Inbox before redesign">
+            </div>
+            <div class="compare-divider"></div>
+          </div>
+          <div class="slider-labels">
+            <span>Before</span>
+            <span>After</span>
+          </div>
 
-          <div class="visual-block">[Before / after — low-fi prototype → final UI]</div>
-
-          <p>The last piece was copy. I'd been on enough support calls to know exactly where people got confused — the
-            same questions, word for word, every time. I used that to write the tooltips. Not generic help text. The
-            actual language customers used when they didn't understand something. That's what made the setup feel
-            self-explanatory instead of just documented.</p>
-
-          <div class="visual-block">[Before / after — low-fi prototype → final UI]</div>
+          <div class="move-label">Move 3 — Email setup: prototype first, PRD second</div>
+          <p>One setup path was blocking everyone: email configuration. I was receiving setup questions daily despite a step-by-step help doc. I rebuilt the flow from scratch.</p>
+          <p>The process: opened Figma, built a low-fidelity clickable prototype, validated it with the support team before writing a single line of spec. Then I rewrote every tooltip using the exact language customers used when they were confused — pulled directly from support call recordings. Not generic help text. The words they already had.</p>
+          <p><strong>Setup support tickets dropped to zero.</strong></p>
         </div>
 
         <div class="case-section" id="impact">
           <div class="section-label">Impact</div>
-          <h2>The questions stopped coming.</h2>
-          <p>After launch, I stopped receiving setup questions entirely. Customers configured email and contact forms on
-            their own and moved on. The feature was invisible in the best way.</p>
-          <p>As part of the broader redesign, onboarding time dropped from 8 weeks to 1. [Add what specifically drove
-            growth — new logos, reduced churn, upsell, or a mix.]</p>
+          <h2>40% feature adoption. 8× faster onboarding. Fan mail.</h2>
+          <p>Feature adoption increased 40%. Onboarding dropped from 8 weeks to 1. Retention gap between the two brands narrowed — customers on Brand B started completing activation instead of churning through it.</p>
+          <p>The signal I remember most: customers started sending unprompted emails about how much they loved the new UI. Not survey responses. Emails they chose to write.</p>
+          <p>Our main competitor needed two years and a full team of PMs and designers to reach this quality bar. We matched it with one PM, no design system to start from, and first-principles thinking from a blank Figma file.</p>
         </div>
 
       </div>
@@ -644,6 +741,7 @@
   </footer>
 
   <script>
+    // Theme
     const root = document.documentElement;
     const sys = window.matchMedia('(prefers-color-scheme: light)');
     const btns = document.querySelectorAll('.theme-btn');
@@ -687,6 +785,40 @@
     }, { rootMargin: '-20% 0px -60% 0px' });
 
     sections.forEach(s => tocObserver.observe(s));
+
+    // Before/after slider
+    const slider = document.getElementById('inboxSlider');
+
+    const updateSlider = (clientX) => {
+      const rect = slider.getBoundingClientRect();
+      const pct = Math.max(3, Math.min(97, (clientX - rect.left) / rect.width * 100));
+      slider.querySelector('.compare-before').style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+      slider.querySelector('.compare-divider').style.left = `${pct}%`;
+    };
+
+    let dragging = false;
+
+    slider.addEventListener('mousedown', (e) => {
+      dragging = true;
+      updateSlider(e.clientX);
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (dragging) updateSlider(e.clientX);
+    });
+
+    window.addEventListener('mouseup', () => { dragging = false; });
+
+    slider.addEventListener('touchstart', (e) => {
+      dragging = true;
+      updateSlider(e.touches[0].clientX);
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (dragging) updateSlider(e.touches[0].clientX);
+    }, { passive: true });
+
+    window.addEventListener('touchend', () => { dragging = false; });
   </script>
 
 </body>
