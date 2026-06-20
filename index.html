@@ -335,26 +335,7 @@
     }
 
     /* ── Case Studies — Filter bar ── */
-    .cases-filters {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
-
-    .filter-bar-label {
-      font-size: 13px;
-      color: var(--muted-fg);
-      font-weight: 500;
-    }
-
-    /* Dropdown trigger button */
-    .filter-group {
-      position: relative;
-    }
-
-    .filter-trigger {
+    .hide-upcoming-toggle {
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -368,148 +349,23 @@
       border-radius: calc(var(--radius) - 2px);
       cursor: pointer;
       transition: background 0.15s, color 0.15s;
-      white-space: nowrap;
+      margin-bottom: 24px;
     }
 
-    .filter-trigger:hover {
+    .hide-upcoming-toggle:hover {
       background: var(--accent);
       color: var(--accent-fg);
     }
 
-    .filter-trigger.has-value {
+    .hide-upcoming-toggle.active {
       color: var(--foreground);
       border-color: var(--foreground);
     }
 
-    .filter-trigger-chevron {
-      width: 12px;
-      height: 12px;
-      transition: transform 0.15s;
-    }
-
-    .filter-group.open .filter-trigger-chevron {
-      transform: rotate(180deg);
-    }
-
-    /* Dropdown panel */
-    .filter-dropdown {
-      display: none;
-      position: absolute;
-      top: calc(100% + 6px);
-      left: 0;
-      z-index: 100;
-      background: var(--background);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 4px;
-      min-width: 140px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    }
-
-    .filter-group.open .filter-dropdown {
-      display: block;
-    }
-
-    .filter-option {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      width: 100%;
-      font-size: 13px;
-      font-family: inherit;
-      color: var(--foreground);
-      background: transparent;
-      border: none;
-      padding: 7px 10px;
-      border-radius: calc(var(--radius) - 2px);
-      cursor: pointer;
-      text-align: left;
-      transition: background 0.1s;
-    }
-
-    .filter-option:hover {
-      background: var(--accent);
-    }
-
-    .filter-option.active {
-      color: var(--foreground);
-      font-weight: 500;
-    }
-
-    .filter-option-check {
-      width: 12px;
-      height: 12px;
-      flex-shrink: 0;
-      opacity: 0;
-    }
-
-    .filter-option.active .filter-option-check {
-      opacity: 1;
-    }
-
-    .case-count {
-      font-size: 12px;
-      color: var(--muted-fg);
-      margin-bottom: 4px;
-    }
-
-    /* ── Case Studies — Intercom layout ── */
-    .cases-intercom {
-      display: grid;
-      grid-template-columns: 5fr 7fr;
-      gap: 48px;
-      align-items: start;
-    }
-
-    .cases-preview {
-      position: sticky;
-      top: 32px;
-    }
-
-    .case-preview-card {
-      background: var(--muted);
-      border: 1px solid var(--border);
-      border-radius: calc(var(--radius) + 4px);
-      padding: 28px;
+    [data-hide-upcoming] div.case-row {
       display: none;
     }
 
-    .case-preview-card.active {
-      display: block;
-    }
-
-    .case-preview-company {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted-fg);
-      margin-bottom: 20px;
-    }
-
-    .case-preview-stat {
-      font-size: 32px;
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      color: var(--foreground);
-      margin-bottom: 8px;
-    }
-
-    .case-preview-sub {
-      font-size: 13px;
-      color: var(--muted-fg);
-      line-height: 1.5;
-      margin-bottom: 20px;
-    }
-
-    .case-preview-tags {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
-    /* Right list */
     .cases-list {
       display: flex;
       flex-direction: column;
@@ -527,7 +383,6 @@
       color: inherit;
     }
 
-    /* Non-live rows (div) — no hover, no arrow, muted */
     div.case-row {
       cursor: default;
       opacity: 0.45;
@@ -600,14 +455,6 @@
     }
 
     @media (max-width: 640px) {
-      .cases-intercom {
-        grid-template-columns: 1fr;
-      }
-
-      .cases-preview {
-        position: static;
-      }
-
       .case-row-title {
         font-size: 22px;
       }
@@ -841,268 +688,41 @@
       <div class="container">
         <div class="section-label">Case studies</div>
 
-        <!-- Filter bar -->
-        <div class="cases-filters">
-          <span class="filter-bar-label">Filter</span>
+        <button class="hide-upcoming-toggle" id="hideUpcomingBtn">Hide upcoming</button>
 
-          <!-- Role dropdown -->
-          <div class="filter-group" id="roleGroup">
-            <button class="filter-trigger" id="roleTrigger">
-              Role: All
-              <svg class="filter-trigger-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </button>
-            <div class="filter-dropdown">
-              <button class="filter-option active" data-filter="role" data-value="all">
-                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                All
-              </button>
-              <button class="filter-option" data-filter="role" data-value="ic">
-                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                Individual contributor
-              </button>
-              <button class="filter-option" data-filter="role" data-value="manager">
-                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                Manager
-              </button>
-            </div>
+        <div class="cases-list" id="casesList">
+          <a class="case-row" href="/cases/ai-agent.html">
+            <span class="case-row-title">AI-first ops: 2.5× team velocity</span>
+            <span class="case-row-arrow">↗</span>
+          </a>
+          <a class="case-row" href="/cases/product-redesign.html">
+            <span class="case-row-title">Redesigned the whole product. Solo.</span>
+            <span class="case-row-arrow">↗</span>
+          </a>
+          <div class="case-row">
+            <span class="case-row-title">Killed 2 product verticals to double ARR</span>
+            <span class="case-row-soon">Soon</span>
           </div>
-
-          <!-- Skill dropdown -->
-          <div class="filter-group" id="skillGroup">
-            <button class="filter-trigger" id="skillTrigger">
-              Skill: All
-              <svg class="filter-trigger-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </button>
-            <div class="filter-dropdown">
-              <button class="filter-option active" data-filter="skill" data-value="all">
-                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                All
-              </button>
-              <button class="filter-option" data-filter="skill" data-value="data">
-                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                Data
-              </button>
-              <button class="filter-option" data-filter="skill" data-value="retention">
-                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                Retention
-              </button>
-              <button class="filter-option" data-filter="skill" data-value="growth">
-                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                Growth
-              </button>
-              <button class="filter-option" data-filter="skill" data-value="ai">
-                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                AI
-              </button>
-              <button class="filter-option" data-filter="skill" data-value="0-1">
-                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                0→1
-              </button>
-              <button class="filter-option" data-filter="skill" data-value="gtm">
-                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                GTM
-              </button>
-            </div>
+          <div class="case-row">
+            <span class="case-row-title">Tripled retention (3.5 → 11.5 months)</span>
+            <span class="case-row-soon">Soon</span>
           </div>
-        </div>
-        <div class="case-count" id="caseCount">3 cases</div>
-
-        <div class="cases-intercom">
-
-          <!-- Left: preview panel -->
-          <div class="cases-preview">
-
-            <div class="case-preview-card" data-preview="1">
-              <div class="case-preview-company">Threecolts · 2025</div>
-              <div class="case-preview-stat">2.5X velocity increased</div>
-              <div class="case-preview-sub"> AI "team's brain" in Git, AI Custom Linear agent — that boosted velocity by 2.5 times without adding headcount.</div>
-              <div class="case-preview-tags">
-                <span class="tag">AI</span>
-                <span class="tag">Linear</span>
-                <span class="tag">Automation</span>
-              </div>
-            </div>
-
-            <div class="case-preview-card" data-preview="2">
-              <div class="case-preview-company">Threecolts · 2025</div>
-              <div class="case-preview-stat">65% drop-off fixed</div>
-              <div class="case-preview-sub">Built Customer 360 combining financial, product, and marketplace signals.
-                Became the foundation for all GTM decisions company-wide.</div>
-              <div class="case-preview-tags">
-                <span class="tag">Growth</span>
-                <span class="tag">Data</span>
-                <span class="tag">GTM</span>
-              </div>
-            </div>
-
-            <div class="case-preview-card active" data-preview="3">
-              <div class="case-preview-company">Threecolts · 2023–2025</div>
-              <div class="case-preview-stat">$500K → $1M ARR</div>
-              <div class="case-preview-sub">Onboarding cut from 2 months to 1 week. Repositioned helpdesk from
-                generalist to specialized e-commerce — competing and winning against Zendesk.</div>
-              <div class="case-preview-tags">
-                <span class="tag">Retention</span>
-                <span class="tag">Activation</span>
-                <span class="tag">0→1</span>
-              </div>
-            </div>
-
-            <div class="case-preview-card active" data-preview="4">
-              <div class="case-preview-company">Threecolts · 2025</div>
-              <div class="case-preview-stat">Retention tripled</div>
-              <div class="case-preview-sub">Onboarding cut from 2 months to 1 week. Repositioned helpdesk from
-                generalist to specialized e-commerce — competing and winning against Zendesk.</div>
-              <div class="case-preview-tags">
-                <span class="tag">Retention</span>
-                <span class="tag">Activation</span>
-                <span class="tag">0→1</span>
-              </div>
-            </div>
-
+          <div class="case-row">
+            <span class="case-row-title">360° customer view — blind GTM to targeted</span>
+            <span class="case-row-soon">Soon</span>
           </div>
-
-          <!-- Right: title list -->
-          <div class="cases-list">
-            <a class="case-row" href="/cases/ai-agent.html" data-case="1" data-role="ic manager" data-skills="ai">
-              <span class="case-row-title">AI-first ops increased team's velocity by 2.5 times</span>
-              <span class="case-row-arrow">↗</span>
-            </a>
-            
-            <a class="case-row active" href="/cases/product-redesign.html" data-case="2" data-role="ic manager"
-              data-skills="data,growth,gtm">
-              <span class="case-row-title">Redesigned whole product</span>
-              <span class="case-row-arrow">↗</span>
-            </a>
-
-            <a class="case-row active" href="/cases/product-redesign.html" data-case="4" data-role="ic manager"
-              data-skills="data,growth,gtm">
-              <span class="case-row-title">Killed 2 product verticals</span>
-              <span class="case-row-arrow">↗</span>
-            </a>
-            
-            <div class="case-row" data-case="3" data-role="ic" data-skills="retention,0-1">
-              <span class="case-row-title">Tripled retention</span>
-              <span class="case-row-arrow">↗</span>
-            </div>
-            <div class="case-row" data-case="3" data-role="ic" data-skills="retention,0-1">
-              <span class="case-row-title">Streamlined onboarding 2 months -> 1 week</span>
-              <span class="case-row-arrow">↗</span>
-            </div>
-            <div class="case-row" data-case="3" data-role="ic" data-skills="retention,0-1">
-              <span class="case-row-title">Streamlined activation (email, contact form)</span>
-              <span class="case-row-arrow">↗</span>
-            </div>
-            <div class="case-row" data-case="3" data-role="ic manager" data-skills="data,growth,gtm">
-              <span class="case-row-title">Killed 2 verticals</span>
-              <span class="case-row-arrow">↗</span>
-            </div>
-
-            <div class="case-row" data-case="3" data-role="ic manager" data-skills="data,growth,gtm">
-              <span class="case-row-title">360° customer overview</span>
-              <span class="case-row-arrow">↗</span>
-            </div>
-            <div class="case-row" data-case="3" data-role="ic manager" data-skills="data,growth,gtm">
-              <span class="case-row-title">65% funnel drop-off</span>
-              <span class="case-row-arrow">↗</span>
-            </div>
-            <div class="case-row" data-case="3" data-role="ic manager" data-skills="ai">
-              <span class="case-row-title">AI-first ops inreased bandwidth 2.5 times</span>
-              <span class="case-row-arrow">↗</span>
-            </div>
-            <div class="case-row" data-case="3" data-role="ic manager" data-skills="ai">
-              <span class="case-row-title">Launched product from scratch to first payments</span>
-              <span class="case-row-arrow">↗</span>
-            </div>
-            <div class="case-row" data-case="3" data-role="ic manager" data-skills="ai">
-              <span class="case-row-title">1-st place at AI Hackathon</span>
-              <span class="case-row-arrow">↗</span>
-            </div>
-            <div class="case-row" data-case="3" data-role="ic manager" data-skills="ai">
-              <span class="case-row-title">C-level misalignment resolved</span>
-              <span class="case-row-arrow">↗</span>
-            </div>
-            <div class="case-row" data-case="3" data-role="ic manager" data-skills="ai">
-              <span class="case-row-title">People Management (Yulia)</span>
-              <span class="case-row-arrow">↗</span>
-            </div>
-            <div class="case-row" data-case="3" data-role="ic manager" data-skills="ai">
-              <span class="case-row-title">Mentorship (Ismail)</span>
-              <span class="case-row-arrow">↗</span>
-            </div>
-            <div class="case-row" data-case="3" data-role="ic manager" data-skills="ai">
-              <span class="case-row-title">Informal leadership (Account Master Record)</span>
-              <span class="case-row-arrow">↗</span>
-            </div>
-            <div class="case-row" data-case="3" data-role="ic manager" data-skills="ai">
-              <span class="case-row-title">Retained $68k MRR at risk of churn </span>
-              <span class="case-row-arrow">↗</span>
-            </div>
-            <div class="case-row" data-case="3" data-role="ic manager" data-skills="ai">
-              <span class="case-row-title">upsold $20k net new ARR</span>
-              <span class="case-row-arrow">↗</span>
-            </div>
-            <div class="case-row" data-case="3" data-role="ic manager" data-skills="ai">
-              <span class="case-row-title">Grew team from 5 to 15 members</span>
-              <span class="case-row-arrow">↗</span>
-            </div>
-            <div class="case-row" data-case="3" data-role="ic manager" data-skills="ai">
-              <span class="case-row-title">Pivot from B2C to B2B</span>
-              <span class="case-row-arrow">↗</span>
-            </div>
-            <div class="case-row" data-case="3" data-role="ic manager" data-skills="ai">
-              <span class="case-row-title">Scraped websites for outreach</span>
-              <span class="case-row-arrow">↗</span>
-            </div>
-            <div class="case-row" data-case="3" data-role="ic manager" data-skills="ai">
-              <span class="case-row-title">Website optimization for PMM</span>
-              <span class="case-row-arrow">↗</span>
-            </div>
-            <div class="case-row" data-case="3" data-role="ic manager" data-skills="ai">
-              <span class="case-row-title">Sales pipeline and CRM Administration</span>
-              <span class="case-row-arrow">↗</span>
-            </div>
-            <div class="case-row" data-case="3" data-role="ic manager" data-skills="ai">
-              <span class="case-row-title">Marketing with no budget</span>
-              <span class="case-row-arrow">↗</span>
-            </div>
+          <div class="case-row">
+            <span class="case-row-title">Launched product from scratch to first payments</span>
+            <span class="case-row-soon">Soon</span>
           </div>
-
+          <div class="case-row">
+            <span class="case-row-title">1st place at AI Hackathon</span>
+            <span class="case-row-soon">Soon</span>
+          </div>
+          <div class="case-row">
+            <span class="case-row-title">Retained $68K MRR at risk of churn</span>
+            <span class="case-row-soon">Soon</span>
+          </div>
         </div>
       </div>
     </section>
@@ -1231,101 +851,22 @@
       if ((localStorage.getItem('themeMode') || 'system') === 'system') applyTheme('system');
     });
 
-    // Case studies intercom interaction
-    const caseRows = document.querySelectorAll('.case-row');
-    const casePreviews = document.querySelectorAll('.case-preview-card');
+    // Hide upcoming toggle
+    const hideBtn = document.getElementById('hideUpcomingBtn');
+    const casesList = document.getElementById('casesList');
+    let hidden = false;
 
-    const selectCase = (row) => {
-      caseRows.forEach(r => r.classList.remove('active'));
-      casePreviews.forEach(p => p.classList.remove('active'));
-      row.classList.add('active');
-      const preview = document.querySelector(`.case-preview-card[data-preview="${row.dataset.case}"]`);
-      if (preview) preview.classList.add('active');
-    };
-
-    caseRows.forEach(row => {
-      if (row.tagName === 'DIV') {
-        // Inject Soon badge, block interaction
-        const badge = document.createElement('span');
-        badge.className = 'case-row-soon';
-        badge.textContent = 'Soon';
-        row.appendChild(badge);
+    hideBtn.addEventListener('click', () => {
+      hidden = !hidden;
+      if (hidden) {
+        casesList.setAttribute('data-hide-upcoming', '');
+        hideBtn.classList.add('active');
+        hideBtn.textContent = 'Show upcoming';
       } else {
-        row.addEventListener('click', () => selectCase(row));
-        row.addEventListener('mouseenter', () => selectCase(row));
+        casesList.removeAttribute('data-hide-upcoming');
+        hideBtn.classList.remove('active');
+        hideBtn.textContent = 'Hide upcoming';
       }
-    });
-
-    // Filter logic
-    let activeRole = 'all';
-    let activeSkill = 'all';
-
-    const filterCases = () => {
-      let visible = 0;
-
-      caseRows.forEach(row => {
-        const roles = row.dataset.role || '';
-        const skills = row.dataset.skills || '';
-
-        const matchesRole = activeRole === 'all' || roles.includes(activeRole);
-        const matchesSkill = activeSkill === 'all' || skills.includes(activeSkill);
-        const show = matchesRole && matchesSkill;
-
-        row.style.display = show ? '' : 'none';
-        if (show) visible++;
-      });
-
-      document.getElementById('caseCount').textContent = `${visible} case${visible !== 1 ? 's' : ''}`;
-
-      // Auto-select first visible if current active is hidden
-      const currentActive = document.querySelector('.case-row.active');
-      if (!currentActive || currentActive.style.display === 'none') {
-        const firstVisible = Array.from(caseRows).find(r => r.style.display !== 'none');
-        if (firstVisible) selectCase(firstVisible);
-        else casePreviews.forEach(p => p.classList.remove('active'));
-      }
-    };
-
-    // Dropdown open/close
-    const toggleGroup = (group, otherGroup) => {
-      const isOpen = group.classList.contains('open');
-      otherGroup.classList.remove('open');
-      group.classList.toggle('open', !isOpen);
-    };
-
-    document.getElementById('roleTrigger').addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleGroup(document.getElementById('roleGroup'), document.getElementById('skillGroup'));
-    });
-
-    document.getElementById('skillTrigger').addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleGroup(document.getElementById('skillGroup'), document.getElementById('roleGroup'));
-    });
-
-    document.addEventListener('click', () => {
-      document.getElementById('roleGroup').classList.remove('open');
-      document.getElementById('skillGroup').classList.remove('open');
-    });
-
-    // Filter option selection
-    document.querySelectorAll('.filter-option').forEach(opt => {
-      opt.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const group = opt.dataset.filter;
-        document.querySelectorAll(`.filter-option[data-filter="${group}"]`).forEach(o => o.classList.remove('active'));
-        opt.classList.add('active');
-
-        const trigger = group === 'role' ? document.getElementById('roleTrigger') : document.getElementById('skillTrigger');
-        const label = group === 'role' ? 'Role' : 'Skill';
-        const value = opt.textContent.trim();
-        trigger.childNodes[0].textContent = `${label}: ${value}`;
-        document.getElementById(group === 'role' ? 'roleGroup' : 'skillGroup').classList.remove('open');
-
-        if (group === 'role') activeRole = opt.dataset.value;
-        if (group === 'skill') activeSkill = opt.dataset.value;
-        filterCases();
-      });
     });
   </script>
 </body>
