@@ -335,6 +335,116 @@
     }
 
     /* ── Case Studies — Filter bar ── */
+    .cases-filters {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .filter-bar-label {
+      font-size: 13px;
+      color: var(--muted-fg);
+      font-weight: 500;
+    }
+
+    .filter-group {
+      position: relative;
+    }
+
+    .filter-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      color: var(--muted-fg);
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      border-radius: calc(var(--radius) - 2px);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+
+    .filter-trigger:hover {
+      background: var(--accent);
+      color: var(--accent-fg);
+    }
+
+    .filter-trigger.has-value {
+      color: var(--foreground);
+      border-color: var(--foreground);
+    }
+
+    .filter-trigger-chevron {
+      width: 12px;
+      height: 12px;
+      transition: transform 0.15s;
+    }
+
+    .filter-group.open .filter-trigger-chevron {
+      transform: rotate(180deg);
+    }
+
+    .filter-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      z-index: 100;
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 4px;
+      min-width: 140px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .filter-group.open .filter-dropdown {
+      display: block;
+    }
+
+    .filter-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      font-size: 13px;
+      font-family: inherit;
+      color: var(--foreground);
+      background: transparent;
+      border: none;
+      padding: 7px 10px;
+      border-radius: calc(var(--radius) - 2px);
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.1s;
+    }
+
+    .filter-option:hover {
+      background: var(--accent);
+    }
+
+    .filter-option.active {
+      color: var(--foreground);
+      font-weight: 500;
+    }
+
+    .filter-option-check {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+      opacity: 0;
+    }
+
+    .filter-option.active .filter-option-check {
+      opacity: 1;
+    }
+
     .hide-upcoming-toggle {
       display: inline-flex;
       align-items: center;
@@ -349,7 +459,7 @@
       border-radius: calc(var(--radius) - 2px);
       cursor: pointer;
       transition: background 0.15s, color 0.15s;
-      margin-bottom: 24px;
+      white-space: nowrap;
     }
 
     .hide-upcoming-toggle:hover {
@@ -758,7 +868,106 @@
       <div class="container">
         <div class="section-label">Case studies</div>
 
-        <button class="hide-upcoming-toggle" id="hideUpcomingBtn">Hide upcoming</button>
+        <!-- Filter bar -->
+        <div class="cases-filters">
+          <span class="filter-bar-label">Filter</span>
+
+          <div class="filter-group" id="roleGroup">
+            <button class="filter-trigger" id="roleTrigger">
+              Role: All
+              <svg class="filter-trigger-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="filter-dropdown">
+              <button class="filter-option active" data-filter="role" data-value="all">
+                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                All
+              </button>
+              <button class="filter-option" data-filter="role" data-value="ic">
+                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Individual contributor
+              </button>
+              <button class="filter-option" data-filter="role" data-value="manager">
+                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Manager
+              </button>
+            </div>
+          </div>
+
+          <div class="filter-group" id="skillGroup">
+            <button class="filter-trigger" id="skillTrigger">
+              Skill: All
+              <svg class="filter-trigger-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="filter-dropdown">
+              <button class="filter-option active" data-filter="skill" data-value="all">
+                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                All
+              </button>
+              <button class="filter-option" data-filter="skill" data-value="ai">
+                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                AI
+              </button>
+              <button class="filter-option" data-filter="skill" data-value="growth">
+                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Growth
+              </button>
+              <button class="filter-option" data-filter="skill" data-value="retention">
+                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Retention
+              </button>
+              <button class="filter-option" data-filter="skill" data-value="data">
+                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Data
+              </button>
+              <button class="filter-option" data-filter="skill" data-value="0-1">
+                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                0→1
+              </button>
+              <button class="filter-option" data-filter="skill" data-value="gtm">
+                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                GTM
+              </button>
+            </div>
+          </div>
+
+          <button class="hide-upcoming-toggle" id="hideUpcomingBtn">Hide upcoming</button>
+        </div>
 
         <div class="cases-intercom">
 
@@ -965,6 +1174,28 @@
 
     caseRows.forEach(row => {
       row.addEventListener('mouseenter', () => selectCase(row));
+    });
+
+    // Role / Skill filter dropdowns
+    const toggleGroup = (group, otherGroup) => {
+      const isOpen = group.classList.contains('open');
+      otherGroup.classList.remove('open');
+      group.classList.toggle('open', !isOpen);
+    };
+
+    document.getElementById('roleTrigger').addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleGroup(document.getElementById('roleGroup'), document.getElementById('skillGroup'));
+    });
+
+    document.getElementById('skillTrigger').addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleGroup(document.getElementById('skillGroup'), document.getElementById('roleGroup'));
+    });
+
+    document.addEventListener('click', () => {
+      document.getElementById('roleGroup').classList.remove('open');
+      document.getElementById('skillGroup').classList.remove('open');
     });
 
     // Hide upcoming toggle
