@@ -395,6 +395,12 @@
     }
 
     /* ── Before/after drag slider ── */
+    .compare-slider img {
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
     .compare-slider {
       position: relative;
       user-select: none;
@@ -669,9 +675,9 @@
           <p>Drag to compare:</p>
 
           <div class="compare-slider" id="inboxSlider">
-            <img class="compare-after" src="/assets/inbox-after-collapsed.png" alt="Inbox after redesign" loading="lazy">
+            <img class="compare-after" src="/assets/inbox-after-collapsed.png" alt="Inbox after redesign" loading="lazy" draggable="false">
             <div class="compare-before">
-              <img src="/assets/inbox-before.png" alt="Inbox before redesign">
+              <img src="/assets/inbox-before.png" alt="Inbox before redesign" draggable="false">
             </div>
             <div class="compare-divider"></div>
           </div>
