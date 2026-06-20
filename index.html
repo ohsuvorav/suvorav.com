@@ -336,25 +336,12 @@
 
     /* ── Case Studies — Filter bar ── */
     /* ── Company context timeline ── */
-    .ctx-block {
-      margin-bottom: 40px;
-    }
-
-    .ctx-chip {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent-color);
-      margin-bottom: 8px;
-    }
-
     .ctx-tagline {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--muted-fg);
       line-height: 1.55;
-      margin-bottom: 28px;
-      max-width: 560px;
+      margin-bottom: 20px;
+      max-width: 480px;
     }
 
     .ctx-timeline {
@@ -385,18 +372,17 @@
       content: '';
       position: absolute;
       left: -28px;
-      top: 6px;
+      top: 7px;
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: var(--border);
-      border: 2px solid var(--background);
-      box-shadow: 0 0 0 1px var(--border);
+      background: var(--muted-fg);
+      opacity: 0.35;
     }
 
     .ctx-node.live::before {
       background: var(--accent-color);
-      box-shadow: 0 0 0 1px var(--accent-color);
+      opacity: 1;
     }
 
     .ctx-year {
@@ -999,46 +985,6 @@
       <div class="container">
         <div class="section-label">Case studies</div>
 
-        <!-- Company context timeline -->
-        <div class="ctx-block">
-          <div class="ctx-chip">Threecolts · Group PM · 2023–2025</div>
-          <p class="ctx-tagline">E-commerce helpdesk. Two brands. Brand A: 3-year retention. Brand B: 3.5 months. Same product. I owned both — and the gap between them.</p>
-
-          <div class="ctx-timeline">
-            <div class="ctx-node">
-              <div class="ctx-year">2023</div>
-              <div class="ctx-what">Joined the platform team. Delivery was broken — half-shipped, late, no ownership.</div>
-            </div>
-
-            <div class="ctx-node">
-              <div class="ctx-year">2024</div>
-              <div class="ctx-what">Built compound ops system: team brain in Git, Linear Triggers, capacity planner, Claude wrapper.</div>
-              <div class="ctx-row">
-                <span class="ctx-outcome">2.5× team velocity. Zero new hires.</span>
-                <a class="ctx-link" href="/cases/ai-agent.html">Case study ↗</a>
-              </div>
-            </div>
-
-            <div class="ctx-node">
-              <div class="ctx-year">2024</div>
-              <div class="ctx-what">Redesigned the entire product UI/UX solo — from first principles.</div>
-              <div class="ctx-row">
-                <span class="ctx-outcome">40% feature adoption. Onboarding 8× faster.</span>
-                <a class="ctx-link" href="/cases/product-redesign.html">Case study ↗</a>
-              </div>
-            </div>
-
-            <div class="ctx-node live">
-              <div class="ctx-year">2025</div>
-              <div class="ctx-what">Built a growth engine. Killed 2 verticals despite founder pushback — escalated to CEO/CPO.</div>
-              <div class="ctx-row">
-                <span class="ctx-outcome">ARR doubled: $500K → $1M. Retention 3×.</span>
-                <span class="ctx-soon">Case study soon</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <!-- Filter bar -->
         <div class="cases-filters">
           <span class="filter-bar-label">Filter</span>
@@ -1219,12 +1165,45 @@
             </div>
             <div class="work-period">2025 – Present</div>
           </div>
-          <div class="work-item">
-            <div>
-              <div class="work-company">Threecolts</div>
-              <div class="work-role">Group Product Manager, Helpdesk & B2B2C</div>
+          <div class="work-item" style="align-items: flex-start; flex-direction: column; gap: 20px;">
+            <div style="display: flex; justify-content: space-between; width: 100%; align-items: flex-start;">
+              <div>
+                <div class="work-company">Threecolts</div>
+                <div class="work-role">Group Product Manager, Helpdesk & B2B2C</div>
+              </div>
+              <div class="work-period">2023 – 2025</div>
             </div>
-            <div class="work-period">2023 – 2025</div>
+            <p class="ctx-tagline">E-commerce helpdesk. Two brands. Brand A: 3-year retention. Brand B: 3.5 months. Same product. I owned both — and the gap between them.</p>
+            <div class="ctx-timeline">
+              <div class="ctx-node">
+                <div class="ctx-year">2023</div>
+                <div class="ctx-what">Joined the platform team. Delivery was broken — half-shipped, late, no ownership.</div>
+              </div>
+              <div class="ctx-node">
+                <div class="ctx-year">2024</div>
+                <div class="ctx-what">Built compound ops system: team brain in Git, Linear Triggers, capacity planner, Claude wrapper.</div>
+                <div class="ctx-row">
+                  <span class="ctx-outcome">2.5× team velocity. Zero new hires.</span>
+                  <a class="ctx-link" href="/cases/ai-agent.html">Case study ↗</a>
+                </div>
+              </div>
+              <div class="ctx-node">
+                <div class="ctx-year">2024</div>
+                <div class="ctx-what">Redesigned the entire product UI/UX solo — from first principles.</div>
+                <div class="ctx-row">
+                  <span class="ctx-outcome">40% feature adoption. Onboarding 8× faster.</span>
+                  <a class="ctx-link" href="/cases/product-redesign.html">Case study ↗</a>
+                </div>
+              </div>
+              <div class="ctx-node live">
+                <div class="ctx-year">2025</div>
+                <div class="ctx-what">Built a growth engine. Killed 2 verticals despite founder pushback — escalated to CEO/CPO.</div>
+                <div class="ctx-row">
+                  <span class="ctx-outcome">ARR doubled: $500K → $1M. Retention 3×.</span>
+                  <span class="ctx-soon">Case study soon</span>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="work-item">
             <div>
