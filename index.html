@@ -337,15 +337,7 @@
     /* ── Case Studies — Filter bar ── */
     /* ── Company context timeline ── */
     .ctx-block {
-      border: 1px solid var(--border);
-      border-radius: calc(var(--radius) + 4px);
-      overflow: hidden;
       margin-bottom: 40px;
-    }
-
-    .ctx-intro {
-      padding: 20px 24px;
-      border-bottom: 1px solid var(--border);
     }
 
     .ctx-chip {
@@ -361,49 +353,78 @@
       font-size: 14px;
       color: var(--muted-fg);
       line-height: 1.55;
+      margin-bottom: 28px;
+      max-width: 560px;
+    }
+
+    .ctx-timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .ctx-timeline::before {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 8px;
+      bottom: 28px;
+      width: 1px;
+      background: var(--border);
     }
 
     .ctx-node {
-      display: flex;
-      border-bottom: 1px solid var(--border);
+      position: relative;
+      padding-bottom: 28px;
     }
 
     .ctx-node:last-child {
-      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .ctx-node::before {
+      content: '';
+      position: absolute;
+      left: -25px;
+      top: 6px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--border);
+      border: 2px solid var(--background);
+      box-shadow: 0 0 0 1px var(--border);
+    }
+
+    .ctx-node.live::before {
+      background: var(--accent-color);
+      box-shadow: 0 0 0 1px var(--accent-color);
     }
 
     .ctx-year {
-      width: 64px;
-      flex-shrink: 0;
-      padding: 16px 16px;
       font-size: 11px;
       font-weight: 600;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       color: var(--muted-fg);
-      border-right: 1px solid var(--border);
-      display: flex;
-      align-items: flex-start;
-      padding-top: 19px;
-    }
-
-    .ctx-body {
-      padding: 16px 20px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+      margin-bottom: 4px;
     }
 
     .ctx-what {
       font-size: 14px;
       color: var(--muted-fg);
       line-height: 1.5;
+      margin-bottom: 6px;
+    }
+
+    .ctx-node:only-child .ctx-what,
+    .ctx-node:first-child .ctx-what {
+      margin-bottom: 0;
     }
 
     .ctx-row {
       display: flex;
       align-items: center;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .ctx-outcome {
@@ -980,44 +1001,36 @@
 
         <!-- Company context timeline -->
         <div class="ctx-block">
-          <div class="ctx-intro">
-            <div class="ctx-chip">Threecolts · Group PM · 2023–2025</div>
-            <p class="ctx-tagline">E-commerce helpdesk. Two brands. Brand A: 3-year retention. Brand B: 3.5 months. Same product, same codebase. I owned both — and the gap between them.</p>
-          </div>
+          <div class="ctx-chip">Threecolts · Group PM · 2023–2025</div>
+          <p class="ctx-tagline">E-commerce helpdesk. Two brands. Brand A: 3-year retention. Brand B: 3.5 months. Same product. I owned both — and the gap between them.</p>
 
-          <div class="ctx-node">
-            <div class="ctx-year">2023</div>
-            <div class="ctx-body">
-              <div class="ctx-what">Joined the platform team. Delivery was broken — half-shipped, late, no ownership. Ops was chaos.</div>
+          <div class="ctx-timeline">
+            <div class="ctx-node">
+              <div class="ctx-year">2023</div>
+              <div class="ctx-what">Joined the platform team. Delivery was broken — half-shipped, late, no ownership.</div>
             </div>
-          </div>
 
-          <div class="ctx-node">
-            <div class="ctx-year">2024</div>
-            <div class="ctx-body">
-              <div class="ctx-what">Built a compound ops system: team brain in Git, Linear Triggers, capacity planner, Claude wrapper.</div>
+            <div class="ctx-node">
+              <div class="ctx-year">2024</div>
+              <div class="ctx-what">Built compound ops system: team brain in Git, Linear Triggers, capacity planner, Claude wrapper.</div>
               <div class="ctx-row">
                 <span class="ctx-outcome">2.5× team velocity. Zero new hires.</span>
                 <a class="ctx-link" href="/cases/ai-agent.html">Case study ↗</a>
               </div>
             </div>
-          </div>
 
-          <div class="ctx-node">
-            <div class="ctx-year">2024</div>
-            <div class="ctx-body">
-              <div class="ctx-what">Redesigned the entire product UI/UX solo — from first principles. Opened Figma myself.</div>
+            <div class="ctx-node">
+              <div class="ctx-year">2024</div>
+              <div class="ctx-what">Redesigned the entire product UI/UX solo — from first principles.</div>
               <div class="ctx-row">
                 <span class="ctx-outcome">40% feature adoption. Onboarding 8× faster.</span>
                 <a class="ctx-link" href="/cases/product-redesign.html">Case study ↗</a>
               </div>
             </div>
-          </div>
 
-          <div class="ctx-node">
-            <div class="ctx-year">2025</div>
-            <div class="ctx-body">
-              <div class="ctx-what">Built a growth engine. Used it to kill 2 product verticals despite founder pushback — escalated directly to CEO/CPO.</div>
+            <div class="ctx-node live">
+              <div class="ctx-year">2025</div>
+              <div class="ctx-what">Built a growth engine. Killed 2 verticals despite founder pushback — escalated to CEO/CPO.</div>
               <div class="ctx-row">
                 <span class="ctx-outcome">ARR doubled: $500K → $1M. Retention 3×.</span>
                 <span class="ctx-soon">Case study soon</span>
