@@ -335,6 +335,116 @@
     }
 
     /* ── Case Studies — Filter bar ── */
+    /* ── Company context timeline ── */
+    .ctx-block {
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 4px);
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+
+    .ctx-intro {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ctx-chip {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-color);
+      margin-bottom: 8px;
+    }
+
+    .ctx-tagline {
+      font-size: 14px;
+      color: var(--muted-fg);
+      line-height: 1.55;
+    }
+
+    .ctx-node {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ctx-node:last-child {
+      border-bottom: none;
+    }
+
+    .ctx-year {
+      width: 64px;
+      flex-shrink: 0;
+      padding: 16px 16px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--muted-fg);
+      border-right: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      padding-top: 19px;
+    }
+
+    .ctx-body {
+      padding: 16px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .ctx-what {
+      font-size: 14px;
+      color: var(--muted-fg);
+      line-height: 1.5;
+    }
+
+    .ctx-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .ctx-outcome {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--foreground);
+    }
+
+    .ctx-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent-color);
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.15s;
+    }
+
+    .ctx-link:hover {
+      opacity: 1;
+    }
+
+    .ctx-soon {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: hsl(38 70% 58%);
+      background: hsl(38 55% 45% / 0.14);
+      border: 1px solid hsl(38 55% 45% / 0.28);
+      padding: 1px 7px;
+      border-radius: 9999px;
+    }
+
+    [data-theme="light"] .ctx-soon {
+      color: hsl(35 60% 38%);
+      background: hsl(45 90% 90%);
+      border-color: hsl(38 65% 72%);
+    }
+
     .cases-filters {
       display: flex;
       gap: 8px;
@@ -867,6 +977,54 @@
     <section class="section" id="cases">
       <div class="container">
         <div class="section-label">Case studies</div>
+
+        <!-- Company context timeline -->
+        <div class="ctx-block">
+          <div class="ctx-intro">
+            <div class="ctx-chip">Threecolts · Group PM · 2023–2025</div>
+            <p class="ctx-tagline">E-commerce helpdesk. Two brands. Brand A: 3-year retention. Brand B: 3.5 months. Same product, same codebase. I owned both — and the gap between them.</p>
+          </div>
+
+          <div class="ctx-node">
+            <div class="ctx-year">2023</div>
+            <div class="ctx-body">
+              <div class="ctx-what">Joined the platform team. Delivery was broken — half-shipped, late, no ownership. Ops was chaos.</div>
+            </div>
+          </div>
+
+          <div class="ctx-node">
+            <div class="ctx-year">2024</div>
+            <div class="ctx-body">
+              <div class="ctx-what">Built a compound ops system: team brain in Git, Linear Triggers, capacity planner, Claude wrapper.</div>
+              <div class="ctx-row">
+                <span class="ctx-outcome">2.5× team velocity. Zero new hires.</span>
+                <a class="ctx-link" href="/cases/ai-agent.html">Case study ↗</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="ctx-node">
+            <div class="ctx-year">2024</div>
+            <div class="ctx-body">
+              <div class="ctx-what">Redesigned the entire product UI/UX solo — from first principles. Opened Figma myself.</div>
+              <div class="ctx-row">
+                <span class="ctx-outcome">40% feature adoption. Onboarding 8× faster.</span>
+                <a class="ctx-link" href="/cases/product-redesign.html">Case study ↗</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="ctx-node">
+            <div class="ctx-year">2025</div>
+            <div class="ctx-body">
+              <div class="ctx-what">Built a growth engine. Used it to kill 2 product verticals despite founder pushback — escalated directly to CEO/CPO.</div>
+              <div class="ctx-row">
+                <span class="ctx-outcome">ARR doubled: $500K → $1M. Retention 3×.</span>
+                <span class="ctx-soon">Case study soon</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- Filter bar -->
         <div class="cases-filters">
