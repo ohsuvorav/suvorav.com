@@ -366,6 +366,76 @@
       display: none;
     }
 
+    /* ── Case Studies — two-column layout ── */
+    .cases-intercom {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .cases-preview {
+      position: sticky;
+      top: 32px;
+    }
+
+    .case-preview-card {
+      background: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 4px);
+      padding: 28px;
+      display: none;
+    }
+
+    .case-preview-card.active {
+      display: block;
+    }
+
+    .case-preview-company {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted-fg);
+      margin-bottom: 20px;
+    }
+
+    .case-preview-stat {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--foreground);
+      margin-bottom: 8px;
+    }
+
+    .case-preview-sub {
+      font-size: 13px;
+      color: var(--muted-fg);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .case-preview-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 640px) {
+      .cases-intercom {
+        grid-template-columns: 1fr;
+      }
+
+      .cases-preview {
+        position: static;
+      }
+
+      .case-row-title {
+        font-size: 22px;
+      }
+    }
+
     .cases-list {
       display: flex;
       flex-direction: column;
@@ -690,39 +760,69 @@
 
         <button class="hide-upcoming-toggle" id="hideUpcomingBtn">Hide upcoming</button>
 
-        <div class="cases-list" id="casesList">
-          <a class="case-row" href="/cases/ai-agent.html">
-            <span class="case-row-title">AI-first ops: 2.5× team velocity</span>
-            <span class="case-row-arrow">↗</span>
-          </a>
-          <a class="case-row" href="/cases/product-redesign.html">
-            <span class="case-row-title">Redesigned the whole product. Solo.</span>
-            <span class="case-row-arrow">↗</span>
-          </a>
-          <div class="case-row">
-            <span class="case-row-title">Killed 2 product verticals to double ARR</span>
-            <span class="case-row-soon">Soon</span>
+        <div class="cases-intercom">
+
+          <!-- Left: preview panel -->
+          <div class="cases-preview">
+            <div class="case-preview-card active" data-preview="1">
+              <div class="case-preview-company">Threecolts · 2025</div>
+              <div class="case-preview-stat">2.5× team velocity</div>
+              <div class="case-preview-sub">Team brain in Git, Linear Triggers, capacity planner, Claude wrapper — compound ops system that doubled engineering output without adding headcount.</div>
+              <div class="case-preview-tags">
+                <span class="tag">AI</span>
+                <span class="tag">Linear</span>
+                <span class="tag">Ops</span>
+              </div>
+            </div>
+
+            <div class="case-preview-card" data-preview="2">
+              <div class="case-preview-company">Threecolts · 2023–2025</div>
+              <div class="case-preview-stat">40% feature adoption</div>
+              <div class="case-preview-sub">Redesigned the entire product UI/UX solo — from first principles. Competitors needed two years and a full team to match it.</div>
+              <div class="case-preview-tags">
+                <span class="tag">UX</span>
+                <span class="tag">Activation</span>
+                <span class="tag">Growth</span>
+              </div>
+            </div>
           </div>
-          <div class="case-row">
-            <span class="case-row-title">Tripled retention (3.5 → 11.5 months)</span>
-            <span class="case-row-soon">Soon</span>
+
+          <!-- Right: story list -->
+          <div class="cases-list" id="casesList">
+            <a class="case-row active" href="/cases/ai-agent.html" data-case="1">
+              <span class="case-row-title">AI-first ops: 2.5× team velocity</span>
+              <span class="case-row-arrow">↗</span>
+            </a>
+            <a class="case-row" href="/cases/product-redesign.html" data-case="2">
+              <span class="case-row-title">Redesigned the whole product. Solo.</span>
+              <span class="case-row-arrow">↗</span>
+            </a>
+            <div class="case-row">
+              <span class="case-row-title">Killed 2 product verticals to double ARR</span>
+              <span class="case-row-soon">Soon</span>
+            </div>
+            <div class="case-row">
+              <span class="case-row-title">Tripled retention (3.5 → 11.5 months)</span>
+              <span class="case-row-soon">Soon</span>
+            </div>
+            <div class="case-row">
+              <span class="case-row-title">360° customer view — blind GTM to targeted</span>
+              <span class="case-row-soon">Soon</span>
+            </div>
+            <div class="case-row">
+              <span class="case-row-title">Launched product from scratch to first payments</span>
+              <span class="case-row-soon">Soon</span>
+            </div>
+            <div class="case-row">
+              <span class="case-row-title">1st place at AI Hackathon</span>
+              <span class="case-row-soon">Soon</span>
+            </div>
+            <div class="case-row">
+              <span class="case-row-title">Retained $68K MRR at risk of churn</span>
+              <span class="case-row-soon">Soon</span>
+            </div>
           </div>
-          <div class="case-row">
-            <span class="case-row-title">360° customer view — blind GTM to targeted</span>
-            <span class="case-row-soon">Soon</span>
-          </div>
-          <div class="case-row">
-            <span class="case-row-title">Launched product from scratch to first payments</span>
-            <span class="case-row-soon">Soon</span>
-          </div>
-          <div class="case-row">
-            <span class="case-row-title">1st place at AI Hackathon</span>
-            <span class="case-row-soon">Soon</span>
-          </div>
-          <div class="case-row">
-            <span class="case-row-title">Retained $68K MRR at risk of churn</span>
-            <span class="case-row-soon">Soon</span>
-          </div>
+
         </div>
       </div>
     </section>
@@ -849,6 +949,22 @@
 
     sys.addEventListener('change', () => {
       if ((localStorage.getItem('themeMode') || 'system') === 'system') applyTheme('system');
+    });
+
+    // Case preview hover
+    const caseRows = document.querySelectorAll('.case-row[data-case]');
+    const casePreviews = document.querySelectorAll('.case-preview-card');
+
+    const selectCase = (row) => {
+      caseRows.forEach(r => r.classList.remove('active'));
+      casePreviews.forEach(p => p.classList.remove('active'));
+      row.classList.add('active');
+      const preview = document.querySelector(`.case-preview-card[data-preview="${row.dataset.case}"]`);
+      if (preview) preview.classList.add('active');
+    };
+
+    caseRows.forEach(row => {
+      row.addEventListener('mouseenter', () => selectCase(row));
     });
 
     // Hide upcoming toggle
