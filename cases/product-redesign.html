@@ -581,6 +581,39 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* ── Lightbox ── */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+      cursor: zoom-out;
+    }
+
+    #lightbox.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    #lightbox img {
+      max-width: 95vw;
+      max-height: 95vh;
+      object-fit: contain;
+      border-radius: var(--radius);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+    }
+
+    .visual-block img,
+    .compare-static-col img {
+      cursor: zoom-in;
+    }
   </style>
 </head>
 
@@ -724,6 +757,10 @@
 
   </main>
 
+  <div id="lightbox">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
   <footer>
     <div class="container">
       <span class="footer-name">Oleg Suvorov · 2026</span>
@@ -844,6 +881,23 @@
     }, { passive: true });
 
     window.addEventListener('touchend', () => { dragging = false; });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    document.querySelectorAll('.visual-block img, .compare-static-col img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('open');
+      });
+    });
+
+    lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') lightbox.classList.remove('open');
+    });
   </script>
 
 </body>
