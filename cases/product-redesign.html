@@ -582,6 +582,44 @@
       }
     }
 
+    /* ── Inline image link ── */
+    .img-link {
+      color: var(--foreground);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--border);
+      cursor: pointer;
+      transition: color 0.15s, text-decoration-color 0.15s;
+      position: relative;
+    }
+
+    .img-link:hover {
+      color: var(--accent-color);
+      text-decoration-color: var(--accent-color);
+    }
+
+    .img-link::after {
+      content: 'Show full page';
+      position: absolute;
+      bottom: calc(100% + 6px);
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      font-weight: 500;
+      white-space: nowrap;
+      background: var(--foreground);
+      color: var(--background);
+      padding: 3px 8px;
+      border-radius: 4px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s;
+    }
+
+    .img-link:hover::after {
+      opacity: 1;
+    }
+
     /* ── Lightbox ── */
     #lightbox {
       position: fixed;
@@ -699,13 +737,7 @@
           </div>
 
 
-          <p>Despite the fact we consolidated everything in one place natively, we also got rid of the need of 2 popups: mailing log, change log.</p>
-          <div class="compare-static-col">
-              <img src="/assets/object_activity_log_before_mailing_log.png" alt="Object view before activity log" loading="lazy">
-            </div>
-          <div class="compare-static-col">
-              <img src="/assets/object_activity_log_before_change log.png" alt="Object view before activity log" loading="lazy">
-            </div>
+          <p>Despite the fact we consolidated everything in one place natively, we also got rid of the need of 2 popups: <span class="img-link" data-src="/assets/object_activity_log_before_mailing_log.png" data-alt="Mailing log popup">mailing log</span>, <span class="img-link" data-src="/assets/object_activity_log_before_change log.png" data-alt="Change log popup">change log</span>.</p>
           
           <p>This is how it started.</p>
           <div class="visual-block">
@@ -893,6 +925,14 @@
     lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') lightbox.classList.remove('open');
+    });
+
+    document.querySelectorAll('.img-link').forEach(link => {
+      link.addEventListener('click', () => {
+        lightboxImg.src = link.dataset.src;
+        lightboxImg.alt = link.dataset.alt;
+        lightbox.classList.add('open');
+      });
     });
   </script>
 
