@@ -489,6 +489,33 @@
 
         <div class="case-section" id="context">
           <div class="section-label">Context</div>
+
+          <p>
+            - i joined platform team natively: one of our experiments didn't work well, because main button wasn't working at all, so i started helping to increase its quality
+            - the team constantly half-delivered, not high quality, not on time, no ownership
+            - we started changing processsing
+            -- slack-channel per project, daily syncs per project, over-communication about blockers, missing deadlines
+            -- we centralized all convos in one channel vs DMs
+            - it enabled teammates to have more ownership.
+            - engineering manager acted as key developer and therefore we had 1 project running at a time
+            - i started mentoring engineering manager on delegation and structured handoff: architect defines outcome, engineer owns execution. it took time but we got there, and it eliminated the single-point-of-failure where everything routed through one person.
+            - obvisouly this folk was the most knowldegable person on the team, but it was a bottleneck. we had to make sure that knowledge was shared and accessible to everyone, and not just in one person's head.
+            - therefore we started thinking how we can make it accessible. we turned all repetative tasks into skills, and worklows in git.
+            -- claude session -> runs the skill to update the skilsl and workflows
+            -- all changes to workflows and skill were done through the PRs to make it sure we have full control
+            -- it enabled us to run 3 projects in parallel. 
+            -- we didn't stop there. i built Linear triggers
+            -- i built capacity planner to show the downstream impact of deprioritizing a ticket before the decision was made. tradeoffs were no longer blind.
+            -- the team was so in love with processes and automation i built, so i showed them how we can use custom AI agent: all MCPs, workflow - it was working. It enabled support teams to ask questions the bot and reduced number of questions to me
+            -- the more we used the more it became a processes Slack message -> Linear Asks -> Assign to Scoutpal agent
+            --- it was possible to go to stripe, codebase, database, backend logs
+            --- try to reproduce
+            --- try to think of RCA
+            --- propose solution: one-time, short-term, long-term
+          
+          </p>
+
+
           <h2>The team was good. Its knowledge wasn't portable.</h2>
           <p>The platform team had real delivery accountability — but everything that made it work lived in people's heads. Decisions, edge cases, operational patterns: in Slack threads, in memory, nowhere shareable. When an engineer was out, things stalled. When a new one joined, ramp was measured in months.</p>
           <p>My mandate: make the team faster without adding headcount. The answer wasn't more engineers — it was making the team's knowledge a first-class citizen.</p>

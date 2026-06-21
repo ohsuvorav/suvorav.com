@@ -357,6 +357,7 @@
       bottom: 28px;
       width: 1px;
       background: var(--border);
+      z-index: 0;
     }
 
     .ctx-node {
@@ -378,6 +379,7 @@
       border-radius: 50%;
       background: var(--muted-fg);
       opacity: 0.35;
+      z-index: 1;
     }
 
     .ctx-node.live::before {
@@ -1157,81 +1159,41 @@
     <section class="section" id="work">
       <div class="container">
         <div class="section-label">Work</div>
-        <div class="work-list">
-          <div class="work-item">
-            <div>
-              <div class="work-company">Threecolts</div>
-              <div class="work-role">Product Manager, Platform & Growth</div>
-            </div>
-            <div class="work-period">2025 – Present</div>
+        <div class="ctx-timeline" style="margin-top: 4px;">
+          <div class="ctx-node live">
+            <div class="ctx-year">2025 – Present</div>
+            <div class="work-company">Threecolts</div>
+            <div class="work-role">Senior Product Manager, Platform & Growth</div>
           </div>
-          <div class="work-item" style="align-items: flex-start; flex-direction: column; gap: 20px;">
-            <div style="display: flex; justify-content: space-between; width: 100%; align-items: flex-start;">
-              <div>
-                <div class="work-company">Threecolts</div>
-                <div class="work-role">Group Product Manager, Helpdesk & B2B2C</div>
-              </div>
-              <div class="work-period">2023 – 2025</div>
-            </div>
-            <p class="ctx-tagline">E-commerce helpdesk. Two brands. Brand A: 3-year retention. Brand B: 3.5 months. Same product. I owned both — and the gap between them.</p>
-            <div class="ctx-timeline">
-              <div class="ctx-node">
-                <div class="ctx-year">2023</div>
-                <div class="ctx-what">Joined the platform team. Delivery was broken — half-shipped, late, no ownership.</div>
-              </div>
-              <div class="ctx-node">
-                <div class="ctx-year">2024</div>
-                <div class="ctx-what">Built compound ops system: team brain in Git, Linear Triggers, capacity planner, Claude wrapper.</div>
-                <div class="ctx-row">
-                  <span class="ctx-outcome">2.5× team velocity. Zero new hires.</span>
-                  <a class="ctx-link" href="/cases/ai-agent.html">Case study ↗</a>
-                </div>
-              </div>
-              <div class="ctx-node">
-                <div class="ctx-year">2024</div>
-                <div class="ctx-what">Redesigned the entire product UI/UX solo — from first principles.</div>
-                <div class="ctx-row">
-                  <span class="ctx-outcome">40% feature adoption. Onboarding 8× faster.</span>
-                  <a class="ctx-link" href="/cases/product-redesign.html">Case study ↗</a>
-                </div>
-              </div>
-              <div class="ctx-node live">
-                <div class="ctx-year">2025</div>
-                <div class="ctx-what">Built a growth engine. Killed 2 verticals despite founder pushback — escalated to CEO/CPO.</div>
-                <div class="ctx-row">
-                  <span class="ctx-outcome">ARR doubled: $500K → $1M. Retention 3×.</span>
-                  <span class="ctx-soon">Case study soon</span>
-                </div>
-              </div>
-            </div>
+          <div class="ctx-node">
+            <div class="ctx-year">2023 – 2025</div>
+            <div class="work-company">Threecolts</div>
+            <div class="work-role">Founding Product Manager, Helpdesk</div>
           </div>
-          <div class="work-item">
-            <div>
-              <div class="work-company">HICX</div>
-              <div class="work-role">Technical Product Manager</div>
-            </div>
-            <div class="work-period">2022 – 2023</div>
+          <div class="ctx-node">
+            <div class="ctx-year">2022 – 2023</div>
+            <div class="work-company">HICX</div>
+            <div class="work-role">Technical Product Manager</div>
           </div>
-          <div class="work-item">
-            <div>
-              <div class="work-company">Coinchange</div>
-              <div class="work-role">Product Operator</div>
-            </div>
-            <div class="work-period">2021 – 2023</div>
+          <div class="ctx-node">
+            <div class="ctx-year">2022 – 2023</div>
+            <div class="work-company">Coinchange</div>
+            <div class="work-role">Product Analyst</div>
           </div>
-          <div class="work-item">
-            <div>
-              <div class="work-company">OnlinEventSpace</div>
-              <div class="work-role">Founding Product Manager</div>
-            </div>
-            <div class="work-period">2021 – 2022</div>
+          <div class="ctx-node">
+            <div class="ctx-year">2021 – 2022</div>
+            <div class="work-company">Coinchange</div>
+            <div class="work-role">Product Operator</div>
           </div>
-          <div class="work-item">
-            <div>
-              <div class="work-company">iTechArt</div>
-              <div class="work-role">Android Developer</div>
-            </div>
-            <div class="work-period">2020 – 2021</div>
+          <div class="ctx-node">
+            <div class="ctx-year">2021 – 2022</div>
+            <div class="work-company">OnlinEventSpace</div>
+            <div class="work-role">0-to-1 Product Manager</div>
+          </div>
+          <div class="ctx-node">
+            <div class="ctx-year">2020 – 2021</div>
+            <div class="work-company">iTechArt</div>
+            <div class="work-role">Android Developer</div>
           </div>
         </div>
       </div>
