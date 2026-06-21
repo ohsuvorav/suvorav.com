@@ -627,7 +627,7 @@
 
         <div class="case-company-chip">Threecolts · 2023–2025</div>
         <h1 class="case-title">Redesigned the whole product. Solo.</h1>
-        <p class="case-summary">Competitors needed dozens of PMs and designers and two years to match it. I did it alone, from first principles — 40% feature adoption increase, 8× faster onboarding, and customers writing unprompted emails in caps lock about how much they loved it.</p>
+        <p class="case-summary"> Once I stabilized baseline in product and biz ops and my team reached initial Product-Market Fit. I focused on compounding its growth. Product was great, but very few customers were reaching its aha moment quickly. The goal was make it obvious from the first glance like in Fin (prev. Intercom) and Linear.</p>
 
       </div>
     </div>
@@ -635,20 +635,13 @@
     <div class="case-body">
       <div class="container">
 
-        <div class="case-section" id="context">
-          <div class="section-label">Context</div>
-          <h2>One product, two brands. One worked. One didn't.</h2>
-          <p>I was the Group PM for Threecolts' helpdesk — the same product running under two separate brands. Brand A had 3-year retention. Brand B had 3.5 months. Same features, same codebase. The gap wasn't the product — it was activation.</p>
-          <p>The value was real. People just weren't reaching it.</p>
-        </div>
-
         <div class="case-section" id="problem">
           <div class="section-label">Problem</div>
-          <h2>Every rung on the activation ladder had friction.</h2>
-          <p>Activation is a ladder: sign up → set up → aha moment → habit → retention. We had friction at every step. The harder problem: the system did massive work invisibly. It processed tickets, routed messages, tracked history, ran automations — but even 3-year customers had no idea. They were using 20% of what was there.</p>
-          <div class="callout">
-            We had designers. The output wasn't moving the needle — concepts were too abstract, prototypes came too late. So I opened Figma myself.
-          </div>
+          <h2>Aha moment</h2>
+          <p>Earlier I reverse-engineered successfully retained customers: engagement treshold (N tickets / mo per support agent) -> aha moment (order details on the right powered by ChannelReply) -> setup (email / contact form setup). Since I already streamlined setup part, and onboarding with our account managers I focused on showcasing aha-moment: send message seeing order details on the right.</p>
+          <p>I got inspired by this Intercom worfklow https://mobbin.com/flows/3c3cc987-55ef-4c59-b71b-a41555bbf308?tab=screens&scrollToScreenIndex=0</p>
+          <p>Helpdesk setup: to send a message you need to connect your email, ideally move from competitor alternative with your ops. It requires hadn-holding. I initially compensated it with Account Managers and Help center, now I wanted to make it self-serve</p>
+          <p>So we needed to show depth without overwhelming users</p>
         </div>
 
         <div class="case-section" id="approach">
@@ -656,19 +649,31 @@
           <h2>Three moves up the ladder.</h2>
 
           <div class="move-label">Move 1 — Make the invisible visible</div>
-          <p>The biggest activation blocker wasn't missing features. It was that no one knew what the product was already doing. I built an activity log that surfaced every action the system took per object: assignments, status changes, email threads, rule triggers — all visible in one place.</p>
-          <p>Customers' reaction when they saw it: <strong>"Wait, it does all that?"</strong> That awareness triggered the next question: "What else can it do?" Feature exploration jumped. Adoption followed.</p>
-
+          <p>The biggest activation blocker wasn't missing features. It was that no one knew what the product was already doing.</p>
+          <p>First thing I built "object activity log" that surfaced every action the system took per object: assignments, status changes, email threads, rule triggers — all visible in one place.</p> 
+          <p>Previously to understand what's happening users would need to learn 4 separate things: trigger's log, email's log, triggers setup and messages itself</p> 
+          <p>Even existing customers' were puzzled when they saw it: <strong>"Wait, it does all that?"</strong> That awareness triggered the next question: "What else can it do?" Feature exploration jumped. Adoption followed.</p>
+          
           <div class="compare-static">
             <div class="compare-static-col">
               <div class="compare-label">Before</div>
-              <img src="/assets/object-before.png" alt="Object view before activity log" loading="lazy">
+              <img src="/assets/object_activity_log_before_messages.png" alt="Object view before activity log" loading="lazy">
             </div>
             <div class="compare-static-col">
-              <div class="compare-label">After</div>
-              <img src="/assets/object-after.png" alt="Object view with activity log visible" loading="lazy">
+              <img src="/assets/object_activity_log_before_mailing_log.png" alt="Object view before activity log" loading="lazy">
+            </div>
+            <div class="compare-static-col">
+              <img src="/assets/object_activity_log_before_change log.png" alt="Object view before activity log" loading="lazy">
             </div>
           </div>
+
+          <div class="compare-static">
+            <div class="compare-static-col">
+              <div class="compare-label">After</div>
+              <img src="/assets/object_activity_log_before_messages.png" alt="Object view before activity log" loading="lazy">
+            </div>
+          </div>
+
 
           <div class="move-label">Move 2 — Cut the steps</div>
           <p>Redesigned the core inbox and workflow flows end-to-end. The before: a dense list with no visual hierarchy, everything requiring an open to understand. The after: clear grouping, faster triage, context visible without clicking into every ticket.</p>
