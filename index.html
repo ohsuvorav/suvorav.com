@@ -651,71 +651,44 @@
       flex-wrap: wrap;
     }
 
-    /* ── Case study v2 (test) ── */
-    .case-v2 {
-      padding: 48px 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .case-v2:first-of-type {
-      border-top: none;
-      padding-top: 0;
-    }
-
-    .case-v2-company {
-      font-size: 10px;
+    /* ── Case preview card v2 (test) ── */
+    .case-preview-say {
+      font-size: 22px;
       font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted-fg);
-      margin-bottom: 16px;
-    }
-
-    .case-v2-say {
-      font-size: 32px;
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
       color: var(--foreground);
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
-    .case-v2-sub {
-      font-size: 15px;
-      color: var(--muted-fg);
-      line-height: 1.6;
-      max-width: 580px;
-      margin-bottom: 28px;
-    }
-
-    .case-v2-visual {
+    .case-preview-visual {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 24px;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
     }
 
-    .case-v2-visual figure {
+    .case-preview-visual figure {
       margin: 0;
     }
 
-    .case-v2-visual img {
+    .case-preview-visual img {
       width: 100%;
       display: block;
       border-radius: var(--radius);
       border: 1px solid var(--border);
     }
 
-    .case-v2-visual figcaption {
+    .case-preview-visual figcaption {
       font-size: 10px;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted-fg);
-      margin-top: 8px;
+      margin-top: 6px;
     }
 
-    .case-v2-footer {
+    .case-preview-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -723,39 +696,11 @@
       flex-wrap: wrap;
     }
 
-    .case-v2-meta {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .case-v2-metric {
-      font-size: 14px;
+    .case-preview-metric {
+      font-size: 13px;
       font-weight: 600;
       color: var(--foreground);
       white-space: nowrap;
-    }
-
-    .case-v2-link {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--foreground);
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .case-v2-link:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 640px) {
-      .case-v2-visual {
-        grid-template-columns: 1fr;
-      }
-
-      .case-v2-say {
-        font-size: 26px;
-      }
     }
 
     @media (max-width: 640px) {
@@ -1266,48 +1211,85 @@
       <div class="container">
         <div class="section-label">Case studies — v2 test</div>
 
-        <div class="case-v2">
-          <div class="case-v2-company">Threecolts · 2023–2025</div>
-          <div class="case-v2-say">&ldquo;I love craft. Show, don&rsquo;t tell.&rdquo;</div>
-          <div class="case-v2-sub">Why and how I redesigned the full product &mdash; solo. Competitors needed two years and a full team to match it.</div>
-          <div class="case-v2-visual">
-            <figure>
-              <img src="/assets/object-before.png" alt="Product before redesign" loading="lazy">
-              <figcaption>Before</figcaption>
-            </figure>
-            <figure>
-              <img src="/assets/object-after-expanded.png" alt="Product after redesign" loading="lazy">
-              <figcaption>After</figcaption>
-            </figure>
-          </div>
-          <div class="case-v2-footer">
-            <div class="case-v2-meta">
-              <span class="case-v2-metric">40% feature adoption</span>
-              <div class="case-preview-tags">
-                <span class="tag">UX</span>
-                <span class="tag">Activation</span>
-                <span class="tag">Growth</span>
-              </div>
-            </div>
-            <a class="case-v2-link" href="/cases/product-redesign.html">Read the case ↗</a>
-          </div>
-        </div>
+        <div class="cases-intercom">
 
-        <div class="case-v2">
-          <div class="case-v2-company">Threecolts · 2025</div>
-          <div class="case-v2-say">&ldquo;I&rsquo;m AI-native.&rdquo;</div>
-          <div class="case-v2-sub">How I 2.5&times;&rsquo;d team bandwidth with agents: team brain in Git, Linear Triggers, capacity planner, Claude wrapper &mdash; without adding headcount.</div>
-          <div class="case-v2-footer">
-            <div class="case-v2-meta">
-              <span class="case-v2-metric">2.5&times; team velocity</span>
-              <div class="case-preview-tags">
-                <span class="tag">AI</span>
-                <span class="tag">Linear</span>
-                <span class="tag">Ops</span>
+          <!-- Left: preview panel (v2 cards) -->
+          <div class="cases-preview">
+            <div class="case-preview-card active" data-preview-v2="1">
+              <div class="case-preview-company">Threecolts · 2025</div>
+              <div class="case-preview-say">&ldquo;I&rsquo;m AI-native.&rdquo;</div>
+              <div class="case-preview-sub">How I 2.5&times;&rsquo;d team bandwidth with agents: team brain in Git, Linear Triggers, capacity planner, Claude wrapper &mdash; without adding headcount.</div>
+              <div class="case-preview-footer">
+                <span class="case-preview-metric">2.5&times; team velocity</span>
+                <div class="case-preview-tags">
+                  <span class="tag">AI</span>
+                  <span class="tag">Linear</span>
+                  <span class="tag">Ops</span>
+                </div>
               </div>
             </div>
-            <a class="case-v2-link" href="/cases/ai-agent.html">Read the case ↗</a>
+
+            <div class="case-preview-card" data-preview-v2="2">
+              <div class="case-preview-company">Threecolts · 2023–2025</div>
+              <div class="case-preview-say">&ldquo;I love craft. Show, don&rsquo;t tell.&rdquo;</div>
+              <div class="case-preview-sub">Why and how I redesigned the full product &mdash; solo. Competitors needed two years and a full team to match it.</div>
+              <div class="case-preview-visual">
+                <figure>
+                  <img src="/assets/object-before.png" alt="Product before redesign" loading="lazy">
+                  <figcaption>Before</figcaption>
+                </figure>
+                <figure>
+                  <img src="/assets/object-after-expanded.png" alt="Product after redesign" loading="lazy">
+                  <figcaption>After</figcaption>
+                </figure>
+              </div>
+              <div class="case-preview-footer">
+                <span class="case-preview-metric">40% feature adoption</span>
+                <div class="case-preview-tags">
+                  <span class="tag">UX</span>
+                  <span class="tag">Activation</span>
+                  <span class="tag">Growth</span>
+                </div>
+              </div>
+            </div>
           </div>
+
+          <!-- Right: story list -->
+          <div class="cases-list">
+            <a class="case-row active" href="/cases/ai-agent.html" data-case-v2="1">
+              <span class="case-row-title">AI-first ops: 2.5× team velocity</span>
+              <span class="case-row-arrow">↗</span>
+            </a>
+            <a class="case-row" href="/cases/product-redesign.html" data-case-v2="2">
+              <span class="case-row-title">Redesigned the whole product. Solo.</span>
+              <span class="case-row-arrow">↗</span>
+            </a>
+            <div class="case-row">
+              <span class="case-row-title">Killed 2 product verticals to double ARR</span>
+              <span class="case-row-soon">Soon</span>
+            </div>
+            <div class="case-row">
+              <span class="case-row-title">Tripled retention (3.5 → 11.5 months)</span>
+              <span class="case-row-soon">Soon</span>
+            </div>
+            <div class="case-row">
+              <span class="case-row-title">360° customer view — blind GTM to targeted</span>
+              <span class="case-row-soon">Soon</span>
+            </div>
+            <div class="case-row">
+              <span class="case-row-title">Launched product from scratch to first payments</span>
+              <span class="case-row-soon">Soon</span>
+            </div>
+            <div class="case-row">
+              <span class="case-row-title">1st place at AI Hackathon</span>
+              <span class="case-row-soon">Soon</span>
+            </div>
+            <div class="case-row">
+              <span class="case-row-title">Retained $68K MRR at risk of churn</span>
+              <span class="case-row-soon">Soon</span>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -1443,6 +1425,20 @@
 
     caseRows.forEach(row => {
       row.addEventListener('mouseenter', () => selectCase(row));
+    });
+
+    // Case preview hover — v2 test section
+    const caseRowsV2 = document.querySelectorAll('.case-row[data-case-v2]');
+    const casePreviewsV2 = document.querySelectorAll('.case-preview-card[data-preview-v2]');
+
+    caseRowsV2.forEach(row => {
+      row.addEventListener('mouseenter', () => {
+        caseRowsV2.forEach(r => r.classList.remove('active'));
+        casePreviewsV2.forEach(p => p.classList.remove('active'));
+        row.classList.add('active');
+        const preview = document.querySelector(`.case-preview-card[data-preview-v2="${row.dataset.caseV2}"]`);
+        if (preview) preview.classList.add('active');
+      });
     });
 
     // Role / Skill filter dropdowns
