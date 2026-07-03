@@ -703,6 +703,25 @@
       white-space: nowrap;
     }
 
+    .case-preview-more {
+      font-size: 13px;
+      color: var(--muted-fg);
+      line-height: 1.6;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* v2: belief rows without case pages are full-strength, just not links */
+    #cases-v2 div.case-row {
+      opacity: 1;
+      cursor: default;
+    }
+
+    #cases-v2 div.case-row:hover .case-row-title {
+      color: var(--foreground);
+    }
+
     @media (max-width: 640px) {
       .cases-intercom {
         grid-template-columns: 1fr;
@@ -1213,25 +1232,40 @@
 
         <div class="cases-intercom">
 
-          <!-- Left: preview panel (v2 cards) -->
+          <!-- Left: I say — beliefs -->
+          <div class="cases-list">
+            <div class="section-label">I say</div>
+            <a class="case-row active" href="/cases/ai-agent.html" data-case-v2="1">
+              <span class="case-row-title">I&rsquo;m AI-native.</span>
+              <span class="case-row-arrow">↗</span>
+            </a>
+            <a class="case-row" href="/cases/product-redesign.html" data-case-v2="2">
+              <span class="case-row-title">I love craft. Show, don&rsquo;t tell.</span>
+              <span class="case-row-arrow">↗</span>
+            </a>
+            <div class="case-row" data-case-v2="3">
+              <span class="case-row-title">Best solution &ne; best business.</span>
+            </div>
+            <div class="case-row" data-case-v2="4">
+              <span class="case-row-title">First principles &mdash; not the buzzword.</span>
+            </div>
+            <div class="case-row" data-case-v2="5">
+              <span class="case-row-title">I&rsquo;m hands-on with data.</span>
+            </div>
+          </div>
+
+          <!-- Right: It means — receipts -->
           <div class="cases-preview">
+            <div class="section-label">It means</div>
+
             <div class="case-preview-card active" data-preview-v2="1">
-              <div class="case-preview-company">Threecolts · 2025</div>
-              <div class="case-preview-say">&ldquo;I&rsquo;m AI-native.&rdquo;</div>
-              <div class="case-preview-sub">How I 2.5&times;&rsquo;d team bandwidth with agents: team brain in Git, Linear Triggers, capacity planner, Claude wrapper &mdash; without adding headcount.</div>
-              <div class="case-preview-footer">
-                <span class="case-preview-metric">2.5&times; team velocity</span>
-                <div class="case-preview-tags">
-                  <span class="tag">AI</span>
-                  <span class="tag">Linear</span>
-                  <span class="tag">Ops</span>
-                </div>
-              </div>
+              <div class="case-preview-say">2.5&times; team velocity</div>
+              <div class="case-preview-sub">Self-improving team brain in Git as a context, Linear Triggers, capacity planner, Linear Custom AI agent (Claude wrapper &mdash; with MCPs)</div>
+              <div class="case-preview-more">+ 1st place at AI Hackathon</div>
             </div>
 
             <div class="case-preview-card" data-preview-v2="2">
-              <div class="case-preview-company">Threecolts · 2023–2025</div>
-              <div class="case-preview-say">&ldquo;I love craft. Show, don&rsquo;t tell.&rdquo;</div>
+              <div class="case-preview-say">40% feature adoption</div>
               <div class="case-preview-sub">Why and how I redesigned the full product &mdash; solo. Competitors needed two years and a full team to match it.</div>
               <div class="case-preview-visual">
                 <figure>
@@ -1243,50 +1277,23 @@
                   <figcaption>After</figcaption>
                 </figure>
               </div>
-              <div class="case-preview-footer">
-                <span class="case-preview-metric">40% feature adoption</span>
-                <div class="case-preview-tags">
-                  <span class="tag">UX</span>
-                  <span class="tag">Activation</span>
-                  <span class="tag">Growth</span>
-                </div>
-              </div>
             </div>
-          </div>
 
-          <!-- Right: story list -->
-          <div class="cases-list">
-            <a class="case-row active" href="/cases/ai-agent.html" data-case-v2="1">
-              <span class="case-row-title">AI-first ops: 2.5× team velocity</span>
-              <span class="case-row-arrow">↗</span>
-            </a>
-            <a class="case-row" href="/cases/product-redesign.html" data-case-v2="2">
-              <span class="case-row-title">Redesigned the whole product. Solo.</span>
-              <span class="case-row-arrow">↗</span>
-            </a>
-            <div class="case-row">
-              <span class="case-row-title">Killed 2 product verticals to double ARR</span>
-              <span class="case-row-soon">Soon</span>
+            <div class="case-preview-card" data-preview-v2="3">
+              <div class="case-preview-say">2&times; ARR</div>
+              <div class="case-preview-sub">Killed 2 product verticals that solved real problems but couldn&rsquo;t monetize &mdash; doubled down on what pays.</div>
+              <div class="case-preview-more">+ Tripled retention (3.5 &rarr; 11.5 months)<br>+ Retained $68K MRR at risk of churn</div>
             </div>
-            <div class="case-row">
-              <span class="case-row-title">Tripled retention (3.5 → 11.5 months)</span>
-              <span class="case-row-soon">Soon</span>
+
+            <div class="case-preview-card" data-preview-v2="4">
+              <div class="case-preview-say">B2C &rarr; B2B pivot</div>
+              <div class="case-preview-sub">Ran cohort analysis myself: 95% of revenue came from 5% of users &mdash; B2B. Showed the math, the company pivoted.</div>
+              <div class="case-preview-more">+ Launched a product from scratch to first payments</div>
             </div>
-            <div class="case-row">
-              <span class="case-row-title">360° customer view — blind GTM to targeted</span>
-              <span class="case-row-soon">Soon</span>
-            </div>
-            <div class="case-row">
-              <span class="case-row-title">Launched product from scratch to first payments</span>
-              <span class="case-row-soon">Soon</span>
-            </div>
-            <div class="case-row">
-              <span class="case-row-title">1st place at AI Hackathon</span>
-              <span class="case-row-soon">Soon</span>
-            </div>
-            <div class="case-row">
-              <span class="case-row-title">Retained $68K MRR at risk of churn</span>
-              <span class="case-row-soon">Soon</span>
+
+            <div class="case-preview-card" data-preview-v2="5">
+              <div class="case-preview-say">360&deg; customer view</div>
+              <div class="case-preview-sub">Built the CDP myself &mdash; GTM went from blind spray to targeted plays.</div>
             </div>
           </div>
 
