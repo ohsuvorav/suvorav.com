@@ -651,6 +651,74 @@
       flex-wrap: wrap;
     }
 
+    /* ── Case card v2 (test) ── */
+    .case-preview-say {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      color: var(--foreground);
+      margin-bottom: 8px;
+    }
+
+    .case-preview-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .case-preview-visual figure {
+      margin: 0;
+    }
+
+    .case-preview-visual img {
+      width: 100%;
+      display: block;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .case-preview-visual figcaption {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted-fg);
+      margin-top: 6px;
+    }
+
+    .case-preview-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .case-preview-metric {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--foreground);
+      white-space: nowrap;
+    }
+
+    .cases-v2-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .cases-v2-grid .case-preview-card {
+      display: block;
+    }
+
+    @media (max-width: 640px) {
+      .cases-v2-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 640px) {
       .cases-intercom {
         grid-template-columns: 1fr;
@@ -1147,6 +1215,54 @@
             <div class="case-row">
               <span class="case-row-title">Retained $68K MRR at risk of churn</span>
               <span class="case-row-soon">Soon</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Case card v2 — test section, remove after verifying -->
+    <section class="section" id="cases-v2">
+      <div class="container">
+        <div class="section-label">Case cards — v2 test</div>
+        <div class="cases-v2-grid">
+
+          <div class="case-preview-card" data-preview-v2="1">
+            <div class="case-preview-company">Threecolts · 2025</div>
+            <div class="case-preview-say">&ldquo;I&rsquo;m AI-native.&rdquo;</div>
+            <div class="case-preview-sub">How I 2.5&times;&rsquo;d team bandwidth with agents: team brain in Git, Linear Triggers, capacity planner, Claude wrapper &mdash; without adding headcount.</div>
+            <div class="case-preview-footer">
+              <span class="case-preview-metric">2.5&times; team velocity</span>
+              <div class="case-preview-tags">
+                <span class="tag">AI</span>
+                <span class="tag">Linear</span>
+                <span class="tag">Ops</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-preview-card" data-preview-v2="2">
+            <div class="case-preview-company">Threecolts · 2023–2025</div>
+            <div class="case-preview-say">&ldquo;I love craft. Show, don&rsquo;t tell.&rdquo;</div>
+            <div class="case-preview-sub">Why and how I redesigned the full product &mdash; solo. Competitors needed two years and a full team to match it.</div>
+            <div class="case-preview-visual">
+              <figure>
+                <img src="/assets/object-before.png" alt="Product before redesign" loading="lazy">
+                <figcaption>Before</figcaption>
+              </figure>
+              <figure>
+                <img src="/assets/object-after-expanded.png" alt="Product after redesign" loading="lazy">
+                <figcaption>After</figcaption>
+              </figure>
+            </div>
+            <div class="case-preview-footer">
+              <span class="case-preview-metric">40% feature adoption</span>
+              <div class="case-preview-tags">
+                <span class="tag">UX</span>
+                <span class="tag">Activation</span>
+                <span class="tag">Growth</span>
+              </div>
             </div>
           </div>
 
