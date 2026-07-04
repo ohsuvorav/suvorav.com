@@ -711,8 +711,11 @@
         </a>
 
         <div class="case-company-chip">Threecolts · 2023–2025</div>
-        <h1 class="case-title">Redesigned the whole product. Solo.</h1>
-        <p class="case-summary"> Once I stabilized baseline in product and biz ops and my team reached initial Product-Market Fit. I focused on compounding its growth. Product was great, but very few customers were reaching its aha moment quickly. The goal was make it obvious from the first glance like in Fin (prev. Intercom) and Linear.</p>
+        <h1 class="case-title">How I redesigned the whole product. Almost solo.</h1>
+        <!-- <p class="case-summary"> Once I stabilized baseline in product and biz ops and my team reached initial Product-Market Fit. I focused on compounding its growth. Product was great, but very few customers were reaching its aha moment quickly. The goal was make it obvious from the first glance like in Fin (prev. Intercom) and Linear.</p> -->
+        
+          <div class="section-label">Context</div>
+        <p class="case-summary">  When I joined Threecolts I took ownership of a  acquired product — built by its founder over 10 years. Technically solid. But activation was broken. The customers who got through the setup loved it and stayed for years. The problem was almost no one got there.</p>
 
       </div>
     </div>
@@ -722,23 +725,71 @@
 
         <div class="case-section" id="problem">
           <div class="section-label">Problem</div>
-          <h2>Aha moment</h2>
-          <p>Earlier I reverse-engineered successfully retained customers: engagement treshold (N tickets / mo per support agent) -> aha moment (order details on the right powered by ChannelReply) -> setup (email / contact form setup). Since I already streamlined setup part, and onboarding with our account managers I focused on showcasing aha-moment: send message seeing order details on the right.</p>
-          <p>I got inspired by <a href="https://mobbin.com/flows/3c3cc987-55ef-4c59-b71b-a41555bbf308?tab=screens&scrollToScreenIndex=0" class="ext-link" target="_blank" rel="noopener">this Intercom onboarding flow</a> — the way they show value before asking for setup commitment.</p>
-          <p>Helpdesk setup: to send a message you need to connect your email, ideally move from a competitor alternative with your ops. It requires hand-holding. I initially compensated with Account Managers and a Help Center, now I wanted to make it self-serve.</p>
-          <p>So we needed to show depth without overwhelming users</p>
+
+          <p>So I decided to focus on decreasing time-to-value and showcasing aha-moment ASAP. However our GTM was SLG, and let's say no one saw it as a priority.</p>
+          <div class="visual-block">
+            <img src="/assets/elena-verna_enterprise_activaiton_meme.webp" alt="Enterprise SLG activation" loading="lazy">
+          </div>
         </div>
 
         <div class="case-section" id="approach">
           <div class="section-label">What I did</div>
-          <h2>Three moves up the ladder.</h2>
-
-          <div class="move-label">Move 1 — Make the invisible visible</div>
-          <p>The biggest activation blocker wasn't missing features. It was that no one knew what the product was already doing.</p>
-          <p>First thing I built "object activity log" that surfaced every action the system took per object: assignments, status changes, email threads, rule triggers — all visible in one place.</p> 
-          <p>Previously to understand what's happening users would need to learn 4 separate things: trigger's log, email's log, triggers setup and messages itself</p> 
-          <p>Even existing customers' were puzzled when they saw it: <strong>"Wait, it does all that?"</strong> That awareness triggered the next question: "What else can it do?" Feature exploration jumped. Adoption followed.</p>
           
+         
+          <p> To keep it short: I reverse-engineered successfully retained customers. And I started working onwards: setup -> aha moment -> activated (engagement threshold).</p>
+          <p> First I revamped Email setup. Talking about its screen UX issues is a rabbit hole.  </p>
+          <p> It felt like admin panel for developer who built the feature. While design wasn't sexy, interface perfectly answered all setup questions and the number of calls I joined dropped from five per week to zero.</p>
+
+          <div class="compare-static">
+            <div class="compare-static-col">
+              <div class="compare-label">Before</div>
+              <img src="/assets/email_setup_before_additional_mailbox.png" alt="Forwarding mailbox setup before" loading="lazy">
+            </div>
+            <div class="compare-static-col">
+              <div class="compare-label">After</div>
+              <img src="/assets/email_setup_after_additional_mailbox_step_1.png" alt="Forwarding mailbox setup after" loading="lazy">
+              <img src="/assets/email_setup_after_additional_mailbox_step_2.png" alt="Forwarding mailbox setup after" loading="lazy">
+              <img src="/assets/email_setup_after_additional_mailbox_step_3.png" alt="Forwarding mailbox setup after" loading="lazy">
+            </div>
+          </div>
+
+
+        
+          <div class="compare-static">
+            <div class="compare-static-col">
+              <div class="compare-label">Before</div>
+              <img src="/assets/email_setup_before_custom_connection.png" alt="Sender mailbox setup before" loading="lazy">
+            </div>
+            <div class="compare-static-col">
+              <div class="compare-label">After</div>
+              <img src="/assets/email_setup_after_custom_connection.png" alt="Sender mailbox setup after" loading="lazy">
+            </div>
+          </div>
+
+          <p>Second I revamped Contact form. As you can see, "before" has no smallest hint you're editing a contact form.</p>
+
+          <div class="compare-static">
+            <div class="compare-static-col">
+              <div class="compare-label">Before</div>
+              <img src="/assets/contact_form_before.png" alt="Contact form before" loading="lazy">
+            </div>
+            <div class="compare-static-col">
+              <div class="compare-label">After</div>
+              <img src="/assets/contact_form_after.png" alt="Contact form after" loading="lazy">
+            </div>
+          </div>
+
+          <p>The setup moment was done. Next thing was the <strong>aha moment.</strong></p>
+          <p>That time I defined it as when the system starts doing the job instead the user (before AI has become a thing). So the goal has become to <strong>make the invisible visible.</strong>
+          <p>So I built "object activity log" that surfaced every action the system took per object: assignments, status changes, email threads, rule triggers — all in one place.</p> 
+          <p>Previously to understand what's happening users would need to learn 4 separate things: trigger's log, email's log, triggers setup and messages itself</p>           
+
+          <!-- <h2>Aha moment</h2> -->
+          <!-- <p>Earlier I reverse-engineered successfully retained customers: engagement treshold (N tickets / mo per support agent) -> aha moment (order details on the right powered by ChannelReply) -> setup (email / contact form setup). Since I already streamlined setup part, and onboarding with our account managers I focused on showcasing aha-moment: send message seeing order details on the right.</p> -->
+          <!-- <p>I got inspired by <a href="https://mobbin.com/flows/3c3cc987-55ef-4c59-b71b-a41555bbf308?tab=screens&scrollToScreenIndex=0" class="ext-link" target="_blank" rel="noopener">this Intercom onboarding flow</a> — the way they show value before asking for setup commitment.</p> -->
+          <!-- <p>Helpdesk setup: to send a message you need to connect your email, ideally move from a competitor alternative with your ops. It requires hand-holding. I initially compensated with Account Managers and a Help Center, now I wanted to make it self-serve.</p> -->
+          <!-- <p>So we needed to show depth without overwhelming users</p> -->
+
           <div class="compare-static">
             <div class="compare-static-col">
               <div class="compare-label">Before</div>
@@ -750,6 +801,7 @@
             </div>
           </div>
 
+          <p>When existing customers' saw it for the first time: <strong>"Wait, it does all that?"</strong> That awareness triggered the next question: "What else can it do?" Feature exploration jumped. Adoption followed.</p>
 
           <p>Despite the fact we consolidated everything in one place natively, we also got rid of the need of 2 popups: <span class="img-link" data-src="/assets/object_activity_log_before_mailing_log.png" data-alt="Mailing log popup">mailing log</span>, <span class="img-link" data-src="/assets/object_activity_log_before_change log.png" data-alt="Change log popup">change log</span>.</p>
           
