@@ -735,10 +735,11 @@
         <div class="case-section" id="approach">
           <div class="section-label">What I did</div>
           
+          <div class="move-label">Part 1 - Setup moment</div>
          
           <p> To keep it short: I reverse-engineered successfully retained customers. And I started working onwards: setup -> aha moment -> activated (engagement threshold).</p>
           <p> First I revamped Email setup. Talking about its screen UX issues is a rabbit hole.  </p>
-          <p> It felt like admin panel for developer who built the feature. While design wasn't sexy, interface perfectly answered all setup questions and the number of calls I joined dropped from five per week to zero.</p>
+          <p> It felt like admin panel for developer who built the feature. While afterwards design wasn't sexy, the interface perfectly answered all setup questions and the number of calls I joined dropped from five per week to zero.</p>
 
           <div class="compare-static">
             <div class="compare-static-col">
@@ -779,10 +780,13 @@
             </div>
           </div>
 
-          <p>The setup moment was done. Next thing was the <strong>aha moment.</strong></p>
+          <p>The setup moment was rescued. The next thing was the <strong>aha moment.</strong></p>
+
+          <div class="move-label">Part 2 - Aha moment</div>
+
           <p>That time I defined it as when the system starts doing the job instead the user (before AI has become a thing). So the goal has become to <strong>make the invisible visible.</strong>
           <p>So I built "object activity log" that surfaced every action the system took per object: assignments, status changes, email threads, rule triggers — all in one place.</p> 
-          <p>Previously to understand what's happening users would need to learn 4 separate things: trigger's log, email's log, triggers setup and messages itself</p>           
+          <p>Previously to understand what's happening users would need to learn 4 separate things: trigger's log, email's log, triggers setup and messages itself.</p>           
 
           <!-- <h2>Aha moment</h2> -->
           <!-- <p>Earlier I reverse-engineered successfully retained customers: engagement treshold (N tickets / mo per support agent) -> aha moment (order details on the right powered by ChannelReply) -> setup (email / contact form setup). Since I already streamlined setup part, and onboarding with our account managers I focused on showcasing aha-moment: send message seeing order details on the right.</p> -->
@@ -805,15 +809,30 @@
 
           <p>Despite the fact we consolidated everything in one place natively, we also got rid of the need of 2 popups: <span class="img-link" data-src="/assets/object_activity_log_before_mailing_log.png" data-alt="Mailing log popup">mailing log</span>, <span class="img-link" data-src="/assets/object_activity_log_before_change log.png" data-alt="Change log popup">change log</span>.</p>
           
-          <p>This is how it started.</p>
-          <div class="visual-block">
-            <img src="/assets/object_activity_log_after_with_comments.png" alt="Activity log — annotated" loading="lazy">
+          
+
+         
+          <div class="move-label">Part 3 - Activated</div>
+
+          <p>Long story short. This is how it evolved.</p>
+
+
+          <div class="compare-static">
+            <div class="compare-static-col">
+              <div class="compare-label">Before</div>
+              <img src="/assets/object_before.png" alt="Object view before activity log" loading="lazy">
+            </div>
+            <div class="compare-static-col">
+              <div class="compare-label">After</div>
+              <img src="/assets/object_after_with_comments.png" alt="Object view before activity log" loading="lazy">
+            </div>
           </div>
 
-          <div class="move-label">Move 2 — Cut the steps</div>
-          <p>Redesigned the core inbox and workflow flows end-to-end. The before: a dense list with no visual hierarchy, everything requiring an open to understand. The after: clear grouping, faster triage, context visible without clicking into every ticket.</p>
           <p>Drag to compare:</p>
-
+          <div class="slider-labels">
+            <span>Before</span>
+            <span>After</span>
+          </div>
           <div class="compare-slider" id="inboxSlider">
             <img class="compare-after" src="/assets/object-after-collapsed.png" alt="Inbox after redesign" loading="lazy" draggable="false">
             <div class="compare-before">
@@ -821,30 +840,32 @@
             </div>
             <div class="compare-divider"></div>
           </div>
-          <div class="slider-labels">
-            <span>Before</span>
-            <span>After</span>
-          </div>
-
-          <p>Long story short. This is how it evolved</p>
-          <div class="visual-block">
-            <img src="/assets/object_after_with_comments.png" alt="Inbox redesign — evolution" loading="lazy">
-          </div>
-
-          <div class="move-label">Move 3 — Email setup: prototype first, PRD second</div>
-          <p>One setup path was blocking everyone: email configuration. I was receiving setup questions daily despite a step-by-step help doc. I rebuilt the flow from scratch.</p>
-          <p>The process: opened Figma, built a low-fidelity clickable prototype, validated it with the support team before writing a single line of spec. Then I rewrote every tooltip using the exact language customers used when they were confused — pulled directly from support call recordings. Not generic help text. The words they already had.</p>
-          <p><strong>Setup support tickets dropped to zero.</strong></p>
+          
         </div>
 
         <div class="case-section" id="impact">
           <div class="section-label">Impact</div>
-          <p>Onboarding dropped from 8 weeks to 1.</p>
-          <p>Setup support tickets about email setup dropped to zero.</p>
-          <p>Feature adoption increased.</p>
-          <p>Activation got streamlined.</p>
-          <p>Our main competitor needed two years and a full team of PMs and designers to reach this quality bar. We matched it with one PM, no design system to start from, and first-principles thinking from a blank Figma file.</p>
-        </div>
+          <p>Despite the fact it's become cleaner and customers wrote in caps lock how much they "LOOVE it", UI has been significantly constrained by given design system. </p>
+          <p>Nevertheless I learned how to design and build design systems. Look what kind of design PRDs I've been creating and I had dozens of such files tinkering.</p>
+          <div class="compare-static">
+            <div class="compare-static-col">
+              <img src="/assets/figma_design_prds.png" alt="Object view before activity log" loading="lazy">
+            </div>
+            <div class="compare-static-col">
+              <img src="/assets/figma_design.png" alt="Object view before activity log" loading="lazy">
+            </div>
+          </div>
+          <p>
+            Couple of disclaimers:
+          </p>
+          <div><ul>
+            <li>I didn't know how to design</li>
+            <li>We had no design system to start from</li>
+            <li>I worked with 3 designers and fired 1, because they didn't meet the standards. 1.5 year later the wonderful lady joined my team and taught me about design system nuances and design processes. Along with her we redesigned additionally Triggers and Analytics pages. </li>
+            <li>I'm proud how I shipped "tabs" for the object view earlier than Slack </li>
+            <li>Our main competitor rolled out the similar design after two years, which is pure global market validation of my work. Yet it's worth mentioning: there are ~ 10 PMs + 10 designers required to reach the same quality bar. </li>
+          </ul></div>
+          </div>
 
       </div>
     </div>
