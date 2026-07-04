@@ -620,6 +620,20 @@
       opacity: 1;
     }
 
+    /* ── External text link ── */
+    .ext-link {
+      color: var(--foreground);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--border);
+      transition: color 0.15s, text-decoration-color 0.15s;
+    }
+
+    .ext-link:hover {
+      color: var(--accent-color);
+      text-decoration-color: var(--accent-color);
+    }
+
     /* ── Lightbox ── */
     #lightbox {
       position: fixed;
@@ -710,8 +724,8 @@
           <div class="section-label">Problem</div>
           <h2>Aha moment</h2>
           <p>Earlier I reverse-engineered successfully retained customers: engagement treshold (N tickets / mo per support agent) -> aha moment (order details on the right powered by ChannelReply) -> setup (email / contact form setup). Since I already streamlined setup part, and onboarding with our account managers I focused on showcasing aha-moment: send message seeing order details on the right.</p>
-          <p>I got inspired by this Intercom worfklow https://mobbin.com/flows/3c3cc987-55ef-4c59-b71b-a41555bbf308?tab=screens&scrollToScreenIndex=0</p>
-          <p>Helpdesk setup: to send a message you need to connect your email, ideally move from competitor alternative with your ops. It requires hadn-holding. I initially compensated it with Account Managers and Help center, now I wanted to make it self-serve</p>
+          <p>I got inspired by <a href="https://mobbin.com/flows/3c3cc987-55ef-4c59-b71b-a41555bbf308?tab=screens&scrollToScreenIndex=0" class="ext-link" target="_blank" rel="noopener">this Intercom onboarding flow</a> — the way they show value before asking for setup commitment.</p>
+          <p>Helpdesk setup: to send a message you need to connect your email, ideally move from a competitor alternative with your ops. It requires hand-holding. I initially compensated with Account Managers and a Help Center, now I wanted to make it self-serve.</p>
           <p>So we needed to show depth without overwhelming users</p>
         </div>
 
@@ -776,7 +790,7 @@
           <p>Onboarding dropped from 8 weeks to 1.</p>
           <p>Setup support tickets about email setup dropped to zero.</p>
           <p>Feature adoption increased.</p>
-          <p>Activation got streamlined</p>
+          <p>Activation got streamlined.</p>
           <p>Our main competitor needed two years and a full team of PMs and designers to reach this quality bar. We matched it with one PM, no design system to start from, and first-principles thinking from a blank Figma file.</p>
         </div>
 
