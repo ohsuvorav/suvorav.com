@@ -712,70 +712,15 @@
       border-top: 1px solid var(--border);
     }
 
-    /* ── WHAT — achievements (v2 test) ── */
-    .what-intro {
-      font-size: 14px;
-      color: var(--muted-fg);
-      margin: 4px 0 16px;
-    }
-
-    .what-list {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .what-row {
-      display: grid;
-      grid-template-columns: 5fr 7fr;
-      gap: 48px;
-      padding: 28px 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .what-row:last-child {
-      border-bottom: 1px solid var(--border);
-    }
-
-    .what-title {
-      font-size: 22px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      color: var(--foreground);
-    }
-
-    .what-detail {
-      font-size: 14px;
-      color: var(--muted-fg);
-      line-height: 1.6;
-      align-self: center;
-    }
-
-    .what-co {
-      display: block;
-      margin-top: 6px;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted-fg);
-      opacity: 0.7;
-    }
-
-    @media (max-width: 640px) {
-      .what-row {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-    }
-
-    /* v2: belief rows without case pages are full-strength, just not links */
-    #how-v2 div.case-row {
+    /* rows without case pages: full-strength, just not links */
+    #cases div.case-row,
+    #how div.case-row {
       opacity: 1;
       cursor: default;
     }
 
-    #how-v2 div.case-row:hover .case-row-title {
+    #cases div.case-row:hover .case-row-title,
+    #how div.case-row:hover .case-row-title {
       color: var(--foreground);
     }
 
@@ -1109,172 +1054,39 @@
       </div>
     </section>
 
-    <!-- Case Studies -->
+     <!-- Case Studies -->
     <section class="section" id="cases">
       <div class="container">
-        <div class="section-label">Case studies</div>
-
-        <!-- Filter bar -->
-        <div class="cases-filters">
-          <span class="filter-bar-label">Filter</span>
-
-          <div class="filter-group" id="roleGroup">
-            <button class="filter-trigger" id="roleTrigger">
-              Role: All
-              <svg class="filter-trigger-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </button>
-            <div class="filter-dropdown">
-              <button class="filter-option active" data-filter="role" data-value="all">
-                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                All
-              </button>
-              <button class="filter-option" data-filter="role" data-value="ic">
-                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                Individual contributor
-              </button>
-              <button class="filter-option" data-filter="role" data-value="manager">
-                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                Manager
-              </button>
-            </div>
-          </div>
-
-          <div class="filter-group" id="skillGroup">
-            <button class="filter-trigger" id="skillTrigger">
-              Skill: All
-              <svg class="filter-trigger-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </button>
-            <div class="filter-dropdown">
-              <button class="filter-option active" data-filter="skill" data-value="all">
-                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                All
-              </button>
-              <button class="filter-option" data-filter="skill" data-value="ai">
-                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                AI
-              </button>
-              <button class="filter-option" data-filter="skill" data-value="growth">
-                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                Growth
-              </button>
-              <button class="filter-option" data-filter="skill" data-value="retention">
-                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                Retention
-              </button>
-              <button class="filter-option" data-filter="skill" data-value="data">
-                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                Data
-              </button>
-              <button class="filter-option" data-filter="skill" data-value="0-1">
-                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                0→1
-              </button>
-              <button class="filter-option" data-filter="skill" data-value="gtm">
-                <svg class="filter-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                GTM
-              </button>
-            </div>
-          </div>
-
-          <button class="hide-upcoming-toggle" id="hideUpcomingBtn">Hide upcoming</button>
-        </div>
+        <div class="section-label">What I’ve done so far</div>
 
         <div class="cases-intercom">
 
-          <!-- Left: preview panel -->
+          <!-- Left: achievements -->
+          <div class="cases-list">
+            <div class="case-row active" data-case="1">
+              <span class="case-row-title">Killed 2 product verticals — despite the founder’s pushback</span>
+            </div>
+            <div class="case-row" data-case="2">
+              <span class="case-row-title">Pivoted the company B2C → B2B — with unit economics</span>
+            </div>
+            <div class="case-row" data-case="3">
+              <span class="case-row-title">Launched a product from scratch to first payments</span>
+            </div>
+          </div>
+
+          <!-- Right: what it meant -->
           <div class="cases-preview">
             <div class="case-preview-card active" data-preview="1">
-              <div class="case-preview-company">Threecolts · 2025</div>
-              <div class="case-preview-stat">2.5× team velocity</div>
-              <div class="case-preview-sub">Team brain in Git, Linear Triggers, capacity planner, Claude wrapper — compound ops system that doubled engineering output without adding headcount.</div>
-              <div class="case-preview-tags">
-                <span class="tag">AI</span>
-                <span class="tag">Linear</span>
-                <span class="tag">Ops</span>
-              </div>
+              <div class="case-preview-say">Retention 3×, ARR 2×</div>
+              <div class="case-preview-sub">“More verticals — easier to sell,” was the argument. The data said otherwise: 90% of revenue came from one core product. Built the business case, took it to the CEO — and killed both.</div>
             </div>
-
             <div class="case-preview-card" data-preview="2">
-              <div class="case-preview-company">Threecolts · 2023–2025</div>
-              <div class="case-preview-stat">40% feature adoption</div>
-              <div class="case-preview-sub">Redesigned the entire product UI/UX solo — from first principles. Competitors needed two years and a full team to match it.</div>
-              <div class="case-preview-tags">
-                <span class="tag">UX</span>
-                <span class="tag">Activation</span>
-                <span class="tag">Growth</span>
-              </div>
+              <div class="case-preview-say">95% of revenue — from 5% of users</div>
+              <div class="case-preview-sub">Cohort analysis nobody asked for. Showed the math — the company changed course.</div>
             </div>
-          </div>
-
-          <!-- Right: story list -->
-          <div class="cases-list" id="casesList">
-            <a class="case-row active" href="/cases/ai-agent.html" data-case="1">
-              <span class="case-row-title">AI-first ops: 2.5× team velocity</span>
-              <span class="case-row-arrow">↗</span>
-            </a>
-            <a class="case-row" href="/cases/product-redesign.html" data-case="2">
-              <span class="case-row-title">Redesigned the whole product. Solo.</span>
-              <span class="case-row-arrow">↗</span>
-            </a>
-            <div class="case-row">
-              <span class="case-row-title">Killed 2 product verticals to double ARR</span>
-              <span class="case-row-soon">Soon</span>
-            </div>
-            <div class="case-row">
-              <span class="case-row-title">Tripled retention (3.5 → 11.5 months)</span>
-              <span class="case-row-soon">Soon</span>
-            </div>
-            <div class="case-row">
-              <span class="case-row-title">360° customer view — blind GTM to targeted</span>
-              <span class="case-row-soon">Soon</span>
-            </div>
-            <div class="case-row">
-              <span class="case-row-title">Launched product from scratch to first payments</span>
-              <span class="case-row-soon">Soon</span>
-            </div>
-            <div class="case-row">
-              <span class="case-row-title">1st place at AI Hackathon</span>
-              <span class="case-row-soon">Soon</span>
-            </div>
-            <div class="case-row">
-              <span class="case-row-title">Retained $68K MRR at risk of churn</span>
-              <span class="case-row-soon">Soon</span>
+            <div class="case-preview-card" data-preview="3">
+              <div class="case-preview-say">Avoided bankruptcy</div>
+              <div class="case-preview-sub">First product role. From idea to paying customers — product plus full-cycle marketing.</div>
             </div>
           </div>
 
@@ -1282,88 +1094,38 @@
       </div>
     </section>
 
-    <!-- WHAT — achievements (v2 test), remove after verifying -->
-    <section class="section" id="what-v2">
+    <!-- How I do it -->
+    <section class="section" id="how">
       <div class="container">
-        <div class="section-label">Achievements — v2 test</div>
-        <p class="what-intro">Different companies, same method: first principles.</p>
-        <div class="what-list">
-
-          <div class="what-row">
-            <div class="what-title">Killed 2 product verticals &mdash; 2&times; ARR</div>
-            <div class="what-detail">Both solved real problems. Users loved them. Wrong bet &mdash; I concentrated the roadmap on what pays.
-              <span class="what-co">Threecolts</span>
-            </div>
-          </div>
-
-          <div class="what-row">
-            <div class="what-title">Tripled retention (3.5 &rarr; 11.5 months)</div>
-            <div class="what-detail">The pressure was to ship more features. Instead I reverse-engineered who actually stays &mdash; the ICP was wrong. Changed it.
-              <span class="what-co">Threecolts</span>
-            </div>
-          </div>
-
-          <div class="what-row">
-            <div class="what-title">Pivoted the company B2C &rarr; B2B</div>
-            <div class="what-detail">Cohort analysis: 95% of revenue came from 5% of users. Showed the math &mdash; the company changed course.
-              <span class="what-co">Coinchange</span>
-            </div>
-          </div>
-
-          <div class="what-row">
-            <div class="what-title">Launched a product from scratch to first payments</div>
-            <div class="what-detail">First PM role. Shipped from zero to revenue &mdash; and kept the company out of bankruptcy.
-              <span class="what-co">OnlinEventSpace</span>
-            </div>
-          </div>
-
-          <div class="what-row">
-            <div class="what-title">Retained $68K MRR at risk of churn</div>
-            <div class="what-detail">Enterprise accounts on their way out &mdash; turned around, account by account.
-              <span class="what-co">Threecolts</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- HOW — I say / It means (v2 test), remove after verifying -->
-    <section class="section" id="how-v2">
-      <div class="container">
-        <div class="section-label">How I work — v2 test</div>
+        <div class="section-label">How I do it</div>
 
         <div class="cases-intercom">
 
-          <!-- Left: I say — beliefs -->
+          <!-- Left: I say -->
           <div class="cases-list">
             <div class="section-label">I say</div>
-            <a class="case-row active" href="/cases/ai-agent.html" data-case-v2="1">
-              <span class="case-row-title">I&rsquo;m AI-native.</span>
+            <a class="case-row active" href="/cases/product-redesign.html" data-case="1">
+              <span class="case-row-title">I’m great at UX</span>
               <span class="case-row-arrow">↗</span>
             </a>
-            <a class="case-row" href="/cases/product-redesign.html" data-case-v2="2">
-              <span class="case-row-title">I love craft. Show, don&rsquo;t tell.</span>
+            <div class="case-row" data-case="2">
+              <span class="case-row-title">I’m technical and hands-on with data</span>
+            </div>
+            <a class="case-row" href="/cases/ai-agent.html" data-case="3">
+              <span class="case-row-title">I’m AI-native</span>
               <span class="case-row-arrow">↗</span>
             </a>
-            <div class="case-row" data-case-v2="3">
-              <span class="case-row-title">I&rsquo;m hands-on with data.</span>
+            <div class="case-row" data-case="4">
+              <span class="case-row-title">I have design taste</span>
             </div>
           </div>
 
-          <!-- Right: It means — artifacts -->
+          <!-- Right: Proof -->
           <div class="cases-preview">
-            <div class="section-label">It means</div>
-
-            <div class="case-preview-card active" data-preview-v2="1">
-              <div class="case-preview-say">2.5&times; team velocity</div>
-              <div class="case-preview-sub">Self-improving team brain in Git as a context, Linear Triggers, capacity planner, Linear Custom AI agent (Claude wrapper &mdash; with MCPs)</div>
-              <div class="case-preview-more">+ 1st place at AI Hackathon</div>
-            </div>
-
-            <div class="case-preview-card" data-preview-v2="2">
+            <div class="section-label">Proof</div>
+            <div class="case-preview-card active" data-preview="1">
               <div class="case-preview-say">40% feature adoption</div>
-              <div class="case-preview-sub">Why and how I redesigned the full product &mdash; solo. Competitors needed two years and a full team to match it.</div>
+              <div class="case-preview-sub">Redesigned the full product solo. Competitors needed two years and a full team to match it.</div>
               <div class="case-preview-visual">
                 <figure>
                   <img src="/assets/object-before.png" alt="Product before redesign" loading="lazy">
@@ -1375,10 +1137,18 @@
                 </figure>
               </div>
             </div>
-
-            <div class="case-preview-card" data-preview-v2="3">
-              <div class="case-preview-say">360&deg; customer view</div>
-              <div class="case-preview-sub">Built the CDP myself &mdash; GTM went from blind to targeted.</div>
+            <div class="case-preview-card" data-preview="2">
+              <div class="case-preview-say">360° customer view</div>
+              <div class="case-preview-sub">Built the CDP myself — GTM went from blind to targeted.</div>
+            </div>
+            <div class="case-preview-card" data-preview="3">
+              <div class="case-preview-say">2.5× team velocity</div>
+              <div class="case-preview-sub">Self-improving team brain in Git as a context, Linear Triggers, capacity planner, custom Claude agent (with MCPs).</div>
+              <div class="case-preview-more">+ 1st place at AI Hackathon</div>
+            </div>
+            <div class="case-preview-card" data-preview="4">
+              <div class="case-preview-say">Mirality</div>
+              <div class="case-preview-sub">AI ghostwriter I’m building in public. <em>Soon.</em></div>
             </div>
           </div>
 
@@ -1503,74 +1273,16 @@
       if ((localStorage.getItem('themeMode') || 'system') === 'system') applyTheme('system');
     });
 
-    // Case preview hover
-    const caseRows = document.querySelectorAll('.case-row[data-case]');
-    const casePreviews = document.querySelectorAll('.case-preview-card');
-
-    const selectCase = (row) => {
-      caseRows.forEach(r => r.classList.remove('active'));
-      casePreviews.forEach(p => p.classList.remove('active'));
-      row.classList.add('active');
-      const preview = document.querySelector(`.case-preview-card[data-preview="${row.dataset.case}"]`);
-      if (preview) preview.classList.add('active');
-    };
-
-    caseRows.forEach(row => {
-      row.addEventListener('mouseenter', () => selectCase(row));
-    });
-
-    // Case preview hover — v2 test section
-    const caseRowsV2 = document.querySelectorAll('.case-row[data-case-v2]');
-    const casePreviewsV2 = document.querySelectorAll('.case-preview-card[data-preview-v2]');
-
-    caseRowsV2.forEach(row => {
+    // Row → preview hover, scoped to each section's .cases-intercom
+    document.querySelectorAll('.case-row[data-case]').forEach(row => {
       row.addEventListener('mouseenter', () => {
-        caseRowsV2.forEach(r => r.classList.remove('active'));
-        casePreviewsV2.forEach(p => p.classList.remove('active'));
+        const scope = row.closest('.cases-intercom');
+        scope.querySelectorAll('.case-row').forEach(r => r.classList.remove('active'));
+        scope.querySelectorAll('.case-preview-card').forEach(p => p.classList.remove('active'));
         row.classList.add('active');
-        const preview = document.querySelector(`.case-preview-card[data-preview-v2="${row.dataset.caseV2}"]`);
+        const preview = scope.querySelector(`.case-preview-card[data-preview="${row.dataset.case}"]`);
         if (preview) preview.classList.add('active');
       });
-    });
-
-    // Role / Skill filter dropdowns
-    const toggleGroup = (group, otherGroup) => {
-      const isOpen = group.classList.contains('open');
-      otherGroup.classList.remove('open');
-      group.classList.toggle('open', !isOpen);
-    };
-
-    document.getElementById('roleTrigger').addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleGroup(document.getElementById('roleGroup'), document.getElementById('skillGroup'));
-    });
-
-    document.getElementById('skillTrigger').addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleGroup(document.getElementById('skillGroup'), document.getElementById('roleGroup'));
-    });
-
-    document.addEventListener('click', () => {
-      document.getElementById('roleGroup').classList.remove('open');
-      document.getElementById('skillGroup').classList.remove('open');
-    });
-
-    // Hide upcoming toggle
-    const hideBtn = document.getElementById('hideUpcomingBtn');
-    const casesList = document.getElementById('casesList');
-    let hidden = false;
-
-    hideBtn.addEventListener('click', () => {
-      hidden = !hidden;
-      if (hidden) {
-        casesList.setAttribute('data-hide-upcoming', '');
-        hideBtn.classList.add('active');
-        hideBtn.textContent = 'Show upcoming';
-      } else {
-        casesList.removeAttribute('data-hide-upcoming');
-        hideBtn.classList.remove('active');
-        hideBtn.textContent = 'Hide upcoming';
-      }
     });
   </script>
 </body>
