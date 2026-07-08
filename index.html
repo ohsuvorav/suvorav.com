@@ -189,6 +189,72 @@
       color: var(--accent-fg);
     }
 
+    /* ── Mobile burger menu ── */
+    .nav-burger {
+      display: none;
+      background: transparent;
+      border: none;
+      padding: 0;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      color: var(--foreground);
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .nav-burger svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
+    .nav-burger .icon-close {
+      display: none;
+    }
+
+    nav.menu-open .nav-burger .icon-open {
+      display: none;
+    }
+
+    nav.menu-open .nav-burger .icon-close {
+      display: block;
+    }
+
+    @media (max-width: 640px) {
+      .nav-burger {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2px;
+        padding: 8px 24px 16px;
+        background: color-mix(in srgb, var(--background) 96%, transparent);
+        backdrop-filter: saturate(180%) blur(10px);
+        -webkit-backdrop-filter: saturate(180%) blur(10px);
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        display: none;
+      }
+
+      nav.menu-open .nav-links {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 10px 12px;
+        font-size: 15px;
+        border-radius: var(--radius);
+      }
+    }
+
     /* ── Hero ── */
     .hero {
       padding: 80px 0 72px;
@@ -1047,6 +1113,17 @@
         </span>
         <span class="nav-sub">Growth Product Manager</span>
       </a>
+      <button class="nav-burger" aria-label="Toggle menu" aria-expanded="false">
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="4" y1="7" x2="20" y2="7" />
+          <line x1="4" y1="12" x2="20" y2="12" />
+          <line x1="4" y1="17" x2="20" y2="17" />
+        </svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="6" y1="6" x2="18" y2="18" />
+          <line x1="18" y1="6" x2="6" y2="18" />
+        </svg>
+      </button>
       <ul class="nav-links">
         <li><a href="#how">How I work</a></li>
         <li><a href="#cases">Why me</a></li>
@@ -1301,6 +1378,20 @@
 
     sys.addEventListener('change', () => {
       if ((localStorage.getItem('themeMode') || 'system') === 'system') applyTheme('system');
+    });
+
+    // Mobile burger menu
+    const navEl = document.querySelector('nav');
+    const burger = document.querySelector('.nav-burger');
+    burger.addEventListener('click', () => {
+      const open = navEl.classList.toggle('menu-open');
+      burger.setAttribute('aria-expanded', open);
+    });
+    navEl.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navEl.classList.remove('menu-open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
     });
 
     // Row → preview hover, scoped to each section's .cases-intercom
