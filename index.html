@@ -799,6 +799,35 @@
       border-top: 1px solid var(--border);
     }
 
+    /* explicit "read the case study" affordance — the tiny ↗ alone
+       wasn't obvious the card leads somewhere */
+    .case-preview-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: gap 0.15s;
+    }
+
+    .case-preview-cta svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      transition: transform 0.15s;
+    }
+
+    .case-preview-cta:hover {
+      gap: 9px;
+    }
+
+    .case-preview-cta:hover svg {
+      transform: translateX(2px);
+    }
+
     /* rows without case pages: full-strength, just not links */
     #cases div.case-row,
     #how div.case-row {
@@ -1244,8 +1273,15 @@
                   <figcaption>After</figcaption>
                   <img src="/assets/object-after-expanded.png" alt="Product after redesign" loading="lazy">
                 </figure>
-                
+
               </div>
+              <a class="case-preview-cta" href="/cases/product-redesign.html">
+                Read the case study
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </a>
             </div>
             <div class="case-preview-card" data-preview="2">
               <div class="case-preview-say">360° customer view</div>
