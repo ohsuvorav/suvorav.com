@@ -682,17 +682,31 @@
       display: none;
     }
 
+    /* ── Pin & step scroller (desktop) ──
+       Each section pins to the viewport for (--pin-steps) screen-heights
+       of scroll; JS maps scroll progress → active claim. Disabled on
+       mobile (see the max-width:640 block, where it reverts to normal flow). */
+    .pin-scroller {
+      height: calc(var(--pin-steps) * 90vh);
+    }
+
+    .pin-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      /* fixed top offset clears the sticky nav and keeps the claim list
+         anchored, so only the proof card changes between steps (no jump) */
+      padding-top: 104px;
+    }
+
     /* ── Case Studies — two-column layout ── */
     .cases-intercom {
       display: grid;
       grid-template-columns: 5fr 7fr;
       gap: 48px;
       align-items: start;
-    }
-
-    .cases-preview {
-      position: sticky;
-      top: 32px;
     }
 
     .case-preview-card {
@@ -705,6 +719,17 @@
 
     .case-preview-card.active {
       display: block;
+    }
+
+    /* clickable proof card → case page */
+    a.case-preview-card.is-link {
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+
+    a.case-preview-card.is-link:hover {
+      border-color: var(--muted-fg);
     }
 
     .case-preview-company {
@@ -799,40 +824,40 @@
       border-top: 1px solid var(--border);
     }
 
-    /* explicit "read the case study" affordance — the tiny ↗ alone
-       wasn't obvious the card leads somewhere */
+    /* explicit "learn more" affordance at the top of the card — the tiny ↗
+       alone wasn't obvious the card leads somewhere */
     .case-preview-cta {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      margin-top: 18px;
-      font-size: 13px;
+      margin-bottom: 16px;
+      font-size: 12px;
       font-weight: 600;
+      letter-spacing: 0.02em;
       color: var(--accent-color);
-      text-decoration: none;
       transition: gap 0.15s;
     }
 
     .case-preview-cta svg {
-      width: 15px;
-      height: 15px;
+      width: 14px;
+      height: 14px;
       flex-shrink: 0;
       transition: transform 0.15s;
     }
 
-    .case-preview-cta:hover {
+    a.case-preview-card.is-link:hover .case-preview-cta {
       gap: 9px;
     }
 
-    .case-preview-cta:hover svg {
+    a.case-preview-card.is-link:hover .case-preview-cta svg {
       transform: translateX(2px);
     }
 
-    /* rows without case pages: full-strength, just not links */
+    /* every claim row is a clickable switcher, full-strength */
     #cases div.case-row,
     #how div.case-row {
       opacity: 1;
-      cursor: default;
+      cursor: pointer;
     }
 
     #cases div.case-row:hover .case-row-title,
@@ -841,6 +866,19 @@
     }
 
     @media (max-width: 640px) {
+      /* No pinning on mobile — revert to normal document flow so the
+         interleaved claim→proof layout scrolls natively. */
+      .pin-scroller {
+        height: auto;
+      }
+
+      .pin-sticky {
+        position: static;
+        height: auto;
+        padding-top: 0;
+        display: block;
+      }
+
       /* Collapse the two columns into one flow so each title can sit
          directly above its own proof card (title → preview → title → preview). */
       .cases-intercom {
@@ -1235,110 +1273,116 @@
 
      <!-- Case Studies -->
     <section class="section" id="how">
-      <div class="container">
-        <h2 class="section-heading">How I work</h2>
+      <div class="pin-scroller" style="--pin-steps: 4;">
+       <div class="pin-sticky">
+        <div class="container">
+          <h2 class="section-heading">How I work</h2>
 
-        <div class="cases-intercom">
+          <div class="cases-intercom">
 
-          <!-- Left: I say -->
-          <div class="cases-list">
-            <div class="section-label">I say</div>
-            <a class="case-row active" href="/cases/product-redesign.html" data-case="1">
-              <span class="case-row-title">I’m great at UX</span>
-              <span class="case-row-arrow">↗</span>
-            </a>
-            <div class="case-row" data-case="2">
-              <span class="case-row-title">I’m technical and hands-on with data</span>
-            </div>
-            <div class="case-row" data-case="3">
-              <span class="case-row-title">I’m AI-native</span>
-            </div>
-            <div class="case-row" data-case="4">
-              <span class="case-row-title">I have design taste</span>
-            </div>
-          </div>
-
-          <!-- Right: Proof -->
-          <div class="cases-preview">
-            <div class="section-label">Proof</div>
-            <div class="case-preview-card active" data-preview="1">
-              <div class="case-preview-say">How I redesigned the product</div>
-              <div class="case-preview-sub">So customers wrote in CAPS LOCK how much they love it</div>
-              <div class="case-preview-visual">
-                <figure>
-                  <figcaption>Before</figcaption>
-                  <img src="/assets/object-before.png" alt="Product before redesign" loading="lazy">
-                </figure>
-                <figure>
-                  <figcaption>After</figcaption>
-                  <img src="/assets/object-after-expanded.png" alt="Product after redesign" loading="lazy">
-                </figure>
-
+            <!-- Left: I say -->
+            <div class="cases-list">
+              <div class="section-label">I say</div>
+              <div class="case-row active" data-case="1">
+                <span class="case-row-title">I’m great at UX</span>
               </div>
-              <a class="case-preview-cta" href="/cases/product-redesign.html">
-                Read the case study
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
-              </a>
+              <div class="case-row" data-case="2">
+                <span class="case-row-title">I’m technical and hands-on with data</span>
+              </div>
+              <div class="case-row" data-case="3">
+                <span class="case-row-title">I’m AI-native</span>
+              </div>
+              <div class="case-row" data-case="4">
+                <span class="case-row-title">I have design taste</span>
+              </div>
             </div>
-            <div class="case-preview-card" data-preview="2">
-              <div class="case-preview-say">360° customer view</div>
-              <div class="case-preview-sub">Built the CDP myself — that unlocked targeted GTM and insights for non-tech savvy teammates.</div>
-            </div>
-            <div class="case-preview-card" data-preview="3">
-              <div class="case-preview-say">2.5× team velocity</div>
-              <div class="case-preview-sub">Self-improving team brain in Git as a context, Linear Triggers, capacity planner, custom Claude agent (with MCPs).</div>
-              <div class="case-preview-more">+ 1st place at AI Hackathon</div>
-            </div>
-            <div class="case-preview-card" data-preview="4">
-              <div class="case-preview-say">Mirality</div>
-              <div class="case-preview-sub">AI ghostwriter I’m building. <em>Soon.</em></div>
-            </div>
-          </div>
 
+            <!-- Right: Proof -->
+            <div class="cases-preview">
+              <div class="section-label">Proof</div>
+              <a class="case-preview-card is-link active" data-preview="1" href="/cases/product-redesign.html">
+                <span class="case-preview-cta">
+                  Learn more
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </span>
+                <div class="case-preview-say">How I redesigned the product</div>
+                <div class="case-preview-sub">So customers wrote in CAPS LOCK how much they love it</div>
+                <div class="case-preview-visual">
+                  <figure>
+                    <figcaption>Before</figcaption>
+                    <img src="/assets/object-before.png" alt="Product before redesign" loading="lazy">
+                  </figure>
+                  <figure>
+                    <figcaption>After</figcaption>
+                    <img src="/assets/object-after-expanded.png" alt="Product after redesign" loading="lazy">
+                  </figure>
+                </div>
+              </a>
+              <div class="case-preview-card" data-preview="2">
+                <div class="case-preview-say">360° customer view</div>
+                <div class="case-preview-sub">Built the CDP myself — that unlocked targeted GTM and insights for non-tech savvy teammates.</div>
+              </div>
+              <div class="case-preview-card" data-preview="3">
+                <div class="case-preview-say">2.5× team velocity</div>
+                <div class="case-preview-sub">Self-improving team brain in Git as a context, Linear Triggers, capacity planner, custom Claude agent (with MCPs).</div>
+                <div class="case-preview-more">+ 1st place at AI Hackathon</div>
+              </div>
+              <div class="case-preview-card" data-preview="4">
+                <div class="case-preview-say">Mirality</div>
+                <div class="case-preview-sub">AI ghostwriter I’m building. <em>Soon.</em></div>
+              </div>
+            </div>
+
+          </div>
         </div>
+       </div>
       </div>
     </section>
 
     <!-- How I do it -->
     <section class="section" id="cases">
-      <div class="container">
-        <h2 class="section-heading">Founders hire me because I&hellip;</h2>
+      <div class="pin-scroller" style="--pin-steps: 3;">
+       <div class="pin-sticky">
+        <div class="container">
+          <h2 class="section-heading">Founders hire me because I&hellip;</h2>
 
-        <div class="cases-intercom">
+          <div class="cases-intercom">
 
-          <!-- Left: achievements -->
-          <div class="cases-list">
-            <div class="case-row active" data-case="1">
-              <span class="case-row-title">Killed 2 product verticals despite the founders’ pushback</span>
+            <!-- Left: achievements -->
+            <div class="cases-list">
+              <div class="case-row active" data-case="1">
+                <span class="case-row-title">Killed 2 product verticals despite the founders’ pushback</span>
+              </div>
+              <div class="case-row" data-case="2">
+                <span class="case-row-title">Pivoted the company B2C → B2B with unit economics</span>
+              </div>
+              <div class="case-row" data-case="3">
+                <span class="case-row-title">Launched a product from scratch to first payments</span>
+              </div>
             </div>
-            <div class="case-row" data-case="2">
-              <span class="case-row-title">Pivoted the company B2C → B2B with unit economics</span>
+
+            <!-- Right: what it meant -->
+            <div class="cases-preview">
+              <div class="case-preview-card active" data-preview="1">
+                <div class="case-preview-say">Retention 3×, ARR 2×</div>
+                <div class="case-preview-sub">“More verticals — easier to sell,” was the argument. The data said otherwise: 90% of revenue came from one core product. Built the business case, took it to the CEO — and killed both verticals.</div>
+              </div>
+              <div class="case-preview-card" data-preview="2">
+                <div class="case-preview-say">95% of revenue — from 5% of users</div>
+                <div class="case-preview-sub">Cohort analysis nobody asked for. Showed the math — the company changed course.</div>
+              </div>
+              <div class="case-preview-card" data-preview="3">
+                <div class="case-preview-say">Avoided bankruptcy</div>
+                <div class="case-preview-sub">First product role. From idea to paying customers — product plus full-cycle marketing.</div>
+              </div>
             </div>
-            <div class="case-row" data-case="3">
-              <span class="case-row-title">Launched a product from scratch to first payments</span>
-            </div>
+
           </div>
-
-          <!-- Right: what it meant -->
-          <div class="cases-preview">
-            <div class="case-preview-card active" data-preview="1">
-              <div class="case-preview-say">Retention 3×, ARR 2×</div>
-              <div class="case-preview-sub">“More verticals — easier to sell,” was the argument. The data said otherwise: 90% of revenue came from one core product. Built the business case, took it to the CEO — and killed both verticals.</div>
-            </div>
-            <div class="case-preview-card" data-preview="2">
-              <div class="case-preview-say">95% of revenue — from 5% of users</div>
-              <div class="case-preview-sub">Cohort analysis nobody asked for. Showed the math — the company changed course.</div>
-            </div>
-            <div class="case-preview-card" data-preview="3">
-              <div class="case-preview-say">Avoided bankruptcy</div>
-              <div class="case-preview-sub">First product role. From idea to paying customers — product plus full-cycle marketing.</div>
-            </div>
-          </div>
-
         </div>
+       </div>
       </div>
     </section>
 
@@ -1468,17 +1512,72 @@
       });
     });
 
-    // Row → preview hover, scoped to each section's .cases-intercom
-    document.querySelectorAll('.case-row[data-case]').forEach(row => {
-      row.addEventListener('mouseenter', () => {
-        const scope = row.closest('.cases-intercom');
-        scope.querySelectorAll('.case-row').forEach(r => r.classList.remove('active'));
-        scope.querySelectorAll('.case-preview-card').forEach(p => p.classList.remove('active'));
-        row.classList.add('active');
-        const preview = scope.querySelector(`.case-preview-card[data-preview="${row.dataset.case}"]`);
-        if (preview) preview.classList.add('active');
+    /* ── Case switcher: click + pin-scroll stepping ──
+       Hover-to-switch is retired (see commented block below). Now the
+       active claim is driven by (a) clicking a row and (b) scrolling
+       while the section is pinned — both call setActive(). */
+
+    // Hover switch — kept for reference, disabled per new UX.
+    // document.querySelectorAll('.case-row[data-case]').forEach(row => {
+    //   row.addEventListener('mouseenter', () => {
+    //     const scope = row.closest('.cases-intercom');
+    //     scope.querySelectorAll('.case-row').forEach(r => r.classList.remove('active'));
+    //     scope.querySelectorAll('.case-preview-card').forEach(p => p.classList.remove('active'));
+    //     row.classList.add('active');
+    //     const preview = scope.querySelector(`.case-preview-card[data-preview="${row.dataset.case}"]`);
+    //     if (preview) preview.classList.add('active');
+    //   });
+    // });
+
+    const desktop = window.matchMedia('(min-width: 641px)');
+
+    const setActive = (scope, index) => {
+      const rows = scope.querySelectorAll('.case-row');
+      const cards = scope.querySelectorAll('.case-preview-card');
+      index = Math.max(0, Math.min(rows.length - 1, index));
+      rows.forEach((r, i) => r.classList.toggle('active', i === index));
+      cards.forEach((c, i) => c.classList.toggle('active', i === index));
+    };
+
+    document.querySelectorAll('.pin-scroller').forEach(scroller => {
+      const scope = scroller.querySelector('.cases-intercom');
+      const rows = [...scope.querySelectorAll('.case-row')];
+      const steps = rows.length;
+
+      // Click a claim → jump to the middle of its scroll band (desktop),
+      // or just switch (mobile, where all cards are already visible).
+      rows.forEach((row, i) => {
+        row.addEventListener('click', () => {
+          if (!desktop.matches) { setActive(scope, i); return; }
+          const range = scroller.offsetHeight - window.innerHeight;
+          const top = scroller.getBoundingClientRect().top + window.scrollY;
+          const progress = (i + 0.5) / steps;
+          window.scrollTo({ top: top + progress * range, behavior: 'smooth' });
+        });
       });
+
+      // Scroll progress within the pinned range → active index.
+      scroller._update = () => {
+        if (!desktop.matches) return;
+        const range = scroller.offsetHeight - window.innerHeight;
+        const top = scroller.getBoundingClientRect().top + window.scrollY;
+        const progress = (window.scrollY - top) / range;
+        setActive(scope, Math.floor(Math.max(0, Math.min(0.999, progress)) * steps));
+      };
     });
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        document.querySelectorAll('.pin-scroller').forEach(s => s._update && s._update());
+        ticking = false;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
   </script>
 </body>
 
