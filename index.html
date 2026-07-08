@@ -812,17 +812,55 @@
     }
 
     @media (max-width: 640px) {
+      /* Collapse the two columns into one flow so each title can sit
+         directly above its own proof card (title → preview → title → preview). */
       .cases-intercom {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        /* the desktop 48px grid-gap became a flex gap between every
+           item — kill it and control spacing with padding/margin */
       }
 
-      .cases-preview {
+      /* child-combinator raises specificity above the base
+         `.cases-list { display: flex }` rule defined later in the sheet */
+      .cases-intercom > .cases-list,
+      .cases-intercom > .cases-preview {
+        display: contents;
+      }
+
+      /* Column headers ("I say" / "Proof") make no sense once interleaved */
+      .cases-intercom .section-label {
+        display: none;
+      }
+
+      /* Tighten title→card, keep a bigger gap card→next title so each
+         claim+proof reads as one group */
+      .cases-intercom .case-row {
+        padding: 22px 0 6px;
+      }
+
+      /* Every proof card is visible on mobile, inline under its title */
+      .case-preview-card {
+        display: block;
         position: static;
+        margin: 0 0 8px;
       }
 
       .case-row-title {
         font-size: 22px;
       }
+
+      /* Interleave: title N, then preview N */
+      .case-row[data-case="1"] { order: 1; }
+      .case-preview-card[data-preview="1"] { order: 2; }
+      .case-row[data-case="2"] { order: 3; }
+      .case-preview-card[data-preview="2"] { order: 4; }
+      .case-row[data-case="3"] { order: 5; }
+      .case-preview-card[data-preview="3"] { order: 6; }
+      .case-row[data-case="4"] { order: 7; }
+      .case-preview-card[data-preview="4"] { order: 8; }
     }
 
     .cases-list {
