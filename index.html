@@ -189,46 +189,127 @@
       color: var(--accent-fg);
     }
 
-    /* Nav action cluster — icons + secondary + primary */
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-left: 6px;
+    /* ── Contact dropdown ── */
+    .nav-contact {
+      position: relative;
+      margin-left: 4px;
     }
 
-    /* icon links (LinkedIn, Email) */
-    .nav-links a.nav-icon {
-      padding: 7px;
+    .nav-contact-trigger {
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
       color: var(--muted-fg);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: calc(var(--radius) - 2px);
       display: inline-flex;
       align-items: center;
-      border-radius: calc(var(--radius) - 2px);
+      gap: 5px;
+      transition: background 0.15s, color 0.15s;
     }
 
-    .nav-links a.nav-icon svg {
-      width: 17px;
-      height: 17px;
-      display: block;
-    }
-
-    .nav-links a.nav-icon:hover {
+    .nav-contact-trigger:hover,
+    .nav-contact.open .nav-contact-trigger {
       background: var(--accent);
       color: var(--accent-fg);
     }
 
-    /* secondary pill (Download CV) */
-    .nav-links a.nav-cta-secondary {
+    .nav-contact-trigger .chevron {
+      width: 13px;
+      height: 13px;
+      transition: transform 0.15s;
+    }
+
+    .nav-contact.open .nav-contact-trigger .chevron {
+      transform: rotate(180deg);
+    }
+
+    .nav-contact-menu {
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      min-width: 240px;
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      padding: 6px;
+      display: none;
+      flex-direction: column;
+      gap: 2px;
+      z-index: 50;
+    }
+
+    .nav-contact.open .nav-contact-menu {
+      display: flex;
+    }
+
+    /* rows inside the dropdown (email, linkedin, cv) */
+    .nav-contact-menu a,
+    .nav-contact-menu .copy-email {
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
       color: var(--foreground);
       background: transparent;
-      border: 1px solid var(--border);
-      border-radius: 9999px;
-      padding: 7px 16px;
+      border: none;
+      text-align: left;
+      text-decoration: none;
+      cursor: pointer;
+      padding: 9px 10px;
+      border-radius: calc(var(--radius) - 2px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      transition: background 0.15s;
     }
 
-    .nav-links a.nav-cta-secondary:hover {
+    .nav-contact-menu a:hover,
+    .nav-contact-menu .copy-email:hover {
       background: var(--accent);
-      color: var(--accent-fg);
+    }
+
+    .nav-contact-menu svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      color: var(--muted-fg);
+    }
+
+    /* copy-email affordance — icon swaps to a green check on copy */
+    .copy-email .check-icon {
+      display: none;
+    }
+
+    .copy-email.copied .copy-icon {
+      display: none;
+    }
+
+    .copy-email.copied .check-icon {
+      display: block;
+      color: #16a34a;
+    }
+
+    .copy-email.copied .copy-email-label {
+      color: #16a34a;
+    }
+
+    /* desktop: copy icon is revealed on hover (there's no hover on touch) */
+    @media (min-width: 641px) {
+      .nav-contact-menu .copy-email .copy-icon {
+        opacity: 0;
+        transition: opacity 0.15s;
+      }
+
+      .nav-contact-menu .copy-email:hover .copy-icon,
+      .nav-contact-menu .copy-email.copied .copy-icon {
+        opacity: 1;
+      }
     }
 
     /* primary pill (Book a call) */
@@ -292,7 +373,7 @@
         flex-direction: column;
         align-items: stretch;
         gap: 2px;
-        padding: 8px 24px 16px;
+        padding: 8px 18px 16px;
         background: color-mix(in srgb, var(--background) 96%, transparent);
         backdrop-filter: saturate(180%) blur(10px);
         -webkit-backdrop-filter: saturate(180%) blur(10px);
@@ -311,25 +392,58 @@
         border-radius: var(--radius);
       }
 
-      /* mobile: action cluster — icon row + two pills */
-      .nav-actions {
-        flex-wrap: wrap;
-        gap: 8px;
-        margin: 10px 0 0;
-        padding-top: 12px;
+      /* mobile: dropdown flattens into the burger list */
+      .nav-contact {
+        margin: 8px 0 0;
+        padding-top: 10px;
         border-top: 1px solid var(--border);
       }
 
-      .nav-links a.nav-cta,
-      .nav-links a.nav-cta-secondary {
-        flex: 1 1 100%;
-        text-align: center;
-        white-space: nowrap;
-        padding: 10px 16px;
+      .nav-contact-trigger {
+        display: none;
       }
 
-      .nav-links a.nav-icon {
-        padding: 9px;
+      .nav-contact-menu {
+        position: static;
+        display: flex;
+        min-width: 0;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        background: transparent;
+      }
+
+      .nav-contact-menu a,
+      .nav-contact-menu .copy-email {
+        padding: 12px 4px;
+        font-size: 15px;
+        gap: 10px;
+      }
+
+      /* mobile: copy icon always visible — no hover to reveal it */
+      .nav-contact-menu .copy-email .copy-icon {
+        opacity: 1;
+      }
+
+      /* keep the address on one line and never push the icon off-screen */
+      .nav-contact-menu .copy-email {
+        justify-content: flex-start;
+      }
+
+      .nav-contact-menu .copy-email .copy-email-label {
+        flex: 1;
+        font-size: 13px;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .nav-links a.nav-cta {
+        margin-top: 6px;
+        text-align: center;
+        white-space: nowrap;
+        padding: 12px 16px;
       }
     }
 
@@ -1311,23 +1425,42 @@
         <li><a href="#how">How I work</a></li>
         <li><a href="#cases">Why me</a></li>
         <li><a href="#career">Career</a></li>
-        <li class="nav-actions">
-          <a href="https://linkedin.com/in/ohsuvorav" class="nav-icon" aria-label="LinkedIn" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-              <rect x="2" y="9" width="4" height="12" />
-              <circle cx="4" cy="4" r="2" />
+        <li class="nav-contact">
+          <button class="nav-contact-trigger" aria-expanded="false" aria-haspopup="true">
+            Contact
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9" />
             </svg>
-          </a>
-          <a href="mailto:olegsuvorav@gmail.com" class="nav-icon" aria-label="Email">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="4" width="20" height="16" rx="2" />
-              <path d="m22 7-10 5L2 7" />
-            </svg>
-          </a>
-          <a href="/assets/Oleg-Suvorov-CV.pdf" class="nav-cta-secondary" download>Download CV</a>
-          <a href="https://calendar.notion.so/meet/ohsuvorav/product-growth" class="nav-cta" target="_blank" rel="noopener">Book a call</a>
+          </button>
+          <div class="nav-contact-menu">
+            <button class="copy-email" data-email="olegsuvorav@gmail.com" aria-label="Copy email address">
+              <span class="copy-email-label">olegsuvorav@gmail.com</span>
+              <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </button>
+            <a href="https://linkedin.com/in/ohsuvorav" target="_blank" rel="noopener">
+              LinkedIn
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </a>
+            <a href="/assets/Oleg-Suvorov-CV.pdf" download>
+              Download CV
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </a>
+          </div>
         </li>
+        <li><a href="https://calendar.notion.so/meet/ohsuvorav/product-growth" class="nav-cta" target="_blank" rel="noopener">Book a call</a></li>
       </ul>
     </div>
   </nav>
@@ -1603,6 +1736,52 @@
       link.addEventListener('click', () => {
         navEl.classList.remove('menu-open');
         burger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Contact dropdown (desktop) — click to toggle, click outside to close
+    const contact = document.querySelector('.nav-contact');
+    if (contact) {
+      const trigger = contact.querySelector('.nav-contact-trigger');
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = contact.classList.toggle('open');
+        trigger.setAttribute('aria-expanded', open);
+      });
+      document.addEventListener('click', (e) => {
+        if (!contact.contains(e.target)) {
+          contact.classList.remove('open');
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // Copy email to clipboard, with a transient "copied" check
+    document.querySelectorAll('.copy-email').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const email = btn.dataset.email;
+        // instant visual feedback — don't wait on the clipboard promise
+        btn.classList.add('copied');
+        clearTimeout(btn._copiedTimer);
+        btn._copiedTimer = setTimeout(() => btn.classList.remove('copied'), 1600);
+        // copy, with a legacy fallback for older/insecure contexts
+        const legacyCopy = () => {
+          const ta = document.createElement('textarea');
+          ta.value = email;
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          ta.remove();
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(email).catch(legacyCopy);
+        } else {
+          legacyCopy();
+        }
       });
     });
 
