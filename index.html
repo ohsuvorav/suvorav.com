@@ -178,10 +178,12 @@
       font-weight: 500;
       color: var(--muted-fg);
       text-decoration: none;
-      padding: 6px 12px;
+      height: 28px;
+      padding: 0 12px;
       border-radius: calc(var(--radius) - 2px);
       transition: background 0.15s, color 0.15s;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
     }
 
     .nav-links a:hover {
@@ -260,6 +262,7 @@
       text-align: left;
       text-decoration: none;
       cursor: pointer;
+      height: auto;
       padding: 9px 10px;
       border-radius: calc(var(--radius) - 2px);
       display: flex;
@@ -378,6 +381,7 @@
       }
 
       .nav-links a {
+        height: auto;
         padding: 10px 12px;
         font-size: 15px;
         border-radius: var(--radius);
