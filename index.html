@@ -1301,6 +1301,32 @@
       color: var(--accent-fg);
     }
 
+    /* footer email → copy-on-click (reuses global .copy-email behavior) */
+    .footer-links .copy-email {
+      font-family: inherit;
+      font-size: 13px;
+      color: var(--muted-fg);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: calc(var(--radius) - 2px);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .footer-links .copy-email:hover {
+      background: var(--accent);
+      color: var(--accent-fg);
+    }
+
+    .footer-links .copy-email svg {
+      width: 13px;
+      height: 13px;
+    }
+
     /* ── Theme switcher (shadcn ToggleGroup style) ── */
     .theme-switcher {
       display: inline-flex;
@@ -1646,7 +1672,16 @@
       <span class="footer-name">Oleg Suvorov · 2026</span>
       <div class="footer-links">
         <a href="https://linkedin.com/in/ohsuvorav">LinkedIn</a>
-        <a href="mailto:olegsuvorav@gmail.com">Email</a>
+        <button class="copy-email" data-email="olegsuvorav@gmail.com" aria-label="Copy email address">
+          <span class="copy-email-label">Email</span>
+          <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+          </svg>
+          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </button>
         <div class="theme-switcher">
           <span class="theme-indicator" id="themeIndicator"></span>
           <button class="theme-btn" data-mode="system" aria-label="System theme">
