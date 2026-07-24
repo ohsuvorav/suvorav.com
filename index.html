@@ -189,6 +189,21 @@
       color: var(--accent-fg);
     }
 
+    /* Contact CTA — filled pill in nav */
+    .nav-links a.nav-cta {
+      color: var(--primary-fg);
+      background: var(--primary);
+      border-radius: 9999px;
+      padding: 6px 16px;
+      margin-left: 4px;
+    }
+
+    .nav-links a.nav-cta:hover {
+      background: var(--primary);
+      color: var(--primary-fg);
+      opacity: 0.88;
+    }
+
     /* ── Mobile burger menu ── */
     .nav-burger {
       display: none;
@@ -252,6 +267,13 @@
         padding: 10px 12px;
         font-size: 15px;
         border-radius: var(--radius);
+      }
+
+      /* mobile: Contact CTA becomes a full-width pill */
+      .nav-links a.nav-cta {
+        text-align: center;
+        margin: 6px 0 0;
+        padding: 12px;
       }
     }
 
@@ -1233,7 +1255,7 @@
         <li><a href="#how">How I work</a></li>
         <li><a href="#cases">Why me</a></li>
         <li><a href="#career">Career</a></li>
-        <li><a href="mailto:olegsuvorav@gmail.com">Contact</a></li>
+        <li><a href="mailto:olegsuvorav@gmail.com" class="nav-cta">Contact</a></li>
       </ul>
     </div>
   </nav>
