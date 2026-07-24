@@ -1122,6 +1122,35 @@
     .cases-list {
       display: flex;
       flex-direction: column;
+      position: relative;
+    }
+
+    /* vertical scroll-progress track (left of the claims) — injected per scroller */
+    .pin-progress {
+      position: absolute;
+      left: -22px;
+      top: 2px;
+      bottom: 2px;
+      width: 3px;
+      border-radius: 9999px;
+      background: var(--border);
+      overflow: hidden;
+    }
+
+    .pin-progress-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 0;
+      background: var(--foreground);
+      border-radius: 9999px;
+    }
+
+    @media (max-width: 640px) {
+      .pin-progress {
+        display: none;
+      }
     }
 
     .case-row {
@@ -1849,6 +1878,15 @@
       const rows = [...scope.querySelectorAll('.case-row')];
       const steps = rows.length;
 
+      // Vertical scroll-progress track, left of the claims list.
+      const list = scope.querySelector('.cases-list');
+      const track = document.createElement('div');
+      track.className = 'pin-progress';
+      const fill = document.createElement('div');
+      fill.className = 'pin-progress-fill';
+      track.appendChild(fill);
+      list.appendChild(track);
+
       // Click a claim → jump to the middle of its scroll band (desktop),
       // or just switch (mobile, where all cards are already visible).
       rows.forEach((row, i) => {
@@ -1867,7 +1905,9 @@
         const range = scroller.offsetHeight - window.innerHeight;
         const top = scroller.getBoundingClientRect().top + window.scrollY;
         const progress = (window.scrollY - top) / range;
+        const clamped = Math.max(0, Math.min(1, progress));
         setActive(scope, Math.floor(Math.max(0, Math.min(0.999, progress)) * steps));
+        fill.style.height = (clamped * 100) + '%';
       };
     });
 
