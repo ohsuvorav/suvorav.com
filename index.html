@@ -449,6 +449,11 @@
         gap: 10px;
       }
 
+      /* verified on-device: the copy button needs 6px 8px to line up with the links */
+      .nav-contact-menu .copy-email {
+        padding: 6px 8px;
+      }
+
       /* mobile: copy icon always visible — no hover to reveal it */
       .nav-contact-menu .copy-email .copy-icon {
         opacity: 1;
@@ -1839,12 +1844,24 @@
     const contact = document.querySelector('.nav-contact');
     if (contact) {
       const trigger = contact.querySelector('.nav-contact-trigger');
+      const contactMQ = window.matchMedia('(max-width: 640px)');
+
+      // Mobile: accordion expanded by default. Desktop: popover closed by default.
+      const applyContactDefault = () => {
+        const mobile = contactMQ.matches;
+        contact.classList.toggle('open', mobile);
+        trigger.setAttribute('aria-expanded', mobile);
+      };
+      applyContactDefault();
+      contactMQ.addEventListener('change', applyContactDefault);
+
       trigger.addEventListener('click', (e) => {
         e.stopPropagation();
         const open = contact.classList.toggle('open');
         trigger.setAttribute('aria-expanded', open);
       });
       document.addEventListener('click', (e) => {
+        if (contactMQ.matches) return; // on mobile the accordion isn't dismissed by outside clicks
         if (!contact.contains(e.target)) {
           contact.classList.remove('open');
           trigger.setAttribute('aria-expanded', 'false');
