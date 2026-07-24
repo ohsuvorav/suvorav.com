@@ -189,13 +189,55 @@
       color: var(--accent-fg);
     }
 
-    /* Contact CTA — filled pill in nav */
+    /* Nav action cluster — icons + secondary + primary */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: 6px;
+    }
+
+    /* icon links (LinkedIn, Email) */
+    .nav-links a.nav-icon {
+      padding: 7px;
+      color: var(--muted-fg);
+      display: inline-flex;
+      align-items: center;
+      border-radius: calc(var(--radius) - 2px);
+    }
+
+    .nav-links a.nav-icon svg {
+      width: 17px;
+      height: 17px;
+      display: block;
+    }
+
+    .nav-links a.nav-icon:hover {
+      background: var(--accent);
+      color: var(--accent-fg);
+    }
+
+    /* secondary pill (Download CV) */
+    .nav-links a.nav-cta-secondary {
+      color: var(--foreground);
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 7px 16px;
+    }
+
+    .nav-links a.nav-cta-secondary:hover {
+      background: var(--accent);
+      color: var(--accent-fg);
+    }
+
+    /* primary pill (Book a call) */
     .nav-links a.nav-cta {
       color: var(--primary-fg);
       background: var(--primary);
+      border: 1px solid transparent;
       border-radius: 9999px;
-      padding: 6px 16px;
-      margin-left: 4px;
+      padding: 7px 16px;
     }
 
     .nav-links a.nav-cta:hover {
@@ -269,11 +311,25 @@
         border-radius: var(--radius);
       }
 
-      /* mobile: Contact CTA becomes a full-width pill */
-      .nav-links a.nav-cta {
+      /* mobile: action cluster — icon row + two pills */
+      .nav-actions {
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 10px 0 0;
+        padding-top: 12px;
+        border-top: 1px solid var(--border);
+      }
+
+      .nav-links a.nav-cta,
+      .nav-links a.nav-cta-secondary {
+        flex: 1 1 100%;
         text-align: center;
-        margin: 6px 0 0;
-        padding: 12px;
+        white-space: nowrap;
+        padding: 10px 16px;
+      }
+
+      .nav-links a.nav-icon {
+        padding: 9px;
       }
     }
 
@@ -1255,7 +1311,23 @@
         <li><a href="#how">How I work</a></li>
         <li><a href="#cases">Why me</a></li>
         <li><a href="#career">Career</a></li>
-        <li><a href="https://calendar.notion.so/meet/ohsuvorav/product-growth" class="nav-cta" target="_blank" rel="noopener">Book a call</a></li>
+        <li class="nav-actions">
+          <a href="https://linkedin.com/in/ohsuvorav" class="nav-icon" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+          </a>
+          <a href="mailto:olegsuvorav@gmail.com" class="nav-icon" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="m22 7-10 5L2 7" />
+            </svg>
+          </a>
+          <a href="/assets/Oleg-Suvorov-CV.pdf" class="nav-cta-secondary" download>Download CV</a>
+          <a href="https://calendar.notion.so/meet/ohsuvorav/product-growth" class="nav-cta" target="_blank" rel="noopener">Book a call</a>
+        </li>
       </ul>
     </div>
   </nav>
