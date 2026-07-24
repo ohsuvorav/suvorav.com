@@ -299,13 +299,16 @@
       color: #16a34a;
     }
 
-    /* primary pill (Book a call) */
+    /* primary button (Book a call) */
     .nav-links a.nav-cta {
       color: var(--primary-fg);
       background: var(--primary);
       border: 1px solid transparent;
-      border-radius: 9999px;
-      padding: 7px 16px;
+      border-radius: var(--radius);
+      height: 32px;
+      padding: 0 16px;
+      display: inline-flex;
+      align-items: center;
     }
 
     .nav-links a.nav-cta:hover {
@@ -428,9 +431,9 @@
 
       .nav-links a.nav-cta {
         margin-top: 6px;
-        text-align: center;
+        justify-content: center;
         white-space: nowrap;
-        padding: 12px 16px;
+        padding: 0 16px;
       }
     }
 
@@ -499,8 +502,9 @@
       text-decoration: none;
       background: var(--primary);
       border: 1px solid transparent;
-      padding: 8px 18px;
-      border-radius: 9999px;
+      height: 32px;
+      padding: 0 16px;
+      border-radius: var(--radius);
       transition: opacity 0.15s;
       cursor: pointer;
       white-space: nowrap;
@@ -529,8 +533,9 @@
       text-decoration: none;
       background: transparent;
       border: 1px solid var(--border);
-      padding: 8px 18px;
-      border-radius: 9999px;
+      height: 32px;
+      padding: 0 16px;
+      border-radius: var(--radius);
       transition: background 0.15s, color 0.15s;
       cursor: pointer;
       white-space: nowrap;
