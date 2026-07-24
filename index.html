@@ -234,7 +234,7 @@
       position: absolute;
       top: calc(100% + 6px);
       right: 0;
-      min-width: 240px;
+      min-width: 264px;
       background: var(--background);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -359,20 +359,17 @@
         display: inline-flex;
       }
 
+      /* full-screen opaque menu — replaces page content instead of overlaying it */
       .nav-links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
+        position: fixed;
+        inset: 0;
+        z-index: 1;
         flex-direction: column;
         align-items: stretch;
         gap: 2px;
-        padding: 8px 18px 16px;
-        background: color-mix(in srgb, var(--background) 96%, transparent);
-        backdrop-filter: saturate(180%) blur(10px);
-        -webkit-backdrop-filter: saturate(180%) blur(10px);
-        border-bottom: 1px solid var(--border);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        padding: 88px 24px 32px;
+        background: var(--background);
+        overflow-y: auto;
         display: none;
       }
 
@@ -380,18 +377,33 @@
         display: flex;
       }
 
+      /* while open: drop the nav's backdrop-filter so it no longer becomes the
+         containing block for the fixed overlay (otherwise inset:0 sizes to the
+         nav bar, not the viewport), and make the top bar opaque */
+      nav.menu-open {
+        background: var(--background);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+      }
+
+      /* keep the name + close button above the overlay */
+      .nav-brand,
+      .nav-burger {
+        position: relative;
+        z-index: 2;
+      }
+
       .nav-links a {
         height: auto;
         padding: 10px 12px;
         font-size: 15px;
+        color: var(--foreground);
         border-radius: var(--radius);
       }
 
       /* mobile: dropdown flattens into the burger list */
       .nav-contact {
-        margin: 8px 0 0;
-        padding-top: 10px;
-        border-top: 1px solid var(--border);
+        margin: 6px 0 0;
       }
 
       .nav-contact-trigger {
@@ -410,7 +422,7 @@
 
       .nav-contact-menu a,
       .nav-contact-menu .copy-email {
-        padding: 12px 4px;
+        padding: 12px;
         font-size: 15px;
         gap: 10px;
       }
@@ -421,13 +433,9 @@
       }
 
       /* keep the address on one line and never push the icon off-screen */
-      .nav-contact-menu .copy-email {
-        justify-content: flex-start;
-      }
-
       .nav-contact-menu .copy-email .copy-email-label {
-        flex: 1;
-        font-size: 13px;
+        flex: 0 1 auto;
+        font-size: 15px;
         min-width: 0;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -435,10 +443,10 @@
       }
 
       .nav-links a.nav-cta {
-        margin-top: 6px;
-        justify-content: center;
+        align-self: flex-start;
+        margin-top: 10px;
         white-space: nowrap;
-        padding: 0 16px;
+        padding: 0 14px;
       }
     }
 
@@ -1479,14 +1487,14 @@
         <li><a href="#career">Career</a></li>
         <li class="nav-contact">
           <button class="nav-contact-trigger" aria-expanded="false" aria-haspopup="true">
-            Contact
+            Contacts
             <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="6 9 12 15 18 9" />
             </svg>
           </button>
           <div class="nav-contact-menu">
             <button class="copy-email" data-email="olegsuvorav@gmail.com" aria-label="Copy email address">
-              <span class="copy-email-label">olegsuvorav@gmail.com</span>
+              <span class="copy-email-label">Copy olegsuvorav@gmail.com</span>
               <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
@@ -1496,7 +1504,7 @@
               </svg>
             </button>
             <a href="https://linkedin.com/in/ohsuvorav" target="_blank" rel="noopener">
-              LinkedIn
+              Open LinkedIn profile
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="7" y1="17" x2="17" y2="7" />
                 <polyline points="7 7 17 7 17 17" />
@@ -1792,11 +1800,14 @@
     burger.addEventListener('click', () => {
       const open = navEl.classList.toggle('menu-open');
       burger.setAttribute('aria-expanded', open);
+      // lock page scroll while the full-screen menu is open
+      document.body.style.overflow = open ? 'hidden' : '';
     });
     navEl.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         navEl.classList.remove('menu-open');
         burger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
       });
     });
 
