@@ -1134,17 +1134,18 @@
         display: none;
       }
 
-      /* Tighten title→card, keep a bigger gap card→next title so each
-         claim+proof reads as one group */
+      /* No dividers on mobile — group with whitespace instead:
+         tight title→card, bigger gap card→next title */
       .cases-intercom .case-row {
-        padding: 22px 0 6px;
+        border-top: none;
+        padding: 0 0 8px;
       }
 
       /* Every proof card is visible on mobile, inline under its title */
       .case-preview-card {
         display: block;
         position: static;
-        margin: 0 0 8px;
+        margin: 0 0 28px;
       }
 
       .case-row-title {
