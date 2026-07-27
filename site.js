@@ -154,8 +154,24 @@ document.addEventListener('click', () => {
     form.hidden = false;
     errorEl.hidden = true;
     successEl.hidden = true;
-    submitBtn.disabled = false;
+    submitBtn.disabled = true;
     submitBtn.textContent = 'Download';
+  };
+
+  const validateLive = () => {
+    const email = emailInput.value.trim();
+    if (!email) {
+      errorEl.hidden = true;
+      submitBtn.disabled = true;
+      return;
+    }
+    const valid = isBusinessEmail(email);
+    submitBtn.disabled = !valid;
+    if (valid) {
+      errorEl.hidden = true;
+    } else {
+      showError(businessEmailError);
+    }
   };
 
   const openModal = (href, sourcePage) => {
@@ -179,6 +195,8 @@ document.addEventListener('click', () => {
       openModal(trigger.getAttribute('href'), trigger.dataset.source || 'Home');
     });
   });
+
+  emailInput.addEventListener('input', validateLive);
 
   closeBtn.addEventListener('click', closeModal);
   modal.addEventListener('click', (e) => {
