@@ -575,55 +575,111 @@
       margin-top: 6px;
     }
 
-    /* ── Unit-economics model (line-art table) ── */
-    .ue-model-wrap {
+    /* ── Unit-economics widget (reads like an app screen) ── */
+    .ue-app {
+      background: var(--background);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
+      border-radius: calc(var(--radius) + 2px);
+      padding: 16px 18px;
       margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16);
     }
 
-    .ue-model {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 12px;
-      font-variant-numeric: tabular-nums;
+    .ue-app-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
     }
 
-    .ue-model th,
-    .ue-model td {
-      padding: 8px 12px;
-      border-bottom: 1px solid var(--border);
-      text-align: right;
-      color: var(--foreground);
-      white-space: nowrap;
-    }
-
-    .ue-model thead th {
-      font-size: 10px;
+    .ue-app-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--muted-fg);
     }
 
-    .ue-model th:first-child,
-    .ue-model td:first-child {
-      text-align: left;
+    .ue-app-title::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #22c55e;
     }
 
-    .ue-model tbody td:first-child {
-      color: var(--muted-fg);
-      font-weight: 500;
-    }
-
-    .ue-model tbody tr:last-child td {
-      border-bottom: none;
-    }
-
-    .ue-model .ue-hi {
-      color: var(--accent-color);
+    .ue-app-pill {
+      font-size: 10px;
       font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--accent-color);
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 2px 9px;
+    }
+
+    .ue-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    .ue-row {
+      display: grid;
+      grid-template-columns: 82px 1fr 32px;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .ue-seg {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--foreground);
+    }
+
+    .ue-bar {
+      height: 6px;
+      border-radius: 9999px;
+      background: var(--accent);
+      overflow: hidden;
+    }
+
+    .ue-bar-fill {
+      height: 100%;
+      border-radius: 9999px;
+      background: var(--accent-color);
+    }
+
+    .ue-val {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--foreground);
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .ue-app-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .ue-foot-label {
+      font-size: 11px;
+      color: var(--muted-fg);
+    }
+
+    .ue-foot-val {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--foreground);
+      font-variant-numeric: tabular-nums;
     }
 
     .case-preview-footer {
@@ -1243,22 +1299,32 @@
               <div class="case-preview-card" data-preview="2">
                 <div class="case-preview-say">A growth engine that compounds</div>
                 <div class="case-preview-sub">Built myself: a full-funnel growth playbook, a Customer Data Platform for insights, and a unit-economics model for P&amp;L and LTV.</div>
-                <div class="ue-model-wrap">
-                  <table class="ue-model">
-                    <thead>
-                      <tr>
-                        <th>Segment</th>
-                        <th>CAC</th>
-                        <th>LTV</th>
-                        <th>Payback</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr><td>SMB</td><td>$180</td><td>$2.4k</td><td class="ue-hi">3 mo</td></tr>
-                      <tr><td>Mid-market</td><td>$920</td><td>$14k</td><td class="ue-hi">5 mo</td></tr>
-                      <tr><td>Enterprise</td><td>$4.1k</td><td>$88k</td><td class="ue-hi">7 mo</td></tr>
-                    </tbody>
-                  </table>
+                <div class="ue-app">
+                  <div class="ue-app-head">
+                    <span class="ue-app-title">Unit economics</span>
+                    <span class="ue-app-pill">LTV : CAC</span>
+                  </div>
+                  <div class="ue-rows">
+                    <div class="ue-row">
+                      <span class="ue-seg">SMB</span>
+                      <div class="ue-bar"><div class="ue-bar-fill" style="width:62%"></div></div>
+                      <span class="ue-val">13&times;</span>
+                    </div>
+                    <div class="ue-row">
+                      <span class="ue-seg">Mid-market</span>
+                      <div class="ue-bar"><div class="ue-bar-fill" style="width:71%"></div></div>
+                      <span class="ue-val">15&times;</span>
+                    </div>
+                    <div class="ue-row">
+                      <span class="ue-seg">Enterprise</span>
+                      <div class="ue-bar"><div class="ue-bar-fill" style="width:100%"></div></div>
+                      <span class="ue-val">21&times;</span>
+                    </div>
+                  </div>
+                  <div class="ue-app-foot">
+                    <span class="ue-foot-label">Blended payback</span>
+                    <span class="ue-foot-val">4.2 mo</span>
+                  </div>
                 </div>
               </div>
               <div class="case-preview-card" data-preview="3">
