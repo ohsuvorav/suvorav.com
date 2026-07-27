@@ -88,7 +88,7 @@ nav .container {
   border-radius: 50%;
   background: #22c55e;
   flex-shrink: 0;
-  cursor: default;
+  cursor: pointer;
 }
 
 .status-dot::after {
@@ -133,6 +133,10 @@ nav .container {
 }
 
 .status-dot:hover .status-tooltip {
+  opacity: 1;
+}
+
+.status-dot.active .status-tooltip {
   opacity: 1;
 }
 

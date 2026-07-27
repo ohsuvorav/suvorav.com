@@ -102,6 +102,19 @@ document.querySelectorAll('.copy-email').forEach(btn => {
   });
 });
 
+// Job-status tooltip — tap-to-toggle for mobile (no hover there)
+document.querySelectorAll('.status-dot').forEach(dot => {
+  dot.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = dot.classList.toggle('active');
+    clearTimeout(dot._tooltipTimer);
+    if (open) dot._tooltipTimer = setTimeout(() => dot.classList.remove('active'), 1800);
+  });
+});
+document.addEventListener('click', () => {
+  document.querySelectorAll('.status-dot.active').forEach(d => d.classList.remove('active'));
+});
+
 // CV download gate — opens a modal, verifies a business email, then downloads
 (() => {
   const ENDPOINT = 'https://cv-gate.vercel.app/api/capture-email';
