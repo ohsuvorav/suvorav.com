@@ -101,3 +101,123 @@ document.querySelectorAll('.copy-email').forEach(btn => {
     }
   });
 });
+
+// CV download gate — opens a modal, verifies a business email, then downloads
+(() => {
+  const ENDPOINT = 'https://cv-gate.vercel.app/api/capture-email';
+  const FREE_EMAIL_DOMAINS = new Set([
+    'gmail.com', 'googlemail.com', 'yahoo.com', 'yahoo.co.uk', 'outlook.com', 'hotmail.com',
+    'hotmail.co.uk', 'live.com', 'msn.com', 'icloud.com', 'me.com', 'mac.com', 'aol.com',
+    'protonmail.com', 'proton.me', 'gmx.com', 'gmx.net', 'mail.com', 'yandex.com', 'yandex.ru',
+    'zoho.com', 'fastmail.com', 'tutanota.com', 'inbox.com', 'web.de',
+  ]);
+
+  const triggers = document.querySelectorAll('.cv-download-trigger');
+  const modal = document.getElementById('cv-modal');
+  if (!triggers.length || !modal) return;
+
+  const form = document.getElementById('cv-modal-form');
+  const emailInput = document.getElementById('cv-modal-email');
+  const errorEl = document.getElementById('cv-modal-error');
+  const successEl = document.getElementById('cv-modal-success');
+  const submitBtn = form.querySelector('.cv-modal-submit');
+  const closeBtn = modal.querySelector('.cv-modal-close');
+  const fallbackError = 'Something went wrong. <a href="mailto:olegsuvorav@gmail.com">Email me directly</a> and I\'ll send it over.';
+  const businessEmailError = 'Please use your work email — personal providers (Gmail, Outlook, etc.) aren\'t accepted.';
+
+  let pendingHref = null;
+
+  const isBusinessEmail = (email) => {
+    const match = /^[^\s@]+@([^\s@]+\.[^\s@]+)$/.exec(email.trim().toLowerCase());
+    return !!match && !FREE_EMAIL_DOMAINS.has(match[1]);
+  };
+
+  const showError = (html) => {
+    errorEl.hidden = false;
+    errorEl.innerHTML = html;
+  };
+
+  const resetModal = () => {
+    form.hidden = false;
+    errorEl.hidden = true;
+    successEl.hidden = true;
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Download';
+  };
+
+  const openModal = (href, sourcePage) => {
+    pendingHref = href;
+    modal.dataset.sourcePage = sourcePage;
+    resetModal();
+    emailInput.value = '';
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    setTimeout(() => emailInput.focus(), 50);
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+  };
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(trigger.getAttribute('href'), trigger.dataset.source || 'Home');
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = emailInput.value.trim();
+    errorEl.hidden = true;
+
+    if (!isBusinessEmail(email)) {
+      showError(businessEmailError);
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Verifying…';
+
+    let res;
+    try {
+      res = await fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, sourcePage: modal.dataset.sourcePage }),
+      });
+    } catch {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Download';
+      showError(fallbackError);
+      return;
+    }
+
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Download';
+      showError(data.error === 'business_email_required' ? businessEmailError : fallbackError);
+      return;
+    }
+
+    form.hidden = true;
+    successEl.hidden = false;
+    const link = document.createElement('a');
+    link.href = pendingHref;
+    link.setAttribute('download', '');
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(closeModal, 1800);
+  });
+})();

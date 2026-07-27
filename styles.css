@@ -459,3 +459,129 @@ nav.menu-open .nav-burger .icon-close {
     padding: 0 14px;
   }
 }
+
+/* ── CV download gate modal ── */
+.cv-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  padding: 1rem;
+}
+
+.cv-modal.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.cv-modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+  transform: translateY(8px);
+  transition: transform 0.2s;
+}
+
+.cv-modal.open .cv-modal-box {
+  transform: translateY(0);
+}
+
+.cv-modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: var(--muted-fg);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.cv-modal-close:hover {
+  color: var(--foreground);
+}
+
+.cv-modal-box h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.35rem;
+}
+
+.cv-modal-sub {
+  color: var(--muted-fg);
+  font-size: 0.85rem;
+  margin-bottom: 1.1rem;
+}
+
+#cv-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+#cv-modal-email {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--input);
+  border-radius: var(--radius);
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 0.9rem;
+}
+
+#cv-modal-email:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.cv-modal-submit {
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--foreground);
+  background: var(--primary);
+  color: var(--primary-fg);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.cv-modal-submit:hover {
+  opacity: 0.85;
+}
+
+.cv-modal-submit:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.cv-modal-error,
+.cv-modal-success {
+  font-size: 0.85rem;
+  margin-top: 0.75rem;
+}
+
+.cv-modal-error {
+  color: #ef4444;
+}
+
+.cv-modal-success {
+  color: var(--muted-fg);
+}
+
+.cv-modal-error a {
+  color: inherit;
+  text-decoration: underline;
+}

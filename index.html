@@ -1102,7 +1102,7 @@
                 <polyline points="7 7 17 7 17 17" />
               </svg>
             </a>
-            <a href="/assets/Oleg-Suvorov-CV.pdf" download>
+            <a href="/assets/Oleg-Suvorov-CV.pdf" class="cv-download-trigger" data-source="Home" download>
               Download CV
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -1137,7 +1137,7 @@
             </svg>
             Book a call
           </a>
-          <a href="/assets/Oleg-Suvorov-CV.pdf" class="btn-outline" download>
+          <a href="/assets/Oleg-Suvorov-CV.pdf" class="btn-outline cv-download-trigger" data-source="Home" download>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
               <polyline points="7 10 12 15 17 10" />
@@ -1360,6 +1360,20 @@
       </div>
     </div>
   </footer>
+
+  <div id="cv-modal" class="cv-modal" aria-hidden="true">
+    <div class="cv-modal-box" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
+      <button type="button" class="cv-modal-close" aria-label="Close">&times;</button>
+      <h2 id="cv-modal-title">Download CV</h2>
+      <p class="cv-modal-sub">Work email only — filters out gmail/outlook/etc.</p>
+      <form id="cv-modal-form">
+        <input type="email" id="cv-modal-email" placeholder="you@company.com" required autocomplete="email">
+        <button type="submit" class="cv-modal-submit">Download</button>
+      </form>
+      <p class="cv-modal-error" id="cv-modal-error" hidden></p>
+      <p class="cv-modal-success" id="cv-modal-success" hidden>Thanks — your download should start automatically.</p>
+    </div>
+  </div>
 
   <script src="/site.js"></script>
   <script>
