@@ -23,7 +23,7 @@
       align-items: center;
       background: var(--muted);
       border: 1px solid var(--border);
-      border-radius: 999px;
+      border-radius: var(--radius);
       padding: 3px;
       gap: 2px;
       position: relative;
@@ -33,7 +33,7 @@
       position: absolute;
       width: 26px;
       height: 26px;
-      border-radius: 50%;
+      border-radius: calc(var(--radius) - 2px);
       background: var(--background);
       border: 1px solid var(--border);
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
@@ -49,7 +49,7 @@
       padding: 0;
       width: 26px;
       height: 26px;
-      border-radius: 50%;
+      border-radius: calc(var(--radius) - 2px);
       color: var(--muted-fg);
       display: flex;
       align-items: center;
@@ -372,6 +372,7 @@
 
     .footer-links {
       display: flex;
+      align-items: center;
       gap: 4px;
     }
 
@@ -379,8 +380,11 @@
       font-size: 13px;
       color: var(--muted-fg);
       text-decoration: none;
-      padding: 4px 8px;
+      height: 28px;
+      padding: 0 8px;
       border-radius: calc(var(--radius) - 2px);
+      display: inline-flex;
+      align-items: center;
       transition: background 0.15s, color 0.15s;
     }
 
@@ -554,8 +558,8 @@
         </svg>
       </button>
       <ul class="nav-links">
-        <li><a href="/#best-at">What I'm best at</a></li>
-        <li><a href="/#why-me">Why me</a></li>
+        <li><a href="/#how-i-work">How I work</a></li>
+        <li><a href="/#why-me">What I did</a></li>
         <li><a href="/#career">Career</a></li>
         <li class="nav-contact">
           <button class="nav-contact-trigger" aria-expanded="false" aria-haspopup="true">
@@ -592,15 +596,15 @@
   <aside class="toc" aria-label="Page sections">
     <a href="#context" class="toc-item active">Context</a>
     <a href="#problem" class="toc-item">Problem</a>
-    <a href="#approach" class="toc-item">What I did</a>
+    <a href="#approach" class="toc-item">Approach</a>
     <a href="#impact" class="toc-item">Impact</a>
   </aside>
 
   <main>
 
-    <div class="case-header">
+    <div class="case-header" id="context">
       <div class="container">
-        <a href="/#how" class="back-link">
+        <a href="/#how-i-work" class="back-link">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round">
             <line x1="19" y1="12" x2="5" y2="12" />
@@ -631,7 +635,7 @@
         </div>
 
         <div class="case-section" id="approach">
-          <div class="section-label">What I did</div>
+          <div class="section-label">Approach</div>
           
           <div class="move-label">Part 1 - Setup moment</div>
          
@@ -756,7 +760,7 @@
             <li>I didn't design before joining the team.</li>
             <li>We had no design system to start from.</li>
             <li>I worked with 3 designers and fired 1, because they didn't meet the standards. 1.5 years later a wonderful lady joined my team and taught me about design system nuances and design processes. Together we additionally redesigned the Triggers and Analytics pages.</li>
-            <li>I'm proud of how I shipped "tabs" for the object view earlier than Slack</li>
+            <li>I'm proud of how I shipped "tabs" for the object view earlier than Slack.</li>
             <li>Our main competitor rolled out a similar design two years later — including the parts that never left my Figma. Pure global market validation. Worth mentioning: it took them ~10 PMs and 10 designers to reach the same quality bar.</li>
           </ul>
         </div>

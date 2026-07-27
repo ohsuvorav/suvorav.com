@@ -1123,7 +1123,8 @@
       font-size: 13px;
       color: var(--muted-fg);
       text-decoration: none;
-      padding: 4px 8px;
+      height: 28px;
+      padding: 0 8px;
       border-radius: calc(var(--radius) - 2px);
       display: inline-flex;
       align-items: center;
@@ -1151,7 +1152,8 @@
       -webkit-appearance: none;
       appearance: none;
       cursor: pointer;
-      padding: 4px 8px;
+      height: 28px;
+      padding: 0 8px;
       border-radius: calc(var(--radius) - 2px);
       display: inline-flex;
       align-items: center;
@@ -1175,7 +1177,7 @@
       align-items: center;
       background: var(--muted);
       border: 1px solid var(--border);
-      border-radius: 999px;
+      border-radius: var(--radius);
       padding: 3px;
       gap: 2px;
       position: relative;
@@ -1185,7 +1187,7 @@
       position: absolute;
       width: 26px;
       height: 26px;
-      border-radius: 50%;
+      border-radius: calc(var(--radius) - 2px);
       background: var(--background);
       border: 1px solid var(--border);
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
@@ -1201,7 +1203,7 @@
       padding: 0;
       width: 26px;
       height: 26px;
-      border-radius: 50%;
+      border-radius: calc(var(--radius) - 2px);
       color: var(--muted-fg);
       display: flex;
       align-items: center;
@@ -1352,7 +1354,7 @@
                 <span class="case-row-title">I’m AI-native</span>
               </div>
               <div class="case-row" data-case="4">
-                <span class="case-row-title">I'm a tinkerer</span>
+                <span class="case-row-title">I’m a tinkerer</span>
               </div>
             </div>
 
