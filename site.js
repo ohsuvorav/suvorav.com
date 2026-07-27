@@ -118,11 +118,11 @@ document.addEventListener('click', () => {
 // CV download gate — opens a modal, emails a code to a business address, then downloads
 (() => {
   const API_BASE = 'https://cv-gate.vercel.app/api';
-  const FREE_EMAIL_DOMAINS = new Set([
-    'gmail.com', 'googlemail.com', 'yahoo.com', 'yahoo.co.uk', 'outlook.com', 'hotmail.com',
-    'hotmail.co.uk', 'live.com', 'msn.com', 'icloud.com', 'me.com', 'mac.com', 'aol.com',
-    'protonmail.com', 'proton.me', 'gmx.com', 'gmx.net', 'mail.com', 'yandex.com', 'yandex.ru',
-    'zoho.com', 'fastmail.com', 'tutanota.com', 'inbox.com', 'web.de',
+  // Matched on the brand root (domain's first label), not the full domain —
+  // so gmail.co / gmail.io / gmail.ai are blocked alongside gmail.com.
+  const FREE_EMAIL_ROOTS = new Set([
+    'gmail', 'googlemail', 'yahoo', 'outlook', 'hotmail', 'live', 'msn', 'icloud', 'me', 'mac',
+    'aol', 'protonmail', 'proton', 'gmx', 'mail', 'yandex', 'zoho', 'fastmail', 'tutanota', 'inbox', 'web',
   ]);
 
   const triggers = document.querySelectorAll('.cv-download-trigger');
@@ -155,7 +155,9 @@ document.addEventListener('click', () => {
 
   const isBusinessEmail = (email) => {
     const match = /^[^\s@]+@([^\s@]+\.[^\s@]+)$/.exec(email.trim().toLowerCase());
-    return !!match && !FREE_EMAIL_DOMAINS.has(match[1]);
+    if (!match) return false;
+    const root = match[1].split('.')[0];
+    return !FREE_EMAIL_ROOTS.has(root);
   };
 
   const showError = (html) => {
