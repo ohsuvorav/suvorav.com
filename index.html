@@ -1102,7 +1102,7 @@
                 <polyline points="7 7 17 7 17 17" />
               </svg>
             </a>
-            <a href="/assets/Oleg-Suvorov-CV.pdf" class="cv-download-trigger" data-source="Home" download>
+            <a href="#" class="cv-download-trigger" data-source="Home">
               Download CV
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -1137,7 +1137,7 @@
             </svg>
             Book a call
           </a>
-          <a href="/assets/Oleg-Suvorov-CV.pdf" class="btn-outline cv-download-trigger" data-source="Home" download>
+          <a href="#" class="btn-outline cv-download-trigger" data-source="Home">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
               <polyline points="7 10 12 15 17 10" />
@@ -1365,10 +1365,18 @@
     <div class="cv-modal-box" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
       <button type="button" class="cv-modal-close" aria-label="Close">&times;</button>
       <h2 id="cv-modal-title">Download CV</h2>
-      <p class="cv-modal-sub">Work email only — filters out gmail/outlook/etc.</p>
+      <p class="cv-modal-sub" id="cv-modal-sub">Work email only — filters out gmail/outlook/etc.</p>
       <form id="cv-modal-form">
         <input type="email" id="cv-modal-email" placeholder="you@company.com" required autocomplete="email">
-        <button type="submit" class="cv-modal-submit">Download</button>
+        <button type="submit" class="cv-modal-submit" id="cv-modal-send-btn" disabled>Send code</button>
+      </form>
+      <form id="cv-modal-code-form" hidden>
+        <input type="text" id="cv-modal-code" placeholder="6-digit code" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="one-time-code" required>
+        <button type="submit" class="cv-modal-submit" id="cv-modal-verify-btn" disabled>Verify & Download</button>
+        <div class="cv-modal-code-actions">
+          <button type="button" class="cv-modal-link" id="cv-modal-resend">Resend code</button>
+          <button type="button" class="cv-modal-link" id="cv-modal-edit-email">Use a different email</button>
+        </div>
       </form>
       <p class="cv-modal-error" id="cv-modal-error" hidden></p>
       <p class="cv-modal-success" id="cv-modal-success" hidden>Thanks — your download should start automatically.</p>

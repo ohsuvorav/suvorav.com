@@ -529,13 +529,20 @@ nav.menu-open .nav-burger .icon-close {
   margin-bottom: 1.1rem;
 }
 
-#cv-modal-form {
+#cv-modal-form,
+#cv-modal-code-form {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
 }
 
-#cv-modal-email {
+#cv-modal-form[hidden],
+#cv-modal-code-form[hidden] {
+  display: none;
+}
+
+#cv-modal-email,
+#cv-modal-code {
   width: 100%;
   padding: 0.6rem 0.75rem;
   border: 1px solid var(--input);
@@ -545,9 +552,44 @@ nav.menu-open .nav-burger .icon-close {
   font-size: 0.9rem;
 }
 
-#cv-modal-email:focus {
+#cv-modal-code {
+  letter-spacing: 0.3em;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+#cv-modal-email:focus,
+#cv-modal-code:focus {
   outline: none;
   border-color: var(--accent-color);
+}
+
+.cv-modal-code-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.cv-modal-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--muted-fg);
+  font-size: 0.8rem;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.cv-modal-link:hover {
+  color: var(--foreground);
+}
+
+.cv-modal-link:disabled {
+  opacity: 0.5;
+  cursor: default;
+  text-decoration: none;
 }
 
 .cv-modal-submit {

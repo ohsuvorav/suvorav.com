@@ -115,9 +115,9 @@ document.addEventListener('click', () => {
   document.querySelectorAll('.status-dot.active').forEach(d => d.classList.remove('active'));
 });
 
-// CV download gate — opens a modal, verifies a business email, then downloads
+// CV download gate — opens a modal, emails a code to a business address, then downloads
 (() => {
-  const ENDPOINT = 'https://cv-gate.vercel.app/api/capture-email';
+  const API_BASE = 'https://cv-gate.vercel.app/api';
   const FREE_EMAIL_DOMAINS = new Set([
     'gmail.com', 'googlemail.com', 'yahoo.com', 'yahoo.co.uk', 'outlook.com', 'hotmail.com',
     'hotmail.co.uk', 'live.com', 'msn.com', 'icloud.com', 'me.com', 'mac.com', 'aol.com',
@@ -129,16 +129,29 @@ document.addEventListener('click', () => {
   const modal = document.getElementById('cv-modal');
   if (!triggers.length || !modal) return;
 
-  const form = document.getElementById('cv-modal-form');
+  const subEl = document.getElementById('cv-modal-sub');
+  const emailForm = document.getElementById('cv-modal-form');
   const emailInput = document.getElementById('cv-modal-email');
+  const sendBtn = document.getElementById('cv-modal-send-btn');
+  const codeForm = document.getElementById('cv-modal-code-form');
+  const codeInput = document.getElementById('cv-modal-code');
+  const verifyBtn = document.getElementById('cv-modal-verify-btn');
+  const resendBtn = document.getElementById('cv-modal-resend');
+  const editEmailBtn = document.getElementById('cv-modal-edit-email');
   const errorEl = document.getElementById('cv-modal-error');
   const successEl = document.getElementById('cv-modal-success');
-  const submitBtn = form.querySelector('.cv-modal-submit');
   const closeBtn = modal.querySelector('.cv-modal-close');
+
+  const defaultSub = 'Work email only — filters out gmail/outlook/etc.';
   const fallbackError = 'Something went wrong. <a href="mailto:olegsuvorav@gmail.com">Email me directly</a> and I\'ll send it over.';
   const businessEmailError = 'Please use your work email — personal providers (Gmail, Outlook, etc.) aren\'t accepted.';
+  const CODE_ERRORS = {
+    wrong_code: 'That code doesn\'t match — check your inbox and try again.',
+    expired: 'That code expired — hit resend for a new one.',
+  };
 
-  let pendingHref = null;
+  let token = null;
+  let resendCooldown = null;
 
   const isBusinessEmail = (email) => {
     const match = /^[^\s@]+@([^\s@]+\.[^\s@]+)$/.exec(email.trim().toLowerCase());
@@ -150,23 +163,67 @@ document.addEventListener('click', () => {
     errorEl.innerHTML = html;
   };
 
-  const resetModal = () => {
-    form.hidden = false;
-    errorEl.hidden = true;
-    successEl.hidden = true;
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Download';
+  const clearResendCooldown = () => {
+    clearInterval(resendCooldown);
+    resendCooldown = null;
+    resendBtn.disabled = false;
+    resendBtn.textContent = 'Resend code';
   };
 
-  const validateLive = () => {
+  const startResendCooldown = () => {
+    let secondsLeft = 20;
+    resendBtn.disabled = true;
+    resendBtn.textContent = `Resend code (${secondsLeft}s)`;
+    clearInterval(resendCooldown);
+    resendCooldown = setInterval(() => {
+      secondsLeft -= 1;
+      if (secondsLeft <= 0) {
+        clearResendCooldown();
+        return;
+      }
+      resendBtn.textContent = `Resend code (${secondsLeft}s)`;
+    }, 1000);
+  };
+
+  const showEmailStep = () => {
+    token = null;
+    codeInput.value = '';
+    emailForm.hidden = false;
+    codeForm.hidden = true;
+    errorEl.hidden = true;
+    subEl.textContent = defaultSub;
+    clearResendCooldown();
+    setTimeout(() => emailInput.focus(), 50);
+  };
+
+  const showCodeStep = (email) => {
+    emailForm.hidden = true;
+    codeForm.hidden = false;
+    errorEl.hidden = true;
+    subEl.textContent = `Enter the 6-digit code we sent to ${email}.`;
+    verifyBtn.disabled = true;
+    startResendCooldown();
+    setTimeout(() => codeInput.focus(), 50);
+  };
+
+  const resetModal = () => {
+    successEl.hidden = true;
+    emailInput.value = '';
+    sendBtn.disabled = true;
+    sendBtn.textContent = 'Send code';
+    verifyBtn.textContent = 'Verify & Download';
+    showEmailStep();
+  };
+
+  const validateEmailLive = () => {
     const email = emailInput.value.trim();
     if (!email) {
       errorEl.hidden = true;
-      submitBtn.disabled = true;
+      sendBtn.disabled = true;
       return;
     }
     const valid = isBusinessEmail(email);
-    submitBtn.disabled = !valid;
+    sendBtn.disabled = !valid;
     if (valid) {
       errorEl.hidden = true;
     } else {
@@ -174,29 +231,57 @@ document.addEventListener('click', () => {
     }
   };
 
-  const openModal = (href, sourcePage) => {
-    pendingHref = href;
+  const validateCodeLive = () => {
+    codeInput.value = codeInput.value.replace(/\D/g, '').slice(0, 6);
+    verifyBtn.disabled = codeInput.value.length !== 6;
+  };
+
+  const openModal = (sourcePage) => {
     modal.dataset.sourcePage = sourcePage;
     resetModal();
-    emailInput.value = '';
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
-    setTimeout(() => emailInput.focus(), 50);
   };
 
   const closeModal = () => {
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden', 'true');
+    clearResendCooldown();
+  };
+
+  const sendCode = async (email) => {
+    let res;
+    try {
+      res = await fetch(`${API_BASE}/send-code`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, sourcePage: modal.dataset.sourcePage }),
+      });
+    } catch {
+      showError(fallbackError);
+      return false;
+    }
+
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      showError(data.error === 'business_email_required' ? businessEmailError : fallbackError);
+      return false;
+    }
+
+    const data = await res.json();
+    token = data.token;
+    return true;
   };
 
   triggers.forEach((trigger) => {
     trigger.addEventListener('click', (e) => {
       e.preventDefault();
-      openModal(trigger.getAttribute('href'), trigger.dataset.source || 'Home');
+      openModal(trigger.dataset.source || 'Home');
     });
   });
 
-  emailInput.addEventListener('input', validateLive);
+  emailInput.addEventListener('input', validateEmailLive);
+  codeInput.addEventListener('input', validateCodeLive);
 
   closeBtn.addEventListener('click', closeModal);
   modal.addEventListener('click', (e) => {
@@ -206,7 +291,22 @@ document.addEventListener('click', () => {
     if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
   });
 
-  form.addEventListener('submit', async (e) => {
+  editEmailBtn.addEventListener('click', showEmailStep);
+
+  resendBtn.addEventListener('click', async () => {
+    if (resendBtn.disabled) return;
+    const email = emailInput.value.trim();
+    resendBtn.disabled = true;
+    resendBtn.textContent = 'Sending…';
+    const ok = await sendCode(email);
+    if (ok) {
+      startResendCooldown();
+    } else {
+      clearResendCooldown();
+    }
+  });
+
+  emailForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = emailInput.value.trim();
     errorEl.hidden = true;
@@ -216,39 +316,63 @@ document.addEventListener('click', () => {
       return;
     }
 
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Verifying…';
+    sendBtn.disabled = true;
+    sendBtn.textContent = 'Sending…';
+
+    const ok = await sendCode(email);
+
+    sendBtn.textContent = 'Send code';
+    if (ok) {
+      showCodeStep(email);
+    } else {
+      sendBtn.disabled = false;
+    }
+  });
+
+  codeForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const code = codeInput.value.trim();
+    errorEl.hidden = true;
+
+    if (code.length !== 6 || !token) return;
+
+    verifyBtn.disabled = true;
+    verifyBtn.textContent = 'Verifying…';
 
     let res;
     try {
-      res = await fetch(ENDPOINT, {
+      res = await fetch(`${API_BASE}/verify-code`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, sourcePage: modal.dataset.sourcePage }),
+        body: JSON.stringify({ code, token, sourcePage: modal.dataset.sourcePage }),
       });
     } catch {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Download';
+      verifyBtn.disabled = false;
+      verifyBtn.textContent = 'Verify & Download';
       showError(fallbackError);
       return;
     }
 
     if (!res.ok) {
       const data = await res.json().catch(() => ({}));
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Download';
-      showError(data.error === 'business_email_required' ? businessEmailError : fallbackError);
+      verifyBtn.disabled = false;
+      verifyBtn.textContent = 'Verify & Download';
+      showError(CODE_ERRORS[data.error] || fallbackError);
       return;
     }
 
-    form.hidden = true;
-    successEl.hidden = false;
+    const blob = await res.blob();
+    const blobUrl = URL.createObjectURL(blob);
     const link = document.createElement('a');
-    link.href = pendingHref;
-    link.setAttribute('download', '');
+    link.href = blobUrl;
+    link.download = 'Oleg-Suvorov-CV.pdf';
     document.body.appendChild(link);
     link.click();
     link.remove();
+    setTimeout(() => URL.revokeObjectURL(blobUrl), 5000);
+
+    codeForm.hidden = true;
+    successEl.hidden = false;
     setTimeout(closeModal, 1800);
   });
 })();
