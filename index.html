@@ -575,6 +575,57 @@
       margin-top: 6px;
     }
 
+    /* ── Unit-economics model (line-art table) ── */
+    .ue-model-wrap {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .ue-model {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .ue-model th,
+    .ue-model td {
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+      text-align: right;
+      color: var(--foreground);
+      white-space: nowrap;
+    }
+
+    .ue-model thead th {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted-fg);
+    }
+
+    .ue-model th:first-child,
+    .ue-model td:first-child {
+      text-align: left;
+    }
+
+    .ue-model tbody td:first-child {
+      color: var(--muted-fg);
+      font-weight: 500;
+    }
+
+    .ue-model tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .ue-model .ue-hi {
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+
     .case-preview-footer {
       display: flex;
       justify-content: space-between;
@@ -1192,6 +1243,23 @@
               <div class="case-preview-card" data-preview="2">
                 <div class="case-preview-say">A growth engine that compounds</div>
                 <div class="case-preview-sub">Built myself: a full-funnel growth playbook, a Customer Data Platform for insights, and a unit-economics model for P&amp;L and LTV.</div>
+                <div class="ue-model-wrap">
+                  <table class="ue-model">
+                    <thead>
+                      <tr>
+                        <th>Segment</th>
+                        <th>CAC</th>
+                        <th>LTV</th>
+                        <th>Payback</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>SMB</td><td>$180</td><td>$2.4k</td><td class="ue-hi">3 mo</td></tr>
+                      <tr><td>Mid-market</td><td>$920</td><td>$14k</td><td class="ue-hi">5 mo</td></tr>
+                      <tr><td>Enterprise</td><td>$4.1k</td><td>$88k</td><td class="ue-hi">7 mo</td></tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
               <div class="case-preview-card" data-preview="3">
                 <div class="case-preview-say">2.5× team velocity</div>
