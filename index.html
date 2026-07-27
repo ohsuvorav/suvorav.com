@@ -584,6 +584,20 @@
       cursor: zoom-in;
     }
 
+    /* Theme-matched screenshots: show the dark UI shot on the dark site
+       theme and the light UI shot on the light site theme. */
+    .case-preview-visual img.theme-img-light {
+      display: none;
+    }
+
+    [data-theme="light"] .case-preview-visual img.theme-img-dark {
+      display: none;
+    }
+
+    [data-theme="light"] .case-preview-visual img.theme-img-light {
+      display: block;
+    }
+
     .img-expand-btn {
       position: absolute;
       top: 50%;
@@ -1477,10 +1491,11 @@
               </div>
               <div class="case-preview-card" data-preview="4">
                 <div class="case-preview-say">Mirality</div>
-                <div class="case-preview-sub">I built self-improving AI ghostwriter for myself. And I've got another 2 users beyond me! </div>
+                <div class="case-preview-sub">I built self-improving AI LinkedIn ghostwriter for myself. And I've got another 2 users beyond me! </div>
                 <div class="case-preview-visual">
                   <figure>
-                    <img src="/assets/mirality-ui.png" alt="Mirality app UI" loading="lazy">
+                    <img class="theme-img theme-img-dark" src="/assets/mirality-ui.png" alt="Mirality app UI" loading="lazy">
+                    <img class="theme-img theme-img-light" src="/assets/mirality-ui-light.png" alt="Mirality app UI" loading="lazy">
                     <button class="img-expand-btn" type="button" aria-label="Expand image">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M15 3h6v6" />
@@ -1763,7 +1778,9 @@
     document.querySelectorAll('.img-expand-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
-        openLightbox(btn.previousElementSibling);
+        const visibleImg = [...btn.closest('figure').querySelectorAll('img')]
+          .find(img => getComputedStyle(img).display !== 'none');
+        openLightbox(visibleImg);
       });
     });
 
