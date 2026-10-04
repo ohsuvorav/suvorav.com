@@ -15,7 +15,7 @@
   <title>Oleg Suvorov</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/styles.css?v=mirality-accent-2">
   <style>
     /* ── Hero ── */
     .hero {
@@ -246,7 +246,7 @@
     }
 
     .ctx-node.live::before {
-      background: #22c55e;
+      background: var(--accent-color);
       opacity: 1;
     }
 
@@ -691,7 +691,7 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: #22c55e;
+      background: var(--accent-color);
     }
 
     .ue-app-pill {
@@ -1351,7 +1351,7 @@
                 <span class="case-row-title">I’m technical and hands-on with data</span>
               </div>
               <div class="case-row" data-case="3">
-                <span class="case-row-title">I’m AI-native</span>
+                <span class="case-row-title">I build AI-first ops</span>
               </div>
               <div class="case-row" data-case="4">
                 <span class="case-row-title">I’m a tinkerer</span>
@@ -1486,14 +1486,26 @@
                   </svg>
                 </div>
               </div>
-              <div class="case-preview-card" data-preview="3">
-                <div class="case-preview-say">2.5× team velocity</div>
-                <div class="case-preview-sub">Built self-improving AI system for Ops, custom AI app as an agent.</div>
+              <a class="case-preview-card is-link" data-preview="3" href="/cases/ai-first-ops.html">
+                <div class="case-preview-say">AI-first ops increased the team's velocity 2.5 times without increasing headcount</div>
+                <span class="case-preview-cta">
+                  Learn more
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </span>
+                <div class="case-preview-sub">Shared skills in Git, a Claude-powered Linear agent, workflow rules, and a capacity planner.</div>
                 <div class="case-preview-more">+ 1st place at AI Hackathon</div>
-              </div>
+              </a>
               <div class="case-preview-card" data-preview="4">
-                <div class="case-preview-say">Mirality</div>
-                <div class="case-preview-sub">I built self-improving AI LinkedIn ghostwriter for myself. And I've got another 2 users beyond me! </div>
+                <div class="case-preview-say">Early adopter of innovation</div>
+                <div class="case-preview-sub">
+                  <p>AI runs my life:</p>
+                  <p><strong>Orbit</strong> — self-improving, 24/7 personal assistant.</p>
+                  <p><strong>Midas</strong> — family expense tracker.</p>
+                  <p><strong>Mirality</strong> — self-improving LinkedIn ghostwriter.</p>
+                </div>
                 <div class="case-preview-visual">
                   <figure>
                     <img class="theme-img theme-img-dark" src="/assets/mirality-ui.png" alt="Mirality app UI" loading="lazy">
@@ -1568,6 +1580,11 @@
         <p class="career-intro">Early in my career, I was choosing between marketing and engineering — I didn't know what sits in the middle. I picked engineering, then switched to product to stop building meaningless features. Once I could build anything, I moved to its monetization: growth, and improving LTV.</p>
         <div class="ctx-timeline" style="margin-top: 4px;">
           <div class="ctx-node live">
+            <div class="work-company">Product-led Growth</div>
+            <div class="work-role">2026 – present</div>
+            <div class="work-description">Feature adoption, activation, and billing monetization experiments.</div>
+          </div>
+          <div class="ctx-node">
             <div class="work-company">Senior Product Manager, Platform & Growth</div>
             <div class="work-role">Threecolts · 2025 – 2026</div>
           <div class="work-description">Joined to own growth strategy for the PLG portfolio. Needed to run experiments, but the platform was broken — so I ended up owning it: billing & integrations across 20 products. Led strategic bets with the C-suite.</div>

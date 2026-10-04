@@ -1,0 +1,121 @@
+WEBVTT
+
+STYLE
+::cue {
+  background-color: #000000 !important;
+  background-image: linear-gradient(#000000, #000000) !important;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+00:00:00.000 --> 00:00:04.720
+Hello everyone, in this video I'm going to
+show you custom automations
+
+00:00:04.720 --> 00:00:07.400
+we've done because Linear lacks this out
+of the box.
+
+00:00:08.180 --> 00:00:13.060
+So in order to show it in action, let me
+create Linear automation.
+
+00:00:15.320 --> 00:00:16.180
+Create issue.
+
+00:00:18.980 --> 00:00:22.940
+And a few things that we've done, which
+we've had to do most of
+
+00:00:22.940 --> 00:00:27.280
+all, is that in order to move the issue to
+a different stage,
+
+00:00:27.280 --> 00:00:32.020
+we usually change two things, the status
+and the assignee.
+
+00:00:32.740 --> 00:00:36.360
+So let's imagine that this issue is being
+picked up by the developer.
+
+00:00:37.260 --> 00:00:40.280
+Like it's in progress and Dennis is
+working on this.
+
+00:00:40.960 --> 00:00:45.820
+And as soon as this issue is done, it
+needs to be moved to the
+
+00:00:45.820 --> 00:00:50.700
+code review and the automation is supposed
+to update from developer
+
+00:00:50.700 --> 00:00:51.800
+one to developer two.
+
+00:00:53.420 --> 00:00:56.120
+Like we have the following workflow that
+
+00:00:56.120 --> 00:01:01.880
+we have only two engineers for this
+specific workflow.
+
+00:01:02.060 --> 00:01:03.840
+So that is why we can pre-assign this.
+
+00:01:04.440 --> 00:01:09.200
+Similarly, when we have only one QA
+engineer, so that is why as soon
+
+00:01:09.200 --> 00:01:12.860
+as code review is done and it's moved to
+Ready for QA,
+
+00:01:13.160 --> 00:01:18.220
+we know that we want to assign a
+particular QA engineer to do this job.
+
+00:01:19.220 --> 00:01:24.280
+So we don't need to do this extra click
+and we simply automated this.
+
+00:01:24.620 --> 00:01:29.560
+And additionally, like as soon as QA is
+done, as soon as
+
+00:01:29.560 --> 00:01:34.340
+it's ready for UAT, we'll update this back
+to the creator of the
+
+00:01:34.340 --> 00:01:38.080
+issue so they can check before it's being
+released to production.
+
+00:01:39.580 --> 00:01:43.860
+And we automated another one, the labels.
+
+00:01:43.860 --> 00:01:48.740
+So as soon as it's been released, we add
+the label,
+
+00:01:49.440 --> 00:01:53.280
+which will simplify my life as soon as
+we're going to release this.
+
+00:01:53.620 --> 00:01:57.400
+So I'm going to gather them all and create
+the release notes
+
+00:01:57.400 --> 00:02:00.160
+easier based on this label.
+
+00:02:01.800 --> 00:02:02.680
+So that's it.
+
+00:02:03.100 --> 00:02:05.860
+I hope it sparkles your imagination what
+can be done.
+
+00:02:06.480 --> 00:02:07.300
+And let me know your thoughts.
