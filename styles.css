@@ -4,35 +4,37 @@
   box-sizing: border-box;
 }
 
-/* shadcn design tokens — dark */
+/* Neutral base with green brand accents — dark. */
 :root {
+  color-scheme: dark;
   --background: hsl(0 0% 3.9%);
   --foreground: hsl(0 0% 98%);
   --muted: hsl(0 0% 9%);
   --muted-fg: hsl(0 0% 68%);
   --border: hsl(0 0% 14.9%);
   --input: hsl(0 0% 14.9%);
-  --primary: hsl(0 0% 98%);
-  --primary-fg: hsl(0 0% 9%);
+  --primary: #15803d;
+  --primary-fg: #ffffff;
   --accent: hsl(0 0% 14.9%);
   --accent-fg: hsl(0 0% 98%);
   --radius: 0.5rem;
-  --accent-color: #818CF8;
+  --accent-color: #4ade80;
 }
 
-/* shadcn design tokens — light */
+/* Neutral base with green brand accents — light. */
 [data-theme="light"] {
+  color-scheme: light;
   --background: hsl(0 0% 100%);
   --foreground: hsl(0 0% 3.9%);
   --muted: hsl(0 0% 96.1%);
   --muted-fg: hsl(0 0% 42%);
   --border: hsl(0 0% 89.8%);
   --input: hsl(0 0% 89.8%);
-  --primary: hsl(0 0% 9%);
-  --primary-fg: hsl(0 0% 98%);
+  --primary: #16a34a;
+  --primary-fg: #ffffff;
   --accent: hsl(0 0% 96.1%);
   --accent-fg: hsl(0 0% 9%);
-  --accent-color: #4F46E5;
+  --accent-color: #15803d;
 }
 
 body {
@@ -86,7 +88,7 @@ nav .container {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #22c55e;
+  background: var(--accent-color);
   flex-shrink: 0;
   cursor: pointer;
 }
@@ -96,7 +98,7 @@ nav .container {
   position: absolute;
   inset: -2px;
   border-radius: 50%;
-  background: #22c55e;
+  background: var(--accent-color);
   opacity: 0.25;
   animation: pulse 2s ease-in-out infinite;
 }
@@ -287,11 +289,11 @@ nav .container {
 
 .copy-email.copied .check-icon {
   display: block;
-  color: #16a34a;
+  color: var(--accent-color);
 }
 
 .copy-email.copied .copy-email-label {
-  color: #16a34a;
+  color: var(--accent-color);
 }
 
 /* primary button (Book a call) — nav uses the compact xs size */
