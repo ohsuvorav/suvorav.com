@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="description" content="Oleg Suvorov — Growth Product Manager. I build products, then I make them grow — UX with taste and growth systems that compound, specializing in activation.">
+  <meta property="og:title" content="Oleg Suvorov — Growth Product Manager">
+  <meta property="og:description" content="I build products. Then I make them grow. UX with taste and growth systems that compound — specializing in activation.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://suvorav.com/for-recruiters/">
+  <link rel="canonical" href="https://suvorav.com/for-recruiters/">
+  <meta name="twitter:card" content="summary">
+  <title>For recruiters · Oleg Suvorov</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=mirality-accent-6">
+  <style>
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 80px 0 72px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-role {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-color);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+
+    .hero-bio {
+      font-size: 20px;
+      line-height: 1.6;
+      color: var(--foreground);
+      max-width: 560px;
+    }
+
+    .hero-how-i-work {
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--muted-fg);
+      letter-spacing: 0.03em;
+      opacity: 0.7;
+    }
+
+    .hero-bio a {
+      color: var(--foreground);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--border);
+    }
+
+    .hero-links {
+      margin-top: 32px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* shadcn Button — primary (solid) */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      color: var(--primary-fg);
+      text-decoration: none;
+      background: var(--primary);
+      border: 1px solid transparent;
+      height: 32px;
+      padding: 0 16px;
+      border-radius: var(--radius);
+      transition: opacity 0.15s;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.88;
+    }
+
+    .btn-primary svg,
+    .btn-outline svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    /* shadcn Button — outline */
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      color: var(--foreground);
+      text-decoration: none;
+      background: transparent;
+      border: 1px solid var(--border);
+      height: 32px;
+      padding: 0 16px;
+      border-radius: var(--radius);
+      transition: background 0.15s, color 0.15s;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-outline:hover {
+      background: var(--accent);
+      color: var(--accent-fg);
+    }
+
+    .hero-divider {
+      width: 1px;
+      height: 18px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    /* Soon button */
+    .btn-soon {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      color: var(--muted-fg);
+      text-decoration: none;
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 8px 18px;
+      border-radius: 9999px;
+      cursor: default;
+      white-space: nowrap;
+      opacity: 0.5;
+    }
+
+    .soon-badge {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      background: var(--muted);
+      color: var(--muted-fg);
+      padding: 1px 6px;
+      border-radius: 9999px;
+    }
+
+    /* ── Sections ── */
+    .section {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section:has(> .pin-scroller) {
+      padding-top: 0;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted-fg);
+      margin-bottom: 40px;
+    }
+
+    .section-heading {
+      font-size: 36px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--foreground);
+      margin-bottom: 28px;
+    }
+
+    .career-intro {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--muted-fg);
+      max-width: 540px;
+      margin: 8px 0 24px;
+    }
+
+    /* ── Case Studies — Filter bar ── */
+    /* ── Company context timeline ── */
+    .ctx-tagline {
+      font-size: 13px;
+      color: var(--muted-fg);
+      line-height: 1.55;
+      margin-bottom: 20px;
+      max-width: 480px;
+    }
+
+    .ctx-timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .ctx-timeline::before {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 8px;
+      bottom: 28px;
+      width: 1px;
+      background: var(--border);
+      z-index: 0;
+    }
+
+    .ctx-node {
+      position: relative;
+      padding-bottom: 28px;
+    }
+
+    .ctx-node:last-child {
+      padding-bottom: 0;
+    }
+
+    .ctx-node::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 7px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--muted-fg);
+      z-index: 1;
+    }
+
+    .ctx-node.live::before {
+      background: var(--accent-color);
+      opacity: 1;
+    }
+
+    .ctx-year {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted-fg);
+      margin-bottom: 4px;
+    }
+
+    .ctx-what {
+      font-size: 14px;
+      color: var(--muted-fg);
+      line-height: 1.5;
+      margin-bottom: 6px;
+    }
+
+    .ctx-node:only-child .ctx-what,
+    .ctx-node:first-child .ctx-what {
+      margin-bottom: 0;
+    }
+
+    .ctx-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .ctx-outcome {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--foreground);
+    }
+
+    .ctx-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent-color);
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.15s;
+    }
+
+    .ctx-link:hover {
+      opacity: 1;
+    }
+
+    .ctx-soon {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: hsl(38 70% 58%);
+      background: hsl(38 55% 45% / 0.14);
+      border: 1px solid hsl(38 55% 45% / 0.28);
+      padding: 1px 7px;
+      border-radius: 9999px;
+    }
+
+    [data-theme="light"] .ctx-soon {
+      color: hsl(35 60% 38%);
+      background: hsl(45 90% 90%);
+      border-color: hsl(38 65% 72%);
+    }
+
+    .cases-filters {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .filter-bar-label {
+      font-size: 13px;
+      color: var(--muted-fg);
+      font-weight: 500;
+    }
+
+    .filter-group {
+      position: relative;
+    }
+
+    .filter-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      color: var(--muted-fg);
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      border-radius: calc(var(--radius) - 2px);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+
+    .filter-trigger:hover {
+      background: var(--accent);
+      color: var(--accent-fg);
+    }
+
+    .filter-trigger.has-value {
+      color: var(--foreground);
+      border-color: var(--foreground);
+    }
+
+    .filter-trigger-chevron {
+      width: 12px;
+      height: 12px;
+      transition: transform 0.15s;
+    }
+
+    .filter-group.open .filter-trigger-chevron {
+      transform: rotate(180deg);
+    }
+
+    .filter-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      z-index: 100;
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 4px;
+      min-width: 140px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .filter-group.open .filter-dropdown {
+      display: block;
+    }
+
+    .filter-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      font-size: 13px;
+      font-family: inherit;
+      color: var(--foreground);
+      background: transparent;
+      border: none;
+      padding: 7px 10px;
+      border-radius: calc(var(--radius) - 2px);
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.1s;
+    }
+
+    .filter-option:hover {
+      background: var(--accent);
+    }
+
+    .filter-option.active {
+      color: var(--foreground);
+      font-weight: 500;
+    }
+
+    .filter-option-check {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+      opacity: 0;
+    }
+
+    .filter-option.active .filter-option-check {
+      opacity: 1;
+    }
+
+    .hide-upcoming-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      color: var(--muted-fg);
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      border-radius: calc(var(--radius) - 2px);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+
+    .hide-upcoming-toggle:hover {
+      background: var(--accent);
+      color: var(--accent-fg);
+    }
+
+    .hide-upcoming-toggle.active {
+      color: var(--foreground);
+      border-color: var(--foreground);
+    }
+
+    [data-hide-upcoming] div.case-row {
+      display: none;
+    }
+
+    /* ── Pin & step scroller (desktop) ──
+       Each section pins to the viewport for (--pin-steps) screen-heights
+       of scroll; JS maps scroll progress → active claim. Disabled on
+       mobile (see the max-width:640 block, where it reverts to normal flow). */
+    .pin-scroller {
+      height: calc(var(--pin-steps) * 90vh);
+    }
+
+    .pin-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      /* fixed top offset clears the sticky nav and keeps the claim list
+         anchored, so only the proof card changes between steps (no jump) */
+      padding-top: 104px;
+    }
+
+    /* ── Case Studies — two-column layout ── */
+    .cases-intercom {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .case-preview-card {
+      background: var(--muted);
+      border-radius: calc(var(--radius) + 4px);
+      padding: 28px;
+      display: none;
+    }
+
+    .case-preview-card.active {
+      display: block;
+    }
+
+    /* clickable proof card → case page */
+    a.case-preview-card.is-link {
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s, transform 0.15s;
+    }
+
+    a.case-preview-card.is-link:hover {
+      background: var(--accent);
+    }
+
+    .case-preview-company {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted-fg);
+      margin-bottom: 20px;
+    }
+
+    .case-preview-stat {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--foreground);
+      margin-bottom: 8px;
+    }
+
+    .case-preview-sub {
+      font-size: 13px;
+      color: var(--foreground);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .case-preview-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    /* ── Case preview card v2 (test) ── */
+    .case-preview-say {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      color: var(--foreground);
+      margin-bottom: 8px;
+    }
+
+    .case-preview-visual {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .case-preview-visual figure {
+      margin: 0;
+    }
+
+    .case-preview-visual img {
+      width: 100%;
+      display: block;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .case-preview-visual figcaption {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted-fg);
+      margin-top: 6px;
+    }
+
+    /* ── Lightbox (same pattern as cases/product-redesign.html) ── */
+    .case-preview-visual figure {
+      position: relative;
+    }
+
+    .case-preview-visual img {
+      cursor: zoom-in;
+    }
+
+    /* Theme-matched screenshots: show the dark UI shot on the dark site
+       theme and the light UI shot on the light site theme. */
+    .case-preview-visual img.theme-img-light {
+      display: none;
+    }
+
+    [data-theme="light"] .case-preview-visual img.theme-img-dark {
+      display: none;
+    }
+
+    [data-theme="light"] .case-preview-visual img.theme-img-light {
+      display: block;
+    }
+
+    .img-expand-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(0, 0, 0, 0.55);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-in;
+      opacity: 0;
+      transition: opacity 0.15s, background 0.15s;
+      backdrop-filter: blur(2px);
+    }
+
+    .img-expand-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .case-preview-visual figure:hover .img-expand-btn {
+      opacity: 1;
+    }
+
+    .img-expand-btn:hover {
+      background: rgba(0, 0, 0, 0.75);
+    }
+
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+      cursor: zoom-out;
+    }
+
+    #lightbox.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    #lightbox img {
+      max-width: 95vw;
+      max-height: 95vh;
+      object-fit: contain;
+      border-radius: var(--radius);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+    }
+
+    /* ── Unit-economics widget (reads like an app screen) ── */
+    .ue-app {
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 2px);
+      padding: 16px 18px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16);
+    }
+
+    .ue-app-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .ue-app-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted-fg);
+    }
+
+    .ue-app-title::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-color);
+    }
+
+    .ue-app-pill {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--accent-color);
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 2px 9px;
+    }
+
+    .ue-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    .ue-row {
+      display: grid;
+      grid-template-columns: 82px 1fr 32px;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .ue-seg {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--foreground);
+    }
+
+    .ue-bar {
+      height: 6px;
+      border-radius: 9999px;
+      background: var(--accent);
+      overflow: hidden;
+    }
+
+    .ue-bar-fill {
+      height: 100%;
+      border-radius: 9999px;
+      background: var(--accent-color);
+    }
+
+    .ue-val {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--foreground);
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .ue-app-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .ue-foot-label {
+      font-size: 11px;
+      color: var(--muted-fg);
+    }
+
+    .ue-foot-val {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--foreground);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .cdp-svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .case-preview-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .case-preview-metric {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--foreground);
+      white-space: nowrap;
+    }
+
+    .case-preview-more {
+      font-size: 13px;
+      color: var(--muted-fg);
+      line-height: 1.6;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* explicit "learn more" affordance at the top of the card — the tiny ↗
+       alone wasn't obvious the card leads somewhere */
+    .case-preview-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 16px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--accent-color);
+      transition: gap 0.15s;
+    }
+
+    .case-preview-cta svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      transition: transform 0.15s;
+    }
+
+    a.case-preview-card.is-link:hover .case-preview-cta {
+      gap: 9px;
+    }
+
+    a.case-preview-card.is-link:hover .case-preview-cta svg {
+      transform: translateX(2px);
+    }
+
+    /* every claim row is a clickable switcher, full-strength */
+    #why-me div.case-row,
+    #how-i-work div.case-row {
+      opacity: 1;
+      cursor: pointer;
+    }
+
+    #why-me div.case-row:hover .case-row-title,
+    #how-i-work div.case-row:hover .case-row-title {
+      color: var(--foreground);
+    }
+
+    @media (max-width: 640px) {
+      /* No pinning on mobile — revert to normal document flow so the
+         interleaved claim→proof layout scrolls natively. */
+      .pin-scroller {
+        height: auto;
+      }
+
+      .pin-sticky {
+        position: static;
+        height: auto;
+        padding-top: 0;
+        display: block;
+      }
+
+      .section:has(> .pin-scroller) {
+        padding-top: 64px;
+      }
+
+      /* Collapse the two columns into one flow so each title can sit
+         directly above its own proof card (title → preview → title → preview). */
+      .cases-intercom {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        /* the desktop 48px grid-gap became a flex gap between every
+           item — kill it and control spacing with padding/margin */
+      }
+
+      /* child-combinator raises specificity above the base
+         `.cases-list { display: flex }` rule defined later in the sheet */
+      .cases-intercom > .cases-list,
+      .cases-intercom > .cases-preview {
+        display: contents;
+      }
+
+      /* Column headers ("I say" / "Proof") make no sense once interleaved */
+      .cases-intercom .section-label {
+        display: none;
+      }
+
+      /* No dividers on mobile — group with whitespace instead:
+         tight title→card, bigger gap card→next title */
+      .cases-intercom .case-row {
+        border-top: none;
+        padding: 0 0 16px;
+      }
+
+      /* Every proof card is visible on mobile, inline under its title */
+      .case-preview-card {
+        display: block;
+        position: static;
+        margin: 0 0 28px;
+      }
+
+      .case-row-title {
+        font-size: 20px;
+      }
+
+      /* Interleave: title N, then preview N */
+      .case-row[data-case="1"] { order: 1; }
+      .case-preview-card[data-preview="1"] { order: 2; }
+      .case-row[data-case="2"] { order: 3; }
+      .case-preview-card[data-preview="2"] { order: 4; }
+      .case-row[data-case="3"] { order: 5; }
+      .case-preview-card[data-preview="3"] { order: 6; }
+      .case-row[data-case="4"] { order: 7; }
+      .case-preview-card[data-preview="4"] { order: 8; }
+    }
+
+    .cases-list {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* vertical scroll-progress track (left of the claims) — injected per scroller */
+    .pin-progress {
+      position: absolute;
+      left: -22px;
+      top: 2px;
+      bottom: 2px;
+      width: 3px;
+      border-radius: 9999px;
+      background: var(--border);
+      overflow: hidden;
+    }
+
+    .pin-progress-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 0;
+      background: var(--foreground);
+      border-radius: 9999px;
+    }
+
+    @media (max-width: 640px) {
+      .pin-progress {
+        display: none;
+      }
+    }
+
+    .case-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    div.case-row {
+      cursor: default;
+      opacity: 0.45;
+    }
+
+    div.case-row:hover .case-row-title {
+      color: var(--muted-fg);
+    }
+
+    div.case-row .case-row-arrow {
+      display: none;
+    }
+
+    div.case-row .case-row-soon {
+      display: inline-flex;
+    }
+
+    .case-row-soon {
+      display: none;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: hsl(38 70% 58%);
+      background: hsl(38 55% 45% / 0.14);
+      border: 1px solid hsl(38 55% 45% / 0.28);
+      padding: 2px 8px;
+      border-radius: 9999px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    [data-theme="light"] .case-row-soon {
+      color: hsl(35 60% 38%);
+      background: hsl(45 90% 90%);
+      border-color: hsl(38 65% 72%);
+    }
+
+    .case-row:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .case-row-title {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--muted-fg);
+      transition: color 0.2s;
+    }
+
+    .case-row.active .case-row-title,
+    .case-row:hover .case-row-title {
+      color: var(--foreground);
+    }
+
+    .case-row-arrow {
+      font-size: 16px;
+      color: var(--muted-fg);
+      opacity: 0;
+      transition: opacity 0.2s;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .case-row.active .case-row-arrow,
+    .case-row:hover .case-row-arrow {
+      opacity: 1;
+      color: var(--foreground);
+    }
+
+    @media (max-width: 640px) {
+      .section-heading {
+        font-size: 28px;
+        margin-bottom: 40px;
+      }
+
+      .case-row-title {
+        font-size: 20px;
+      }
+    }
+
+    /* shadcn Badge — secondary */
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--muted-fg);
+      background: var(--muted);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 9999px;
+      white-space: nowrap;
+    }
+
+    .case-meta {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .case-year {
+      font-size: 12px;
+      color: var(--muted-fg);
+      white-space: nowrap;
+    }
+
+    /* ── Work History ── */
+    .work-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .work-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: 16px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .work-company {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .work-role {
+      font-size: 13px;
+      color: var(--muted-fg);
+    }
+
+    .work-description {
+      font-size: 13px;
+      color: var(--muted-fg);
+      line-height: 1.55;
+      margin-top: 4px;
+      max-width: 480px;
+    }
+
+    .work-period {
+      font-size: 12px;
+      color: var(--muted-fg);
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 20px 0;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-name {
+      font-size: 13px;
+      color: var(--muted-fg);
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--muted-fg);
+      text-decoration: none;
+      height: 28px;
+      padding: 0 8px;
+      border-radius: calc(var(--radius) - 2px);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .footer-links a svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .footer-links a:hover {
+      background: var(--accent);
+      color: var(--accent-fg);
+    }
+
+    /* footer email → copy-on-click (reuses global .copy-email behavior) */
+    .footer-links .copy-email {
+      font-family: inherit;
+      font-size: 13px;
+      color: var(--muted-fg);
+      background: transparent;
+      border: none;
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+      height: 28px;
+      padding: 0 8px;
+      border-radius: calc(var(--radius) - 2px);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .footer-links .copy-email:hover {
+      background: var(--accent);
+      color: var(--accent-fg);
+    }
+
+    .footer-links .copy-email svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    /* ── Theme switcher (shadcn ToggleGroup style) ── */
+    .theme-switcher {
+      display: inline-flex;
+      align-items: center;
+      background: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 3px;
+      gap: 2px;
+      position: relative;
+    }
+
+    .theme-indicator {
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      border-radius: calc(var(--radius) - 2px);
+      background: var(--background);
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+      left: 3px;
+    }
+
+    .theme-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: calc(var(--radius) - 2px);
+      color: var(--muted-fg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.15s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .theme-btn svg {
+      width: 13px;
+      height: 13px;
+      display: block;
+    }
+
+    .theme-btn:hover {
+      color: var(--foreground);
+    }
+
+    .theme-btn.active {
+      color: var(--foreground);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .case-item {
+        grid-template-columns: 1fr;
+        padding: 20px 0;
+        margin: 0;
+      }
+
+      .case-meta {
+        display: none;
+      }
+
+      .nav-links a {
+        padding: 6px 8px;
+      }
+    }
+
+    /* ── Minimal sizing: same scale as Home / For readers ── */
+    .section { padding: 48px 0; }
+    .section:has(> .pin-scroller) { padding-top: 0; }
+    .section-heading { font-size: 14px; font-weight: 600; letter-spacing: 0; line-height: 1.4; margin-bottom: 20px; }
+    #how-i-work .case-row-title, #why-me .case-row-title { font-size: 20px; line-height: 1.3; font-weight: 600; letter-spacing: -0.01em; }
+    #how-i-work .case-row, #why-me .case-row { padding: 18px 0; }
+    .case-preview-card { padding: 24px; }
+    .case-preview-say { font-size: 20px; line-height: 1.3; }
+    .case-preview-sub { font-size: 14px; color: var(--muted-fg); }
+
+    /* ── Recruiter hero: plain text, same scale as Home ── */
+    .rec-hero { padding: 72px 0 56px; border-bottom: 1px solid var(--border); }
+    .rec-hero h1 { font-size: 36px; font-weight: 600; letter-spacing: -0.025em; line-height: 1.15; margin: 0 0 16px; text-wrap: balance; }
+    .rec-sub { font-size: 17px; line-height: 1.6; color: var(--muted-fg); max-width: 560px; margin: 0 0 32px; }
+    .rec-also { font-size: 15px; line-height: 1.6; color: var(--muted-fg); max-width: 560px; margin: 0 0 32px; }
+    .rec-list { margin: 0 0 32px; display: grid; gap: 8px; max-width: 560px; }
+    .rec-list div { display: grid; grid-template-columns: 96px 1fr; gap: 12px; font-size: 15px; line-height: 1.5; }
+    .rec-list dt { color: var(--muted-fg); }
+    .rec-list dd { margin: 0; }
+    /* shadcn secondary button, same family as the nav's ghost + primary */
+    .rec-link { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 16px; border: 1px solid transparent; border-radius: var(--radius); background: var(--accent); color: var(--accent-fg); font-size: 14px; font-weight: 500; text-decoration: none; transition: background .15s; }
+    .rec-link:hover { background: color-mix(in srgb, var(--accent) 100%, var(--foreground) 8%); }
+    .rec-link svg { width: 14px; height: 14px; color: var(--muted-fg); }
+    @media (max-width: 640px) { .rec-hero { padding: 48px 0 40px; } .rec-hero h1 { font-size: 28px; } .rec-list div { grid-template-columns: 1fr; gap: 0; } }
+    @media (max-width: 640px) { section#how-i-work, section#why-me { padding-top: 40px !important; } }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="container">
+      <a href="/" class="nav-brand">
+        <span class="nav-name-row">
+          <span class="nav-name">Oleg Suvorov</span>
+        </span>
+        <span class="nav-sub">Growth Product Manager</span>
+      </a>
+      <button class="nav-burger" aria-label="Toggle menu" aria-expanded="false">
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="4" y1="7" x2="20" y2="7" />
+          <line x1="4" y1="12" x2="20" y2="12" />
+          <line x1="4" y1="17" x2="20" y2="17" />
+        </svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="6" y1="6" x2="18" y2="18" />
+          <line x1="18" y1="6" x2="6" y2="18" />
+        </svg>
+      </button>
+      <ul class="nav-links">
+        <li class="nav-recruiters"><a href="/for-recruiters/">For recruiters<span class="status-dot"><span class="status-tooltip">Open to Job Opportunities</span></span></a></li>
+        <li><a href="/articles/">For readers</a></li>
+        <li class="nav-contact">
+          <button class="nav-contact-trigger" aria-expanded="false" aria-haspopup="true">
+            Contacts
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <div class="nav-contact-menu">
+            <button class="copy-email" data-email="olegsuvorav@gmail.com" aria-label="Copy email address">
+              <span class="copy-email-label">Copy olegsuvorav@gmail.com</span>
+              <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </button>
+            <a href="https://linkedin.com/in/ohsuvorav" target="_blank" rel="noopener">
+              Open LinkedIn profile
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </a>
+          </div>
+        </li>
+        <li><a href="https://calendar.notion.so/meet/ohsuvorav/product-growth" class="nav-cta" target="_blank" rel="noopener">Book a call</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="rec-hero">
+      <div class="container">
+        <h1>Growth Product Manager for B2B PLG SaaS</h1>
+        <p class="rec-sub">Engineer-turned-PM with 6+ years of experience. Known for 0-to-1 launches, tripling retention through activation, growth experiments with monetization. 2x AI Hackathon Winner.</p>
+        <a class="rec-link" href="https://linkedin.com/in/ohsuvorav" target="_blank" rel="noopener">Message me on LinkedIn <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg></a>
+      </div>
+    </section>
+
+     <!-- Case Studies -->
+    <section class="section" id="how-i-work">
+      <div class="pin-scroller" style="--pin-steps: 4;">
+       <div class="pin-sticky">
+        <div class="container">
+          <h2 class="section-heading">How I work</h2>
+
+          <div class="cases-intercom">
+
+            <!-- Left: claims -->
+            <div class="cases-list">
+              <div class="case-row active" data-case="1">
+                <span class="case-row-title">I’m great at UX</span>
+              </div>
+              <div class="case-row" data-case="2">
+                <span class="case-row-title">I’m technical and hands-on with data</span>
+              </div>
+              <div class="case-row" data-case="3">
+                <span class="case-row-title">I build AI-first ops</span>
+              </div>
+              <div class="case-row" data-case="4">
+                <span class="case-row-title">I’m a tinkerer</span>
+              </div>
+            </div>
+
+            <!-- Right: proof -->
+            <div class="cases-preview">
+              <a class="case-preview-card is-link active" data-preview="1" href="/cases/product-redesign.html">
+                <div class="case-preview-say">How I redesigned the product</div>
+                <span class="case-preview-cta">
+                  Learn more
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </span>
+                <div class="case-preview-sub">So customers wrote in CAPS LOCK how much they love it</div>
+                <div class="case-preview-visual">
+                  <figure>
+                    <figcaption>Before</figcaption>
+                    <img src="/assets/object-before.png" alt="Product before redesign" loading="lazy">
+                  </figure>
+                  <figure>
+                    <figcaption>After</figcaption>
+                    <img src="/assets/object-after-expanded.png" alt="Product after redesign" loading="lazy">
+                  </figure>
+                </div>
+              </a>
+              <div class="case-preview-card" data-preview="2">
+                <div class="case-preview-say">A growth engine that compounds</div>
+                <div class="case-preview-sub">Built myself: a full-funnel growth playbook, a Customer Data Platform for insights, and a unit-economics model for P&amp;L and LTV.</div>
+                <div class="ue-app">
+                  <svg class="cdp-svg" viewBox="0 0 362 176" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <filter id="cdpShadow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.14" />
+                      </filter>
+                    </defs>
+
+                    <!-- source: Amazon -->
+                    <g transform="translate(4,13)">
+                      <rect x="0" y="0" width="26" height="26" rx="8" fill="var(--muted)" stroke="var(--border)" stroke-width="1" />
+                      <path transform="translate(4,4) scale(0.75)" fill="var(--muted-fg)" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z" />
+                    </g>
+                    <text x="34" y="29" font-size="9.5" font-weight="600" fill="var(--foreground)">Amazon</text>
+
+                    <!-- source: Mixpanel -->
+                    <g transform="translate(4,75)">
+                      <rect x="0" y="0" width="26" height="26" rx="8" fill="var(--muted)" stroke="var(--border)" stroke-width="1" />
+                      <path transform="translate(4,4) scale(0.75)" fill="var(--muted-fg)" d="M6.967 9.996h3.053c-.763-.477-1.048-1.145-1.431-2.384L7.443 3.366C6.919 1.458 6.49.551 4.39.551H.004v1.145h.621c1.286 0 1.431.477 1.814 1.908L3.44 7.326c.524 1.814 1.337 2.67 3.53 2.67h-.003Zm7.06 0h3.053c2.194 0 2.956-.86 3.484-2.67l1.001-3.722c.382-1.431.57-1.908 1.814-1.908H24V.551h-4.34c-2.146 0-2.576.86-3.053 2.815l-1.145 4.246c-.384 1.286-.673 1.907-1.435 2.384Zm-4.007 4.008h4.007V9.996H10.02v4.008ZM0 23.449h4.39c2.1 0 2.529-.907 3.053-2.815l1.146-4.246c.383-1.239.668-1.907 1.431-2.384H6.967c-2.194 0-3.007.86-3.531 2.67l-1.001 3.722c-.383 1.431-.524 1.907-1.814 1.907H0v1.146Zm19.65 0h4.343v-1.146h-.622c-1.239 0-1.431-.476-1.814-1.907l-1.001-3.722c-.524-1.814-1.286-2.67-3.483-2.67h-3.046c.762.477 1.041 1.098 1.424 2.384l1.145 4.246c.477 1.955.907 2.815 3.054 2.815Z" />
+                    </g>
+                    <text x="34" y="91" font-size="9.5" font-weight="600" fill="var(--foreground)">Mixpanel</text>
+
+                    <!-- source: Stripe -->
+                    <g transform="translate(4,137)">
+                      <rect x="0" y="0" width="26" height="26" rx="8" fill="var(--muted)" stroke="var(--border)" stroke-width="1" />
+                      <polygon transform="translate(4,4) scale(0.75)" fill="var(--muted-fg)" points="5.5,8.5 18,6 18,15 5.5,17.5" />
+                    </g>
+                    <text x="34" y="153" font-size="9.5" font-weight="600" fill="var(--foreground)">Stripe</text>
+
+                    <!-- connectors converging into one pipe -->
+                    <path id="cdp-line-1" d="M99,26 C124,26 124,88 150,88" stroke="var(--border)" stroke-width="1.25" fill="none" />
+                    <path id="cdp-line-2" d="M99,88 L150,88" stroke="var(--border)" stroke-width="1.25" fill="none" />
+                    <path id="cdp-line-3" d="M99,150 C124,150 124,88 150,88" stroke="var(--border)" stroke-width="1.25" fill="none" />
+                    <path d="M150,88 L168,88" stroke="var(--border)" stroke-width="1.25" fill="none" />
+                    <circle cx="150" cy="88" r="2.5" fill="var(--foreground)" />
+
+                    <!-- traveling data dots, non-stop -->
+                    <circle r="1.8" fill="var(--foreground)">
+                      <animateMotion dur="2.2s" begin="0s" repeatCount="indefinite">
+                        <mpath href="#cdp-line-1" />
+                      </animateMotion>
+                    </circle>
+                    <circle r="1.8" fill="var(--foreground)" opacity="0.6">
+                      <animateMotion dur="2.2s" begin="1.1s" repeatCount="indefinite">
+                        <mpath href="#cdp-line-1" />
+                      </animateMotion>
+                    </circle>
+
+                    <circle r="1.8" fill="var(--foreground)">
+                      <animateMotion dur="1.8s" begin="0.3s" repeatCount="indefinite">
+                        <mpath href="#cdp-line-2" />
+                      </animateMotion>
+                    </circle>
+                    <circle r="1.8" fill="var(--foreground)" opacity="0.6">
+                      <animateMotion dur="1.8s" begin="1.2s" repeatCount="indefinite">
+                        <mpath href="#cdp-line-2" />
+                      </animateMotion>
+                    </circle>
+
+                    <circle r="1.8" fill="var(--foreground)">
+                      <animateMotion dur="2.2s" begin="0.6s" repeatCount="indefinite">
+                        <mpath href="#cdp-line-3" />
+                      </animateMotion>
+                    </circle>
+                    <circle r="1.8" fill="var(--foreground)" opacity="0.6">
+                      <animateMotion dur="2.2s" begin="1.7s" repeatCount="indefinite">
+                        <mpath href="#cdp-line-3" />
+                      </animateMotion>
+                    </circle>
+
+                    <!-- collapsed source tables, stacked behind -->
+                    <rect x="190" y="24" width="182" height="104" rx="8" fill="none" stroke="var(--border)" stroke-opacity="0.45" stroke-dasharray="3 3" />
+                    <rect x="180" y="34" width="182" height="104" rx="8" fill="var(--background)" stroke="var(--border)" stroke-opacity="0.7" />
+
+                    <!-- merged customer table, front -->
+                    <rect x="168" y="44" width="182" height="100" rx="8" fill="var(--background)" stroke="var(--border)" stroke-width="1.5" filter="url(#cdpShadow)" />
+
+                    <text x="218" y="58" font-size="7" font-weight="700" letter-spacing="0.03em" fill="var(--muted-fg)">CAC</text>
+                    <text x="244" y="58" font-size="7" font-weight="700" letter-spacing="0.03em" fill="var(--muted-fg)">LTV</text>
+                    <text x="270" y="58" font-size="7" font-weight="700" letter-spacing="0.03em" fill="var(--muted-fg)">PAY</text>
+                    <text x="303" y="58" font-size="7" font-weight="700" letter-spacing="0.03em" fill="var(--muted-fg)">ACT</text>
+                    <text x="322" y="58" font-size="7" font-weight="700" letter-spacing="0.03em" fill="var(--muted-fg)">RISK</text>
+                    <line x1="176" y1="64" x2="342" y2="64" stroke="var(--border)" />
+
+                    <text x="180" y="80" font-size="7" font-weight="500" fill="var(--foreground)">Cust 1</text>
+                    <text x="218" y="80" font-size="7" fill="var(--foreground)">$1.2k</text>
+                    <text x="244" y="80" font-size="7" fill="var(--foreground)">$18k</text>
+                    <text x="270" y="80" font-size="7" fill="var(--foreground)">3.1mo</text>
+                    <circle cx="309" cy="77" r="3" fill="#22c55e" />
+                    <circle cx="330" cy="77" r="3" fill="none" stroke="var(--border)" stroke-width="1.3" />
+
+                    <text x="180" y="102" font-size="7" font-weight="500" fill="var(--foreground)">Cust 2</text>
+                    <text x="218" y="102" font-size="7" fill="var(--foreground)">$860</text>
+                    <text x="244" y="102" font-size="7" fill="var(--foreground)">$6.4k</text>
+                    <text x="270" y="102" font-size="7" fill="var(--foreground)">5.8mo</text>
+                    <circle cx="309" cy="99" r="3" fill="#22c55e" />
+                    <circle cx="330" cy="99" r="3" fill="#f59e0b" />
+
+                    <text x="259" y="124" font-size="11" letter-spacing="2" fill="var(--muted-fg)" text-anchor="middle">&middot;&middot;&middot;</text>
+                  </svg>
+                </div>
+              </div>
+              <a class="case-preview-card is-link" data-preview="3" href="/cases/ai-first-ops.html">
+                <div class="case-preview-say">AI-first ops increased the team's velocity 2.5 times without increasing headcount</div>
+                <span class="case-preview-cta">
+                  Learn more
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </span>
+                <div class="case-preview-sub">Shared skills in Git, a Claude-powered Linear agent, workflow rules, and a capacity planner.</div>
+                <div class="case-preview-more">+ 1st place at AI Hackathon</div>
+              </a>
+              <div class="case-preview-card" data-preview="4">
+                <div class="case-preview-say">Early adopter of innovation</div>
+                <div class="case-preview-sub">
+                  <p>AI runs my life:</p>
+                  <p><strong>Orbit</strong> — self-improving, 24/7 personal assistant.</p>
+                  <p><strong>Midas</strong> — family expense tracker.</p>
+                  <p><strong>Mirality</strong> — self-improving LinkedIn ghostwriter.</p>
+                </div>
+                <div class="case-preview-visual">
+                  <figure>
+                    <img class="theme-img theme-img-dark" src="/assets/mirality-ui.png" alt="Mirality app UI" loading="lazy">
+                    <img class="theme-img theme-img-light" src="/assets/mirality-ui-light.png" alt="Mirality app UI" loading="lazy">
+                    <button class="img-expand-btn" type="button" aria-label="Expand image">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M15 3h6v6" />
+                        <path d="M9 21H3v-6" />
+                        <path d="M21 3l-7 7" />
+                        <path d="M3 21l7-7" />
+                      </svg>
+                    </button>
+                  </figure>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+       </div>
+      </div>
+    </section>
+
+    <!-- How I do it -->
+    <section class="section" id="why-me">
+      <div class="pin-scroller" style="--pin-steps: 3;">
+       <div class="pin-sticky">
+        <div class="container">
+          <h2 class="section-heading">Founders hire me because I&hellip;</h2>
+
+          <div class="cases-intercom">
+
+            <!-- Left: achievements -->
+            <div class="cases-list">
+              <div class="case-row active" data-case="1">
+                <span class="case-row-title">Killed 2 product verticals despite the founders’ pushback</span>
+              </div>
+              <div class="case-row" data-case="2">
+                <span class="case-row-title">Pivoted the company B2C → B2B with unit economics</span>
+              </div>
+              <div class="case-row" data-case="3">
+                <span class="case-row-title">Launched a product from scratch to first payments</span>
+              </div>
+            </div>
+
+            <!-- Right: what it meant -->
+            <div class="cases-preview">
+              <div class="case-preview-card active" data-preview="1">
+                <div class="case-preview-say">Retention 3×, ARR 2×</div>
+                <div class="case-preview-sub">“More verticals — easier to sell,” was the argument. The data said otherwise: 90% of revenue came from one core product. Built the business case, took it to the CEO — and killed both verticals.</div>
+              </div>
+              <div class="case-preview-card" data-preview="2">
+                <div class="case-preview-say">95% of revenue — from 5% of users</div>
+                <div class="case-preview-sub">Cohort analysis nobody asked for. Showed the math — the company changed course.</div>
+              </div>
+              <div class="case-preview-card" data-preview="3">
+                <div class="case-preview-say">Avoided bankruptcy</div>
+                <div class="case-preview-sub">First product role. From idea to paying customers — product plus full-cycle marketing.</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+       </div>
+      </div>
+    </section>
+
+    <!-- Work History -->
+    <section class="section" id="career">
+      <div class="container">
+        <h2 class="section-heading">Career</h2>
+        <p class="career-intro">Early in my career, I was choosing between marketing and engineering — I didn't know what sits in the middle. I picked engineering, then switched to product to stop building meaningless features. Once I could build anything, I moved to its monetization: growth, and improving LTV.</p>
+        <div class="ctx-timeline" style="margin-top: 4px;">
+          <div class="ctx-node live">
+            <div class="work-company">Product-led Growth</div>
+            <div class="work-role">2026 – present</div>
+            <div class="work-description">Feature adoption, activation, and billing monetization experiments.</div>
+          </div>
+          <div class="ctx-node">
+            <div class="work-company">Senior Product Manager, Platform & Growth</div>
+            <div class="work-role">Threecolts · 2025 – 2026</div>
+          <div class="work-description">Joined to own growth strategy for the PLG portfolio. Needed to run experiments, but the platform was broken — so I ended up owning it: billing & integrations across 20 products. Led strategic bets with the C-suite.</div>
+         </div>
+          <div class="ctx-node">
+            <div class="work-company">Founding Product Manager, Helpdesk</div>
+            <div class="work-role">Threecolts · 2023 – 2025</div>
+          <div class="work-description">Took over product and ops from the founder. Grew the team from 3 to 15, tripled retention, owned product strategy for a portfolio of 3 products. Declined a Head of Product offer to work in Growth.</div>
+         </div>
+          <div class="ctx-node">
+            <div class="work-company">Technical Product Manager</div>
+            <div class="work-role">HICX · 2022 – 2023</div>
+            <div class="work-description">Joined as a PM, proposed a growth plan to address low feature adoption. We didn’t agree on the plan. Left.</div>
+          </div>
+          <div class="ctx-node">
+            <div class="work-company">Product Operator</div>
+            <div class="work-role">Coinchange · 2021 – 2022</div>
+            <div class="work-description">Started as a Founder's Associate, helped across each vertical: marketing, sales, product. Discovered insights via unit economics to pivot the company from B2C to B2B.</div>
+          </div>
+          <div class="ctx-node">
+            <div class="work-company">0-to-1 Product Manager</div>
+            <div class="work-role">OnlinEventSpace · 2021 – 2022</div>
+            <div class="work-description">First PM job at a service company. Launched the product from scratch to first payments to avoid company bankruptcy, led full-cycle marketing with 2 direct reports.</div>
+          </div>
+          <div class="ctx-node">
+            <div class="work-company">Android Developer</div>
+            <div class="work-role">iTechArt · 2020 – 2021</div>
+            <div class="work-description">First engineering job: learned how to code client-server applications and developed intolerance for meaningless features. Broke up with an AMAZING team to get into Product Management.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="lightbox">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <footer>
+    <div class="container">
+      <span class="footer-name">Oleg Suvorov · 2026</span>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/ohsuvorav" target="_blank" rel="noopener">
+          LinkedIn
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7" />
+            <polyline points="7 7 17 7 17 17" />
+          </svg>
+        </a>
+        <button class="copy-email" data-email="olegsuvorav@gmail.com" aria-label="Copy email address">
+          <span class="copy-email-label">Email</span>
+          <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+          </svg>
+          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </button>
+        <div class="theme-switcher">
+          <span class="theme-indicator" id="themeIndicator"></span>
+          <button class="theme-btn" data-mode="system" aria-label="System theme">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <line x1="8" y1="21" x2="16" y2="21" />
+              <line x1="12" y1="17" x2="12" y2="21" />
+            </svg>
+          </button>
+          <button class="theme-btn" data-mode="light" aria-label="Light theme">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+          </button>
+          <button class="theme-btn" data-mode="dark" aria-label="Dark theme">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="cv-modal" class="cv-modal" aria-hidden="true">
+    <div class="cv-modal-box" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
+      <button type="button" class="cv-modal-close" aria-label="Close">&times;</button>
+      <h2 id="cv-modal-title">Download CV</h2>
+      <p class="cv-modal-sub" id="cv-modal-sub">Work email only — filters out gmail/outlook/etc.</p>
+      <form id="cv-modal-form">
+        <input type="email" id="cv-modal-email" placeholder="you@company.com" required autocomplete="email">
+        <button type="submit" class="cv-modal-submit" id="cv-modal-send-btn" disabled>Send code</button>
+      </form>
+      <form id="cv-modal-code-form" hidden>
+        <input type="text" id="cv-modal-code" placeholder="6-digit code" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="one-time-code" required>
+        <button type="submit" class="cv-modal-submit" id="cv-modal-verify-btn" disabled>Verify & Download</button>
+        <div class="cv-modal-code-actions">
+          <button type="button" class="cv-modal-link" id="cv-modal-resend">Resend code</button>
+          <button type="button" class="cv-modal-link" id="cv-modal-edit-email">Use a different email</button>
+        </div>
+      </form>
+      <p class="cv-modal-error" id="cv-modal-error" hidden></p>
+      <p class="cv-modal-success" id="cv-modal-success" hidden>Thanks — your download should start automatically.</p>
+    </div>
+  </div>
+
+  <script src="/site.js"></script>
+  <script>
+    /* ── Case switcher: click + pin-scroll stepping ──
+       Hover-to-switch is retired (see commented block below). Now the
+       active claim is driven by (a) clicking a row and (b) scrolling
+       while the section is pinned — both call setActive(). */
+
+    // Hover switch — kept for reference, disabled per new UX.
+    // document.querySelectorAll('.case-row[data-case]').forEach(row => {
+    //   row.addEventListener('mouseenter', () => {
+    //     const scope = row.closest('.cases-intercom');
+    //     scope.querySelectorAll('.case-row').forEach(r => r.classList.remove('active'));
+    //     scope.querySelectorAll('.case-preview-card').forEach(p => p.classList.remove('active'));
+    //     row.classList.add('active');
+    //     const preview = scope.querySelector(`.case-preview-card[data-preview="${row.dataset.case}"]`);
+    //     if (preview) preview.classList.add('active');
+    //   });
+    // });
+
+    const desktop = window.matchMedia('(min-width: 641px)');
+
+    const setActive = (scope, index) => {
+      const rows = scope.querySelectorAll('.case-row');
+      const cards = scope.querySelectorAll('.case-preview-card');
+      index = Math.max(0, Math.min(rows.length - 1, index));
+      rows.forEach((r, i) => r.classList.toggle('active', i === index));
+      cards.forEach((c, i) => c.classList.toggle('active', i === index));
+    };
+
+    document.querySelectorAll('.pin-scroller').forEach(scroller => {
+      const scope = scroller.querySelector('.cases-intercom');
+      const rows = [...scope.querySelectorAll('.case-row')];
+      const steps = rows.length;
+
+      // Vertical scroll-progress track, left of the claims list.
+      const list = scope.querySelector('.cases-list');
+      const track = document.createElement('div');
+      track.className = 'pin-progress';
+      const fill = document.createElement('div');
+      fill.className = 'pin-progress-fill';
+      track.appendChild(fill);
+      list.appendChild(track);
+
+      // Click a claim → jump to the middle of its scroll band (desktop),
+      // or just switch (mobile, where all cards are already visible).
+      rows.forEach((row, i) => {
+        row.addEventListener('click', () => {
+          if (!desktop.matches) { setActive(scope, i); return; }
+          const range = scroller.offsetHeight - window.innerHeight;
+          const top = scroller.getBoundingClientRect().top + window.scrollY;
+          const progress = (i + 0.5) / steps;
+          window.scrollTo({ top: top + progress * range, behavior: 'smooth' });
+        });
+      });
+
+      // Scroll progress within the pinned range → active index.
+      scroller._update = () => {
+        if (!desktop.matches) return;
+        const range = scroller.offsetHeight - window.innerHeight;
+        const top = scroller.getBoundingClientRect().top + window.scrollY;
+        const progress = (window.scrollY - top) / range;
+        const clamped = Math.max(0, Math.min(1, progress));
+        setActive(scope, Math.floor(Math.max(0, Math.min(0.999, progress)) * steps));
+        fill.style.height = (clamped * 100) + '%';
+      };
+    });
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        document.querySelectorAll('.pin-scroller').forEach(s => s._update && s._update());
+        ticking = false;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Lightbox (same pattern as cases/product-redesign.html)
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    const openLightbox = (img) => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('open');
+    };
+
+    document.querySelectorAll('.case-preview-visual img').forEach(img => {
+      img.addEventListener('click', () => openLightbox(img));
+    });
+
+    document.querySelectorAll('.img-expand-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const visibleImg = [...btn.closest('figure').querySelectorAll('img')]
+          .find(img => getComputedStyle(img).display !== 'none');
+        openLightbox(visibleImg);
+      });
+    });
+
+    lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') lightbox.classList.remove('open');
+    });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+  </script>
+</body>
+
+</html>

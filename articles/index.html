@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="description"
+    content="Articles by Oleg Suvorov on product growth.">
+  <title>Articles · Oleg Suvorov</title>
+  <meta property="og:title" content="Articles · Oleg Suvorov">
+  <meta property="og:description" content="Articles by Oleg Suvorov on product growth.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://suvorav.com/articles/">
+  <link rel="canonical" href="https://suvorav.com/articles/">
+  <meta name="twitter:card" content="summary">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=mirality-accent-6">
+  <style>
+    .theme-switcher {
+      display: inline-flex;
+      align-items: center;
+      background: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 3px;
+      gap: 2px;
+      position: relative;
+    }
+
+    .theme-indicator {
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      border-radius: calc(var(--radius) - 2px);
+      background: var(--background);
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+      left: 3px;
+    }
+
+    .theme-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: calc(var(--radius) - 2px);
+      color: var(--muted-fg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.15s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .theme-btn svg {
+      width: 13px;
+      height: 13px;
+      display: block;
+    }
+
+    .theme-btn:hover,
+    .theme-btn.active {
+      color: var(--foreground);
+    }
+
+    /* ── Case header ── */
+    .case-header {
+      padding: 56px 0 8px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted-fg);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: color 0.15s;
+    }
+
+    .back-link:hover {
+      color: var(--foreground);
+    }
+
+    .back-link svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .case-company-chip {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-color);
+      margin-bottom: 16px;
+    }
+
+    .case-title {
+      font-size: 42px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .case-summary {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--foreground);
+    }
+
+    .case-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--muted-fg);
+      background: var(--muted);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    /* ── Case body ── */
+    .case-body {
+      padding: 0 0 80px;
+    }
+
+    .case-section {
+      padding: 16px 0;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted-fg);
+      margin-bottom: 20px;
+    }
+
+    .case-section h2 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+
+    .case-section p {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--foreground);
+      margin-bottom: 16px;
+    }
+
+    .case-section ul,
+    .case-section ol {
+      margin: 0 0 16px;
+      padding-left: 20px;
+    }
+
+    .case-section li {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--foreground);
+      margin-bottom: 8px;
+    }
+
+    .case-section li > ul,
+    .case-section li > ol {
+      margin: 8px 0 0;
+    }
+
+    .case-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .case-section p strong {
+      color: var(--foreground);
+      font-weight: 500;
+    }
+
+    .case-section code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.86em;
+      background: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1px 5px;
+    }
+
+    .callout {
+      background: var(--muted);
+      border-left: 3px solid var(--accent-color);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--foreground);
+    }
+
+    .visual-block {
+      background: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 28px 0;
+      min-height: 220px;
+      font-size: 13px;
+      color: var(--muted-fg);
+      overflow: hidden;
+    }
+
+    .visual-block img,
+    .visual-block video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: inherit;
+    }
+
+    /* Keep captions high-contrast in both page themes. */
+    .visual-block video::cue {
+      background-color: #000000 !important;
+      background-image: linear-gradient(#000000, #000000) !important;
+      color: #FFFFFF;
+      text-shadow: none;
+    }
+
+    /* ── Before/after static comparison ── */
+    .compare-static {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 28px 0;
+    }
+
+    .compare-static-col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .compare-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted-fg);
+    }
+
+    .compare-static-col img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: calc(var(--radius) + 2px);
+      border: 1px solid var(--border);
+    }
+
+    /* ── Move label — sub-label under a section, styled like .section-label ── */
+    .move-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted-fg);
+      margin-bottom: 16px;
+      margin-top: 40px;
+    }
+
+    footer {
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-name {
+      font-size: 13px;
+      color: var(--muted-fg);
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--muted-fg);
+      text-decoration: none;
+      height: 28px;
+      padding: 0 8px;
+      border-radius: calc(var(--radius) - 2px);
+      display: inline-flex;
+      align-items: center;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .footer-links a:hover {
+      background: var(--accent);
+      color: var(--accent-fg);
+    }
+
+    /* ── TOC sidebar ── */
+    .toc {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      right: calc(50% + 380px + 32px);
+      width: 148px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .toc-item {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted-fg);
+      text-decoration: none;
+      padding: 7px 12px;
+      border-left: 2px solid var(--border);
+      transition: color 0.2s, border-color 0.2s;
+      letter-spacing: 0.02em;
+      line-height: 1.3;
+    }
+
+    .toc-item:hover {
+      color: var(--foreground);
+    }
+
+    .toc-item.active {
+      color: var(--foreground);
+      border-left-color: var(--foreground);
+    }
+
+    @media (max-width: 1200px) {
+      .toc {
+        display: none;
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+    }
+
+    /* nested TOC sub-item (Part 1–5 under Approach) */
+    .toc-sub {
+      padding-left: 24px;
+      font-size: 11px;
+    }
+
+    @media (max-width: 640px) {
+      .case-title {
+        font-size: 30px;
+      }
+
+      .compare-static {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ── Lightbox ── */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+      cursor: zoom-out;
+    }
+
+    #lightbox.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    #lightbox img {
+      max-width: 95vw;
+      max-height: 95vh;
+      object-fit: contain;
+      border-radius: var(--radius);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+    }
+
+    .visual-block img,
+    .compare-static-col img {
+      cursor: zoom-in;
+    }
+
+    .fw-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; line-height: 1.6; }
+    .fw-table th, .fw-table td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+    .fw-table th { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-fg); }
+    .fw-table td:first-child { font-weight: 600; white-space: nowrap; }
+    /* ── Articles: plain list ── */
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .notes { padding: 56px 0 96px; }
+    .notes-about { font-size: 16px; line-height: 1.6; color: var(--muted-fg); max-width: 520px; margin: 0 0 48px; }
+    .notes-label { font-size: 14px; font-weight: 600; margin: 0 0 20px; }
+    .notes-year { display: grid; grid-template-columns: 72px 1fr; margin-bottom: 32px; }
+    .notes-year .y { font-size: 14px; color: var(--muted-fg); padding-top: 1px; }
+    .notes-year ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; max-width: 520px; }
+    .notes-year a { display: block; text-decoration: none; color: var(--foreground); }
+    .notes-year .t { display: block; font-size: 15px; line-height: 1.4; }
+    .notes-year .d { display: block; font-size: 13px; color: var(--muted-fg); margin-top: 2px; }
+    .notes-year a:hover .t { text-decoration: underline; text-underline-offset: 3px; }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="container">
+      <a href="/" class="nav-brand">
+        <span class="nav-name-row">
+          <span class="nav-name">Oleg Suvorov</span>
+        </span>
+        <span class="nav-sub">Growth Product Manager</span>
+      </a>
+      <button class="nav-burger" aria-label="Toggle menu" aria-expanded="false">
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="4" y1="7" x2="20" y2="7" />
+          <line x1="4" y1="12" x2="20" y2="12" />
+          <line x1="4" y1="17" x2="20" y2="17" />
+        </svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="6" y1="6" x2="18" y2="18" />
+          <line x1="18" y1="6" x2="6" y2="18" />
+        </svg>
+      </button>
+      <ul class="nav-links">
+        <li class="nav-recruiters"><a href="/for-recruiters/">For recruiters<span class="status-dot"><span class="status-tooltip">Open to Job Opportunities</span></span></a></li>
+        <li><a href="/articles/">For readers</a></li>
+        <li class="nav-contact">
+          <button class="nav-contact-trigger" aria-expanded="false" aria-haspopup="true">
+            Contacts
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <div class="nav-contact-menu">
+            <button class="copy-email" data-email="olegsuvorav@gmail.com" aria-label="Copy email address">
+              <span class="copy-email-label">Copy olegsuvorav@gmail.com</span>
+              <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </button>
+            <a href="https://linkedin.com/in/ohsuvorav" target="_blank" rel="noopener">
+              Open LinkedIn profile
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </a>
+          </div>
+        </li>
+        <li><a href="https://calendar.notion.so/meet/ohsuvorav/product-growth" class="nav-cta" target="_blank" rel="noopener">Book a call</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <h1 class="sr-only">Articles</h1>
+    <div class="notes">
+      <div class="container">
+        <p class="notes-about">Half-engineer, half-marketer, but great at product and good at growth.</p>
+        <h2 class="notes-label">Writing</h2>
+        <div class="notes-year">
+          <span class="y">2026</span>
+          <ul>
+            <li>
+              <a href="/articles/growth-framework.html">
+                <span class="t">Beyond data-driven: the growth framework I use on any product</span>
+                <span class="d">October 28</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="lightbox">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <footer>
+    <div class="container">
+      <span class="footer-name">Oleg Suvorov · 2026</span>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/ohsuvorav">LinkedIn</a>
+        <a href="mailto:olegsuvorav@gmail.com">Email</a>
+        <div class="theme-switcher">
+          <span class="theme-indicator" id="themeIndicator"></span>
+          <button class="theme-btn" data-mode="system" aria-label="System theme">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <line x1="8" y1="21" x2="16" y2="21" />
+              <line x1="12" y1="17" x2="12" y2="21" />
+            </svg>
+          </button>
+          <button class="theme-btn" data-mode="light" aria-label="Light theme">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+          </button>
+          <button class="theme-btn" data-mode="dark" aria-label="Dark theme">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="cv-modal" class="cv-modal" aria-hidden="true">
+    <div class="cv-modal-box" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
+      <button type="button" class="cv-modal-close" aria-label="Close">&times;</button>
+      <h2 id="cv-modal-title">Download CV</h2>
+      <p class="cv-modal-sub" id="cv-modal-sub">Work email only — filters out gmail/outlook/etc.</p>
+      <form id="cv-modal-form">
+        <input type="email" id="cv-modal-email" placeholder="you@company.com" required autocomplete="email">
+        <button type="submit" class="cv-modal-submit" id="cv-modal-send-btn" disabled>Send code</button>
+      </form>
+      <form id="cv-modal-code-form" hidden>
+        <input type="text" id="cv-modal-code" placeholder="6-digit code" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="one-time-code" required>
+        <button type="submit" class="cv-modal-submit" id="cv-modal-verify-btn" disabled>Verify & Download</button>
+        <div class="cv-modal-code-actions">
+          <button type="button" class="cv-modal-link" id="cv-modal-resend">Resend code</button>
+          <button type="button" class="cv-modal-link" id="cv-modal-edit-email">Use a different email</button>
+        </div>
+      </form>
+      <p class="cv-modal-error" id="cv-modal-error" hidden></p>
+      <p class="cv-modal-success" id="cv-modal-success" hidden>Thanks — your download should start automatically.</p>
+    </div>
+  </div>
+
+  <script src="/site.js"></script>
+  <script>
+    // TOC scroll highlight
+    const tocItems = document.querySelectorAll('.toc-item');
+    const sections = document.querySelectorAll('.case-section[id], .move-label[id]');
+
+    const tocObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocItems.forEach(item => {
+            item.classList.toggle('active', item.getAttribute('href') === `#${entry.target.id}`);
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+
+    sections.forEach(s => tocObserver.observe(s));
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    document.querySelectorAll('.visual-block img, .compare-static-col img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('open');
+      });
+    });
+
+    lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') lightbox.classList.remove('open');
+    });
+  </script>
+
+</body>
+
+</html>

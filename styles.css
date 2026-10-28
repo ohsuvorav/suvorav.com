@@ -633,3 +633,12 @@ nav.menu-open .nav-burger .icon-close {
   color: inherit;
   text-decoration: underline;
 }
+
+/* Sticky footer: short pages keep the footer at the bottom of the viewport */
+body { min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1 0 auto; }
+
+/* Open-to-work dot sits next to "For recruiters"; tooltip opens below it */
+.nav-recruiters a { display: inline-flex; align-items: center; gap: 8px; }
+.nav-recruiters a:hover .status-tooltip { opacity: 1; }
+.nav-recruiters .status-tooltip { left: 50%; top: calc(100% + 12px); transform: translateX(-50%); }
