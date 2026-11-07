@@ -428,16 +428,16 @@
     .fw-table th { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-fg); }
     .fw-table td:first-child { font-weight: 600; white-space: nowrap; }
     /* ── Diagram cards (dark ink, sized like the page's other images) ── */
-    .dt, .hm { --dt-bg: #12211C; --dt-surf: #1a2d27; --dt-bd: #52796a; --dt-fg: #F0F8F5; --dt-muted: #8fb0a2; --dt-acc: #008055; --dt-lit: #4CBF95;
+    .dt { --dt-bg: #12211C; --dt-surf: #1a2d27; --dt-bd: #52796a; --dt-fg: #F0F8F5; --dt-muted: #8fb0a2; --dt-acc: #008055; --dt-lit: #4CBF95;
       position: relative; width: 100%; margin: 28px 0; background: var(--dt-bg); color: var(--dt-fg); padding: 32px 28px 22px; overflow: hidden;
       border-radius: calc(var(--radius) + 4px); container-type: inline-size; font-family: Inter, sans-serif; }
-    .dt *, .dt *::before, .dt *::after, .hm *, .hm *::before, .hm *::after { box-sizing: border-box; }
+    .dt *, .dt *::before, .dt *::after { box-sizing: border-box; }
     .dt-grain { position: absolute; inset: 0; pointer-events: none; opacity: .5; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
-    .dt > *:not(.dt-grain), .hm > *:not(.dt-grain) { position: relative; }
+    .dt > *:not(.dt-grain) { position: relative; }
     .dt-title { font-size: 32px; font-weight: 600; letter-spacing: -.03em; line-height: 1.15; margin: 0 0 26px; color: var(--dt-fg); }
-    .dt mark, .hm mark { background: var(--dt-acc); color: #F5FAF8; border-radius: 8px; padding: .02em .28em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
-    .dt ol, .hm ul { list-style: none; padding: 0; margin: 0; }
-    .dt li, .hm li { margin: 0; padding: 0; font-size: inherit; line-height: inherit; color: inherit; }
+    .dt mark { background: var(--dt-acc); color: #F5FAF8; border-radius: 8px; padding: .02em .28em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+    .dt ol { list-style: none; padding: 0; margin: 0; }
+    .dt li { margin: 0; padding: 0; font-size: inherit; line-height: inherit; color: inherit; }
     /* decision tree */
     .dt .row { display: grid; grid-template-columns: 2fr 48px 1fr; align-items: center; column-gap: 8px; }
     .dt .node { display: grid; grid-template-columns: 80px 1fr; gap: 12px; align-items: center; background: var(--dt-surf); border: 1.5px solid var(--dt-bd); border-radius: 14px; padding: 14px 16px; }
@@ -456,25 +456,9 @@
     .dt-foot b { color: var(--dt-fg); font-weight: 600; }
     .dt .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
     @container (max-width: 520px) { .dt .row { grid-template-columns: 1fr; row-gap: 12px; } .dt .yes { width: 90px; margin: 24px 0 2px 20px; } .dt .out { padding-left: 0; } .dt .no { margin-left: 28px; } .dt .node { grid-template-columns: 72px 1fr; } .dt .node svg { width: 72px; } .dt-title { font-size: 26px; } }
-    /* revenue hierarchy */
-    .hm-root { display: flex; justify-content: center; font-size: 20px; font-weight: 700; letter-spacing: -.02em; }
-    .hm-conn { position: relative; height: 36px; }
-    .hm-conn i { position: absolute; background: var(--dt-bd); }
-    .hm-conn .v0 { left: 50%; top: 0; width: 2px; height: 16px; }
-    .hm-conn .bar { top: 16px; height: 2px; left: calc((100% - 104px) / 6); right: calc((100% - 104px) / 6); }
-    .hm-conn .d1, .hm-conn .d2, .hm-conn .d3 { top: 16px; width: 2px; height: 20px; }
-    .hm-conn .d1 { left: calc((100% - 104px) / 6); } .hm-conn .d2 { left: 50%; } .hm-conn .d3 { right: calc((100% - 104px) / 6); }
-    .hm-grid { display: grid; grid-template-columns: 1fr 52px 1fr 52px 1fr; align-items: start; }
-    .hm-head { margin: 0; height: 42px; display: flex; align-items: center; justify-content: center; background: var(--dt-acc); color: #F5FAF8; border-radius: 10px; font-size: 16px; font-weight: 700; letter-spacing: -.01em; }
-    .hm-head.is-key { box-shadow: 0 0 0 2px var(--dt-bg), 0 0 0 4px var(--dt-lit); }
-    .hm-col ul { margin: 12px 0 0; padding: 0 0 0 14px; border-left: 2px solid var(--dt-bd); display: grid; gap: 10px; }
-    .hm-col li { position: relative; background: var(--dt-surf); border: 1.5px solid var(--dt-bd); border-radius: 10px; padding: 9px 11px; }
-    .hm-col li::before { content: ""; position: absolute; left: -16px; top: 50%; width: 14px; height: 2px; background: var(--dt-bd); }
-    .hm-col li b { display: block; font-size: 15px; font-weight: 600; line-height: 1.2; }
-    .hm-col li span { display: block; font-size: 13px; color: var(--dt-muted); margin-top: 3px; line-height: 1.3; }
-    .hm-arr { align-self: start; height: 42px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--dt-lit); font: 600 11px 'Geist Mono', monospace; }
-    .hm-arr em { font-style: normal; font-size: 18px; line-height: 1; }
-    @container (max-width: 560px) { .hm-grid { grid-template-columns: 1fr; row-gap: 18px; } .hm-arr, .hm-conn { display: none; } .hm-root { margin-bottom: 18px; } }
+    /* Approved revenue diagram: intrinsic 3200×1480. Fills the column; height follows the ratio. */
+    .fw-diagram { margin: 28px 0; }
+    .fw-diagram img { width: 100%; max-width: 100%; height: auto; display: block; }
   </style>
 </head>
 
@@ -566,27 +550,9 @@
         <div class="case-section" id="context">
           <div class="section-label">Context</div>
           <p>There are only 3 ways to influence revenue: acquisition, retention, monetization. Retention makes or breaks companies, and it drives both of the others.</p>
-          <figure class="hm" aria-label="Revenue hierarchy: acquisition, retention and monetization"><div class="dt-grain" aria-hidden="true"></div>
-          <div class="hm-root"><mark>Revenue</mark></div>
-          <div class="hm-conn" aria-hidden="true"><i class="v0"></i><i class="bar"></i><i class="d1"></i><i class="d2"></i><i class="d3"></i></div>
-          <div class="hm-grid">
-            <section class="hm-col"><h4 class="hm-head">Acquisition</h4><ul>
-              <li><b>ICP</b></li>
-              <li><b>Unit-economics</b></li>
-              <li><b>Funnels</b></li>
-              <li><b>Signup-rate</b></li></ul></section>
-            <div class="hm-arr" aria-hidden="true"><em>&larr;</em>drives</div>
-            <section class="hm-col"><h4 class="hm-head is-key">Retention</h4><ul>
-              <li><b>Activation</b></li>
-              <li><b>Engagement</b></li>
-              <li><b>Resurrection</b></li></ul></section>
-            <div class="hm-arr" aria-hidden="true"><em>&rarr;</em>drives</div>
-            <section class="hm-col"><h4 class="hm-head">Monetization</h4><ul>
-              <li><b>Pricing and packaging</b></li>
-              <li><b>Conversion</b></li>
-              <li><b>Expansion</b></li></ul></section>
-          </div>
-        </figure>
+          <figure class="fw-diagram">
+            <img src="/assets/05-revenue-hand-oval.png" width="3200" height="1480" alt="Revenue, centered inside a green hand-drawn oval, above three peer columns: Acquisition, Retention, and Monetization. Retention is a green chip with white text. Arrows labeled drives point outward from Retention to Acquisition and from Retention to Monetization. Acquisition lists ICP, Unit-economics, Funnels, and Signup-rate. Retention lists Activation, Engagement, and Resurrection. Monetization lists Pricing and packaging, Conversion, and Expansion.">
+          </figure>
           <ul>
             <li><strong>Acquisition</strong>
               <ul>
