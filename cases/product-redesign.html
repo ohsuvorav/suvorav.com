@@ -4,6 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script>
+    (function () {
+      try {
+        var mode = localStorage.getItem('themeMode') || 'system';
+        var light = window.matchMedia('(prefers-color-scheme: light)').matches;
+        var resolved = mode === 'system' ? (light ? 'light' : 'dark') : mode;
+        var index = mode === 'light' ? 1 : mode === 'dark' ? 2 : 0;
+        document.documentElement.setAttribute('data-theme', resolved);
+        document.documentElement.style.setProperty('--switch-x', (index * 30) + 'px');
+      } catch (e) {}
+    })();
+  </script>
   <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="description"
@@ -14,9 +27,7 @@
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://suvorav.com/cases/product-redesign.html">
   <meta name="twitter:card" content="summary">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=mirality-accent-6">
+  <link rel="stylesheet" href="/styles.css?v=round8">
   <style>
     .theme-switcher {
       display: inline-flex;
@@ -535,59 +546,52 @@
 
 <body>
 
-  <nav>
-    <div class="container">
+  <header class="site-header">
+    <div class="site-header-inner">
       <a href="/" class="nav-brand">
-        <span class="nav-name-row">
-          <span class="nav-name">Oleg Suvorov</span>
-        </span>
+        <span class="nav-name">Oleg Suvorov</span>
         <span class="nav-sub">Growth Product Manager</span>
       </a>
-      <button class="nav-burger" aria-label="Toggle menu" aria-expanded="false">
-        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <line x1="4" y1="7" x2="20" y2="7" />
-          <line x1="4" y1="12" x2="20" y2="12" />
-          <line x1="4" y1="17" x2="20" y2="17" />
-        </svg>
-        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <line x1="6" y1="6" x2="18" y2="18" />
-          <line x1="18" y1="6" x2="6" y2="18" />
-        </svg>
-      </button>
-      <ul class="nav-links">
-        <li class="nav-recruiters"><a href="/for-recruiters/">For recruiters<span class="status-dot"><span class="status-tooltip">Open to Job Opportunities</span></span></a></li>
-        <li><a href="/articles/">For readers</a></li>
+      <div class="header-actions">
+        <nav class="site-nav" id="site-nav" aria-label="Primary">
+          <ul class="nav-links">
+          <li class="nav-recruiters"><a href="/for-recruiters/">For recruiters<span class="status-dot"><span class="status-tooltip">Open to Job Opportunities</span></span></a></li>
+          <li><a href="/for-founders/">For founders</a></li>
+          <li><a href="/articles/">For readers</a></li>
         <li class="nav-contact">
-          <button class="nav-contact-trigger" aria-expanded="false" aria-haspopup="true">
+          <button class="nav-contact-trigger" type="button" aria-expanded="false" aria-haspopup="true">
             Contacts
-            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="6 9 12 15 18 9" />
             </svg>
           </button>
           <div class="nav-contact-menu">
             <button class="copy-email" data-email="olegsuvorav@gmail.com" aria-label="Copy email address">
               <span class="copy-email-label">Copy olegsuvorav@gmail.com</span>
-              <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
               </svg>
-              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
             </button>
             <a href="https://linkedin.com/in/ohsuvorav" target="_blank" rel="noopener">
               Open LinkedIn profile
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <line x1="7" y1="17" x2="17" y2="7" />
                 <polyline points="7 7 17 7 17 17" />
               </svg>
             </a>
           </div>
         </li>
-        <li><a href="https://calendar.notion.so/meet/ohsuvorav/product-growth" class="nav-cta" target="_blank" rel="noopener">Book a call</a></li>
-      </ul>
+          </ul>
+        </nav>
+        <a href="https://calendar.notion.so/meet/ohsuvorav/product-growth" class="nav-cta" target="_blank" rel="noopener">Book a call</a>
+        <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      </div>
     </div>
-  </nav>
+  </header>
 
   <aside class="toc" aria-label="Page sections">
     <a href="#context" class="toc-item active">Context</a>

@@ -3,6 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css?v=round8">
+
+  <script>
+    (function () {
+      try {
+        var mode = localStorage.getItem('themeMode') || 'system';
+        var light = window.matchMedia('(prefers-color-scheme: light)').matches;
+        var resolved = mode === 'system' ? (light ? 'light' : 'dark') : mode;
+        var index = mode === 'light' ? 1 : mode === 'dark' ? 2 : 0;
+        document.documentElement.setAttribute('data-theme', resolved);
+        document.documentElement.style.setProperty('--switch-x', (index * 30) + 'px');
+      } catch (e) {}
+    })();
+  </script>
   <title>AI-first ops · Oleg Suvorov</title>
   <link rel="canonical" href="https://suvorav.com/cases/ai-first-ops.html">
   <meta http-equiv="refresh" content="0; url=/cases/ai-first-ops.html">
