@@ -14,7 +14,12 @@
   <link rel="canonical" href="https://suvorav.com/for-recruiters/">
   <meta name="twitter:card" content="summary">
   <title>For recruiters · Oleg Suvorov</title>
-  <link rel="stylesheet" href="/styles.css?v=round8-styles">
+  <script>
+    if (new URLSearchParams(location.search).get("dark") === "black") {
+      document.documentElement.setAttribute("data-dark", "black");
+    }
+  </script>
+  <link rel="stylesheet" href="/styles.css?v=round8-dark">
   <style>
     .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 

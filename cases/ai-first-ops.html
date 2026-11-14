@@ -15,7 +15,12 @@
   <meta property="og:url" content="https://suvorav.com/cases/ai-first-ops.html">
   <link rel="canonical" href="https://suvorav.com/cases/ai-first-ops.html">
   <meta name="twitter:card" content="summary">
-  <link rel="stylesheet" href="/styles.css?v=round8-styles">
+  <script>
+    if (new URLSearchParams(location.search).get("dark") === "black") {
+      document.documentElement.setAttribute("data-dark", "black");
+    }
+  </script>
+  <link rel="stylesheet" href="/styles.css?v=round8-dark">
   <style>
     .theme-switcher {
       display: inline-flex;

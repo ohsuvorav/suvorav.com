@@ -31,25 +31,41 @@
   box-sizing: border-box;
 }
 
-/* Main's dark theme, with mint accent #4CBF95. */
+/* Dark variant B, the default: deep green. Preview A with ?dark=black. */
 :root {
   color-scheme: dark;
-  --background: hsl(0 0% 3.9%);
-  --foreground: hsl(0 0% 98%);
-  --muted: hsl(0 0% 9%);
-  --muted-fg: hsl(0 0% 68%);
-  --border: hsl(0 0% 14.9%);
-  --input: hsl(0 0% 14.9%);
-  --primary: #15803d;
-  --primary-fg: #ffffff;
-  --accent: hsl(0 0% 14.9%);
-  --accent-fg: hsl(0 0% 98%);
+  --background: #10201A;
+  --foreground: #ECF3F1;
+  --muted: #1A2E27;
+  --muted-fg: #A3B5AC;
+  --border: rgba(168, 188, 176, 0.18);
+  --input: rgba(236, 243, 241, 0.28);
+  --primary: #4CBF95;
+  --primary-fg: #10201A;
+  --accent: #1C332C;
+  --accent-fg: #ECF3F1;
   --radius: 0.5rem;
   --accent-color: #4CBF95;
 }
 
+/* Dark variant A: neutral near-black, lifted surfaces, mint accent. */
+html[data-dark="black"] {
+  color-scheme: dark;
+  --background: #0E1110;
+  --foreground: hsl(0 0% 98%);
+  --muted: #181C1B;
+  --muted-fg: hsl(0 0% 68%);
+  --border: rgba(255, 255, 255, 0.14);
+  --input: rgba(255, 255, 255, 0.22);
+  --primary: #15803d;
+  --primary-fg: #ffffff;
+  --accent: #222726;
+  --accent-fg: hsl(0 0% 98%);
+  --accent-color: #4CBF95;
+}
+
 /* Paper and ink. Accent #008055; small text #007A50. */
-[data-theme="light"] {
+html[data-theme="light"] {
   color-scheme: light;
   --background: #ECF3F1;
   --foreground: #12211C;
@@ -670,8 +686,8 @@ main { flex: 1 0 auto; }
 .nav-recruiters a:hover .status-tooltip { opacity: 1; }
 .nav-recruiters .status-tooltip { left: 50%; top: calc(100% + 12px); transform: translateX(-50%); }
 
-/* Paper grain. Dark mode stays flat, matching main. */
-[data-theme="light"] body::before {
+/* Grain on every theme. Overlay on dark so it stays visible; multiply on paper. */
+body::before {
   content: "";
   position: fixed;
   inset: 0;
@@ -679,6 +695,15 @@ main { flex: 1 0 auto; }
   z-index: 200;
   background-image: url("/img/grain.png");
   background-repeat: repeat;
+  opacity: 0.22;
+  mix-blend-mode: overlay;
+}
+
+html[data-dark="black"]:not([data-theme="light"]) body::before {
+  opacity: 0.28;
+}
+
+html[data-theme="light"] body::before {
   opacity: 0.11;
   mix-blend-mode: multiply;
 }
@@ -709,7 +734,7 @@ body .options .opt-desc {
 
 body .options a {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(168, 188, 176, 0.45);
   transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
 }
 
@@ -741,7 +766,17 @@ body .options a:focus-visible .opt-arrow {
   transform: translateX(6px);
 }
 
-[data-theme="light"] body .options a {
+html[data-dark="black"]:not([data-theme="light"]) body .options a {
+  border-color: rgba(255, 255, 255, 0.32);
+}
+
+html[data-dark="black"]:not([data-theme="light"]) body .options a:hover,
+html[data-dark="black"]:not([data-theme="light"]) body .options a:focus-visible {
+  background: #1A1F1E;
+  border-color: #4CBF95;
+}
+
+html[data-theme="light"] body .options a {
   border-color: rgba(18, 33, 28, 0.45);
 }
 
