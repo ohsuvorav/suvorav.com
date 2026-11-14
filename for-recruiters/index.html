@@ -13,7 +13,7 @@
         var resolved = mode === 'system' ? (light ? 'light' : 'dark') : mode;
         var index = mode === 'light' ? 1 : mode === 'dark' ? 2 : 0;
         document.documentElement.setAttribute('data-theme', resolved);
-        document.documentElement.style.setProperty('--switch-x', (index * 30) + 'px');
+        document.documentElement.style.setProperty('--switch-x', (index * 28) + 'px');
       } catch (e) {}
     })();
   </script>
@@ -27,7 +27,7 @@
   <link rel="canonical" href="https://suvorav.com/for-recruiters/">
   <meta name="twitter:card" content="summary">
   <title>For recruiters · Oleg Suvorov</title>
-  <link rel="stylesheet" href="/styles.css?v=round8">
+  <link rel="stylesheet" href="/styles.css?v=round8-column">
   <style>
     .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
@@ -160,7 +160,7 @@
       background: transparent;
       border: 1px solid var(--border);
       padding: 8px 18px;
-      border-radius: 9999px;
+      border-radius: var(--radius);
       cursor: default;
       white-space: nowrap;
       opacity: 0.5;
@@ -1723,7 +1723,7 @@
     </div>
   </div>
 
-  <script src="/site.js"></script>
+  <script src="/site.js?v=round8-column"></script>
   <script>
     /* ── Case switcher: click + pin-scroll stepping ──
        Hover-to-switch is retired (see commented block below). Now the

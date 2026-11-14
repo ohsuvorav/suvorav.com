@@ -13,7 +13,7 @@
         var resolved = mode === 'system' ? (light ? 'light' : 'dark') : mode;
         var index = mode === 'light' ? 1 : mode === 'dark' ? 2 : 0;
         document.documentElement.setAttribute('data-theme', resolved);
-        document.documentElement.style.setProperty('--switch-x', (index * 30) + 'px');
+        document.documentElement.style.setProperty('--switch-x', (index * 28) + 'px');
       } catch (e) {}
     })();
   </script>
@@ -28,7 +28,7 @@
   <meta property="og:url" content="https://suvorav.com/cases/ai-first-ops.html">
   <link rel="canonical" href="https://suvorav.com/cases/ai-first-ops.html">
   <meta name="twitter:card" content="summary">
-  <link rel="stylesheet" href="/styles.css?v=round8">
+  <link rel="stylesheet" href="/styles.css?v=round8-column">
   <style>
     .theme-switcher {
       display: inline-flex;
@@ -687,7 +687,7 @@
     </div>
   </div>
 
-  <script src="/site.js"></script>
+  <script src="/site.js?v=round8-column"></script>
   <script>
     // TOC scroll highlight
     const tocItems = document.querySelectorAll('.toc-item');

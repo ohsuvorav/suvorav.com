@@ -11,7 +11,7 @@ const applyTheme = (mode) => {
     const active = b.dataset.mode === mode;
     b.classList.toggle('active', active);
     b.setAttribute('aria-pressed', active ? 'true' : 'false');
-    if (active && indicator) indicator.style.transform = `translateX(${i * 30}px)`; // 28px btn + 2px gap
+    if (active && indicator) indicator.style.transform = `translateX(${i * 28}px)`; // 26px btn + 2px gap
   });
 };
 
@@ -54,7 +54,7 @@ if (navEl && burger) {
 const contact = document.querySelector('.nav-contact');
 if (contact) {
   const trigger = contact.querySelector('.nav-contact-trigger');
-  const contactMQ = window.matchMedia('(max-width: 999px)');
+  const contactMQ = window.matchMedia('(max-width: 759px)');
 
   // Mobile: accordion expanded by default. Desktop: popover closed by default.
   const applyContactDefault = () => {
