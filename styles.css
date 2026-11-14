@@ -49,7 +49,7 @@
 }
 
 /* Paper and ink. Accent #008055; small text #007A50. */
-html[data-theme="light"] {
+[data-theme="light"] {
   color-scheme: light;
   --background: #ECF3F1;
   --foreground: #12211C;
@@ -683,7 +683,7 @@ body::before {
   mix-blend-mode: overlay;
 }
 
-html[data-theme="light"] body::before {
+[data-theme="light"] body::before {
   opacity: 0.11;
   mix-blend-mode: multiply;
 }
@@ -713,45 +713,55 @@ body .options .opt-desc {
 }
 
 body .options a {
+  position: relative;
   background: transparent;
   border: 1px solid rgba(168, 188, 176, 0.45);
-  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+  /* Same 0.15s as main's background fade. Border and text join it. */
+  transition: background .15s, border-color .15s, color .15s;
 }
 
 body .options .opt-arrow {
-  display: inline-block;
   color: inherit;
-  transition: transform 0.18s ease, color 0.18s ease;
+  transition: transform .15s, color .15s;
 }
 
 body .options .opt-title {
-  transition: color 0.18s ease;
+  transition: color .15s;
 }
 
-body .options a:hover,
-body .options a:focus-visible {
+body .options a:hover {
   background: #243832;
   border-color: #4CBF95;
 }
 
 body .options a:hover .opt-title,
-body .options a:hover .opt-arrow,
-body .options a:focus-visible .opt-title,
-body .options a:focus-visible .opt-arrow {
+body .options a:hover .opt-arrow {
   color: #ECF3F1;
 }
 
-body .options a:hover .opt-arrow,
-body .options a:focus-visible .opt-arrow {
+body .options a:hover .opt-arrow {
   transform: translateX(6px);
 }
 
-html[data-theme="light"] body .options a {
+[data-theme="light"] body .options a {
   border-color: rgba(18, 33, 28, 0.45);
 }
 
-[data-theme="light"] body .options a:hover,
-[data-theme="light"] body .options a:focus-visible {
+[data-theme="light"] body .options a:hover {
   background: #154736;
   border-color: #154736;
+}
+
+/* Light hover fill uses the same overlay grain as the dark page, so the green is not flat. */
+[data-theme="light"] body .options a:hover::after {
+  content: "";
+  position: absolute;
+  z-index: 201;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-image: url("/img/grain.png");
+  background-repeat: repeat;
+  opacity: 0.22;
+  mix-blend-mode: overlay;
 }
