@@ -1,10 +1,37 @@
+/* Self-hosted Inter (text) and Geist Mono (mono and labels). */
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/inter-latin-ext-wght-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/inter-latin-wght-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/GeistMono-Variable.woff2") format("woff2");
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Neutral base with green brand accents — dark. */
+/* Main's dark theme, with mint accent #4CBF95. */
 :root {
   color-scheme: dark;
   --background: hsl(0 0% 3.9%);
@@ -18,23 +45,23 @@
   --accent: hsl(0 0% 14.9%);
   --accent-fg: hsl(0 0% 98%);
   --radius: 0.5rem;
-  --accent-color: #4ade80;
+  --accent-color: #4CBF95;
 }
 
-/* Neutral base with green brand accents — light. */
+/* Paper and ink. Accent #008055; small text #007A50. */
 [data-theme="light"] {
   color-scheme: light;
-  --background: hsl(0 0% 100%);
-  --foreground: hsl(0 0% 3.9%);
-  --muted: hsl(0 0% 96.1%);
-  --muted-fg: hsl(0 0% 42%);
-  --border: hsl(0 0% 89.8%);
-  --input: hsl(0 0% 89.8%);
-  --primary: #16a34a;
+  --background: #ECF3F1;
+  --foreground: #12211C;
+  --muted: #F7FAF9;
+  --muted-fg: #4E7064;
+  --border: rgba(18, 33, 28, 0.12);
+  --input: rgba(18, 33, 28, 0.28);
+  --primary: #008055;
   --primary-fg: #ffffff;
-  --accent: hsl(0 0% 96.1%);
-  --accent-fg: hsl(0 0% 9%);
-  --accent-color: #15803d;
+  --accent: #E4EEEA;
+  --accent-fg: #12211C;
+  --accent-color: #007A50;
 }
 
 body {
@@ -642,3 +669,84 @@ main { flex: 1 0 auto; }
 .nav-recruiters a { display: inline-flex; align-items: center; gap: 8px; }
 .nav-recruiters a:hover .status-tooltip { opacity: 1; }
 .nav-recruiters .status-tooltip { left: 50%; top: calc(100% + 12px); transform: translateX(-50%); }
+
+/* Paper grain. Dark mode stays flat, matching main. */
+[data-theme="light"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 200;
+  background-image: url("/img/grain.png");
+  background-repeat: repeat;
+  opacity: 0.11;
+  mix-blend-mode: multiply;
+}
+
+/* Labels and code use Geist Mono. Sizes stay where each page set them. */
+.section-label,
+.move-label,
+.compare-label,
+.tag,
+.fw-table th,
+.case-company-chip,
+body .case-section code {
+  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+[data-theme="light"] .section-label,
+[data-theme="light"] .move-label,
+[data-theme="light"] .compare-label,
+[data-theme="light"] .fw-table th,
+[data-theme="light"] .tag {
+  color: #007A50;
+}
+
+/* Home path cards: outlined, title + arrow only. Descriptions stay in the markup. */
+body .options .opt-desc {
+  display: none;
+}
+
+body .options a {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+body .options .opt-arrow {
+  display: inline-block;
+  color: inherit;
+  transition: transform 0.18s ease, color 0.18s ease;
+}
+
+body .options .opt-title {
+  transition: color 0.18s ease;
+}
+
+body .options a:hover,
+body .options a:focus-visible {
+  background: #243832;
+  border-color: #4CBF95;
+}
+
+body .options a:hover .opt-title,
+body .options a:hover .opt-arrow,
+body .options a:focus-visible .opt-title,
+body .options a:focus-visible .opt-arrow {
+  color: #ECF3F1;
+}
+
+body .options a:hover .opt-arrow,
+body .options a:focus-visible .opt-arrow {
+  transform: translateX(6px);
+}
+
+[data-theme="light"] body .options a {
+  border-color: rgba(18, 33, 28, 0.45);
+}
+
+[data-theme="light"] body .options a:hover,
+[data-theme="light"] body .options a:focus-visible {
+  background: #154736;
+  border-color: #154736;
+}
