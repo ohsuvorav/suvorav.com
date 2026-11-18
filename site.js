@@ -10,7 +10,8 @@ const applyTheme = (mode) => {
   btns.forEach((b, i) => {
     const active = b.dataset.mode === mode;
     b.classList.toggle('active', active);
-    if (active) indicator.style.transform = `translateX(${i * 28}px)`; // 26px btn + 2px gap
+    b.setAttribute('aria-pressed', active ? 'true' : 'false');
+    if (active && indicator) indicator.style.transform = `translateX(${i * 28}px)`; // 26px btn + 2px gap
   });
 };
 
@@ -28,27 +29,32 @@ sys.addEventListener('change', () => {
 });
 
 // Mobile burger menu
-const navEl = document.querySelector('nav');
+const navEl = document.querySelector('.site-header');
 const burger = document.querySelector('.nav-burger');
-burger.addEventListener('click', () => {
-  const open = navEl.classList.toggle('menu-open');
-  burger.setAttribute('aria-expanded', open);
-  // lock page scroll while the full-screen menu is open
-  document.body.style.overflow = open ? 'hidden' : '';
-});
-navEl.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
+if (navEl && burger) {
+  const closeMenu = () => {
     navEl.classList.remove('menu-open');
     burger.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+  };
+  burger.addEventListener('click', () => {
+    const open = navEl.classList.toggle('menu-open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
   });
-});
+  navEl.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navEl.classList.contains('menu-open')) closeMenu();
+  });
+}
 
 // Contact dropdown (desktop) — click to toggle, click outside to close
 const contact = document.querySelector('.nav-contact');
 if (contact) {
   const trigger = contact.querySelector('.nav-contact-trigger');
-  const contactMQ = window.matchMedia('(max-width: 640px)');
+  const contactMQ = window.matchMedia('(max-width: 759px)');
 
   // Mobile: accordion expanded by default. Desktop: popover closed by default.
   const applyContactDefault = () => {
