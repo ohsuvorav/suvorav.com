@@ -43,8 +43,8 @@
     <section class="hero">
       <div class="wrap hero-split">
         <div class="hero-copy">
-        <h1>Knowledge base for AI agents in the tools you already use</h1>
-        <p class="lede">Model-agnostic framework to compound AI context and keep it up to date.</p>
+        <h1>Knowledge base for AI agents<br class="desk-break"> in the tools you already use</h1>
+        <p class="lede">Model-agnostic framework to compound AI context and keep<br class="desk-break"> it up to date.</p>
         <div class="prompt-box">
           <div class="prompt-copy">
             <p class="prompt-body" id="install-prompt">Install Alma by following <a href="https://github.com/ohsuvorav/alma-brain/blob/main/INSTALL.md">https://github.com/ohsuvorav/alma-brain/blob/main/INSTALL.md</a></p>
@@ -70,33 +70,60 @@
         </div>
         <p id="install-copy-status" class="visually-hidden" role="status" aria-live="polite"></p>
         </div>
-        <figure class="ide" aria-label="An Alma project named my-brain. Instructions are AGENTS.md, CLAUDE.md, and skills. Context is 01-raw, 02-wiki, and 03-system. Nightly jobs are teambrain.yaml.">
-          <div class="ide-title">
-            <span class="ide-lights" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="ide-title-name">my-brain</span>
+        <figure class="repo" aria-label="A repository named your-repo. The existing files stay. Alma adds AGENTS.md and CLAUDE.md, .agents/skills, raw, wiki, system, and teambrain.yaml.">
+          <div class="repo-head">
+            <span class="repo-title">your-repo</span>
+            <span class="repo-private">Private</span>
+            <span class="repo-branch">
+              <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><circle cx="4.2" cy="3.2" r="1.7" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="4.2" cy="12.8" r="1.7" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="12" cy="8" r="1.7" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4.2 4.9v6.2M4.2 8h6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+              main
+            </span>
           </div>
-          <ul class="ide-tree">
-            <li class="ide-group">
-              <ul>
-                <li>AGENTS.md</li>
-                <li>CLAUDE.md</li>
-                <li>skills/</li>
-              </ul>
-              <span class="ide-tag">instructions</span>
+          <ul class="repo-files">
+            <li class="is-old">
+              <span class="repo-file"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.4 3.2h4.2l1.1 1.3h7.9v8.2H1.4z"/></svg>src/</span>
+              <span class="repo-msg">fix checkout totals</span>
+              <span class="repo-time">3 days ago</span>
             </li>
-            <li class="ide-group is-context">
-              <ul>
-                <li>01-raw</li>
-                <li>02-wiki</li>
-                <li>03-system</li>
-              </ul>
-              <span class="ide-tag">context</span>
+            <li class="is-old">
+              <span class="repo-file"><svg class="ico file" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 1.6h5.1L12.4 4.9V14.4H4z"/></svg>package.json</span>
+              <span class="repo-msg">bump deps</span>
+              <span class="repo-time">last week</span>
             </li>
-            <li class="ide-group">
-              <ul>
-                <li>teambrain.yaml</li>
-              </ul>
-              <span class="ide-tag">nightly</span>
+            <li class="is-old">
+              <span class="repo-file"><svg class="ico file" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 1.6h5.1L12.4 4.9V14.4H4z"/></svg>README.md</span>
+              <span class="repo-msg">docs: setup</span>
+              <span class="repo-time">last month</span>
+            </li>
+            <li class="is-alma">
+              <span class="repo-file"><svg class="ico file" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 1.6h5.1L12.4 4.9V14.4H4z"/></svg>AGENTS.md / CLAUDE.md</span>
+              <span class="repo-msg">alma: shared agent rules</span>
+              <span class="repo-time">today</span>
+            </li>
+            <li class="is-alma">
+              <span class="repo-file"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.4 3.2h4.2l1.1 1.3h7.9v8.2H1.4z"/></svg>.agents/skills/</span>
+              <span class="repo-msg">alma: skills, symlinked per tool</span>
+              <span class="repo-time">today</span>
+            </li>
+            <li class="is-alma">
+              <span class="repo-file"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.4 3.2h4.2l1.1 1.3h7.9v8.2H1.4z"/></svg>raw/</span>
+              <span class="repo-msg">capture: yesterday’s chats</span>
+              <span class="repo-time">7 hours ago</span>
+            </li>
+            <li class="is-alma">
+              <span class="repo-file"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.4 3.2h4.2l1.1 1.3h7.9v8.2H1.4z"/></svg>wiki/</span>
+              <span class="repo-msg">wiki: 4 pages updated, sources linked</span>
+              <span class="repo-time">6 hours ago</span>
+            </li>
+            <li class="is-alma">
+              <span class="repo-file"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.4 3.2h4.2l1.1 1.3h7.9v8.2H1.4z"/></svg>system/</span>
+              <span class="repo-msg">nightly: index, stale check, eval</span>
+              <span class="repo-time">6 hours ago</span>
+            </li>
+            <li class="is-alma">
+              <span class="repo-file"><svg class="ico file" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 1.6h5.1L12.4 4.9V14.4H4z"/></svg>teambrain.yaml</span>
+              <span class="repo-msg">alma: nightly jobs</span>
+              <span class="repo-time">today</span>
             </li>
           </ul>
         </figure>
