@@ -42,31 +42,25 @@
   <main id="content">
     <section class="hero">
       <div class="wrap">
-        <p class="label">Open source</p>
         <h1>Knowledge base for agents</h1>
         <p class="lede">Model-agnostic framework to compound AI context and keep it up to date.</p>
         <div class="prompt-box">
-          <div class="prompt-bar">
-            <ul class="agents">
-              <li>
-                <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 1.2 9.15 6.05 14 8 9.15 9.95 8 14.8 6.85 9.95 2 8l4.85-1.95z"/></svg>
-                <span>Claude Code</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4 6.3 6.3 8 4 9.7M7.4 10.4h3.6" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span>Codex</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M3.4 1.8 3.2 12.2 6.5 9.2 9.2 13.4 11 12.4 8.3 8.3 12.4 7.6z"/></svg>
-                <span>Cursor</span>
-              </li>
-            </ul>
-            <p class="prompt-label">Paste in your coding agent</p>
-            <button type="button" class="copy-btn" id="copy-install" data-copy="Install Alma by following https://alma.suvorav.com/INSTALL.md">Copy</button>
+          <div class="prompt-copy">
+            <p class="prompt-body" id="install-prompt">Install Alma by following <a href="INSTALL.md">https://alma.suvorav.com/INSTALL.md</a></p>
+            <p class="prompt-hint" id="install-hint">Paste in your coding agent</p>
           </div>
-          <p class="prompt-body" id="install-prompt">Install Alma by following <a href="INSTALL.md">https://alma.suvorav.com/INSTALL.md</a></p>
+          <button type="button" class="copy-prompt" id="copy-install" data-copy="Install Alma by following https://alma.suvorav.com/INSTALL.md" aria-describedby="install-hint">
+            <span class="copy-prompt-icon" aria-hidden="true">
+              <svg class="icon-copy" viewBox="0 0 16 16" width="16" height="16"><rect x="5.5" y="5.5" width="8" height="8" rx="1.3" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M10.5 5.4V3.7c0-.7-.6-1.3-1.3-1.3H3.7c-.7 0-1.3.6-1.3 1.3v5.5c0 .7.6 1.3 1.3 1.3h1.7" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+              <svg class="icon-check" viewBox="0 0 16 16" width="16" height="16"><path d="M3.2 8.3 6.4 11.4 12.8 4.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="copy-prompt-labels">
+              <span class="label-idle">Copy prompt</span>
+              <span class="label-done" aria-hidden="true">Copied</span>
+            </span>
+          </button>
         </div>
-        <p id="install-copy-status" class="visually-hidden" role="status"></p>
+        <p id="install-copy-status" class="visually-hidden" role="status" aria-live="polite"></p>
       </div>
     </section>
 
