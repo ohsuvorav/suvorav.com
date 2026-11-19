@@ -1,6 +1,6 @@
 # Alma
 
-Alma is an open-source engine. Your notes go in. Agents get a memory they can search and keep up to date.
+Knowledge base for agents. Model-agnostic framework to compound AI context and keep it up to date.
 
 The name comes from almanac, the book navigators kept, and from the Latin and Spanish word for soul.
 
@@ -8,6 +8,9 @@ Built and used daily by one PM running a team of AI agents.
 
 Site: https://alma.suvorav.com
 The site is private. It is not linked from suvorav.com, it sends noindex, and it is meant to sit behind basic auth.
+
+Install: https://alma.suvorav.com/INSTALL.md
+Prompt to paste into a coding agent: Install Alma by following https://alma.suvorav.com/INSTALL.md
 
 Code: https://github.com/ohsuvorav/alma-brain
 The repository is not public yet.
@@ -18,13 +21,19 @@ Author: Oleg Suvorov — https://suvorav.com
 
 ## What it is
 
-Your AI agents forget everything. Alma gives them a second brain.
+Knowledge base for agents. A model-agnostic framework to compound AI context and keep it up to date.
 
 Your notes go in. Alma keeps a memory agents can search and keep up to date. The first answer comes from your own notes, with a link to the source. There is no sample brain to click through.
 
-## Who it is for
+## What it solves
 
-Founders, PMs, and developers who already work with AI agents (Claude Code, Cursor, Grok) and are tired of re-explaining their context.
+Every new session starts from zero. Your agents read your decisions, projects and preferences before answering. For anyone using Claude Code, Cursor, or Codex daily.
+
+Your knowledge is scattered. Obsidian, markdown, and Claude/ChatGPT memory land in one searchable base with sources. For founders and PMs.
+
+Docs rot silently. Stale pages surface one card at a time: keep, fix, archive. For teams with a wiki nobody updates.
+
+Many agents, no shared truth. Every agent searches the same memory and proposes changes as pull requests you approve. For people running several agents.
 
 ## How it works
 
@@ -40,8 +49,9 @@ Your content stays in your own git repo. Agents propose changes as pull requests
 
 The command name is still `brain` for now.
 
-brain init — Create a brain and ask which sources to import.
+brain init <path> — Create a brain at that path and ask which sources to import.
 brain doctor — Check the setup. For each problem, one line on how to fix it.
+brain ask — Ask a question. The answer comes from your notes and links the source.
 brain index — Rebuild the search index from the markdown in this brain.
 brain query — Search the brain and print the matches.
 brain retro — Review recent agent sessions and propose updates.
@@ -67,7 +77,7 @@ brain init asks which sources to import: a markdown or Obsidian folder, Notion o
 
 Then ask your agent a question. It answers from your notes, with a link to the source.
 
-Or tell your coding agent: install from INSTALL.md.
+Or tell your coding agent: Install Alma by following https://alma.suvorav.com/INSTALL.md
 
 The repository is not public yet.
 

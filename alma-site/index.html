@@ -6,15 +6,15 @@
   <meta name="robots" content="noindex,nofollow">
   <!-- TODO: point the waitlist form at the real endpoint. No backend yet. -->
   <title>Alma</title>
-  <meta name="description" content="Alma is an open-source engine: your notes in, a memory your agents can search and keep up to date. MIT licensed.">
+  <meta name="description" content="Model-agnostic framework to compound AI context and keep it up to date.">
   <link rel="canonical" href="https://alma.suvorav.com/">
   <meta property="og:title" content="Alma">
-  <meta property="og:description" content="Alma is an open-source engine: your notes in, a memory your agents can search and keep up to date. MIT licensed.">
+  <meta property="og:description" content="Model-agnostic framework to compound AI context and keep it up to date.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://alma.suvorav.com/">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Alma">
-  <meta name="twitter:description" content="Alma is an open-source engine: your notes in, a memory your agents can search and keep up to date. MIT licensed.">
+  <meta name="twitter:description" content="Model-agnostic framework to compound AI context and keep it up to date.">
   <meta name="theme-color" content="#ECF3F1" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#10201A" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="favicon.ico">
@@ -28,7 +28,7 @@
     <div class="wrap header-inner">
       <a class="brand" href="/">Alma</a>
       <nav class="anchors" aria-label="On this page">
-        <a href="#who">Who</a>
+        <a href="#solves">Solves</a>
         <a href="#how">How</a>
         <a href="#different">Different</a>
         <a href="#commands">Commands</a>
@@ -36,7 +36,6 @@
         <a href="#minutes">10 min</a>
         <a href="#cost">Cost</a>
       </nav>
-      <a class="header-git" href="https://github.com/ohsuvorav/alma-brain">Coming soon</a>
     </div>
   </header>
 
@@ -44,20 +43,58 @@
     <section class="hero">
       <div class="wrap">
         <p class="label">Open source</p>
-        <h1>Your AI agents forget everything. Give them a second brain.</h1>
-        <p class="lede">Alma is an open-source engine: your notes in, a memory your agents can search and keep up to date. Built and used daily by one PM running a team of AI agents.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="https://github.com/ohsuvorav/alma-brain">Coming soon</a>
-          <a class="btn btn-ghost" href="#quickstart">Quickstart</a>
+        <h1>Knowledge base for agents</h1>
+        <p class="lede">Model-agnostic framework to compound AI context and keep it up to date.</p>
+        <div class="prompt-box">
+          <div class="prompt-bar">
+            <ul class="agents">
+              <li>
+                <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 1.2 9.15 6.05 14 8 9.15 9.95 8 14.8 6.85 9.95 2 8l4.85-1.95z"/></svg>
+                <span>Claude Code</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4 6.3 6.3 8 4 9.7M7.4 10.4h3.6" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Codex</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M3.4 1.8 3.2 12.2 6.5 9.2 9.2 13.4 11 12.4 8.3 8.3 12.4 7.6z"/></svg>
+                <span>Cursor</span>
+              </li>
+            </ul>
+            <p class="prompt-label">Paste in your coding agent</p>
+            <button type="button" class="copy-btn" id="copy-install" data-copy="Install Alma by following https://alma.suvorav.com/INSTALL.md">Copy</button>
+          </div>
+          <p class="prompt-body" id="install-prompt">Install Alma by following <a href="INSTALL.md">https://alma.suvorav.com/INSTALL.md</a></p>
         </div>
+        <p id="install-copy-status" class="visually-hidden" role="status"></p>
       </div>
     </section>
 
-    <section class="section" id="who">
+    <section class="section" id="solves">
       <div class="wrap">
-        <p class="label">Who it's for</p>
-        <h2>Founders, PMs, and developers</h2>
-        <p class="lede">You already work with AI agents (Claude Code, Cursor, Grok) and you are tired of re-explaining your context.</p>
+        <h2>What it solves</h2>
+        <div class="grid-2">
+          <article class="card">
+            <h3>Every new session starts from zero</h3>
+            <p>Your agents read your decisions, projects and preferences before answering.</p>
+            <p class="for-whom">Anyone using Claude Code, Cursor, Codex daily</p>
+          </article>
+          <article class="card">
+            <h3>Your knowledge is scattered</h3>
+            <p>Obsidian, markdown, Claude/ChatGPT memory in one searchable base with sources.</p>
+            <p class="for-whom">Founders and PMs</p>
+          </article>
+          <article class="card">
+            <h3>Docs rot silently</h3>
+            <p>Stale pages surface one card at a time: keep, fix, archive.</p>
+            <p class="for-whom">Teams with a wiki nobody updates</p>
+          </article>
+          <article class="card">
+            <h3>Many agents, no shared truth</h3>
+            <p>Every agent searches the same memory and proposes changes as pull requests you approve.</p>
+            <p class="for-whom">People running several agents</p>
+          </article>
+        </div>
       </div>
     </section>
 
