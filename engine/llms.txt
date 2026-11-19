@@ -1,0 +1,73 @@
+# Second Brain Engine
+
+An open-source engine. Your notes go in. Agents get a memory they can search and keep up to date.
+
+Built and used daily by one PM running a team of AI agents.
+
+Site: https://suvorav.com/engine/
+Code: https://github.com/ohsuvorav/REPO_NAME
+The repository URL is a placeholder until the public repository name is set.
+
+License: MIT. The engine is free.
+
+Author: Oleg Suvorov — https://suvorav.com
+
+## What it is
+
+Your AI agents forget everything. This gives them a second brain.
+
+Your notes go in. The engine keeps a memory agents can search and keep up to date. The first answer comes from your own notes, with a link to the source. There is no sample brain to click through.
+
+## Who it is for
+
+Founders, PMs, and developers who already work with AI agents (Claude Code, Cursor, Grok) and are tired of re-explaining their context.
+
+## How it works
+
+Raw notes go into raw/. Checked knowledge and principles live in wiki/. Agents search the wiki (hybrid semantic and keyword search, over MCP) and propose updates as pull requests. Claude Code hooks can bring matches into a session.
+
+The engine is the interface: the folder contract (raw/, wiki/), teambrain.yaml, the brain commands, the hooks, and MCP search. Your brain is the class — your config and your content.
+
+class MyBrain implements SecondBrain
+
+Your content stays in your own git repo. Agents propose changes as pull requests you review. Plain markdown, no lock-in.
+
+## Commands
+
+brain init — Create a brain and ask which sources to import.
+brain doctor — Check the setup. For each problem, one line on how to fix it.
+brain index — Rebuild the search index from the markdown in this brain.
+brain query — Search the brain and print the matches.
+brain retro — Review recent agent sessions and propose updates.
+brain lint — Report stale docs, idle folders, duplicates, and broken links. Read-only.
+brain review — Show one stale or disputed item at a time: keep, fix, or archive. Never a wall.
+brain snapshot — Save local-only history for a working folder the brain's git ignores.
+brain schedule — Run a brain command on a timer.
+brain onboard — Connect an agent in this folder so it can search the brain.
+brain wip — List notes and proposals still outside the wiki.
+brain suggest — Draft a proposed update for you to review.
+
+## Quickstart
+
+From clone to first answer on your own notes in under 10 minutes.
+
+git clone https://github.com/ohsuvorav/REPO_NAME.git
+cd REPO_NAME
+brain setup
+brain init my-brain
+brain doctor
+
+brain init asks which sources to import: a markdown or Obsidian folder, Notion or Google Docs via MCP, or Claude memory and chat exports.
+
+Then ask your agent a question. It answers from your notes, with a link to the source.
+
+Or tell your coding agent: install from INSTALL.md.
+
+## First 10 minutes
+
+Install, import, first answer, then one review card. The pictures on the site are a static illustration of those screens. They are not real data.
+
+## Cost
+
+Engine: free, MIT.
+Hosted version for a team: coming later. The waitlist form on the site posts to a placeholder endpoint and does not store submissions yet.
