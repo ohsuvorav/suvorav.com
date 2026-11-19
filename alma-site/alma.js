@@ -139,7 +139,6 @@
     "You curate. Keep, fix, or archive."
   ];
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var narrowQuery = window.matchMedia("(max-width: 700px)");
   var duration = 9000;
   var elapsed = 0;
   var last = 0;
@@ -149,24 +148,21 @@
 
   function holding() { return pointerHeld || focusHeld; }
 
-  function trackPath(narrow) {
-    if (narrow) {
-      svg.setAttribute("viewBox", "0 0 340 520");
-      return "M 170 46 H 236 A 78 78 0 0 1 314 124 V 396 A 78 78 0 0 1 236 474 H 104 A 78 78 0 0 1 26 396 V 124 A 78 78 0 0 1 104 46 H 170 Z";
-    }
+  function trackPath() {
     svg.setAttribute("viewBox", "0 0 640 360");
     return "M 320 44 H 508 A 68 68 0 0 1 576 112 V 248 A 68 68 0 0 1 508 316 H 132 A 68 68 0 0 1 64 248 V 112 A 68 68 0 0 1 132 44 H 320 Z";
   }
 
   function layout() {
-    path.setAttribute("d", trackPath(narrowQuery.matches));
+    path.setAttribute("d", trackPath());
     var len = path.getTotalLength();
-    var rect = svg.getBoundingClientRect();
     var vb = svg.viewBox.baseVal;
+    var width = svg.clientWidth;
+    var height = svg.clientHeight;
     pills.forEach(function (btn, i) {
       var p = path.getPointAtLength(len * (i / 3));
-      btn.style.left = ((p.x - vb.x) / vb.width * rect.width) + "px";
-      btn.style.top = ((p.y - vb.y) / vb.height * rect.height) + "px";
+      btn.style.left = ((p.x - vb.x) / vb.width * width) + "px";
+      btn.style.top = ((p.y - vb.y) / vb.height * height) + "px";
     });
   }
 
