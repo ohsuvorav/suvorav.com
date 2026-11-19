@@ -68,6 +68,46 @@
           </button>
         </div>
         <p id="install-copy-status" class="visually-hidden" role="status" aria-live="polite"></p>
+
+        <figure class="loop" id="loop">
+          <figcaption class="visually-hidden" id="loop-title">Chat, then the wiki, then you curate</figcaption>
+          <div class="loop-core">
+            <svg class="loop-track" id="loop-svg" viewBox="0 0 640 360" aria-hidden="true">
+              <path id="loop-path" fill="none" stroke="rgba(18, 33, 28, 0.22)" stroke-width="1.5"></path>
+              <circle class="loop-halo" id="loop-halo" r="11"></circle>
+              <circle class="loop-dot" id="loop-dot" r="5"></circle>
+            </svg>
+            <div class="loop-faces">
+              <article class="loop-face is-on" data-stage="0">
+                <p class="loop-kicker">Chat</p>
+                <p class="bubble">We moved launch to March</p>
+                <p class="loop-aside">your sessions with any agent</p>
+              </article>
+              <article class="loop-face" data-stage="1">
+                <p class="loop-kicker">Wiki</p>
+                <p class="wiki-line">Launch: <s>Feb</s> → March</p>
+                <p class="loop-src">source: chat 11/19</p>
+                <p class="loop-aside">it self-updates</p>
+              </article>
+              <article class="loop-face" data-stage="2">
+                <p class="loop-kicker">You curate</p>
+                <p class="wiki-line">Pricing page is 40 days old</p>
+                <div class="loop-actions" aria-hidden="true">
+                  <span>Keep</span>
+                  <span>Fix</span>
+                  <span>Archive</span>
+                </div>
+                <p class="loop-aside">keep / fix / archive</p>
+              </article>
+            </div>
+            <div class="loop-pills" role="group" aria-label="Stages">
+              <button type="button" class="loop-pill is-on" data-stage="0" aria-pressed="true">Chat</button>
+              <button type="button" class="loop-pill" data-stage="1" aria-pressed="false">Wiki</button>
+              <button type="button" class="loop-pill" data-stage="2" aria-pressed="false">You curate</button>
+            </div>
+          </div>
+          <p id="loop-status" class="visually-hidden" role="status" aria-live="polite"></p>
+        </figure>
       </div>
     </section>
 

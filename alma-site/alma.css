@@ -726,3 +726,191 @@ section[id] { scroll-margin-top: 80px; }
 @media (min-width: 960px) {
   .anchors { display: flex; margin-left: auto; }
 }
+
+/* Loop. Always the light palette, even when the page is in dark mode. */
+.loop {
+  margin: 40px auto 4px;
+  max-width: 720px;
+  color: #12211C;
+  background: #ECF3F1;
+  border-radius: 1rem;
+}
+
+.loop-core {
+  position: relative;
+  aspect-ratio: 640 / 360;
+}
+
+.loop-track {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.loop-halo {
+  fill: #008055;
+  opacity: 0.22;
+  animation: loop-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes loop-pulse {
+  0%, 100% { opacity: 0.28; }
+  50% { opacity: 0.06; }
+}
+
+.loop-dot {
+  fill: #008055;
+}
+
+.loop-faces {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(250px, 42%);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: grid;
+}
+
+.loop-face {
+  grid-area: 1 / 1;
+  align-self: center;
+  background: #F7FAF9;
+  border: 1px solid rgba(18, 33, 28, 0.14);
+  border-radius: 0.75rem;
+  padding: 14px 14px 12px;
+  box-shadow: 0 12px 32px rgba(18, 33, 28, 0.06);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 280ms ease, transform 280ms ease;
+}
+
+.loop-face.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+.loop-kicker {
+  margin: 0 0 8px;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #007A50;
+}
+
+.bubble {
+  margin: 0;
+  background: #ffffff;
+  border: 1px solid rgba(18, 33, 28, 0.12);
+  border-radius: 14px 14px 14px 4px;
+  padding: 8px 10px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.wiki-line { margin: 0; font-size: 14px; line-height: 1.45; }
+.wiki-line s { color: #4E7064; text-decoration: line-through; }
+
+.loop-src {
+  margin: 6px 0 0;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 12px;
+  color: #4E7064;
+}
+
+.loop-aside {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: #4E7064;
+}
+
+.loop-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+
+.loop-actions span {
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid rgba(18, 33, 28, 0.22);
+  border-radius: 999px;
+  padding: 4px 8px;
+  color: #12211C;
+  background: transparent;
+}
+
+.loop-actions span:first-child {
+  background: #008055;
+  border-color: #008055;
+  color: #ffffff;
+}
+
+.loop-pills { position: absolute; inset: 0; z-index: 3; }
+
+.loop-pill {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  border: 1px solid rgba(18, 33, 28, 0.22);
+  border-radius: 999px;
+  background: #ECF3F1;
+  color: #12211C;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 8px 12px;
+  min-height: 32px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.loop-pill:hover { border-color: #008055; }
+
+.loop-pill.is-on {
+  background: #008055;
+  border-color: #008055;
+  color: #ffffff;
+}
+
+@media (max-width: 700px) {
+  .loop { margin-top: 28px; }
+  .loop-core { aspect-ratio: 340 / 520; }
+  .loop-faces { width: min(240px, 68%); }
+  .loop-pill { font-size: 12px; padding: 7px 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loop-dot, .loop-halo, .loop-track { display: none; }
+  .loop-core { aspect-ratio: auto; }
+  .loop-faces {
+    position: static;
+    transform: none;
+    width: auto;
+    display: grid;
+    gap: 10px;
+    margin: 8px 0 12px;
+  }
+  .loop-face, .loop-face.is-on {
+    opacity: 1;
+    transform: none;
+    grid-area: auto;
+    transition: none;
+  }
+  .loop-halo { animation: none; }
+  .loop-pill { position: static; transform: none; }
+  .loop-pills {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .loop-pill.is-on {
+    background: #ECF3F1;
+    color: #12211C;
+    border-color: rgba(18, 33, 28, 0.22);
+  }
+}
