@@ -289,6 +289,12 @@ section[id] { scroll-margin-top: 80px; }
 }
 
 .agent-icon { display: block; flex: none; }
+.agent-icon.claude { color: #D97757; }
+.agent-icon.mono { color: #12211C; }
+
+@media (prefers-color-scheme: dark) {
+  .agent-icon.mono { color: var(--foreground); }
+}
 
 .copy-prompt {
   display: inline-flex;
