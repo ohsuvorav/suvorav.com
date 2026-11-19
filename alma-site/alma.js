@@ -238,3 +238,65 @@
   show(0, false);
   requestAnimationFrame(frame);
 })();
+
+(function () {
+  var root = document.getElementById("compare");
+  if (!root) return;
+  var tabs = [].slice.call(root.querySelectorAll("[role='tab']"));
+  var panels = [].slice.call(root.querySelectorAll("[role='tabpanel']"));
+  var status = document.getElementById("cmp-status");
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var index = 0;
+  var timer = 0;
+  var pointerHeld = false;
+  var focusHeld = false;
+
+  function holding() { return pointerHeld || focusHeld; }
+
+  function select(next, announce) {
+    index = next;
+    tabs.forEach(function (tab, i) {
+      var on = i === next;
+      tab.classList.toggle("is-on", on);
+      tab.setAttribute("aria-selected", on ? "true" : "false");
+      tab.tabIndex = on ? 0 : -1;
+    });
+    panels.forEach(function (panel, i) {
+      var on = i === next;
+      panel.classList.toggle("is-on", on);
+      panel.hidden = !on;
+    });
+    if (announce && status) status.textContent = tabs[next].textContent.trim();
+    if (announce) tabs[next].scrollIntoView({ inline: "nearest", block: "nearest" });
+  }
+
+  function tick() {
+    if (!holding()) select((index + 1) % tabs.length, false);
+  }
+
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener("click", function () {
+      select(i, true);
+    });
+    tab.addEventListener("keydown", function (event) {
+      var next = null;
+      if (event.key === "ArrowRight") next = (i + 1) % tabs.length;
+      else if (event.key === "ArrowLeft") next = (i + tabs.length - 1) % tabs.length;
+      else if (event.key === "Home") next = 0;
+      else if (event.key === "End") next = tabs.length - 1;
+      if (next === null) return;
+      event.preventDefault();
+      select(next, true);
+      tabs[next].focus();
+    });
+  });
+
+  root.addEventListener("mouseenter", function () { pointerHeld = true; });
+  root.addEventListener("mouseleave", function () { pointerHeld = false; });
+  root.addEventListener("focusin", function () { focusHeld = true; });
+  root.addEventListener("focusout", function (event) {
+    if (!root.contains(event.relatedTarget)) focusHeld = false;
+  });
+
+  if (!reduced) timer = window.setInterval(tick, 7000);
+})();
