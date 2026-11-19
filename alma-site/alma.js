@@ -236,48 +236,39 @@
 })();
 
 (function () {
-  var root = document.getElementById("compare");
+  var root = document.getElementById("why-op");
   if (!root) return;
-  var tabs = [].slice.call(root.querySelectorAll("[role='tab']"));
-  var panels = [].slice.call(root.querySelectorAll("[role='tabpanel']"));
-  var status = document.getElementById("cmp-status");
+  var items = [].slice.call(root.querySelectorAll(".op-item"));
+  var tabs = items.map(function (item) { return item.querySelector(".op-tab"); });
+  var status = document.getElementById("why-status");
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var index = 0;
-  var timer = 0;
-  var pointerHeld = false;
-  var focusHeld = false;
-
-  function holding() { return pointerHeld || focusHeld; }
 
   function select(next, announce) {
     index = next;
-    tabs.forEach(function (tab, i) {
+    items.forEach(function (item, i) {
       var on = i === next;
-      tab.classList.toggle("is-on", on);
+      item.classList.toggle("is-on", on);
+      var tab = tabs[i];
       tab.setAttribute("aria-selected", on ? "true" : "false");
       tab.tabIndex = on ? 0 : -1;
+      tab.querySelector(".op-bar").classList.remove("is-run");
     });
-    panels.forEach(function (panel, i) {
-      var on = i === next;
-      panel.classList.toggle("is-on", on);
-      panel.hidden = !on;
-    });
-    if (announce && status) status.textContent = tabs[next].textContent.trim();
-    if (announce) tabs[next].scrollIntoView({ inline: "nearest", block: "nearest" });
-  }
-
-  function tick() {
-    if (!holding()) select((index + 1) % tabs.length, false);
+    if (announce && status) {
+      status.textContent = tabs[next].querySelector(".op-title").textContent;
+    }
+    if (reduced) return;
+    var bar = tabs[next].querySelector(".op-bar");
+    void bar.offsetWidth;
+    bar.classList.add("is-run");
   }
 
   tabs.forEach(function (tab, i) {
-    tab.addEventListener("click", function () {
-      select(i, true);
-    });
+    tab.addEventListener("click", function () { select(i, true); });
     tab.addEventListener("keydown", function (event) {
       var next = null;
-      if (event.key === "ArrowRight") next = (i + 1) % tabs.length;
-      else if (event.key === "ArrowLeft") next = (i + tabs.length - 1) % tabs.length;
+      if (event.key === "ArrowDown" || event.key === "ArrowRight") next = (i + 1) % tabs.length;
+      else if (event.key === "ArrowUp" || event.key === "ArrowLeft") next = (i + tabs.length - 1) % tabs.length;
       else if (event.key === "Home") next = 0;
       else if (event.key === "End") next = tabs.length - 1;
       if (next === null) return;
@@ -285,14 +276,12 @@
       select(next, true);
       tabs[next].focus();
     });
+    tab.querySelector(".op-bar").addEventListener("animationend", function (event) {
+      if (event.animationName !== "op-fill") return;
+      if (tabs.indexOf(tab) !== index) return;
+      select((index + 1) % tabs.length, false);
+    });
   });
 
-  root.addEventListener("mouseenter", function () { pointerHeld = true; });
-  root.addEventListener("mouseleave", function () { pointerHeld = false; });
-  root.addEventListener("focusin", function () { focusHeld = true; });
-  root.addEventListener("focusout", function (event) {
-    if (!root.contains(event.relatedTarget)) focusHeld = false;
-  });
-
-  if (!reduced) timer = window.setInterval(tick, 7000);
+  select(0, false);
 })();

@@ -25,13 +25,13 @@ Knowledge base for AI agents in the tools you already use. A model-agnostic fram
 
 Your notes go in. Alma keeps a memory agents can search and keep up to date. The first answer comes from your own notes, with a link to the source. There is no sample brain to click through.
 
-## What it solves
+## What makes Alma different
 
-Chat into the wiki. Your knowledge is scattered. Run brain init once on notes and Claude or ChatGPT memory; new chats are captured automatically. For anyone with notes in Obsidian, markdown or a chatbot's memory. You keep re-explaining yourself. Semantic search with sources pulls the right context from previous interactions. For anyone who wants answers hyper-personalized instead of repeating context.
+Plain files any agent can read. Alma is a folder of markdown and instructions. Claude, Codex, Cursor or any provider reads the same files; switch models, keep the context. For anyone using more than one AI tool.
 
-The wiki updates itself. Provider projects don't update themselves. A daily session-learn loop pulls decisions from your chats and updates the wiki. For anyone whose work compounds and needs to be shared with other stakeholders.
+A wiki that writes itself. Inspired by Karpathy's LLM wiki: every day Alma reads your sessions in raw/ and rewrites the wiki pages they touch, with sources. For anyone whose work compounds and is shared with others.
 
-You curate. Built-in memory goes stale. Alma flags outdated facts and lets you keep, fix or archive them one card at a time. For teams where priorities, numbers and decisions change every week.
+Batteries included. Run brain init and you get the loop out of the box: daily capture, self-updating wiki, evals, doctor and review. No glue code. For teams where priorities change every week.
 
 ## How it works
 

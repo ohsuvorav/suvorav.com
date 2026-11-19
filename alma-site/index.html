@@ -28,7 +28,7 @@
     <div class="wrap header-inner">
       <a class="brand" href="/">Alma</a>
       <nav class="anchors" aria-label="On this page">
-        <a href="#compare">Compare</a>
+        <a href="#why">Why</a>
         <a href="#how">How</a>
         <a href="#different">Different</a>
         <a href="#commands">Commands</a>
@@ -114,133 +114,100 @@
       </div>
     </section>
 
-    <section class="compare" id="compare">
-      <div class="compare-wide">
-        <h2>Compare</h2>
-        <div class="cmp-tabs" role="tablist" aria-label="Compare">
-          <button type="button" class="cmp-tab is-on" id="cmp-tab-0" role="tab" aria-selected="true" aria-controls="cmp-panel-0" tabindex="0">Self-updating</button>
-          <button type="button" class="cmp-tab" id="cmp-tab-1" role="tab" aria-selected="false" aria-controls="cmp-panel-1" tabindex="-1">Stale memory</button>
-          <button type="button" class="cmp-tab" id="cmp-tab-2" role="tab" aria-selected="false" aria-controls="cmp-panel-2" tabindex="-1">Search</button>
-          <button type="button" class="cmp-tab" id="cmp-tab-3" role="tab" aria-selected="false" aria-controls="cmp-panel-3" tabindex="-1">Import</button>
-        </div>
-        <p id="cmp-status" class="visually-hidden" role="status" aria-live="polite"></p>
-
-        <div class="cmp-panel is-on" id="cmp-panel-0" role="tabpanel" aria-labelledby="cmp-tab-0">
-          <div class="cmp-copy">
-            <h3>Provider projects don't update themselves.</h3>
-            <p>A daily session-learn loop pulls decisions from your chats and updates the wiki.</p>
-            <p class="cmp-for"><span>For</span> Anyone whose work compounds and needs to be shared with other stakeholders.</p>
-          </div>
-          <div class="appwin">
-            <div class="appwin-bar" aria-hidden="true"><span></span><span></span><span></span><b>wiki / launch.md</b></div>
-            <div class="split">
-              <div class="pane pane-old">
-                <p class="pane-kicker">Built-in project</p>
-                <ul class="file-list">
-                  <li><span>decisions.md</span><em>last edited Oct 2</em></li>
-                  <li><span>launch.md</span><em>last edited Oct 2</em></li>
-                  <li><span>roadmap.md</span><em>last edited Oct 2</em></li>
+    <section class="why" id="why">
+      <div class="why-wide">
+        <h2>What makes Alma different</h2>
+        <p class="lede">A folder any agent can read, a wiki that rewrites itself, and the daily loop already wired up.</p>
+        <div class="op" id="why-op" role="tablist" aria-orientation="vertical" aria-label="What makes Alma different">
+          <div class="op-item is-on">
+            <button type="button" class="op-tab" id="op-tab-0" role="tab" aria-selected="true" aria-controls="op-panel-0" tabindex="0">
+              <span class="op-bar" aria-hidden="true"></span>
+              <span class="op-title">Plain files any agent can read</span>
+              <span class="op-desc">Alma is a folder of markdown and instructions. Claude, Codex, Cursor or any provider reads the same files; switch models, keep the context.</span>
+              <span class="op-for"><span>For</span> Anyone using more than one AI tool.</span>
+            </button>
+            <div class="op-visual" id="op-panel-0" role="tabpanel" aria-labelledby="op-tab-0">
+              <div class="editor">
+                <div class="editor-bar" aria-hidden="true"><span></span><span></span><span></span><b>brain</b></div>
+                <ul class="vtree">
+                  <li class="label-row"><span class="entry">Explorer</span></li>
+                  <li><span class="entry"><i class="chev"></i><i class="fld"></i>.agents/</span></li>
+                  <li><span class="entry"><i class="chev"></i><i class="fld"></i>.claude/</span></li>
+                  <li><span class="entry"><i class="chev"></i><i class="fld"></i>.githooks/</span></li>
+                  <li><span class="entry"><i class="chev"></i><i class="fld"></i>agents/</span></li>
+                  <li><span class="entry"><i class="chev"></i><i class="fld"></i>docs/</span></li>
+                  <li>
+                    <span class="entry"><i class="chev"></i><i class="fld"></i>raw/</span>
+                    <span class="note"><span>everything you captured</span></span>
+                  </li>
+                  <li><span class="entry"><i class="chev"></i><i class="fld"></i>system/</span></li>
+                  <li>
+                    <span class="entry"><i class="chev"></i><i class="fld"></i>wiki/</span>
+                    <span class="note"><span>what agents read</span></span>
+                  </li>
+                  <li>
+                    <span class="entry"><i class="sp"></i><i class="doc"></i>AGENTS.md</span>
+                    <span class="note"><span>Codex &amp; Cursor</span></span>
+                  </li>
+                  <li>
+                    <span class="entry"><i class="sp"></i><i class="doc"></i>CLAUDE.md</span>
+                    <span class="note"><span>Claude</span></span>
+                  </li>
+                  <li>
+                    <span class="entry"><i class="sp"></i><i class="doc"></i>teambrain.yaml</span>
+                    <span class="note"><span>one config</span></span>
+                  </li>
+                  <li class="grow" aria-hidden="true"><span class="entry"></span></li>
                 </ul>
-                <p class="missing">Yesterday's decision is missing<br>Move launch to March</p>
-              </div>
-              <div class="pane pane-alma">
-                <p class="pane-kicker">Alma</p>
-                <p class="diff-file">wiki/launch.md</p>
-                <p class="diff-line">Launch: <s>Feb</s> → March</p>
-                <p class="diff-src">source: chat 11/19</p>
-                <p class="diff-note">Added by the daily session-learn loop</p>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="cmp-panel" id="cmp-panel-1" role="tabpanel" aria-labelledby="cmp-tab-1" hidden>
-          <div class="cmp-copy">
-            <h3>Built-in memory goes stale.</h3>
-            <p>Alma flags outdated facts and lets you keep, fix or archive them one card at a time.</p>
-            <p class="cmp-for"><span>For</span> Teams where priorities, numbers and decisions change every week.</p>
-          </div>
-          <div class="appwin">
-            <div class="appwin-bar" aria-hidden="true"><span></span><span></span><span></span><b>memory / pricing</b></div>
-            <div class="split">
-              <div class="pane pane-old">
-                <p class="pane-kicker">Built-in memory</p>
-                <p class="mem-fact">Pricing: $29/mo</p>
-                <p class="mem-quiet">Saved as current. No warning.</p>
-              </div>
-              <div class="pane pane-alma">
-                <p class="pane-kicker">Alma</p>
-                <article class="review-card">
-                  <p class="review-title">Pricing page is 40 days old</p>
-                  <p class="review-src">conflicts with chat 11/12</p>
-                  <div class="review-actions" aria-hidden="true"><span>Keep</span><span>Fix</span><span>Archive</span></div>
+          <div class="op-item">
+            <button type="button" class="op-tab" id="op-tab-1" role="tab" aria-selected="false" aria-controls="op-panel-1" tabindex="-1">
+              <span class="op-bar" aria-hidden="true"></span>
+              <span class="op-title">A wiki that writes itself</span>
+              <span class="op-desc">Inspired by Karpathy's LLM wiki: every day Alma reads your sessions in <code>raw/</code> and rewrites the wiki pages they touch, with sources.</span>
+              <span class="op-for"><span>For</span> Anyone whose work compounds and is shared with others.</span>
+            </button>
+            <div class="op-visual scene" id="op-panel-1" role="tabpanel" aria-labelledby="op-tab-1">
+              <div class="scene-card">
+                <p class="scene-kicker">raw/</p>
+                <p class="bubble">We moved launch to March</p>
+                <p class="scene-path">raw/chats/2026-11-19.md</p>
+                <svg class="down" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 4v14M6 13l6 6 6-6" fill="none" stroke="#008055" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <article class="page-card">
+                  <p class="scene-kicker">wiki/projects/launch.md</p>
+                  <p class="wiki-diff">Launch: <s>Feb</s> → March</p>
+                  <p class="scene-path">source: raw/chats/2026-11-19.md</p>
                 </article>
+                <p class="nightly">Nightly session-learn · 3 pages updated · 1 conflict flagged for review</p>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="cmp-panel" id="cmp-panel-2" role="tabpanel" aria-labelledby="cmp-tab-2" hidden>
-          <div class="cmp-copy">
-            <h3>You keep re-explaining yourself.</h3>
-            <p>Semantic search with sources pulls the right context from previous interactions.</p>
-            <p class="cmp-for"><span>For</span> Anyone who wants answers hyper-personalized instead of repeating context.</p>
-          </div>
-          <div class="appwin">
-            <div class="appwin-bar" aria-hidden="true"><span></span><span></span><span></span><b>search</b></div>
-            <div class="split">
-              <div class="pane pane-old">
-                <p class="pane-kicker">Built-in project</p>
-                <p class="search-q">how much do we charge</p>
-                <p class="missing">No results</p>
-              </div>
-              <div class="pane pane-alma">
-                <p class="pane-kicker">Alma</p>
-                <p class="search-q alma">how much do we charge</p>
-                <article class="hit">
-                  <p class="hit-title">pricing.md <span>›</span> Tiers <em>0.81</em></p>
-                  <p class="hit-path">raw/wiki/pricing.md</p>
-                </article>
-                <p class="search-q alma ru">сколько мы берём</p>
-                <p class="hit-also">Same hit, pricing.md › Tiers</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="cmp-panel" id="cmp-panel-3" role="tabpanel" aria-labelledby="cmp-tab-3" hidden>
-          <div class="cmp-copy">
-            <h3>Your knowledge is scattered.</h3>
-            <p>Run <code>brain init</code> once on notes and Claude or ChatGPT memory; new chats are captured automatically.</p>
-            <p class="cmp-for"><span>For</span> Anyone with notes in Obsidian, markdown or a chatbot's memory.</p>
-          </div>
-          <div class="appwin">
-            <div class="appwin-bar" aria-hidden="true"><span></span><span></span><span></span><b>brain init</b></div>
-            <div class="split">
-              <div class="pane pane-old">
-                <p class="pane-kicker">Built-in memory</p>
-                <ul class="silos">
-                  <li>Obsidian</li>
-                  <li>Notes</li>
-                  <li>Claude memory</li>
-                  <li>ChatGPT memory</li>
+          <div class="op-item">
+            <button type="button" class="op-tab" id="op-tab-2" role="tab" aria-selected="false" aria-controls="op-panel-2" tabindex="-1">
+              <span class="op-bar" aria-hidden="true"></span>
+              <span class="op-title">Batteries included</span>
+              <span class="op-desc">Run <code>brain init</code> and you get the loop out of the box: daily capture, self-updating wiki, evals, doctor and review. No glue code.</span>
+              <span class="op-for"><span>For</span> Teams where priorities change every week.</span>
+            </button>
+            <div class="op-visual scene" id="op-panel-2" role="tabpanel" aria-labelledby="op-tab-2">
+              <div class="scene-card">
+                <p class="term"><span>$</span> brain init ~/notes</p>
+                <ul class="checks">
+                  <li><svg class="tick" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#008055"/><path d="M4.5 8.2 6.8 10.4 11.6 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Daily capture (cron)</span></li>
+                  <li><svg class="tick" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#008055"/><path d="M4.5 8.2 6.8 10.4 11.6 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Session-learn wiki update</span></li>
+                  <li><svg class="tick" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#008055"/><path d="M4.5 8.2 6.8 10.4 11.6 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Eval: <b>26/30 passed</b></span></li>
+                  <li><svg class="tick" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#008055"/><path d="M4.5 8.2 6.8 10.4 11.6 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><code>brain doctor</code>: ok</span></li>
+                  <li><svg class="tick" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#008055"/><path d="M4.5 8.2 6.8 10.4 11.6 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><code>brain review</code>: 1 stale card</span></li>
                 </ul>
               </div>
-              <div class="pane pane-alma">
-                <p class="pane-kicker">Alma</p>
-                <ul class="tree">
-                  <li>raw/</li>
-                  <li class="nest">imports/</li>
-                  <li class="nest deep">obsidian/</li>
-                  <li class="nest deep">notes/</li>
-                  <li class="nest deep">claude/</li>
-                  <li class="nest deep">chatgpt/</li>
-                </ul>
-                <p class="scope">42 files, 3 sources</p>
-              </div>
             </div>
           </div>
         </div>
+        <p id="why-status" class="visually-hidden" role="status" aria-live="polite"></p>
       </div>
     </section>
 
