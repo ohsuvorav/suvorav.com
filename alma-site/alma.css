@@ -238,10 +238,11 @@ section[id] { scroll-margin-top: 80px; }
 .hero { padding: 40px 0 8px; }
 
 .hero h1 {
-  font-size: clamp(2.05rem, 4.8vw, 3.35rem);
-  line-height: 1.05;
+  font-size: clamp(2rem, 4.2vw, 3.05rem);
+  line-height: 1.08;
   letter-spacing: -0.035em;
-  max-width: 14em;
+  max-width: 16em;
+  text-wrap: balance;
   margin: 0 0 18px;
 }
 

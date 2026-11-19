@@ -1,6 +1,6 @@
 # Alma
 
-Knowledge base for agents. Model-agnostic framework to compound AI context and keep it up to date.
+Knowledge base for AI agents in the tools you already use. Model-agnostic framework to compound AI context and keep it up to date.
 
 The name comes from almanac, the book navigators kept, and from the Latin and Spanish word for soul.
 
@@ -21,7 +21,7 @@ Author: Oleg Suvorov — https://suvorav.com
 
 ## What it is
 
-Knowledge base for agents. A model-agnostic framework to compound AI context and keep it up to date.
+Knowledge base for AI agents in the tools you already use. A model-agnostic framework to compound AI context and keep it up to date.
 
 Your notes go in. Alma keeps a memory agents can search and keep up to date. The first answer comes from your own notes, with a link to the source. There is no sample brain to click through.
 
