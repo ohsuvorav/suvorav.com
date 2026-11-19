@@ -3,31 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- TODO: replace REPO_NAME in every GitHub URL and in the quickstart clone command. -->
+  <meta name="robots" content="noindex,nofollow">
   <!-- TODO: point the waitlist form at the real endpoint. No backend yet. -->
-  <title>Second Brain Engine</title>
-  <meta name="description" content="An open-source engine: your notes in, a memory your agents can search and keep up to date. MIT licensed.">
-  <link rel="canonical" href="https://suvorav.com/engine/">
-  <meta property="og:title" content="Second Brain Engine">
-  <meta property="og:description" content="An open-source engine: your notes in, a memory your agents can search and keep up to date. MIT licensed.">
+  <title>Alma</title>
+  <meta name="description" content="Alma is an open-source engine: your notes in, a memory your agents can search and keep up to date. MIT licensed.">
+  <link rel="canonical" href="https://alma.suvorav.com/">
+  <meta property="og:title" content="Alma">
+  <meta property="og:description" content="Alma is an open-source engine: your notes in, a memory your agents can search and keep up to date. MIT licensed.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://suvorav.com/engine/">
+  <meta property="og:url" content="https://alma.suvorav.com/">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Second Brain Engine">
-  <meta name="twitter:description" content="An open-source engine: your notes in, a memory your agents can search and keep up to date. MIT licensed.">
+  <meta name="twitter:title" content="Alma">
+  <meta name="twitter:description" content="Alma is an open-source engine: your notes in, a memory your agents can search and keep up to date. MIT licensed.">
   <meta name="theme-color" content="#ECF3F1" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#10201A" media="(prefers-color-scheme: dark)">
-  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" href="favicon.ico">
   <link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="engine.css">
+  <link rel="stylesheet" href="alma.css">
 </head>
 <body>
   <a class="skip" href="#content">Skip to content</a>
 
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="brand" href="/engine/">Second Brain Engine</a>
+      <a class="brand" href="/">Alma</a>
       <nav class="anchors" aria-label="On this page">
         <a href="#who">Who</a>
         <a href="#how">How</a>
@@ -37,7 +36,7 @@
         <a href="#minutes">10 min</a>
         <a href="#cost">Cost</a>
       </nav>
-      <a class="header-git" href="https://github.com/ohsuvorav/REPO_NAME">GitHub</a>
+      <a class="header-git" href="https://github.com/ohsuvorav/alma-brain">Coming soon</a>
     </div>
   </header>
 
@@ -46,9 +45,9 @@
       <div class="wrap">
         <p class="label">Open source</p>
         <h1>Your AI agents forget everything. Give them a second brain.</h1>
-        <p class="lede">An open-source engine: your notes in, a memory your agents can search and keep up to date. Built and used daily by one PM running a team of AI agents.</p>
+        <p class="lede">Alma is an open-source engine: your notes in, a memory your agents can search and keep up to date. Built and used daily by one PM running a team of AI agents.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="https://github.com/ohsuvorav/REPO_NAME">Get it on GitHub</a>
+          <a class="btn btn-primary" href="https://github.com/ohsuvorav/alma-brain">Coming soon</a>
           <a class="btn btn-ghost" href="#quickstart">Quickstart</a>
         </div>
       </div>
@@ -142,7 +141,7 @@
         <h2>An interface, not my brain</h2>
         <div class="measure">
           <p>In Java, callers depend on an interface. The class is the implementation, and it stays yours.</p>
-          <p>The engine is the interface: the folder contract (<code>raw/</code>, <code>wiki/</code>), <code>teambrain.yaml</code>, the <code>brain</code> commands, the hooks, and MCP search. Your brain is the class: your config and your content.</p>
+          <p>Alma is the interface: the folder contract (<code>raw/</code>, <code>wiki/</code>), <code>teambrain.yaml</code>, the <code>brain</code> commands, the hooks, and MCP search. Your brain is the class: your config and your content.</p>
         </div>
         <figure class="code-card">
           <pre><code>class MyBrain implements SecondBrain</code></pre>
@@ -229,8 +228,8 @@
             <p class="label">Terminal</p>
             <button type="button" class="copy-btn" id="copy-quickstart">Copy</button>
           </div>
-          <pre><code id="quickstart-code">git clone https://github.com/ohsuvorav/REPO_NAME.git
-cd REPO_NAME
+          <pre><code id="quickstart-code">git clone https://github.com/ohsuvorav/alma-brain.git
+cd alma-brain
 brain setup
 brain init my-brain
 brain doctor
@@ -241,6 +240,7 @@ brain doctor
           <p><code>brain init</code> asks which sources to import: a markdown or Obsidian folder, Notion or Google Docs via MCP, or Claude memory and chat exports.</p>
           <p>Then ask your agent a question. It answers from your notes, with a link to the source.</p>
           <p>Or tell your coding agent: install from INSTALL.md.</p>
+          <p>The repository is not public yet. <a href="https://github.com/ohsuvorav/alma-brain">github.com/ohsuvorav/alma-brain</a> is coming soon.</p>
         </div>
         <p id="copy-status" class="visually-hidden" role="status"></p>
       </div>
@@ -260,7 +260,7 @@ brain doctor
             </div>
             <div class="mock">
               <p class="mock-flag">Illustration, not real data</p>
-              <p class="mock-cmd"><span class="prompt">$</span> git clone https://github.com/ohsuvorav/REPO_NAME.git</p>
+              <p class="mock-cmd"><span class="prompt">$</span> git clone https://github.com/ohsuvorav/alma-brain.git</p>
               <p class="mock-cmd"><span class="prompt">$</span> brain setup</p>
             </div>
           </li>
@@ -325,7 +325,7 @@ brain doctor
         <h2>How much it costs</h2>
         <div class="grid-2">
           <article class="card">
-            <h3>Engine</h3>
+            <h3>Alma</h3>
             <p class="price">Free</p>
             <p>MIT license. Clone it and run it on your own notes.</p>
           </article>
@@ -348,11 +348,11 @@ brain doctor
   <footer class="site-footer">
     <div class="wrap footer-inner">
       <p>MIT</p>
-      <p><a href="https://github.com/ohsuvorav/REPO_NAME">GitHub</a></p>
+      <p><a href="https://github.com/ohsuvorav/alma-brain">Coming soon</a></p>
       <p>Made by <a href="https://suvorav.com">Oleg Suvorov</a></p>
     </div>
   </footer>
 
-  <script src="engine.js"></script>
+  <script src="alma.js"></script>
 </body>
 </html>
