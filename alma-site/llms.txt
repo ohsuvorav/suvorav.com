@@ -9,8 +9,8 @@ Built and used daily by one PM running a team of AI agents.
 Site: https://alma.suvorav.com
 The site is private. It is not linked from suvorav.com, it sends noindex, and it is meant to sit behind basic auth.
 
-Install: https://alma.suvorav.com/INSTALL.md
-Prompt to paste into a coding agent: Install Alma by following https://alma.suvorav.com/INSTALL.md
+Install: https://github.com/ohsuvorav/alma-brain/blob/main/INSTALL.md
+Prompt to paste into a coding agent: Install Alma by following https://github.com/ohsuvorav/alma-brain/blob/main/INSTALL.md
 
 Code: https://github.com/ohsuvorav/alma-brain
 The repository is not public yet.
@@ -77,7 +77,7 @@ brain init asks which sources to import: a markdown or Obsidian folder, Notion o
 
 Then ask your agent a question. It answers from your notes, with a link to the source.
 
-Or tell your coding agent: Install Alma by following https://alma.suvorav.com/INSTALL.md
+Or tell your coding agent: Install Alma by following https://github.com/ohsuvorav/alma-brain/blob/main/INSTALL.md
 
 The repository is not public yet.
 
