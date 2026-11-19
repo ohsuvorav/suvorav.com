@@ -370,10 +370,49 @@ section[id] { scroll-margin-top: 80px; }
   color: var(--muted-fg);
 }
 
-.solve-grid {
+.solve-stages { margin-top: 8px; }
+
+.solve-stage {
+  display: grid;
+  gap: 16px;
+  padding-top: 28px;
+}
+
+.solve-stage + .solve-stage {
+  margin-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.solve-kicker {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.solve-kicker span {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+}
+
+.solve-stage-note {
+  margin: 6px 0 0;
+  max-width: 16rem;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--muted-fg);
+}
+
+.solve-stage-cards {
   display: grid;
   gap: 14px;
-  margin-top: 28px;
 }
 
 .solve-card {
@@ -391,16 +430,7 @@ section[id] { scroll-margin-top: 80px; }
 .solve-top {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 22px;
-}
-
-.solve-num {
-  font-family: "Geist Mono", ui-monospace, monospace;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  color: var(--muted-fg);
 }
 
 .solve-icon {
@@ -431,7 +461,7 @@ section[id] { scroll-margin-top: 80px; }
   stroke-linecap: round;
 }
 
-.solve-card h3 {
+.solve-card h4 {
   margin: 10px 0 0;
   font-size: clamp(1.2rem, 1.5vw, 1.4rem);
   font-weight: 600;
@@ -482,7 +512,13 @@ section[id] { scroll-margin-top: 80px; }
 }
 
 @media (min-width: 800px) {
-  .solve-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .solve-stage {
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: 32px;
+    align-items: start;
+    padding-top: 32px;
+  }
+  .solve-stage-cards.pair { grid-template-columns: 1fr 1fr; gap: 16px; }
   .solve-card { padding: 26px 26px 22px; }
   .solve-for { margin-top: auto; padding-top: 22px; }
 }

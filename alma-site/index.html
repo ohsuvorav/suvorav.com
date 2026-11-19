@@ -114,61 +114,81 @@
     <section class="section" id="solves">
       <div class="wrap">
         <h2>What it solves</h2>
-        <p class="lede">Four places a knowledge base usually breaks, and what Alma does instead.</p>
-        <div class="solve-grid">
-          <article class="solve-card">
-            <div class="solve-top">
-              <span class="solve-num" aria-hidden="true">01</span>
-              <svg class="solve-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M16 6.5a9.5 9.5 0 1 1-7.4 3.6"/>
-                <path d="M7.4 4.8v6.2h6.2"/>
-              </svg>
+        <p class="lede">Chat into the wiki, the wiki keeps itself current, then you decide what stays.</p>
+        <div class="solve-stages">
+          <section class="solve-stage">
+            <header class="solve-stage-head">
+              <h3 class="solve-kicker"><span>01</span> Chat</h3>
+              <p class="solve-stage-note">Capture once, then search with sources.</p>
+            </header>
+            <div class="solve-stage-cards pair">
+              <article class="solve-card">
+                <div class="solve-top">
+                  <svg class="solve-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 9.5h8l2.2 2.2V25H4z" opacity="0.45"/>
+                    <path d="M15.5 7h12v15.5h-12z"/>
+                    <path d="M10.5 16.5h7"/>
+                    <path d="M14.8 13.8 18 16.5l-3.2 2.7"/>
+                  </svg>
+                </div>
+                <p class="solve-problem"><svg class="solve-x" viewBox="0 0 10 10" aria-hidden="true"><path d="M2.2 2.2 7.8 7.8M7.8 2.2 2.2 7.8"/></svg>Your knowledge is scattered.</p>
+                <h4>Run <code>brain init</code> once on notes and Claude or ChatGPT memory; new chats are captured automatically.</h4>
+                <p class="solve-for"><span>For</span> Anyone with notes in Obsidian, markdown or a chatbot's memory.</p>
+              </article>
+              <article class="solve-card">
+                <div class="solve-top">
+                  <svg class="solve-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="13.5" cy="13.5" r="6"/>
+                    <path d="M18 18.2 24.2 24.4"/>
+                    <path d="M23.4 6.6 24 8.6 26 9.2 24 9.8 23.4 11.8 22.8 9.8 20.8 9.2 22.8 8.6Z" fill="currentColor" stroke="none"/>
+                  </svg>
+                </div>
+                <p class="solve-problem"><svg class="solve-x" viewBox="0 0 10 10" aria-hidden="true"><path d="M2.2 2.2 7.8 7.8M7.8 2.2 2.2 7.8"/></svg>You keep re-explaining yourself.</p>
+                <h4>Semantic search with sources pulls the right context from previous interactions.</h4>
+                <p class="solve-for"><span>For</span> Anyone who wants answers hyper-personalized instead of repeating context.</p>
+              </article>
             </div>
-            <p class="solve-problem"><svg class="solve-x" viewBox="0 0 10 10" aria-hidden="true"><path d="M2.2 2.2 7.8 7.8M7.8 2.2 2.2 7.8"/></svg>Provider projects don't update themselves.</p>
-            <h3>A daily session-learn loop pulls decisions from your chats and updates the wiki.</h3>
-            <p class="solve-for"><span>For</span> Anyone whose work compounds and needs to be shared with other stakeholders.</p>
-          </article>
-          <article class="solve-card">
-            <div class="solve-top">
-              <span class="solve-num" aria-hidden="true">02</span>
-              <svg class="solve-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="5" y="5" width="14" height="18" rx="2" opacity="0.4"/>
-                <path d="M9 10h6M9 14h6M9 18h3" opacity="0.4"/>
-                <circle cx="21.5" cy="21.5" r="6.25"/>
-                <path d="M21.5 18.3V21.5l2.3 1.5"/>
-              </svg>
+          </section>
+          <section class="solve-stage">
+            <header class="solve-stage-head">
+              <h3 class="solve-kicker"><span>02</span> Wiki</h3>
+              <p class="solve-stage-note">A daily session-learn loop.</p>
+            </header>
+            <div class="solve-stage-cards">
+              <article class="solve-card">
+                <div class="solve-top">
+                  <svg class="solve-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M16 6.5a9.5 9.5 0 1 1-7.4 3.6"/>
+                    <path d="M7.4 4.8v6.2h6.2"/>
+                  </svg>
+                </div>
+                <p class="solve-problem"><svg class="solve-x" viewBox="0 0 10 10" aria-hidden="true"><path d="M2.2 2.2 7.8 7.8M7.8 2.2 2.2 7.8"/></svg>Provider projects don't update themselves.</p>
+                <h4>A daily session-learn loop pulls decisions from your chats and updates the wiki.</h4>
+                <p class="solve-for"><span>For</span> Anyone whose work compounds and needs to be shared with other stakeholders.</p>
+              </article>
             </div>
-            <p class="solve-problem"><svg class="solve-x" viewBox="0 0 10 10" aria-hidden="true"><path d="M2.2 2.2 7.8 7.8M7.8 2.2 2.2 7.8"/></svg>Built-in memory goes stale.</p>
-            <h3>Alma flags outdated facts and lets you keep, fix or archive them one card at a time.</h3>
-            <p class="solve-for"><span>For</span> Teams where priorities, numbers and decisions change every week.</p>
-          </article>
-          <article class="solve-card">
-            <div class="solve-top">
-              <span class="solve-num" aria-hidden="true">03</span>
-              <svg class="solve-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="13.5" cy="13.5" r="6"/>
-                <path d="M18 18.2 24.2 24.4"/>
-                <path d="M23.4 6.6 24 8.6 26 9.2 24 9.8 23.4 11.8 22.8 9.8 20.8 9.2 22.8 8.6Z" fill="currentColor" stroke="none"/>
-              </svg>
+          </section>
+          <section class="solve-stage">
+            <header class="solve-stage-head">
+              <h3 class="solve-kicker"><span>03</span> You curate</h3>
+              <p class="solve-stage-note">Keep, fix, or archive what goes stale.</p>
+            </header>
+            <div class="solve-stage-cards">
+              <article class="solve-card">
+                <div class="solve-top">
+                  <svg class="solve-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="5" y="5" width="14" height="18" rx="2" opacity="0.4"/>
+                    <path d="M9 10h6M9 14h6M9 18h3" opacity="0.4"/>
+                    <circle cx="21.5" cy="21.5" r="6.25"/>
+                    <path d="M21.5 18.3V21.5l2.3 1.5"/>
+                  </svg>
+                </div>
+                <p class="solve-problem"><svg class="solve-x" viewBox="0 0 10 10" aria-hidden="true"><path d="M2.2 2.2 7.8 7.8M7.8 2.2 2.2 7.8"/></svg>Built-in memory goes stale.</p>
+                <h4>Alma flags outdated facts and lets you keep, fix or archive them one card at a time.</h4>
+                <p class="solve-for"><span>For</span> Teams where priorities, numbers and decisions change every week.</p>
+              </article>
             </div>
-            <p class="solve-problem"><svg class="solve-x" viewBox="0 0 10 10" aria-hidden="true"><path d="M2.2 2.2 7.8 7.8M7.8 2.2 2.2 7.8"/></svg>You keep re-explaining yourself.</p>
-            <h3>Semantic search with sources pulls the right context from previous interactions.</h3>
-            <p class="solve-for"><span>For</span> Anyone who wants answers hyper-personalized instead of repeating context.</p>
-          </article>
-          <article class="solve-card">
-            <div class="solve-top">
-              <span class="solve-num" aria-hidden="true">04</span>
-              <svg class="solve-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M4 9.5h8l2.2 2.2V25H4z" opacity="0.45"/>
-                <path d="M15.5 7h12v15.5h-12z"/>
-                <path d="M10.5 16.5h7"/>
-                <path d="M14.8 13.8 18 16.5l-3.2 2.7"/>
-              </svg>
-            </div>
-            <p class="solve-problem"><svg class="solve-x" viewBox="0 0 10 10" aria-hidden="true"><path d="M2.2 2.2 7.8 7.8M7.8 2.2 2.2 7.8"/></svg>Your knowledge is scattered.</p>
-            <h3>Run <code>brain init</code> once on notes and Claude or ChatGPT memory; new chats are captured automatically.</h3>
-            <p class="solve-for"><span>For</span> Anyone with notes in Obsidian, markdown or a chatbot's memory.</p>
-          </article>
+          </section>
         </div>
       </div>
     </section>
