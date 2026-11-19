@@ -184,6 +184,11 @@ h3 { font-size: 1.125rem; margin: 0 0 8px; }
 
 .lede { font-size: 1.0625rem; max-width: 40rem; }
 
+.setup-line {
+  max-width: 40rem;
+  margin: 14px 0 0;
+}
+
 section[id] { scroll-margin-top: 80px; }
 
 /* Header */

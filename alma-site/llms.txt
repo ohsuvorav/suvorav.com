@@ -27,15 +27,17 @@ Your notes go in. Alma keeps a memory agents can search and keep up to date. The
 
 ## What it solves
 
-Every new session starts from zero. Your agents read your decisions, projects and preferences before answering. For anyone using Claude Code, Cursor, or Codex daily.
+Provider projects don't update themselves. A daily session-learn loop pulls decisions from your chats and updates the wiki. For anyone whose work compounds and needs to be shared with other stakeholders.
 
-Your knowledge is scattered. Obsidian, markdown, and Claude/ChatGPT memory land in one searchable base with sources. For founders and PMs.
+Built-in memory goes stale. Alma flags outdated facts and lets you keep, fix or archive them one card at a time. For teams where priorities, numbers and decisions change every week.
 
-Docs rot silently. Stale pages surface one card at a time: keep, fix, archive. For teams with a wiki nobody updates.
+You keep re-explaining yourself. Semantic search with sources pulls the right context from previous interactions. For anyone who wants answers hyper-personalized instead of repeating context.
 
-Many agents, no shared truth. Every agent searches the same memory and proposes changes as pull requests you approve. For people running several agents.
+Your knowledge is scattered. Run brain init once on notes and Claude or ChatGPT memory; new chats are captured automatically. For anyone with notes in Obsidian, markdown or a chatbot's memory.
 
 ## How it works
+
+One brain for many agents: every agent searches the same memory, and changes come as pull requests you approve.
 
 Raw notes go into raw/. Checked knowledge and principles live in wiki/. Agents search the wiki (hybrid semantic and keyword search, over MCP) and propose updates as pull requests. Claude Code hooks can bring matches into a session.
 
