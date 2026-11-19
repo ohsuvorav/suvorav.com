@@ -362,10 +362,134 @@ section[id] { scroll-margin-top: 80px; }
   .copy-prompt-labels span { transition: none; }
 }
 
-.for-whom {
-  margin: 14px 0 0;
-  font-size: 13px;
+/* What it solves. Soft cards, the solution is the headline. */
+#solves h2 { margin-bottom: 8px; }
+
+#solves .lede {
+  margin: 0;
   color: var(--muted-fg);
+}
+
+.solve-grid {
+  display: grid;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.solve-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 22px 22px 20px;
+  background: var(--muted);
+  background: color-mix(in srgb, var(--muted) 84%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.solve-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.solve-num {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--muted-fg);
+}
+
+.solve-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--primary);
+}
+
+.solve-problem {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--muted-fg);
+}
+
+.solve-x {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  position: relative;
+  top: 1px;
+  stroke: var(--primary);
+  stroke-width: 1.4;
+  fill: none;
+  stroke-linecap: round;
+}
+
+.solve-card h3 {
+  margin: 10px 0 0;
+  font-size: clamp(1.2rem, 1.5vw, 1.4rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.28;
+  text-wrap: balance;
+}
+
+.solve-card code {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.86em;
+  font-weight: 500;
+}
+
+.solve-for {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 22px 0 0;
+  padding-top: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted-fg);
+}
+
+.solve-for span {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  color: var(--link);
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (hover: hover) {
+  .solve-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 36px rgba(16, 32, 26, 0.08);
+  }
+}
+
+@media (min-width: 800px) {
+  .solve-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .solve-card { padding: 26px 26px 22px; }
+  .solve-for { margin-top: auto; padding-top: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .solve-card { transition: none; }
+  .solve-card:hover { transform: none; }
 }
 
 .actions {
