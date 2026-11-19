@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <!-- TODO: point the waitlist form at the real endpoint. No backend yet. -->
+  <title>Alma — Knowledge base for AI agents in the tools you already use</title>
+  <meta name="description" content="Model-agnostic framework to compound AI context and keep it up to date.">
+  <link rel="canonical" href="https://alma.suvorav.com/">
+  <meta property="og:title" content="Alma — Knowledge base for AI agents in the tools you already use">
+  <meta property="og:description" content="Model-agnostic framework to compound AI context and keep it up to date.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://alma.suvorav.com/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Alma — Knowledge base for AI agents in the tools you already use">
+  <meta name="twitter:description" content="Model-agnostic framework to compound AI context and keep it up to date.">
+  <meta name="theme-color" content="#ECF3F1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#10201A" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.ico">
+  <link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="alma.css">
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">Alma</a>
+      <nav class="anchors" aria-label="On this page">
+        <a href="#why">Why</a>
+        <a href="#how">How</a>
+        <a href="#different">Different</a>
+        <a href="#commands">Commands</a>
+        <a href="#quickstart">Quickstart</a>
+        <a href="#minutes">10 min</a>
+        <a href="#cost">Cost</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="hero">
+      <div class="wrap hero-split">
+        <div class="hero-copy">
+        <h1>Knowledge base for AI agents<br class="desk-break"> in the tools you already use</h1>
+        <p class="lede">Model-agnostic framework to compound AI context and keep<br class="desk-break"> it up to date.</p>
+        <div class="prompt-box">
+          <div class="prompt-copy">
+            <p class="prompt-body" id="install-prompt">Install Alma by following <a href="https://github.com/ohsuvorav/alma-brain/blob/main/INSTALL.md">https://github.com/ohsuvorav/alma-brain/blob/main/INSTALL.md</a></p>
+            <!-- Agent marks from Simple Icons (https://simpleicons.org), CC0 1.0. Paths are unmodified. Claude and Cursor are from the current set; OpenAI is from simple-icons 15.22.0, the last release that still ships that slug. Claude is #D97757. OpenAI and Cursor are monochrome dark. The names are trademarks of their owners and are shown only to identify where the prompt can be pasted. -->
+            <p class="prompt-hint" id="install-hint">or paste in
+              <span class="agent-icons">
+                <svg class="agent-icon claude" viewBox="0 0 24 24" width="20" height="20" role="img" aria-label="Claude" title="Claude"><path fill="currentColor" d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></svg>
+                <svg class="agent-icon mono" viewBox="0 0 24 24" width="20" height="20" role="img" aria-label="OpenAI Codex" title="OpenAI Codex"><path fill="currentColor" d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg>
+                <svg class="agent-icon mono" viewBox="0 0 24 24" width="20" height="20" role="img" aria-label="Cursor" title="Cursor"><path fill="currentColor" d="M11.503.131 1.891 5.678a.84.84 0 0 0-.42.726v11.188c0 .3.162.575.42.724l9.609 5.55a1 1 0 0 0 .998 0l9.61-5.55a.84.84 0 0 0 .42-.724V6.404a.84.84 0 0 0-.42-.726L12.497.131a1.01 1.01 0 0 0-.996 0M2.657 6.338h18.55c.263 0 .43.287.297.515L12.23 22.918c-.062.107-.229.064-.229-.06V12.335a.59.59 0 0 0-.295-.51l-9.11-5.257c-.109-.063-.064-.23.061-.23"/></svg>
+              </span>
+            </p>
+          </div>
+          <button type="button" class="copy-prompt" id="copy-install" data-copy="Install Alma by following https://github.com/ohsuvorav/alma-brain/blob/main/INSTALL.md" aria-describedby="install-hint">
+            <span class="copy-prompt-icon" aria-hidden="true">
+              <svg class="icon-copy" viewBox="0 0 16 16" width="16" height="16"><rect x="5.5" y="5.5" width="8" height="8" rx="1.3" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M10.5 5.4V3.7c0-.7-.6-1.3-1.3-1.3H3.7c-.7 0-1.3.6-1.3 1.3v5.5c0 .7.6 1.3 1.3 1.3h1.7" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+              <svg class="icon-check" viewBox="0 0 16 16" width="16" height="16"><path d="M3.2 8.3 6.4 11.4 12.8 4.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="copy-prompt-labels">
+              <span class="label-idle">Copy prompt</span>
+              <span class="label-done" aria-hidden="true">Copied</span>
+            </span>
+          </button>
+        </div>
+        <p id="install-copy-status" class="visually-hidden" role="status" aria-live="polite"></p>
+        </div>
+        <figure class="repo" aria-label="A repository named your-repo. The existing files stay. Alma adds AGENTS.md and CLAUDE.md, .agents/skills, raw, wiki, system, and teambrain.yaml.">
+          <div class="repo-head">
+            <span class="repo-title">your-repo</span>
+            <span class="repo-private">Private</span>
+            <span class="repo-branch">
+              <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><circle cx="4.2" cy="3.2" r="1.7" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="4.2" cy="12.8" r="1.7" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="12" cy="8" r="1.7" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4.2 4.9v6.2M4.2 8h6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+              main
+            </span>
+          </div>
+          <ul class="repo-files">
+            <li class="is-old">
+              <span class="repo-file"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.4 3.2h4.2l1.1 1.3h7.9v8.2H1.4z"/></svg>src/</span>
+              <span class="repo-msg">fix checkout totals</span>
+              <span class="repo-time">3 days ago</span>
+            </li>
+            <li class="is-old">
+              <span class="repo-file"><svg class="ico file" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 1.6h5.1L12.4 4.9V14.4H4z"/></svg>package.json</span>
+              <span class="repo-msg">bump deps</span>
+              <span class="repo-time">last week</span>
+            </li>
+            <li class="is-old">
+              <span class="repo-file"><svg class="ico file" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 1.6h5.1L12.4 4.9V14.4H4z"/></svg>README.md</span>
+              <span class="repo-msg">docs: setup</span>
+              <span class="repo-time">last month</span>
+            </li>
+            <li class="is-alma">
+              <span class="repo-file"><svg class="ico file" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 1.6h5.1L12.4 4.9V14.4H4z"/></svg>AGENTS.md / CLAUDE.md</span>
+              <span class="repo-msg">alma: shared agent rules</span>
+              <span class="repo-time">today</span>
+            </li>
+            <li class="is-alma">
+              <span class="repo-file"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.4 3.2h4.2l1.1 1.3h7.9v8.2H1.4z"/></svg>.agents/skills/</span>
+              <span class="repo-msg">alma: skills, symlinked per tool</span>
+              <span class="repo-time">today</span>
+            </li>
+            <li class="is-alma">
+              <span class="repo-file"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.4 3.2h4.2l1.1 1.3h7.9v8.2H1.4z"/></svg>raw/</span>
+              <span class="repo-msg">capture: yesterday’s chats</span>
+              <span class="repo-time">7 hours ago</span>
+            </li>
+            <li class="is-alma">
+              <span class="repo-file"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.4 3.2h4.2l1.1 1.3h7.9v8.2H1.4z"/></svg>wiki/</span>
+              <span class="repo-msg">wiki: 4 pages updated, sources linked</span>
+              <span class="repo-time">6 hours ago</span>
+            </li>
+            <li class="is-alma">
+              <span class="repo-file"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.4 3.2h4.2l1.1 1.3h7.9v8.2H1.4z"/></svg>system/</span>
+              <span class="repo-msg">nightly: index, stale check, eval</span>
+              <span class="repo-time">6 hours ago</span>
+            </li>
+            <li class="is-alma">
+              <span class="repo-file"><svg class="ico file" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 1.6h5.1L12.4 4.9V14.4H4z"/></svg>teambrain.yaml</span>
+              <span class="repo-msg">alma: nightly jobs</span>
+              <span class="repo-time">today</span>
+            </li>
+          </ul>
+        </figure>
+      </div>
+    </section>
+
+    <section class="why" id="why">
+      <div class="why-wide">
+        <h2>What makes Alma different</h2>
+        <p class="lede">A folder any agent can read, a wiki that rewrites itself, and the daily loop already wired up.</p>
+        <div class="op" id="why-op" role="tablist" aria-orientation="vertical" aria-label="What makes Alma different">
+          <div class="op-item is-on">
+            <button type="button" class="op-tab" id="op-tab-0" role="tab" aria-selected="true" aria-controls="op-panel-0" tabindex="0">
+              <span class="op-bar" aria-hidden="true"></span>
+              <span class="op-title">Plain files any agent can read</span>
+              <span class="op-desc">Alma is a folder of markdown and instructions. Claude, Codex, Cursor or any provider reads the same files; switch models, keep the context.</span>
+              <span class="op-for"><span class="for-label">For</span><span class="for-text">Anyone using more than one AI tool.</span></span>
+            </button>
+            <div class="op-visual" id="op-panel-0" role="tabpanel" aria-labelledby="op-tab-0">
+              <div class="editor">
+                <div class="editor-bar" aria-hidden="true"><span></span><span></span><span></span><b>brain</b></div>
+                <ul class="vtree">
+                  <li class="label-row"><span class="entry">Explorer</span></li>
+                  <li><span class="entry"><i class="chev"></i><i class="fld"></i>.agents/</span></li>
+                  <li><span class="entry"><i class="chev"></i><i class="fld"></i>.claude/</span></li>
+                  <li><span class="entry"><i class="chev"></i><i class="fld"></i>.githooks/</span></li>
+                  <li><span class="entry"><i class="chev"></i><i class="fld"></i>agents/</span></li>
+                  <li><span class="entry"><i class="chev"></i><i class="fld"></i>docs/</span></li>
+                  <li>
+                    <span class="entry"><i class="chev"></i><i class="fld"></i>raw/</span>
+                    <span class="note"><span>everything you captured</span></span>
+                  </li>
+                  <li><span class="entry"><i class="chev"></i><i class="fld"></i>system/</span></li>
+                  <li>
+                    <span class="entry"><i class="chev"></i><i class="fld"></i>wiki/</span>
+                    <span class="note"><span>what agents read</span></span>
+                  </li>
+                  <li>
+                    <span class="entry"><i class="sp"></i><i class="doc"></i>AGENTS.md</span>
+                    <span class="note"><span>Codex &amp; Cursor</span></span>
+                  </li>
+                  <li>
+                    <span class="entry"><i class="sp"></i><i class="doc"></i>CLAUDE.md</span>
+                    <span class="note"><span>Claude</span></span>
+                  </li>
+                  <li>
+                    <span class="entry"><i class="sp"></i><i class="doc"></i>teambrain.yaml</span>
+                    <span class="note"><span>one config</span></span>
+                  </li>
+                  <li class="grow" aria-hidden="true"><span class="entry"></span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="op-item">
+            <button type="button" class="op-tab" id="op-tab-1" role="tab" aria-selected="false" aria-controls="op-panel-1" tabindex="-1">
+              <span class="op-bar" aria-hidden="true"></span>
+              <span class="op-title">A wiki that writes itself</span>
+              <span class="op-desc">Inspired by Karpathy's LLM wiki: every day Alma reads your sessions in <code>raw/</code> and rewrites the wiki pages they touch, with sources.</span>
+              <span class="op-for"><span class="for-label">For</span><span class="for-text">Anyone whose work compounds and is shared with others.</span></span>
+            </button>
+            <div class="op-visual scene" id="op-panel-1" role="tabpanel" aria-labelledby="op-tab-1">
+              <div class="scene-card learn-panel">
+                <p class="learn-head">Nightly session-learn · 02:30</p>
+                <ul class="learn-list">
+                  <li>
+                    <span class="learn-page">wiki/people.md</span>
+                    <span class="learn-delta"><b class="plus">+18</b><b class="minus">−2</b></span>
+                    <span class="learn-src">raw/chats/2026-11-17.md</span>
+                  </li>
+                  <li>
+                    <span class="learn-page">wiki/roadmap.md</span>
+                    <span class="learn-delta"><b class="plus">+6</b><b class="minus">−1</b></span>
+                    <span class="learn-src">raw/chats/2026-11-18.md</span>
+                  </li>
+                  <li>
+                    <span class="learn-page">wiki/pricing.md</span>
+                    <span class="learn-delta"><b class="plus">+4</b><b class="minus">−4</b></span>
+                    <span class="learn-src">raw/chats/2026-11-19.md</span>
+                  </li>
+                </ul>
+                <p class="learn-conflict">conflict: pricing.md says $49, chat says $59 → review</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="op-item">
+            <button type="button" class="op-tab" id="op-tab-2" role="tab" aria-selected="false" aria-controls="op-panel-2" tabindex="-1">
+              <span class="op-bar" aria-hidden="true"></span>
+              <span class="op-title">Batteries included</span>
+              <span class="op-desc">Run <code>brain init</code> and you get the loop out of the box: daily capture, self-updating wiki, evals, doctor and review. No glue code.</span>
+              <span class="op-for"><span class="for-label">For</span><span class="for-text">Teams where priorities change every week.</span></span>
+            </button>
+            <div class="op-visual scene" id="op-panel-2" role="tabpanel" aria-labelledby="op-tab-2">
+              <div class="scene-card">
+                <p class="term"><span>$</span> brain init ~/notes</p>
+                <ul class="checks">
+                  <li><svg class="tick" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#008055"/><path d="M4.5 8.2 6.8 10.4 11.6 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Daily capture (cron)</span></li>
+                  <li><svg class="tick" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#008055"/><path d="M4.5 8.2 6.8 10.4 11.6 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Session-learn wiki update</span></li>
+                  <li><svg class="tick" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#008055"/><path d="M4.5 8.2 6.8 10.4 11.6 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Eval: <b>26/30 passed</b></span></li>
+                  <li><svg class="tick" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#008055"/><path d="M4.5 8.2 6.8 10.4 11.6 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><code>brain doctor</code>: ok</span></li>
+                  <li><svg class="tick" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#008055"/><path d="M4.5 8.2 6.8 10.4 11.6 5.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><code>brain review</code>: 1 stale card</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p id="why-status" class="visually-hidden" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="wrap">
+        <p class="label">How it works</p>
+        <h2>Raw notes, a wiki, then agents</h2>
+        <p class="lede">Notes go in as they are. Checked knowledge and principles live in the wiki. Agents search that wiki and propose updates as pull requests.</p>
+        <p class="setup-line">One brain for many agents: every agent searches the same memory, and changes come as pull requests you approve.</p>
+
+        <figure class="flow" aria-hidden="true">
+          <svg class="flow-narrow" viewBox="0 0 360 464">
+            <rect class="flow-box" x="2" y="2" width="356" height="132" rx="8"></rect>
+            <text class="flow-kicker" x="22" y="36" font-size="12" letter-spacing="1.1">01 · RAW/</text>
+            <text class="flow-title" x="22" y="66" font-size="22">Raw notes</text>
+            <text class="flow-body" x="22" y="98" font-size="15">Unchecked capture</text>
+            <line class="flow-arrow" x1="180" y1="136" x2="180" y2="160"></line>
+            <polyline class="flow-arrow" points="173,153 180,166 187,153"></polyline>
+
+            <rect class="flow-box" x="2" y="166" width="356" height="132" rx="8"></rect>
+            <text class="flow-kicker" x="22" y="200" font-size="12" letter-spacing="1.1">02 · WIKI/</text>
+            <text class="flow-title" x="22" y="230" font-size="22">Wiki</text>
+            <text class="flow-body" x="22" y="260" font-size="15">Checked knowledge</text>
+            <text class="flow-body" x="22" y="280" font-size="15">and principles</text>
+            <line class="flow-arrow" x1="180" y1="300" x2="180" y2="324"></line>
+            <polyline class="flow-arrow" points="173,317 180,330 187,317"></polyline>
+
+            <rect class="flow-box" x="2" y="330" width="356" height="132" rx="8"></rect>
+            <text class="flow-kicker" x="22" y="364" font-size="12" letter-spacing="1.1">03 · AGENTS</text>
+            <text class="flow-title" x="22" y="394" font-size="22">Agents</text>
+            <text class="flow-body" x="22" y="424" font-size="15">Search via MCP,</text>
+            <text class="flow-body" x="22" y="444" font-size="15">propose updates as pull requests</text>
+          </svg>
+
+          <svg class="flow-wide" viewBox="0 0 960 168">
+            <rect class="flow-box" x="1" y="11" width="290" height="146" rx="8"></rect>
+            <text class="flow-kicker" x="20" y="44" font-size="11" letter-spacing="1.1">01 · RAW/</text>
+            <text class="flow-title" x="20" y="76" font-size="20">Raw notes</text>
+            <text class="flow-body" x="20" y="108" font-size="14">Unchecked capture</text>
+            <line class="flow-arrow" x1="292" y1="84" x2="326" y2="84"></line>
+            <polyline class="flow-arrow" points="318,78 330,84 318,90"></polyline>
+
+            <rect class="flow-box" x="335" y="11" width="290" height="146" rx="8"></rect>
+            <text class="flow-kicker" x="354" y="44" font-size="11" letter-spacing="1.1">02 · WIKI/</text>
+            <text class="flow-title" x="354" y="76" font-size="20">Wiki</text>
+            <text class="flow-body" x="354" y="108" font-size="14">Checked knowledge</text>
+            <text class="flow-body" x="354" y="128" font-size="14">and principles</text>
+            <line class="flow-arrow" x1="626" y1="84" x2="660" y2="84"></line>
+            <polyline class="flow-arrow" points="652,78 664,84 652,90"></polyline>
+
+            <rect class="flow-box" x="669" y="11" width="290" height="146" rx="8"></rect>
+            <text class="flow-kicker" x="688" y="44" font-size="11" letter-spacing="1.1">03 · AGENTS</text>
+            <text class="flow-title" x="688" y="76" font-size="20">Agents</text>
+            <text class="flow-body" x="688" y="108" font-size="14">Search via MCP,</text>
+            <text class="flow-body" x="688" y="128" font-size="14">propose updates as pull requests</text>
+          </svg>
+        </figure>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Capture</h3>
+            <p class="path">raw/</p>
+            <p>Drop notes in as they are. Meetings, decisions, half-formed thoughts.</p>
+          </article>
+          <article class="card">
+            <h3>Distill</h3>
+            <p class="path">wiki/</p>
+            <p>Checked knowledge and principles live here. Agents propose changes as pull requests you review.</p>
+          </article>
+          <article class="card">
+            <h3>Use</h3>
+            <p class="path">search</p>
+            <p>Hybrid semantic and keyword search, over MCP. Claude Code hooks can bring matches into the session.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="different">
+      <div class="wrap">
+        <p class="label">How it's different</p>
+        <h2>An interface, not my brain</h2>
+        <div class="measure">
+          <p>In Java, callers depend on an interface. The class is the implementation, and it stays yours.</p>
+          <p>Alma is the interface: the folder contract (<code>raw/</code>, <code>wiki/</code>), <code>teambrain.yaml</code>, the <code>brain</code> commands, the hooks, and MCP search. Your brain is the class: your config and your content.</p>
+        </div>
+        <figure class="code-card">
+          <pre><code>class MyBrain implements SecondBrain</code></pre>
+        </figure>
+        <ul class="points">
+          <li>Your content stays in your own git repo.</li>
+          <li>Agents propose changes as pull requests you review.</li>
+          <li>Plain markdown, no lock-in.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="commands">
+      <div class="wrap">
+        <p class="label">Commands</p>
+        <h2>One line each</h2>
+        <table class="commands">
+          <thead>
+            <tr>
+              <th scope="col">Command</th>
+              <th scope="col">What it does</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">brain init</th>
+              <td>Create a brain and ask which sources to import.</td>
+            </tr>
+            <tr>
+              <th scope="row">brain doctor</th>
+              <td>Check the setup. For each problem, one line on how to fix it.</td>
+            </tr>
+            <tr>
+              <th scope="row">brain index</th>
+              <td>Rebuild the search index from the markdown in this brain.</td>
+            </tr>
+            <tr>
+              <th scope="row">brain query</th>
+              <td>Search the brain and print the matches.</td>
+            </tr>
+            <tr>
+              <th scope="row">brain retro</th>
+              <td>Review recent agent sessions and propose updates.</td>
+            </tr>
+            <tr>
+              <th scope="row">brain lint</th>
+              <td>Report stale docs, idle folders, duplicates, and broken links. Read-only.</td>
+            </tr>
+            <tr>
+              <th scope="row">brain review</th>
+              <td>Show one stale or disputed item at a time: keep, fix, or archive. Never a wall.</td>
+            </tr>
+            <tr>
+              <th scope="row">brain snapshot</th>
+              <td>Save local-only history for a working folder the brain's git ignores.</td>
+            </tr>
+            <tr>
+              <th scope="row">brain schedule</th>
+              <td>Run a brain command on a timer.</td>
+            </tr>
+            <tr>
+              <th scope="row">brain onboard</th>
+              <td>Connect an agent in this folder so it can search the brain.</td>
+            </tr>
+            <tr>
+              <th scope="row">brain wip</th>
+              <td>List notes and proposals still outside the wiki.</td>
+            </tr>
+            <tr>
+              <th scope="row">brain suggest</th>
+              <td>Draft a proposed update for you to review.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="quickstart">
+      <div class="wrap">
+        <p class="label">Quickstart</p>
+        <h2>From clone to first answer on your own notes in under 10 minutes.</h2>
+        <div class="term">
+          <div class="term-bar">
+            <p class="label">Terminal</p>
+            <button type="button" class="copy-btn" id="copy-quickstart">Copy</button>
+          </div>
+          <pre><code id="quickstart-code">git clone https://github.com/ohsuvorav/alma-brain.git
+cd alma-brain
+brain setup
+brain init my-brain
+brain doctor
+<span class="term-note"># Ask your agent a question.
+# It answers from your notes, with a link to the source.</span></code></pre>
+        </div>
+        <div class="stack">
+          <p><code>brain init</code> asks which sources to import: a markdown or Obsidian folder, Notion or Google Docs via MCP, or Claude memory and chat exports.</p>
+          <p>Then ask your agent a question. It answers from your notes, with a link to the source.</p>
+          <p>Or tell your coding agent: install from <a href="https://github.com/ohsuvorav/alma-brain/blob/main/INSTALL.md">https://github.com/ohsuvorav/alma-brain/blob/main/INSTALL.md</a>.</p>
+          <p>The repository is not public yet. <a href="https://github.com/ohsuvorav/alma-brain">github.com/ohsuvorav/alma-brain</a> is coming soon.</p>
+        </div>
+        <p id="copy-status" class="visually-hidden" role="status"></p>
+      </div>
+    </section>
+
+    <section class="section" id="minutes">
+      <div class="wrap">
+        <p class="label">First 10 minutes</p>
+        <h2>Install, import, ask, review one card</h2>
+        <p class="lede">Your own notes, from the start. The panels are a static illustration of the screens. They are not real data.</p>
+        <ol class="timeline">
+          <li>
+            <div class="step">
+              <p class="label">01 — Install</p>
+              <h3>Clone and set up</h3>
+              <p>Clone the repository and run <code>brain setup</code>.</p>
+            </div>
+            <div class="mock">
+              <p class="mock-flag">Illustration, not real data</p>
+              <p class="mock-cmd"><span class="prompt">$</span> git clone https://github.com/ohsuvorav/alma-brain.git</p>
+              <p class="mock-cmd"><span class="prompt">$</span> brain setup</p>
+            </div>
+          </li>
+          <li>
+            <div class="step">
+              <p class="label">02 — Import</p>
+              <h3>Bring your sources in</h3>
+              <p><code>brain init</code> asks which sources to import. <code>brain doctor</code> then checks the setup and prints one fix per problem.</p>
+            </div>
+            <div class="mock">
+              <p class="mock-flag">Illustration, not real data</p>
+              <p class="mock-cmd"><span class="prompt">$</span> brain init my-brain</p>
+              <p class="mock-q">Which sources should this brain import?</p>
+              <ul class="choices">
+                <li><span class="dot" aria-hidden="true"></span> A markdown or Obsidian folder</li>
+                <li><span class="dot" aria-hidden="true"></span> Notion, via MCP</li>
+                <li><span class="dot" aria-hidden="true"></span> Google Docs, via MCP</li>
+                <li><span class="dot" aria-hidden="true"></span> Claude memory or chat exports</li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <div class="step">
+              <p class="label">03 — First answer</p>
+              <h3>Ask from your notes</h3>
+              <p>Ask your agent a question. It answers from your notes and links the file it used.</p>
+            </div>
+            <div class="mock">
+              <p class="mock-flag">Illustration, not real data</p>
+              <p class="mock-role">You</p>
+              <p>A question about your notes</p>
+              <p class="mock-role">Agent</p>
+              <p>An answer taken from those notes.</p>
+              <p class="src"><span>Source</span>wiki/….md</p>
+            </div>
+          </li>
+          <li>
+            <div class="step">
+              <p class="label">04 — Review one card</p>
+              <h3>One item, then the next</h3>
+              <p><code>brain review</code> shows one stale or disputed item. Keep it, fix it, or archive it.</p>
+            </div>
+            <div class="mock">
+              <p class="mock-flag">Illustration, not real data</p>
+              <p class="mock-cmd"><span class="prompt">$</span> brain review</p>
+              <p class="mock-role">One item</p>
+              <p>A stale or disputed note, shown alone.</p>
+              <div class="mock-actions" aria-hidden="true">
+                <span>Keep</span>
+                <span>Fix</span>
+                <span>Archive</span>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="cost">
+      <div class="wrap">
+        <p class="label">Cost</p>
+        <h2>How much it costs</h2>
+        <div class="grid-2">
+          <article class="card">
+            <h3>Alma</h3>
+            <p class="price">Free</p>
+            <p>MIT license. Clone it and run it on your own notes.</p>
+          </article>
+          <article class="card">
+            <h3>Hosted, for a team</h3>
+            <p class="price">Coming later</p>
+            <p>A hosted version is planned. Leave an email if you want to hear when it exists.</p>
+            <form class="waitlist" action="https://example.invalid/waitlist" method="post">
+              <label for="waitlist-email">Email</label>
+              <input id="waitlist-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+              <button class="btn btn-primary" type="submit">Join the waitlist</button>
+            </form>
+            <p class="fine">This form posts to a placeholder. Submissions are not stored yet.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>MIT</p>
+      <p><a href="https://github.com/ohsuvorav/alma-brain">Coming soon</a></p>
+      <p>Made by <a href="https://suvorav.com">Oleg Suvorov</a></p>
+    </div>
+  </footer>
+
+  <script src="alma.js"></script>
+</body>
+</html>
