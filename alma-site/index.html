@@ -70,50 +70,35 @@
         </div>
         <p id="install-copy-status" class="visually-hidden" role="status" aria-live="polite"></p>
         </div>
-        <figure class="ide" aria-label="An Alma project in an editor. Instructions are AGENTS.md, CLAUDE.md, and skills, symlinked per tool. Nightly jobs are index at 03:15, lint at 02:30, and snapshot at 02:45, in teambrain.yaml and 03-system. 01-raw, your notes and imports, is written to 02-wiki with sources.">
+        <figure class="ide" aria-label="An Alma project named my-brain. Instructions are AGENTS.md, CLAUDE.md, and skills. Context is 01-raw, 02-wiki, and 03-system. Nightly jobs are teambrain.yaml.">
           <div class="ide-title">
             <span class="ide-lights" aria-hidden="true"><i></i><i></i><i></i></span>
             <span class="ide-title-name">my-brain</span>
           </div>
-          <div class="ide-body">
-            <div class="ide-activity" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M4 5.5h6.2l1.3 1.6H20V19H4z" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
-              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="5.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M15.2 15.2 19 19" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-              <svg viewBox="0 0 24 24"><circle cx="7" cy="7" r="2" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="7" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="17" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M9 7h4.2a3 3 0 0 1 0 6H9m0 4h4.2" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
-            </div>
-            <div class="ide-side">
-              <p class="ide-side-head"><span>Explorer</span></p>
-              <ul class="ide-tree">
-                <li class="is-root"><i class="tw open"></i><i class="fd"></i><span>my-brain</span></li>
-                <li><i class="tw"></i><i class="fd"></i><span>.claude</span><span class="ide-aside">hook + MCP</span></li>
-                <li class="ide-hot">
-                  <ul>
-                    <li><i class="tw"></i><i class="fd"></i><span>01-raw</span><i class="ide-dot"></i></li>
-                    <li><i class="tw"></i><i class="fd"></i><span>02-wiki</span><i class="ide-dot"></i></li>
-                    <li><i class="tw"></i><i class="fd"></i><span>03-system</span><i class="ide-dot"></i></li>
-                  </ul>
-                </li>
-                <li><i class="tw"></i><i class="fd"></i><span>skills</span><span class="ide-aside">symlinked</span></li>
-                <li><i class="tw file"></i><i class="md"></i><span>AGENTS.md</span></li>
-                <li><i class="tw file"></i><i class="md"></i><span>CLAUDE.md</span></li>
-                <li><i class="tw file"></i><i class="ym"></i><span>teambrain.yaml</span></li>
+          <ul class="ide-tree">
+            <li class="ide-group">
+              <ul>
+                <li>AGENTS.md</li>
+                <li>CLAUDE.md</li>
+                <li>skills/</li>
               </ul>
-              <ul class="ide-legend">
-                <li><span>Instructions</span> AGENTS.md, CLAUDE.md, skills/</li>
-                <li><span>Nightly jobs</span> index 03:15 · lint 02:30 · snapshot 02:45</li>
-                <li><span>Generated context</span> 01-raw → 02-wiki</li>
+              <span class="ide-tag">instructions</span>
+            </li>
+            <li class="ide-group is-context">
+              <ul>
+                <li>01-raw</li>
+                <li>02-wiki</li>
+                <li>03-system</li>
               </ul>
-            </div>
-            <div class="ide-code">
-              <p class="ide-tab"><i class="md"></i>decisions.md</p>
-              <pre><code><span class="ln">1</span><span class="cm">---</span>
-<span class="ln">2</span><span class="k">title</span>: <span class="s">Decisions</span>
-<span class="ln">3</span><span class="k">sources</span>:
-<span class="ln">4</span>  - <span class="s">01-raw/notes/2026-11-18.md</span>
-<span class="ln">5</span><span class="k">updated</span>: <span class="s">2026-11-19</span>
-<span class="ln">6</span><span class="cm">---</span></code></pre>
-            </div>
-          </div>
+              <span class="ide-tag">context</span>
+            </li>
+            <li class="ide-group">
+              <ul>
+                <li>teambrain.yaml</li>
+              </ul>
+              <span class="ide-tag">nightly</span>
+            </li>
+          </ul>
         </figure>
       </div>
     </section>

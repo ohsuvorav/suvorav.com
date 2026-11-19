@@ -37,7 +37,7 @@ Batteries included. Run brain init and you get the loop out of the box: daily ca
 
 One brain for many agents: every agent searches the same memory, and changes come as pull requests you approve.
 
-A brain is a folder. Instructions are AGENTS.md, CLAUDE.md, and skills/ (symlinked per tool). .claude/ wires the hook and MCP. Notes, chats, and imports land in 01-raw/. Alma writes 02-wiki/ from them, with sources. 03-system/ holds jobs, evals, and logs. teambrain.yaml runs the nightly jobs: index at 03:15, lint at 02:30, snapshot at 02:45.
+A brain is a folder. Instructions are AGENTS.md, CLAUDE.md, and skills/ (symlinked per tool). Notes, chats, and imports land in 01-raw/. Alma writes 02-wiki/ from them, with sources. 03-system/ holds jobs, evals, and logs. teambrain.yaml runs the nightly jobs.
 
 Checked knowledge and principles live in 02-wiki/. Agents search that wiki (hybrid semantic and keyword search, over MCP) and propose updates as pull requests. Claude Code hooks can bring matches into a session.
 
